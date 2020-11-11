@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "899439344150",
+    "firebase_url": "https://anaksehat-f073e.firebaseio.com",
+    "project_id": "anaksehat-f073e",
+    "storage_bucket": "anaksehat-f073e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:899439344150:android:ab0ab26e8a51aa20",
+        "android_client_info": {
+          "package_name": "com.kominfo.anaksehat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "899439344150-u99l6i2hgmm4ht9ps06scde8j6rlk5a7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.kominfo.anaksehat",
+            "certificate_hash": "8f3e4a2b861188afeae2326de567dad09d65d5f1"
+          }
+        },
+        {
+          "client_id": "899439344150-v3qol7sujosf805vk8rgtubeijsv2495.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBs5DXVAddcNgtmKtk4oqLWTLNUPamZMYA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "899439344150-v3qol7sujosf805vk8rgtubeijsv2495.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

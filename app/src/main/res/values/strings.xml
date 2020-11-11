@@ -1,0 +1,390 @@
+<resources>
+    <string name="app_name">KIA Grobogan</string>
+    <string name="title_menu_child">Daftar Anak</string>
+    <string name="title_menu_mother">Daftar Ibu</string>
+    <string name="title_menu_pregnancy">Daftar Kehamilan</string>
+    <string name="title_menu_pregnancy_2">Riwayat Kehamilan</string>
+    <string name="title_menu_pregnancy_history">Pemeriksaan Kehamilan</string>
+    <string name="title_menu_child_history">Pemeriksaan Anak</string>
+    <string name="title_child_history_detail">Riwayat Pemeriksaan Anak</string>
+    <string name="title_child">Data Anak</string>
+    <string name="title_mother">Data Ibu</string>
+    <string name="title_history">Riwayat</string>
+    <string name="title_child_history">Data Riwayat Anak</string>
+    <string name="title_create_child">Input Data Anak</string>
+    <string name="title_edit_child">Edit Data Anak</string>
+    <string name="title_create_mother">Input Data Ibu</string>
+    <string name="title_edit_mother">Edit Data Ibu</string>
+    <string name="title_create_child_history">Input Data Riwayat Anak</string>
+    <string name="title_edit_child_history">Edit Data Riwayat Anak</string>
+    <string name="title_create_pregnancy">Input Data Kehamilan</string>
+    <string name="title_edit_pregnancy">Edit Data Kehamilan</string>
+    <string name="title_create_pregnancy_history">Input Data Riwayat Pemeriksaan Kehamilan</string>
+    <string name="title_edit_pregnancy_history">Edit Data Riwayat Pemeriksaan Kehamilan</string>
+    <string name="title_create_account">Buat Akun</string>
+    <string name="title_activation">Kode Aktivasi</string>
+    <string name="title_account_activation">Aktivasi Akun</string>
+    <string name="title_forgot_password">Lupa Password</string>
+    <string name="title_other_articles">Artikel Lainnya</string>
+    <string name="title_Article">Artikel</string>
+    <string name="title_pregnancies">Kehamilan Ibu Hamil</string>
+    <string name="title_pregnancy_history">Riwayat Pemeriksaan Kehamilan</string>
+    <string name="title_immunization">Riwayat Imunisasi</string>
+    <string name="title_menu_immunizations">Jadwal Imunisasi</string>
+    <string name="title_form_immunization">Vaksinasi Bayi</string>
+    <string name="title_video">Video</string>
+    <string name="title_infographic">Infografis</string>
+    <string name="title_promotion">Promosi</string>
+
+    <string name="submit_ok">Data berhasil disimpan</string>
+    <string name="error_500">Server Error : Kesalahan Server Dari Dalam</string>
+    <string name="error_400">Server Error : Permintaan yang buruk</string>
+    <string name="error_403">Server Error : Terlarang</string>
+    <string name="error_404">Server Error : Tidak ditemukan</string>
+    <string name="error_xxx">Error Tidak Ditemukan</string>
+    <string name="error_parsing">Format Data Cacat</string>
+    <string name="error_device_not_found">Format Data Cacat</string>
+
+    <string name="error_coming_soon">Coming Soon...</string>
+
+    <string name="error_name">Nama terlalu pendek</string>
+    <string name="error_email">Email tidak valid</string>
+    <string name="error_phone_number">Nomor Telepon Genggam tidak valid</string>
+    <string name="error_username_short">Username terlalu pendek</string>
+    <string name="error_password_short">Password terlalu pendek</string>
+    <string name="error_password_not_match">Konfirmasi Password tidak sesuai</string>
+    <string name="error_birth_date">Tanggal lahir harus diisi</string>
+    <string name="error_history_date">Tanggal Riwayat harus diisi</string>
+    <string name="error_first_length">Tinggi Pertama harus diisi</string>
+    <string name="error_first_weight">Berat Pertama harus diisi</string>
+    <string name="error_first_head_round">Lingkar Kepala harus diisi</string>
+    <string name="error_height">Panjang Badan harus diisi</string>
+    <string name="error_height_person">Tinggi Badan harus diisi</string>
+    <string name="error_weight">Berat Badan harus diisi</string>
+    <string name="error_head_round">Lingkar Kepala harus diisi</string>
+    <string name="error_temperature">Suhu Badan harus diisi</string>
+    <string name="error_activation">Kode Aktivasi tidak valid</string>
+    <string name="error_spouse_name">Nama Suami harus diisi</string>
+    <string name="error_address">Alamat harus diisi</string>
+    <string name="error_state">Provinsi tidak valid</string>
+    <string name="error_district">Kota/Kabupaten tidak valid</string>
+    <string name="error_blood_pressure_top">Tekanan Darah harus diisi</string>
+    <string name="error_blood_pressure_bottom">Tekanan Darah harus diisi</string>
+    <string name="error_mother_data">Silakan lengkapi data di menu ibu terlebih dahulu</string>
+    <string name="error_article_not_found">Artikel tidak dapat ditemukan.</string>
+    <string name="error_last_period_date">Terakhir Menstruasi harus diisi</string>
+    <string name="error_start_weight">Berat Saat Mulai Hamil harus diisi</string>
+    <string name="error_start_height">Tinggi Saat Mulai Hamil harus diisi</string>
+    <string name="error_pregnancy_date">Tanggal Pemeriksaan harus diisi</string>
+    <string name="error_baby_weight">Berat Janin harus diisi</string>
+    <string name="error_gender_prediction">Prediksi Kelamin harus diisi</string>
+    <string name="error_amniotic_condition">Kondisi Air Ketuban harus diisi</string>
+    <string name="error_immunization_date">Tanggal Immunisasi harus diisi</string>
+    <string name="error_video_not_found">Video tidak ditemukan</string>
+    <string name="error_infographic_not_found">Infografis tidak ditemukan</string>
+    <string name="error_legal_file">Surat Legalisasi harus ada</string>
+    <string name="error_creating_image">Share data gagal</string>
+    <string name="error_player">There was an error initializing the YouTubePlayer (%1$s)</string>
+
+    <string name="login">Sudah memiliki akun? Masuk</string>
+    <string name="login_here"> disini</string>
+    <string name="signup">Belum memiliki akun? Daftar</string>
+    <string name="signup_here"> disini</string>
+
+    <string name="signup_done">Pendaftaran Berhasil, silahkan masuk dengan akun anda.</string>
+    <string name="resend_code_done">Kode Aktivasi telah dikirim ulang</string>
+    <string name="forgot_done">Data Pengguna telah dikirim ke nomor handphone anda.</string>
+
+    <string name="tips_name">minimal 4 karakter</string>
+    <string name="tips_username">minimal 4 karakter</string>
+    <string name="tips_email">gunakan email aktif</string>
+    <string name="tips_phone_number">Gunakan nomor aktif karena untuk aktivasi akun</string>
+    <string name="tips_password">minimal 8 karakter</string>
+    <string name="tips_confirm_password">isi ulang Password</string>
+    <string name="tips_state">asal Provinsi</string>
+    <string name="tips_district">asal Kota/Kabupaten</string>
+    <string name="tips_legal_file">asal Kota/Kabupaten</string>
+    <string name="hint_name">Nama</string>
+    <string name="hint_username">Username</string>
+    <string name="hint_email_phone">Email/No HP</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_phone_number">Nomor Telepon Genggam</string>
+    <string name="hint_password">Password</string>
+    <string name="hint_confirm_password">Konfirmasi Password</string>
+    <string name="hint_activation">Kode Aktivasi</string>
+    <string name="hint_search">Cari</string>
+    <string name="hint_birth_date">Tanggal Lahir</string>
+    <string name="hint_history_date">Tanggal Riwayat</string>
+    <string name="hint_mother">Nama Ibu</string>
+    <string name="hint_gender">Jenis Kelamin</string>
+    <string name="hint_blood_type">Golongan Darah</string>
+    <string name="hint_first_length">Panjang Badan Saat Lahir</string>
+    <string name="hint_first_weight">Berat Badan Saat Lahir</string>
+    <string name="hint_first_head_round">Lingkar Kepala</string>
+    <string name="hint_height">Panjang Badan</string>
+    <string name="hint_height_child">Panjang Badan Saat Lahir</string>
+    <string name="hint_height_person">Tinggi Badan</string>
+    <string name="hint_weight">Berat Badan</string>
+    <string name="hint_weight_child">Berat Badan Saat Lahir</string>
+    <string name="hint_head_round">Lingkar Kepala</string>
+    <string name="hint_cm">cm</string>
+    <string name="hint_kg">Kg</string>
+    <string name="hint_gram">gram</string>
+    <string name="hint_note">Catatan</string>
+    <string name="hint_celcius">°C</string>
+    <string name="hint_temperature">Suhu Badan</string>
+    <string name="hint_imt">IMT Rate</string>
+    <string name="hint_spouse_name">Nama Suami</string>
+    <string name="hint_address">Alamat</string>
+    <string name="hint_state">Provinsi</string>
+    <string name="hint_district">Kota/Kabupaten</string>
+    <string name="hint_blood_pressure">Tekanan Darah</string>
+    <string name="hint_blood_pressure_top">Tekanan Darah Atas</string>
+    <string name="hint_blood_pressure_bottom">Tekanan Darah Bawah</string>
+    <string name="hint_last_period_date">Terakhir Menstruasi</string>
+    <string name="hint_start_weight">Berat Saat Mulai Hamil</string>
+    <string name="hint_start_height">Tinggi Saat Mulai Hamil</string>
+    <string name="hint_period_type">Periode Menstruasi</string>
+    <string name="hint_weight_gain">Penambahan Berat Badan</string>
+    <string name="hint_top">/</string>
+    <string name="hint_bottom"></string>
+    <string name="hint_pregnancy_date">Tanggal Pemeriksaan</string>
+    <string name="hint_baby_weight">Berat Janin</string>
+    <string name="hint_gender_prediction">Prediksi Kelamin</string>
+    <string name="hint_amniotic_condition">Kondisi Air Ketuban</string>
+    <string name="hint_take_photo">Ambil Photo</string>
+    <string name="hint_choose_photo">Pilih Photo</string>
+    <string name="hint_immunization_date">Tanggal Imunisasi</string>
+    <string name="hint_legal_file">Surat Legalisasi Posyandu Kecamatan</string>
+
+    <string name="button_submit">Simpan</string>
+    <string name="button_send">Kirim</string>
+    <string name="button_resend_code">Kirim Kode Aktivasi</string>
+    <string name="button_cancel">Batal</string>
+    <string name="button_next">Selanjutnya</string>
+    <string name="button_prev">Sebelumnya</string>
+    <string name="button_finish">Selesai</string>
+
+    <string name="warning">Peringatan</string>
+    <string name="warning_signup">Anda akan menghentikan proses registrasi?</string>
+    <string name="warning_activation">Anda akan menghentikan proses aktivasi?</string>
+    <string name="warning_forgot">Anda akan menghentikan proses lupa Password?</string>
+    <string name="warning_create_child">Anda akan menghentikan proses input data anak?</string>
+    <string name="warning_edit_child">Anda akan menghentikan proses edit data anak?</string>
+    <string name="warning_create_child_history">Anda akan menghentikan proses input data riwayat anak?</string>
+    <string name="warning_edit_child_history">Anda akan menghentikan proses edit data riwayat anak?</string>
+    <string name="warning_create_mother">Anda akan menghentikan proses input data ibu?</string>
+    <string name="warning_edit_mother">Anda akan menghentikan proses edit data ibu?</string>
+    <string name="warning_create_pregnancy">Anda akan menghentikan proses input data kehamilan?</string>
+    <string name="warning_edit_pregnancy">Anda akan menghentikan proses edit data kehamilan?</string>
+    <string name="warning_create_pregnancy_history">Anda akan menghentikan proses input data riwayat kehamilan?</string>
+    <string name="warning_edit_pregnancy_history">Anda akan menghentikan proses edit data riwayat kehamilan?</string>
+    <string name="warning_logout">Anda akan keluar aplikasi?</string>
+    <string name="warning_logout_2">Apakah Anda yakin\nuntuk keluar dari aplikasi</string>
+
+    <string name="Welcome">Selamat \nDatang</string>
+    <string name="process_api">Koneksi Server...</string>
+    <string name="next">Lanjut</string>
+    <string name="ok">iya</string>
+    <string name="cancel">tidak</string>
+    <string name="male">Laki-laki</string>
+    <string name="female">Perempuan</string>
+    <string name="create">Isi Data</string>
+    <string name="back">Kembali</string>
+    <string name="edit">Edit</string>
+    <string name="share">Share</string>
+    <string name="forgot">Lupa Password?</string>
+    <string name="resend_code">Kirim Ulang Kode Aktivasi</string>
+    <string name="activation_account">Aktivasi Akun</string>
+    <string name="logout">Log out</string>
+    <string name="close">X tutup</string>
+    <string name="close_2">tutup</string>
+
+    <string name="good">Baik</string>
+    <string name="not_good">Kurang Baik</string>
+
+    <!-- Guidance String Home -->
+    <string name="guide_menu_pregnancies">Pilih menu ini untuk menginput hasil pemeriksaan kehamilan anda</string>
+    <string name="guide_menu_children">Pilih menu ini untuk menginput hasil pemeriksaan anak anda</string>
+    <string name="guide_menu_games">Pilih menu ini untuk main game</string>
+    <string name="guide_menu_other">Klik ini untuk melihat menu lainnya</string>
+
+    <!-- Guidance String Form Child -->
+    <string name="guide_form_child_name">isi field ini dengan nama</string>
+    <string name="guide_form_child_birth_date">isi field ini dengan tanggal lahir</string>
+    <string name="guide_form_child_mother_name">isi field ini dengan nama ibu</string>
+    <string name="guide_form_child_gender">isi field ini dengan jenis kelamin</string>
+    <string name="guide_form_child_blood">isi field ini dengan golongan darah</string>
+    <string name="guide_form_child_height">isi field ini dengan panjang badan saat lahir</string>
+    <string name="guide_form_child_weight">isi field ini dengan berat badan saat lahir</string>
+    <string name="guide_form_child_round">isi field ini dengan linkar kepala</string>
+
+    <!-- Guidance String Form Child History -->
+    <string name="guide_form_child_history_date">isi field ini dengan tanggal pemeriksaan</string>
+    <string name="guide_form_child_history_height">isi field ini dengan panjang badan</string>
+    <string name="guide_form_child_history_weight">isi field ini dengan berat badan</string>
+
+    <!-- Guidance String Form Mother -->
+    <string name="guide_form_mother_name">isi field ini dengan nama</string>
+    <string name="guide_form_mother_birth_date">isi field ini dengan tanggal lahir</string>
+    <string name="guide_form_mother_spouse_name">isi field ini dengan nama suami</string>
+    <string name="guide_form_mother_address">isi field ini dengan alamat tempat tinggal</string>
+    <string name="guide_form_mother_state">isi field ini dengan provinsi tempat tinggal</string>
+    <string name="guide_form_mother_district">isi field ini dengan kota/kabupaten tempat tinggal</string>
+    <string name="guide_form_mother_blood">isi field ini dengan golongan darah</string>
+    <string name="guide_form_mother_height">isi field ini dengan tinggi badan</string>
+    <string name="guide_form_mother_weight">isi field ini dengan berat badan</string>
+    <string name="guide_form_mother_blood_pressure">isi field ini dengan tekanan darah</string>
+
+    <!-- Guidance String Form Pregnancy -->
+    <string name="guide_form_pregnancy_mother_name">isi field ini dengan nama ibu</string>
+    <string name="guide_form_pregnancy_period_date">isi field ini dengan tanggal terakhir menstruasi</string>
+    <string name="guide_form_pregnancy_period_type">isi field ini dengan periode menstruasi</string>
+    <string name="guide_form_pregnancy_height">isi field ini dengan tinggi badan saat mulai hamil</string>
+    <string name="guide_form_pregnancy_weight">isi field ini dengan berat badan saat mulai hamil</string>
+
+    <!-- Guidance String Form Pregnancy History -->
+    <string name="guide_form_pregnancy_history_date">isi field ini dengan tanggal pemeriksaan</string>
+    <string name="guide_form_pregnancy_history_weight">isi field ini dengan berat badan</string>
+    <string name="guide_form_pregnancy_history_baby_weight">isi field ini dengan berat janin</string>
+    <string name="guide_form_pregnancy_history_amniotic">isi field ini dengan kondisi air ketuban</string>
+    <string name="guide_form_pregnancy_history_gender">isi field ini dengan prediksi jenis kelamin</string>
+    <string name="guide_form_pregnancy_history_pressure">isi field ini dengan tekanan darah</string>
+
+
+    <string-array name="blood_types">
+        <item>A</item>
+        <item>B</item>
+        <item>AB</item>
+        <item>O</item>
+    </string-array>
+
+    <string-array name="genders">
+        <item>Male</item>
+        <item>Female</item>
+    </string-array>
+
+    <string-array name="roles">
+        <!--<item>Akun Posyandu</item>-->
+        <item>Akun Ibu</item>
+    </string-array>
+
+    <string-array name="period_types">
+        <item>Pendek (&lt; 28 hari)</item>
+        <item>Teratur (28&#8211;30 hari)</item>
+        <item>Panjang (&gt; 30 hari)</item>
+    </string-array>
+    <string name="title_activity_maps">Stunting di Indonesia</string>
+    <string name="share_child_history">Horeee.. sesuai hasil analisa aplikasi anak sehat, anak saya [nama anak] saat ini sehat bebas stunting. Cek juga kondisi anak kamu disini [link download apps stunting]</string>
+    <string name="share_pregnancy_history">Horeee.. sesuai hasil analisa aplikasi anak sehat, kehamilan saya saat ini sehat. Cek juga kondisi kehamilan kamu disini [link download apps stunting]</string>
+    <string name="share_immunization">Horeee.. anak saya, [nama anak] baru saja vaksin [nama vaksin]. Cek jadwal vaksinasi anak kamu di [link download apps stunting] agar ga terlewatkan</string>
+    <string name="share_article">[judul artikel] bisa dibaca di http://genbest.id/articles/[id]</string>
+    <string name="share_infograph">[judul infografis] bisa dibaca di http://genbest.id/infographics/[id]</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="new_menu_pregnancy">Cek\nKehamilan</string>
+    <string name="new_menu_child">Pantau\nAnak</string>
+    <string name="new_menu_immunization">Imunisasi</string>
+    <string name="new_menu_games">Games</string>
+
+    <string name="add_pregnancy">+ Kehamilan</string>
+    <string name="add_child">+ Anak</string>
+    <string name="check_pregnancy">Periksa Kehamilan</string>
+    <string name="title_activity_scrolling">ScrollingActivity</string>
+    <string name="large_text">
+        "Material is the metaphor.\n\n"
+
+        "A material metaphor is the unifying theory of a rationalized space and a system of motion."
+        "The material is grounded in tactile reality, inspired by the study of paper and ink, yet "
+        "technologically advanced and open to imagination and magic.\n"
+        "Surfaces and edges of the material provide visual cues that are grounded in reality. The "
+        "use of familiar tactile attributes helps users quickly understand affordances. Yet the "
+        "flexibility of the material creates new affordances that supercede those in the physical "
+        "world, without breaking the rules of physics.\n"
+        "The fundamentals of light, surface, and movement are key to conveying how objects move, "
+        "interact, and exist in space and in relation to each other. Realistic lighting shows "
+        "seams, divides space, and indicates moving parts.\n\n"
+
+        "Bold, graphic, intentional.\n\n"
+
+        "The foundational elements of print based design typography, grids, space, scale, color, "
+        "and use of imagery guide visual treatments. These elements do far more than please the "
+        "eye. They create hierarchy, meaning, and focus. Deliberate color choices, edge to edge "
+        "imagery, large scale typography, and intentional white space create a bold and graphic "
+        "interface that immerse the user in the experience.\n"
+        "An emphasis on user actions makes core functionality immediately apparent and provides "
+        "waypoints for the user.\n\n"
+
+        "Motion provides meaning.\n\n"
+
+        "Motion respects and reinforces the user as the prime mover. Primary user actions are "
+        "inflection points that initiate motion, transforming the whole design.\n"
+        "All action takes place in a single environment. Objects are presented to the user without "
+        "breaking the continuity of experience even as they transform and reorganize.\n"
+        "Motion is meaningful and appropriate, serving to focus attention and maintain continuity. "
+        "Feedback is subtle yet clear. Transitions are efﬁcient yet coherent.\n\n"
+
+        "3D world.\n\n"
+
+        "The material environment is a 3D space, which means all objects have x, y, and z "
+        "dimensions. The z-axis is perpendicularly aligned to the plane of the display, with the "
+        "positive z-axis extending towards the viewer. Every sheet of material occupies a single "
+        "position along the z-axis and has a standard 1dp thickness.\n"
+        "On the web, the z-axis is used for layering and not for perspective. The 3D world is "
+        "emulated by manipulating the y-axis.\n\n"
+
+        "Light and shadow.\n\n"
+
+        "Within the material environment, virtual lights illuminate the scene. Key lights create "
+        "directional shadows, while ambient light creates soft shadows from all angles.\n"
+        "Shadows in the material environment are cast by these two light sources. In Android "
+        "development, shadows occur when light sources are blocked by sheets of material at "
+        "various positions along the z-axis. On the web, shadows are depicted by manipulating the "
+        "y-axis only. The following example shows the card with a height of 6dp.\n\n"
+
+        "Resting elevation.\n\n"
+
+        "All material objects, regardless of size, have a resting elevation, or default elevation "
+        "that does not change. If an object changes elevation, it should return to its resting "
+        "elevation as soon as possible.\n\n"
+
+        "Component elevations.\n\n"
+
+        "The resting elevation for a component type is consistent across apps (e.g., FAB elevation "
+        "does not vary from 6dp in one app to 16dp in another app).\n"
+        "Components may have different resting elevations across platforms, depending on the depth "
+        "of the environment (e.g., TV has a greater depth than mobile or desktop).\n\n"
+
+        "Responsive elevation and dynamic elevation offsets.\n\n"
+
+        "Some component types have responsive elevation, meaning they change elevation in response "
+        "to user input (e.g., normal, focused, and pressed) or system events. These elevation "
+        "changes are consistently implemented using dynamic elevation offsets.\n"
+        "Dynamic elevation offsets are the goal elevation that a component moves towards, relative "
+        "to the component’s resting state. They ensure that elevation changes are consistent "
+        "across actions and component types. For example, all components that lift on press have "
+        "the same elevation change relative to their resting elevation.\n"
+        "Once the input event is completed or cancelled, the component will return to its resting "
+        "elevation.\n\n"
+
+        "Avoiding elevation interference.\n\n"
+
+        "Components with responsive elevations may encounter other components as they move between "
+        "their resting elevations and dynamic elevation offsets. Because material cannot pass "
+        "through other material, components avoid interfering with one another any number of ways, "
+        "whether on a per component basis or using the entire app layout.\n"
+        "On a component level, components can move or be removed before they cause interference. "
+        "For example, a floating action button (FAB) can disappear or move off screen before a "
+        "user picks up a card, or it can move if a snackbar appears.\n"
+        "On the layout level, design your app layout to minimize opportunities for interference. "
+        "For example, position the FAB to one side of stream of a cards so the FAB won’t interfere "
+        "when a user tries to pick up one of cards.\n\n"
+    </string>
+
+</resources>

@@ -1,0 +1,440 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".FormMotherActivity"
+    android:orientation="vertical">
+
+    <include layout="@layout/header"/>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="center">
+
+        <ScrollView
+            android:focusableInTouchMode="true"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:focusableInTouchMode="true"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="182dp"
+                        android:background="@color/backgroundpink"/>
+
+                    <LinearLayout
+                        android:id="@+id/top"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="16dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:orientation="horizontal"
+                        android:weightSum="2">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1">
+                            <ImageView
+                                android:id="@+id/thumbnail"
+                                android:layout_width="120dp"
+                                android:layout_height="120dp"
+                                android:layout_centerInParent="true"
+                                android:src="@drawable/menumother"
+                                android:layout_margin="10dp"/>
+                        </RelativeLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center_vertical"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+                            <Button
+                                android:id="@+id/take_photo"
+                                android:layout_width="match_parent"
+                                android:layout_height="40dp"
+                                android:onClick="onClickForm"
+                                android:layout_marginBottom="10dp"
+                                android:textColor="@color/link"
+                                android:background="@drawable/holderempty"
+                                android:text="Take Photo"/>
+
+                            <Button
+                                android:id="@+id/choose_photo"
+                                android:layout_width="match_parent"
+                                android:layout_height="40dp"
+                                android:onClick="onClickForm"
+                                android:textColor="@color/link"
+                                android:background="@drawable/holderempty"
+                                android:text="Choose Photo"/>
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <ImageView
+                        android:src="@drawable/input_data"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:layout_margin="5dp"
+                        android:layout_below="@id/top"
+                        android:adjustViewBounds="true"
+                        android:layout_centerInParent="true"
+                        android:scaleType="fitCenter"
+                        android:layout_gravity="center_horizontal" />
+
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:layout_marginBottom="10dp"
+                    android:focusableInTouchMode="true"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/hint_name"
+                        android:layout_marginBottom="10dp"
+                        android:singleLine="true"
+                        android:nextFocusDown="@id/birth_date"
+                        android:inputType="textPersonName"/>
+
+                    <RelativeLayout
+                        android:id="@+id/birth_date_layout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:visibility="gone">
+
+                        <EditText
+                            android:id="@+id/birth_date"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="none"
+                            android:focusable="false"
+                            android:nextFocusUp="@id/name"
+                            android:nextFocusDown="@id/spouse_name"
+                            android:layout_toLeftOf="@id/birth_icon"
+                            android:singleLine="true"
+                            android:hint="@string/hint_birth_date" />
+
+                        <ImageView
+                            android:id="@+id/birth_icon"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:padding="5dp"
+                            android:onClick="showDatePickerDialog"
+                            android:layout_marginRight="10dp"
+                            android:layout_alignParentRight="true"
+                            android:nextFocusUp="@id/birth_date"
+                            android:nextFocusDown="@id/spouse_name"
+                            android:paddingTop="20dp"
+                            android:background="@drawable/ic_date_range_black_24dp"/>
+
+                    </RelativeLayout>
+
+                    <EditText
+                        android:id="@+id/spouse_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/hint_spouse_name"
+                        android:layout_marginBottom="10dp"
+                        android:singleLine="true"
+                        android:nextFocusUp="@id/birth_date"
+                        android:nextFocusDown="@id/address"
+                        android:inputType="textPersonName"
+                        android:visibility="gone"/>
+
+                    <EditText
+                        android:id="@+id/address"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/hint_address"
+                        android:layout_marginBottom="10dp"
+                        android:singleLine="true"
+                        android:nextFocusUp="@id/spouse_name"
+                        android:nextFocusDown="@id/state"
+                        android:inputType="textPersonName"
+                        android:visibility="gone"/>
+
+                    <AutoCompleteTextView
+                        android:id="@+id/state"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:nextFocusUp="@id/address"
+                        android:nextFocusDown="@id/district"
+                        android:singleLine="true"
+                        android:hint="@string/hint_state"
+                        android:visibility="gone"/>
+
+                    <AutoCompleteTextView
+                        android:id="@+id/district"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:nextFocusUp="@id/state"
+                        android:nextFocusDown="@id/blood_type"
+                        android:singleLine="true"
+                        android:hint="@string/hint_district"
+                        android:visibility="gone"/>
+
+                    <LinearLayout
+                        android:id="@+id/blood_type_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="4dp"
+                        android:layout_marginBottom="10dp"
+                        android:orientation="horizontal"
+                        android:weightSum="2"
+                        android:visibility="gone">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:textSize="@dimen/form_text_size"
+                            android:text="@string/hint_blood_type"/>
+
+                        <Spinner
+                            android:id="@+id/blood_type"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:textSize="@dimen/form_text_size"
+                            android:nextFocusUp="@id/district"
+                            android:nextFocusDown="@id/height"
+                            style="@style/AppSpinner"
+                            android:padding="10dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="4dp"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="10dp"
+                        android:weightSum="2">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:textSize="@dimen/form_text_size"
+                            android:text="@string/hint_height_person"/>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1">
+
+                            <EditText
+                                android:id="@+id/height"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:nextFocusUp="@id/blood_type"
+                                android:nextFocusDown="@id/weight"
+                                android:singleLine="true"
+                                android:layout_toLeftOf="@+id/h_right"
+                                android:layout_toStartOf="@+id/h_right"
+                                android:inputType="number"/>
+
+                            <TextView
+                                android:id="@+id/h_right"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:textSize="@dimen/form_text_size"
+                                android:layout_alignParentRight="true"
+                                android:text="@string/hint_cm"/>
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="4dp"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="10dp"
+                        android:weightSum="2">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:textSize="@dimen/form_text_size"
+                            android:text="@string/hint_weight"/>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1">
+
+                            <EditText
+                                android:id="@+id/weight"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:nextFocusUp="@id/height"
+                                android:nextFocusDown="@id/blood_pressure_top"
+                                android:layout_toLeftOf="@+id/w_right"
+                                android:singleLine="true"
+                                android:layout_toStartOf="@+id/w_right"
+                                android:inputType="numberDecimal"
+                                android:digits="0123456789,."/>
+
+                            <TextView
+                                android:id="@+id/w_right"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:textSize="@dimen/form_text_size"
+                                android:layout_alignParentRight="true"
+                                android:text="@string/hint_kg"/>
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/blood_pressure_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="4dp"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="10dp"
+                        android:weightSum="2"
+                        android:visibility="gone">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_gravity="center_vertical"
+                            android:textSize="@dimen/form_text_size"
+                            android:text="@string/hint_blood_pressure"/>
+
+                        <LinearLayout
+                            android:id="@+id/layout_pressure"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_weight="1"
+                            android:weightSum="2">
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1">
+
+                                <EditText
+                                    android:id="@+id/blood_pressure_top"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:nextFocusUp="@id/weight"
+                                    android:nextFocusDown="@id/blood_pressure_bottom"
+                                    android:layout_toLeftOf="@+id/bpt_right"
+                                    android:singleLine="true"
+                                    android:layout_toStartOf="@+id/bpt_right"
+                                    android:inputType="numberDecimal"
+                                    android:digits="0123456789,."/>
+
+                                <TextView
+                                    android:id="@+id/bpt_right"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerInParent="true"
+                                    android:textSize="@dimen/form_text_size"
+                                    android:layout_alignParentRight="true"
+                                    android:text="@string/hint_top"/>
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1">
+
+                                <EditText
+                                    android:id="@+id/blood_pressure_bottom"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:nextFocusUp="@id/blood_pressure_top"
+                                    android:imeOptions="actionSend"
+                                    android:layout_toLeftOf="@+id/bpb_right"
+                                    android:singleLine="true"
+                                    android:layout_toStartOf="@+id/bpb_right"
+                                    android:inputType="number"/>
+
+                                <TextView
+                                    android:id="@+id/bpb_right"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerInParent="true"
+                                    android:textSize="@dimen/form_text_size"
+                                    android:layout_alignParentRight="true"
+                                    android:text="@string/hint_bottom"/>
+                            </RelativeLayout>
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:weightSum="2">
+
+                        <Button
+                            android:id="@+id/submit"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:background="@drawable/holderempty"
+                            android:textColor="@color/link"
+                            android:textSize="@dimen/form_text_size"
+                            android:layout_weight="1"
+                            android:layout_margin="10dp"
+                            android:text="@string/button_submit"
+                            android:onClick="onClickForm"
+                            android:textStyle="bold" />
+
+                        <Button
+                            android:id="@+id/cancel"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:background="@drawable/button_polos_2"
+                            android:textColor="#fff"
+                            android:layout_weight="1"
+                            android:layout_margin="10dp"
+                            android:text="@string/button_cancel"
+                            android:onClick="onClickForm"
+                            android:textSize="@dimen/form_text_size"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                </LinearLayout>
+            </LinearLayout>
+
+        </ScrollView>
+
+    </RelativeLayout>
+
+</LinearLayout>

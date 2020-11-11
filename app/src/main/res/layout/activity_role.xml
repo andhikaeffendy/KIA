@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/newbackground"
+    tools:context=".RoleActivity">
+
+    <ImageView
+        android:layout_width="250dp"
+        android:paddingTop="10dp"
+        android:layout_height="100dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:src="@drawable/logo_dinkes" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:gravity="center"
+        android:orientation="vertical" >
+
+        <Button
+            android:id="@+id/mother"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:layout_marginTop="50dp"
+            android:paddingTop="50dp"
+            android:background="@drawable/buttonibu1"
+            android:onClick="onClickRole" />
+
+        <Button
+            android:id="@+id/worker"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/buttonposyandu1"
+            android:onClick="onClickRole"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

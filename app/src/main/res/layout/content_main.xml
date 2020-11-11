@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/newbackground"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".MainActivity"
+    tools:showIn="@layout/app_bar_main">
+
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:orientation="vertical">-->
+
+<!--        <ScrollView-->
+<!--            android:id="@+id/scroll_view"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent">-->
+
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:orientation="vertical">-->
+
+<!--                <RelativeLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content">-->
+
+<!--                    <android.support.v4.view.ViewPager-->
+<!--                        android:id="@+id/viewPagerPos"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="240dp"/>-->
+<!--                    <LinearLayout-->
+<!--                        android:id="@+id/SliderDotsPos"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_below="@+id/viewPagerPos"-->
+<!--                        android:gravity="center_vertical|center_horizontal"-->
+<!--                        android:orientation="horizontal"-->
+<!--                        android:layout_marginBottom="12dp">-->
+<!--                    </LinearLayout>-->
+<!--                    <RelativeLayout-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="240dp">-->
+<!--                        <ImageView-->
+<!--                            android:id="@+id/left"-->
+<!--                            android:layout_width="20dp"-->
+<!--                            android:layout_height="30dp"-->
+<!--                            android:layout_marginLeft="20dp"-->
+<!--                            android:layout_centerInParent="true"-->
+<!--                            android:layout_alignParentLeft="true"-->
+<!--                            android:adjustViewBounds="true"-->
+<!--                            android:scaleType="fitCenter"-->
+<!--                            android:src="@drawable/arrow_left"/>-->
+<!--                        <ImageView-->
+<!--                            android:id="@+id/right"-->
+<!--                            android:layout_width="20dp"-->
+<!--                            android:layout_height="30dp"-->
+<!--                            android:layout_marginRight="20dp"-->
+<!--                            android:layout_centerInParent="true"-->
+<!--                            android:layout_alignParentRight="true"-->
+<!--                            android:adjustViewBounds="true"-->
+<!--                            android:scaleType="fitCenter"-->
+<!--                            android:src="@drawable/arrow_right_new"/>-->
+<!--                    </RelativeLayout>-->
+<!--                </RelativeLayout>-->
+
+<!--                <LinearLayout-->
+<!--                    android:id="@+id/layout_menu"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginLeft="5dp"-->
+<!--                    android:layout_marginRight="5dp"-->
+<!--                    android:layout_marginTop="16dp"-->
+<!--                    android:orientation="horizontal"-->
+<!--                    android:weightSum="2">-->
+
+<!--                    <LinearLayout-->
+<!--                        android:id="@+id/pregnancies"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_weight="1"-->
+<!--                        android:onClick="onClickMenu"-->
+<!--                        android:orientation="vertical"-->
+<!--                        android:paddingLeft="8dp">-->
+
+<!--                        <Button-->
+<!--                            android:id="@+id/pregnancies_icon"-->
+<!--                            android:onClick="onClickMenu"-->
+<!--                            android:layout_width="60dp"-->
+<!--                            android:layout_height="60dp"-->
+<!--                            android:layout_gravity="center"-->
+<!--                            android:adjustViewBounds="true"-->
+<!--                            android:background="@drawable/menupregnancy"-->
+<!--                            android:maxHeight="60dp"-->
+<!--                            android:maxWidth="100dp" />-->
+
+<!--                        <TextView-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:gravity="center"-->
+<!--                            android:paddingTop="8dp"-->
+<!--                            android:text="@string/new_menu_pregnancy"-->
+<!--                            android:textColor="@color/white"-->
+<!--                            android:textSize="14sp" />-->
+<!--                    </LinearLayout>-->
+
+<!--                    <LinearLayout-->
+<!--                        android:id="@+id/children"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_weight="1"-->
+<!--                        android:onClick="onClickMenu"-->
+<!--                        android:orientation="vertical"-->
+<!--                        android:paddingLeft="5dp">-->
+
+<!--                        <Button-->
+<!--                            android:id="@+id/children_icon"-->
+<!--                            android:onClick="onClickMenu"-->
+<!--                            android:layout_width="60dp"-->
+<!--                            android:layout_height="60dp"-->
+<!--                            android:layout_gravity="center"-->
+<!--                            android:adjustViewBounds="true"-->
+<!--                            android:background="@drawable/menuchild"-->
+<!--                            android:maxHeight="60dp"-->
+<!--                            android:maxWidth="128dp" />-->
+
+<!--                        <TextView-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:gravity="center"-->
+<!--                            android:paddingTop="8dp"-->
+<!--                            android:text="@string/new_menu_child"-->
+<!--                            android:textColor="@color/white"-->
+<!--                            android:textSize="14sp" />-->
+<!--                    </LinearLayout>-->
+
+<!--                    <LinearLayout-->
+<!--                        android:visibility="gone"-->
+<!--                        android:id="@+id/immunization"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_weight="1"-->
+<!--                        android:onClick="onClickMenu"-->
+<!--                        android:orientation="vertical"-->
+<!--                        android:paddingLeft="5dp">-->
+
+<!--                        <Button-->
+<!--                            android:id="@+id/immunization_icon"-->
+<!--                            android:onClick="onClickMenu"-->
+<!--                            android:layout_width="60dp"-->
+<!--                            android:layout_height="60dp"-->
+<!--                            android:layout_gravity="center"-->
+<!--                            android:adjustViewBounds="true"-->
+<!--                            android:background="@drawable/menuimmunization"-->
+<!--                            android:maxHeight="60dp"-->
+<!--                            android:maxWidth="128dp" />-->
+
+<!--                        <TextView-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:gravity="center"-->
+<!--                            android:paddingTop="8dp"-->
+<!--                            android:text="@string/new_menu_immunization"-->
+<!--                            android:textColor="@color/white"-->
+<!--                            android:textSize="14sp" />-->
+<!--                    </LinearLayout>-->
+
+<!--                    <LinearLayout-->
+<!--                        android:id="@+id/games"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_weight="1"-->
+<!--                        android:onClick="onClickMenu"-->
+<!--                        android:orientation="vertical"-->
+<!--                        android:visibility="gone"-->
+<!--                        android:paddingLeft="5dp">-->
+
+<!--                        <Button-->
+<!--                            android:id="@+id/games_icon"-->
+<!--                            android:onClick="onClickMenu"-->
+<!--                            android:layout_width="60dp"-->
+<!--                            android:layout_height="60dp"-->
+<!--                            android:layout_gravity="center"-->
+<!--                            android:adjustViewBounds="true"-->
+<!--                            android:background="@drawable/menugames"-->
+<!--                            android:maxHeight="60dp"-->
+<!--                            android:maxWidth="128dp" />-->
+
+<!--                        <TextView-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:gravity="center"-->
+<!--                            android:paddingTop="8dp"-->
+<!--                            android:text="@string/new_menu_games"-->
+<!--                            android:textColor="@color/white"-->
+<!--                            android:textSize="14sp" />-->
+<!--                    </LinearLayout>-->
+
+<!--                </LinearLayout>-->
+
+<!--                <ImageView-->
+<!--                    android:layout_marginBottom="12dp"-->
+<!--                    android:layout_marginTop="12dp"-->
+<!--                    android:paddingStart="10dp"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="24sp"-->
+<!--                    android:scaleType="fitCenter"-->
+<!--                    android:adjustViewBounds="true"-->
+<!--                    android:src="@drawable/titlearticle"/>-->
+
+<!--                <android.support.v7.widget.RecyclerView-->
+<!--                    android:id="@+id/recycler_view"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:paddingLeft="13dp"-->
+<!--                    android:paddingRight="13dp">-->
+
+<!--                </android.support.v7.widget.RecyclerView>-->
+<!--            </LinearLayout>-->
+<!--        </ScrollView>-->
+<!--    </LinearLayout>-->
+
+</android.support.constraint.ConstraintLayout>

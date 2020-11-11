@@ -1,0 +1,34 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="AppSpinner" parent="Widget.AppCompat.Spinner.Underlined">
+        <item name="android:paddingLeft">2dp</item>
+        <item name="android:paddingBottom">5dp</item>
+    </style>
+
+    <style name="AppEditText" parent="Widget.AppCompat.EditText">
+        <item name="colorControlActivated">@color/colorButton</item>
+        <item name="colorControlNormal">@color/white</item>
+    </style>
+
+    <style name="AppCardView" parent="CardView.Light">
+        <item name="cardBackgroundColor">@color/background3</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+</resources>

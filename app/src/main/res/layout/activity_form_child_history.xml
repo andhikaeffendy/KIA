@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".FormChildHistoryActivity"
+    android:orientation="vertical">
+
+    <include layout="@layout/header"/>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="center">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:focusableInTouchMode="true"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="151dp"
+                        android:background="@color/backgroundpink"/>
+
+                    <LinearLayout
+                        android:id="@+id/logo_holder"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginTop="30dp"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:id="@+id/logo"
+                            android:layout_width="wrap_content"
+                            android:layout_height="80dp"
+                            android:adjustViewBounds="true"
+                            android:scaleType="fitCenter"
+                            android:layout_gravity="center_horizontal"
+                            android:src="@drawable/menuchild" />
+                        <Button
+                            android:id="@+id/add"
+                            android:layout_width="200dp"
+                            android:layout_height="50dp"
+                            android:background="@drawable/holderempty"
+                            android:textColor="@color/link"
+                            android:textSize="@dimen/form_text_size"
+                            android:text="@string/add_child"
+                            android:textAllCaps="false"
+                            android:layout_marginLeft="30dp"
+                            android:layout_marginTop="22dp"
+                            android:onClick="onClickForm"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <ImageView
+                        android:src="@drawable/input_data_history"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:layout_margin="20dp"
+                        android:adjustViewBounds="true"
+                        android:layout_centerInParent="true"
+                        android:layout_below="@id/logo_holder"
+                        android:scaleType="fitCenter"
+                        android:layout_gravity="center_horizontal" />
+
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:layout_marginBottom="10dp"
+                    android:focusableInTouchMode="true"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp">
+
+                        <EditText
+                            android:id="@+id/history_date"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="none"
+                            android:focusable="false"
+                            android:nextFocusDown="@id/height"
+                            android:layout_toLeftOf="@id/birth_icon"
+                            android:singleLine="true"
+                            android:hint="@string/hint_history_date" />
+
+                        <ImageView
+                            android:id="@+id/history_icon"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:padding="5dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_alignParentRight="true"
+                            android:nextFocusUp="@id/history_date"
+                            android:nextFocusDown="@id/height"
+                            android:paddingTop="20dp"
+                            android:background="@drawable/ic_date_range_black_24dp"/>
+
+                    </RelativeLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="4dp"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="10dp"
+                        android:weightSum="2">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:textSize="@dimen/form_text_size"
+                            android:text="@string/hint_height"/>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1">
+
+                            <EditText
+                                android:id="@+id/height"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:nextFocusUp="@id/history_date"
+                                android:nextFocusDown="@id/weight"
+                                android:singleLine="true"
+                                android:layout_toLeftOf="@+id/h_right"
+                                android:layout_toStartOf="@+id/h_right"
+                                android:inputType="number" />
+
+                            <TextView
+                                android:id="@+id/h_right"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:textSize="@dimen/form_text_size"
+                                android:layout_alignParentRight="true"
+                                android:text="@string/hint_cm"/>
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="4dp"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="10dp"
+                        android:weightSum="2">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:textSize="@dimen/form_text_size"
+                            android:text="@string/hint_weight"/>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1">
+
+                            <EditText
+                                android:id="@+id/weight"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:nextFocusUp="@id/height"
+                                android:nextFocusDown="@id/head_round"
+                                android:layout_toLeftOf="@+id/w_right"
+                                android:singleLine="true"
+                                android:layout_toStartOf="@+id/w_right"
+                                android:inputType="numberDecimal"
+                                android:digits="0123456789,."/>
+
+                            <TextView
+                                android:id="@+id/w_right"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:textSize="@dimen/form_text_size"
+                                android:layout_alignParentRight="true"
+                                android:text="@string/hint_kg"/>
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:visibility="gone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="4dp"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="10dp"
+                        android:weightSum="2">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:textSize="@dimen/form_text_size"
+                            android:text="@string/hint_head_round"/>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1">
+
+                            <EditText
+                                android:id="@+id/head_round"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:nextFocusUp="@id/weight"
+                                android:nextFocusDown="@id/temperature"
+                                android:singleLine="true"
+                                android:layout_toLeftOf="@+id/hr_right"
+                                android:layout_toStartOf="@+id/hr_right"
+                                android:inputType="number"/>
+
+                            <TextView
+                                android:id="@+id/hr_right"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:textSize="@dimen/form_text_size"
+                                android:layout_alignParentRight="true"
+                                android:text="@string/hint_cm"/>
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:visibility="gone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="4dp"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="10dp"
+                        android:weightSum="2">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:textSize="@dimen/form_text_size"
+                            android:text="@string/hint_temperature"/>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1">
+
+                            <EditText
+                                android:id="@+id/temperature"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:nextFocusUp="@id/temperature"
+                                android:nextFocusDown="@id/note"
+                                android:singleLine="true"
+                                android:layout_toLeftOf="@+id/t_right"
+                                android:layout_toStartOf="@+id/t_right"
+                                android:inputType="number"/>
+
+                            <TextView
+                                android:id="@+id/t_right"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:textSize="@dimen/form_text_size"
+                                android:layout_alignParentRight="true"
+                                android:text="@string/hint_celcius"/>
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
+                    <EditText
+                        android:visibility="gone"
+                        android:id="@+id/note"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/hint_note"
+                        android:layout_marginBottom="10dp"
+                        android:maxLines="5"
+                        android:inputType="textMultiLine"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:weightSum="2">
+
+                        <Button
+                            android:id="@+id/submit"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:background="@drawable/holderempty"
+                            android:textColor="@color/link"
+                            android:textSize="@dimen/form_text_size"
+                            android:layout_weight="1"
+                            android:layout_margin="10dp"
+                            android:text="@string/button_submit"
+                            android:onClick="onClickForm"
+                            android:textStyle="bold" />
+
+                        <Button
+                            android:id="@+id/cancel"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:background="@drawable/button_polos_2"
+                            android:textColor="#fff"
+                            android:layout_weight="1"
+                            android:layout_margin="10dp"
+                            android:text="@string/button_cancel"
+                            android:onClick="onClickForm"
+                            android:textSize="@dimen/form_text_size"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </ScrollView>
+
+    </RelativeLayout>
+
+</LinearLayout>
