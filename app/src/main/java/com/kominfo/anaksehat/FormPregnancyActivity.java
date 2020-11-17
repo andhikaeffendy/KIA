@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.text.InputType;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -103,14 +104,53 @@ public class FormPregnancyActivity extends BaseActivity {
         startShowcase();
     }
 
+//    private void initCreateData(){
+//
+////        if(user.getPosyandu()==0&&user.getMotherId()>0){
+////            selectedMother = new Mother();
+////            selectedMother.setId(user.getMotherId());
+////            actvMotherName.setVisibility(View.GONE);
+////            actvMotherName.setText(selectedMother.getName());
+////            Log.d("Ibu", "Nama ibu "+ selectedMother.getName());
+////        } else
+////            mApiService.getMothers(appSession.getData(AppSession.TOKEN))
+////                    .enqueue(mothersCallback.getCallback());
+//
+//        if(user.getPosyandu()==0&&user.getMotherId()>0){
+//            String mother = getIntent().getStringExtra("mother");
+//            String motherBirthDate = getIntent().getStringExtra("birth_date");
+//            selectedMother = new Mother();
+//            selectedMother.setId(user.getId());
+//            if (mother != null || !mother.isEmpty()) {
+//                actvMotherName.setText(mother + "("+motherBirthDate+")");
+//                actvMotherName.setEnabled(false);
+//            }
+////            actvMotherName.setVisibility(View.GONE);
+//        }
+//        mApiService.getMothers(appSession.getData(AppSession.TOKEN))
+//                .enqueue(mothersCallback.getCallback());
+//
+//    }
+
     private void initCreateData(){
         if(user.getPosyandu()==0&&user.getMotherId()>0){
+            String mother = getIntent().getStringExtra("mother");
+            String motherBirthDate = getIntent().getStringExtra("birth_date");
+            long motherId = getIntent().getLongExtra("mother_id", 0);
             selectedMother = new Mother();
-            selectedMother.setId(user.getMotherId());
-            actvMotherName.setVisibility(View.GONE);
-        } else
-            mApiService.getMothers(appSession.getData(AppSession.TOKEN))
-                    .enqueue(mothersCallback.getCallback());
+            if (motherId > 0) {
+                selectedMother.setId(motherId);
+                actvMotherName.setText(mother + "("+motherBirthDate+")");
+                actvMotherName.setEnabled(false);
+            } else {
+                selectedMother.setId(user.getMotherId());
+            }
+//            actvMotherName.setVisibility(View.GONE);
+
+        }
+
+        mApiService.getMothers(appSession.getData(AppSession.TOKEN))
+                .enqueue(mothersCallback.getCallback());
     }
 
     private void initEditData(){

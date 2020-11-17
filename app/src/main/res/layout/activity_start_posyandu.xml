@@ -109,6 +109,7 @@
                 android:layout_weight="1"
                 android:onClick="onClickMenu"
                 android:orientation="vertical"
+                android:visibility="gone"
                 android:paddingLeft="8dp">
 
                 <Button

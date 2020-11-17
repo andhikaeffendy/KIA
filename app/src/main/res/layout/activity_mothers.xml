@@ -60,7 +60,6 @@
                 android:orientation="vertical">
 
                 <EditText
-                    android:visibility="gone"
                     android:id="@+id/search"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"

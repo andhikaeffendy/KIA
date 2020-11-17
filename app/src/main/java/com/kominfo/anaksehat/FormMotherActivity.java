@@ -145,7 +145,7 @@ public class FormMotherActivity extends BaseActivity {
 
         editMode = getIntent().getBooleanExtra("edit_mode", false);
         if(!editMode) {
-            if (user.getPosyandu() == 0)
+            if (user.getPosyandu() == 1)
                 etName.setText(user.getName());
         } else {
             initEditForm();
@@ -314,13 +314,13 @@ public class FormMotherActivity extends BaseActivity {
         String name = etName.getText().toString();
         int height = Integer.parseInt(etHeight.getText().toString());
         double weight = Double.parseDouble(replaceCommaToDot(etWeight.getText().toString()));
+        String birth_date = etBirthDate.getText().toString();
         if(!editMode){
             showProgressBar(true);
-            mApiService.createMother(auth_token, name, height, weight).enqueue(formCallback.getCallback());
+            mApiService.createMother(auth_token, name, birth_date, height,user.getDistrictId(), weight).enqueue(formCallback.getCallback());
             return;
         }
 
-        String birth_date = etBirthDate.getText().toString();
         String blood_type = spBloodType.getSelectedItem().toString();
         String spouse_name = etSpouseName.getText().toString();
         String address = etAddress.getText().toString();
@@ -378,15 +378,20 @@ public class FormMotherActivity extends BaseActivity {
                 RequestBody.create(
                         MediaType.parse("text/plain"), weight);
 
+        RequestBody rb_birth_date =
+                RequestBody.create(
+                        MediaType.parse("text/plain"), birth_date);
+
+        RequestBody districtId =
+                RequestBody.create(
+                        MediaType.parse("text/plain"), ""+user.getDistrictId());
+
         if(!editMode){
-            mApiService.createMother(rb_auth_token, rb_name, rb_height, rb_weight,
+            mApiService.createMother(rb_auth_token, rb_name, rb_birth_date, rb_height, rb_weight, districtId,
                     body).enqueue(formCallback.getCallback());
             return;
         }
 
-        RequestBody rb_birth_date =
-                RequestBody.create(
-                        MediaType.parse("text/plain"), birth_date);
 
         RequestBody rb_blood_type =
                 RequestBody.create(
@@ -744,7 +749,8 @@ public class FormMotherActivity extends BaseActivity {
             showcaseHelper.addShowcaseView(etHeight, getString(R.string.guide_form_mother_height));
             showcaseHelper.addShowcaseView(etWeight, getString(R.string.guide_form_mother_weight));
             showcaseHelper.addShowcaseView(findViewById(R.id.layout_pressure), getString(R.string.guide_form_mother_blood_pressure));
-        } else {
+        }
+        else {
             showcaseHelper.addShowcaseView(etName, getString(R.string.guide_form_mother_name));
             showcaseHelper.addShowcaseView(etHeight, getString(R.string.guide_form_mother_height));
             showcaseHelper.addShowcaseView(etWeight, getString(R.string.guide_form_mother_weight));

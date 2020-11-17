@@ -14,6 +14,8 @@ public class User {
     private int posyandu;
     @SerializedName("mother_id")
     private long motherId;
+    @SerializedName("district_id")
+    private int districtId;
 
     public long getId() {
         return id;
@@ -77,5 +79,13 @@ public class User {
 
     public String getName() {
         return name;
+    }
+
+    public int getDistrictId() {
+        return districtId;
+    }
+
+    public void setDistrictId(int districtId) {
+        this.districtId = districtId;
     }
 }

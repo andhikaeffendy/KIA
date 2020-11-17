@@ -87,13 +87,13 @@ public class BaseActivity extends AppCompatActivity {
     }
 
     public void setTitle(String title){
-        TextView tv_title = findViewById(R.id.header_title);
-        tv_title.setText(title);
+//        TextView tv_title = findViewById(R.id.header_title);
+//        tv_title.setText(title);
     }
 
     public void setTitle(int titleId){
-        TextView tv_title = findViewById(R.id.header_title);
-        tv_title.setText(titleId);
+//        TextView tv_title = findViewById(R.id.header_title);
+//        tv_title.setText(titleId);
     }
 
     protected void initViews(){

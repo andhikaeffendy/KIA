@@ -27,6 +27,7 @@ android {
             universalApk true
         }
     }
+
 }
 
 dependencies {

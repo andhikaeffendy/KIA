@@ -11,6 +11,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -29,6 +30,7 @@ import com.kominfo.anaksehat.helpers.adapters.AdapterListener;
 import com.kominfo.anaksehat.helpers.adapters.ChildrenAdapter;
 import com.kominfo.anaksehat.models.ApiData;
 import com.kominfo.anaksehat.models.Child;
+import com.kominfo.anaksehat.models.Mother;
 import com.kominfo.anaksehat.models.User;
 
 import java.util.ArrayList;
@@ -42,6 +44,7 @@ public class ChildrenActivity extends BaseActivity implements
     private ChildrenAdapter mAdapter;
     private List<Child> dataList;
     private User user;
+    private Mother mother;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,11 +96,49 @@ public class ChildrenActivity extends BaseActivity implements
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(context, FormChildActivity.class );
-                startActivityForResult(intent, 99);
+                long id = getIntent().getLongExtra("id", 0);
+                Log.d("ID", "ID MOTHER " +id);
+                if (id > 0) {
+                    mApiService.getMother(id, appSession.getData(AppSession.TOKEN))
+                            .enqueue(motherCallback.getCallback());
+                } else {
+                    Intent intent = new Intent(context, FormChildActivity.class );
+                    startActivityForResult(intent, 99);
+                    finish();
+                }
+//                Intent intent = new Intent(context, FormChildActivity.class );
+//                startActivityForResult(intent, 99);
             }
         });
     }
+
+    ApiCallback motherCallback = new ApiCallback() {
+        @Override
+        public void onApiSuccess(String result) {
+            showProgressBar(false);
+            Gson gson = createGsonDate();
+//            Gson gson = createGsonDate();
+            mother = gson.fromJson(result, Mother.class);
+//            if(user.getPosyandu()==0){
+//                user.setMotherId(mother.getId());
+//                appSession.setData(AppSession.USER, new Gson().toJson(user));
+//                appSession.setData(AppSession.MOTHER, new Gson().toJson(mother));
+//            }
+            Intent intent = new Intent(context, FormChildActivity.class );
+            intent.putExtra("mother", mother.getName());
+            intent.putExtra("birth_date", mother.getBirth_date());
+            intent.putExtra("mother_id", mother.getId());
+            startActivityForResult(intent, 99);
+            finish();
+        }
+
+        @Override
+        public void onApiFailure(String errorMessage) {
+            showProgressBar(false);
+            Toast.makeText(context, errorMessage, Toast.LENGTH_SHORT).show();
+            finish();
+        }
+    };
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

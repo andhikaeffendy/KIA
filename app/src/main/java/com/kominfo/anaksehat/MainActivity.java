@@ -98,10 +98,10 @@ public class MainActivity extends BaseActivity
             dataList.add(new NavMenu(6, R.drawable.nav_promotion, "Registrasi"));
         } else {
             dataList.add(new NavMenu(1, R.drawable.nav_mother, "Profil"));
-            dataList.add(new NavMenu(2, R.drawable.nav_child, "Anakku"));
-            dataList.add(new NavMenu(3, R.drawable.nav_pregnancy, "Kehamilanku"));
+//            dataList.add(new NavMenu(2, R.drawable.nav_child, "Anakku"));
+//            dataList.add(new NavMenu(3, R.drawable.nav_pregnancy, "Kehamilanku"));
         }
-        dataList.add(new NavMenu(4, R.drawable.nav_promotion, "Info"));
+        //dataList.add(new NavMenu(4, R.drawable.nav_promotion, "Info"));
         MenusAdapter mAdapter = new MenusAdapter(context, dataList, new AdapterListener<NavMenu>() {
             @Override
             public void onItemSelected(NavMenu data) {
@@ -346,18 +346,24 @@ public class MainActivity extends BaseActivity
             case R.id.pemetaan_bayi_icon:
                 startActivity(new Intent(context, MapsActivity.class));
                 break;
-            case R.id.nav_children:
-                gotoChildren();
-                break;
+//            case R.id.nav_children:
+//                gotoChildren();
+//                break;
             case R.id.nav_mothers:
                 gotoMothers();
                 break;
-            case R.id.nav_promotion:
-                gotoPromotion();
+            case R.id.mothers:
+                gotoMothers();
                 break;
-            case R.id.nav_pregnancies:
-                gotoPregnancies();
+            case R.id.mothers_icon:
+                gotoMothers();
                 break;
+//            case R.id.nav_promotion:
+//                gotoPromotion();
+//                break;
+//            case R.id.nav_pregnancies:
+//                gotoPregnancies();
+//                break;
             case R.id.nav_logout:
                 logout2();
                 break;
@@ -440,7 +446,7 @@ public class MainActivity extends BaseActivity
             ApiData<Content> apiData = gson.fromJson(result, new TypeToken<ApiData<Content>>(){}.getType());
             AppLog.d(new Gson().toJson(apiData));
             initData(apiData.getData());
-//            startShowcase();
+            //startShowcase();
         }
 
         @Override

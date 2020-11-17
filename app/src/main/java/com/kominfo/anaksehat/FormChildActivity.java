@@ -37,6 +37,7 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import com.kominfo.anaksehat.R;
 import com.kominfo.anaksehat.helpers.ShowcaseHelper;
+import com.kominfo.anaksehat.helpers.adapters.AutoCompleteAdapter;
 import com.squareup.picasso.Picasso;
 import com.kominfo.anaksehat.controllers.BaseActivity;
 import com.kominfo.anaksehat.helpers.AppLog;
@@ -169,14 +170,52 @@ public class FormChildActivity extends BaseActivity {
         }
     }
 
+//    private void initCreateData(){
+//
+////        if(user.getPosyandu()==0&&user.getMotherId()>0){
+////            selectedMother = new Mother();
+////            selectedMother.setId(user.getMotherId());
+////            actvMotherName.setVisibility(View.GONE);
+////            //actvMotherName.setText(selectedMother.getName());
+////        } else
+////            mApiService.getMothers(appSession.getData(AppSession.TOKEN))
+////                    .enqueue(mothersCallback.getCallback());
+//
+//        if(user.getPosyandu()==0&&user.getMotherId()>0){
+//            String mother = getIntent().getStringExtra("mother");
+//            String motherBirthDate = getIntent().getStringExtra("birth_date");
+//            selectedMother = new Mother();
+//            selectedMother.setId(user.getId());
+//            if (mother != null || !mother.isEmpty()) {
+//                actvMotherName.setText(mother + "("+motherBirthDate+")");
+//                actvMotherName.setEnabled(false);
+//            }
+////            actvMotherName.setVisibility(View.GONE);
+//        }
+//        mApiService.getMothers(appSession.getData(AppSession.TOKEN))
+//                .enqueue(mothersCallback.getCallback());
+//
+//    }
+
     private void initCreateData(){
         if(user.getPosyandu()==0&&user.getMotherId()>0){
+            String mother = getIntent().getStringExtra("mother");
+            String motherBirthDate = getIntent().getStringExtra("birth_date");
+            long motherId = getIntent().getLongExtra("mother_id", 0);
             selectedMother = new Mother();
-            selectedMother.setId(user.getMotherId());
-            actvMotherName.setVisibility(View.GONE);
-        } else
-            mApiService.getMothers(appSession.getData(AppSession.TOKEN))
-                    .enqueue(mothersCallback.getCallback());
+            if (motherId > 0) {
+                selectedMother.setId(motherId);
+                actvMotherName.setText(mother + "("+motherBirthDate+")");
+                actvMotherName.setEnabled(false);
+            } else {
+                selectedMother.setId(user.getMotherId());
+            }
+//            actvMotherName.setVisibility(View.GONE);
+
+        }
+
+        mApiService.getMothers(appSession.getData(AppSession.TOKEN))
+                .enqueue(mothersCallback.getCallback());
     }
 
     private void initEditData(){
@@ -536,8 +575,9 @@ public class FormChildActivity extends BaseActivity {
             Gson gson = createGsonDate();
             ApiData<Mother> stateApiData = gson.fromJson(result, new TypeToken<ApiData<Mother>>(){}.getType());
             AppLog.d(new Gson().toJson(stateApiData));
-            ArrayAdapter<Mother> adapter = new ArrayAdapter<Mother>(context,
-                    android.R.layout.simple_dropdown_item_1line, stateApiData.getData());
+//            ArrayAdapter<Mother> adapter = new ArrayAdapter<Mother>(context,
+//                    android.R.layout.simple_dropdown_item_1line, stateApiData.getData());
+            AutoCompleteAdapter adapter = new AutoCompleteAdapter(context, R.layout.custom_row_autocomplete, stateApiData.getData());
             actvMotherName.setAdapter(adapter);
             actvMotherName.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override

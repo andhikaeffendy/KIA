@@ -49,6 +49,8 @@ public interface BaseApiService {
                                      @Field("password") String password,
                                      @Field("password_confirmation") String confirmPassword);
 
+
+
     @Multipart
     @POST("users")
     Call<ResponseBody> signinRequest(
@@ -183,12 +185,16 @@ public interface BaseApiService {
 //                                    @Part("blood_pressure_bottom") RequestBody blood_pressure_bottom,
 //                                    @Part MultipartBody.Part photo);
 
+
+
     @Multipart
     @POST("mothers")
     Call<ResponseBody> createMother(@Part("auth_token") RequestBody token,
                                     @Part("name") RequestBody name,
+                                    @Field("birth_date") RequestBody birth_date,
                                     @Part("height") RequestBody height,
                                     @Part("weight") RequestBody weight,
+                                    @Part("district_id") RequestBody district_id,
                                     @Part MultipartBody.Part photo);
 
     @Multipart
@@ -228,7 +234,9 @@ public interface BaseApiService {
     @POST("mothers")
     Call<ResponseBody> createMother(@Field("auth_token") String token,
                                     @Field("name") String name,
+                                    @Field("birth_date") String birth_date,
                                     @Field("height") int height,
+                                    @Field("district_id") int district_id,
                                     @Field("weight") double weight);
 
     @FormUrlEncoded

@@ -50,17 +50,17 @@ public class MothersActivity extends BaseActivity implements
 
         checkSession();
         user = getUserSession();
-        if(user.getPosyandu()==0&&user.getMotherId()>0){
-            Intent i = new Intent(context, MotherDetailActivity.class);
-            i.putExtra("data", appSession.getData(AppSession.MOTHER));
-            startActivity(i);
-            finish();
-        }
-        if(user.getPosyandu()==0&&user.getMotherId()==0){
-            Intent i = new Intent(context, FormMotherActivity.class);
-            startActivity(i);
-            finish();
-        }
+//        if(user.getPosyandu()==0&&user.getMotherId()>0){
+//            Intent i = new Intent(context, MotherDetailActivity.class);
+//            i.putExtra("data", appSession.getData(AppSession.MOTHER));
+//            startActivity(i);
+//            finish();
+//        }
+//        if(user.getPosyandu()==0&&user.getMotherId()==0){
+//            Intent i = new Intent(context, FormMotherActivity.class);
+//            startActivity(i);
+//            finish();
+//        }
 
         Toolbar myToolbar = findViewById(R.id.toolbar);
         setSupportActionBar(myToolbar);
