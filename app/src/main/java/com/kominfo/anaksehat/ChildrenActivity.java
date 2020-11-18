@@ -33,8 +33,11 @@ import com.kominfo.anaksehat.models.Child;
 import com.kominfo.anaksehat.models.Mother;
 import com.kominfo.anaksehat.models.User;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class ChildrenActivity extends BaseActivity implements
         AdapterListener<Child> {
@@ -113,20 +116,21 @@ public class ChildrenActivity extends BaseActivity implements
     }
 
     ApiCallback motherCallback = new ApiCallback() {
+
         @Override
         public void onApiSuccess(String result) {
             showProgressBar(false);
             Gson gson = createGsonDate();
 //            Gson gson = createGsonDate();
             mother = gson.fromJson(result, Mother.class);
-//            if(user.getPosyandu()==0){
-//                user.setMotherId(mother.getId());
-//                appSession.setData(AppSession.USER, new Gson().toJson(user));
-//                appSession.setData(AppSession.MOTHER, new Gson().toJson(mother));
-//            }
+            if(user.getPosyandu()==0){
+                user.setMotherId(mother.getId());
+                appSession.setData(AppSession.USER, new Gson().toJson(user));
+                appSession.setData(AppSession.MOTHER, new Gson().toJson(mother));
+            }
             Intent intent = new Intent(context, FormChildActivity.class );
             intent.putExtra("mother", mother.getName());
-            intent.putExtra("birth_date", mother.getBirth_date());
+            intent.putExtra("birth_date", dateToString(mother.getBirth_date()));
             intent.putExtra("mother_id", mother.getId());
             startActivityForResult(intent, 99);
             finish();
@@ -139,6 +143,16 @@ public class ChildrenActivity extends BaseActivity implements
             finish();
         }
     };
+
+    String dateToString(Date date) {
+        String _date = "";
+        if (date != null) {
+            _date = new SimpleDateFormat("MM/dd/yyyy", Locale.ENGLISH).format(mother.getBirth_date());
+        } else {
+            _date = "";
+        }
+        return _date;
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

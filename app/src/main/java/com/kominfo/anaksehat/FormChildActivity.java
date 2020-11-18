@@ -16,6 +16,7 @@ import android.support.v4.content.ContextCompat;
 import android.support.v4.content.FileProvider;
 import android.support.v7.widget.Toolbar;
 import android.text.InputType;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -170,53 +171,52 @@ public class FormChildActivity extends BaseActivity {
         }
     }
 
-//    private void initCreateData(){
-//
-////        if(user.getPosyandu()==0&&user.getMotherId()>0){
-////            selectedMother = new Mother();
-////            selectedMother.setId(user.getMotherId());
-////            actvMotherName.setVisibility(View.GONE);
-////            //actvMotherName.setText(selectedMother.getName());
-////        } else
-////            mApiService.getMothers(appSession.getData(AppSession.TOKEN))
-////                    .enqueue(mothersCallback.getCallback());
-//
-//        if(user.getPosyandu()==0&&user.getMotherId()>0){
-//            String mother = getIntent().getStringExtra("mother");
-//            String motherBirthDate = getIntent().getStringExtra("birth_date");
-//            selectedMother = new Mother();
-//            selectedMother.setId(user.getId());
-//            if (mother != null || !mother.isEmpty()) {
-//                actvMotherName.setText(mother + "("+motherBirthDate+")");
-//                actvMotherName.setEnabled(false);
-//            }
-////            actvMotherName.setVisibility(View.GONE);
-//        }
-//        mApiService.getMothers(appSession.getData(AppSession.TOKEN))
-//                .enqueue(mothersCallback.getCallback());
-//
-//    }
-
     private void initCreateData(){
         if(user.getPosyandu()==0&&user.getMotherId()>0){
+            selectedMother = new Mother();
+            selectedMother.setId(user.getMotherId());
+//            actvMotherName.setVisibility(View.GONE);
+        } else {
             String mother = getIntent().getStringExtra("mother");
             String motherBirthDate = getIntent().getStringExtra("birth_date");
             long motherId = getIntent().getLongExtra("mother_id", 0);
-            selectedMother = new Mother();
             if (motherId > 0) {
+                Log.d("DEBUG", "MOTHER "+mother);
+                selectedMother = new Mother();
                 selectedMother.setId(motherId);
+//                selectedMother.setId(motherId);
                 actvMotherName.setText(mother + "("+motherBirthDate+")");
                 actvMotherName.setEnabled(false);
-            } else {
-                selectedMother.setId(user.getMotherId());
             }
-//            actvMotherName.setVisibility(View.GONE);
-
+//            else {
+//                Log.d("DEBUG", "MASUK ELSE");
+//                selectedMother.setId(user.getMotherId());
+//            }
+            mApiService.getMothers(appSession.getData(AppSession.TOKEN))
+                    .enqueue(mothersCallback.getCallback());
         }
-
-        mApiService.getMothers(appSession.getData(AppSession.TOKEN))
-                .enqueue(mothersCallback.getCallback());
     }
+
+//    private void initCreateData(){
+//        if(user.getPosyandu()==0&&user.getMotherId()>0){
+//            String mother = getIntent().getStringExtra("mother");
+//            String motherBirthDate = getIntent().getStringExtra("birth_date");
+//            long motherId = getIntent().getLongExtra("mother_id", 0);
+//            selectedMother = new Mother();
+//            if (motherId > 0) {
+//                selectedMother.setId(motherId);
+//                actvMotherName.setText(mother + "("+motherBirthDate+")");
+//                actvMotherName.setEnabled(false);
+//            } else {
+//                selectedMother.setId(user.getMotherId());
+//            }
+////            actvMotherName.setVisibility(View.GONE);
+//
+//        }
+//
+//        mApiService.getMothers(appSession.getData(AppSession.TOKEN))
+//                .enqueue(mothersCallback.getCallback());
+//    }
 
     private void initEditData(){
         child = new Gson().fromJson(getIntent().getStringExtra("edit_data"), Child.class);

@@ -33,8 +33,11 @@ import com.kominfo.anaksehat.models.Mother;
 import com.kominfo.anaksehat.models.Pregnancy;
 import com.kominfo.anaksehat.models.User;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class PregnanciesActivity extends BaseActivity implements
         AdapterListener<Pregnancy> {
@@ -126,7 +129,7 @@ public class PregnanciesActivity extends BaseActivity implements
 //            }
             Intent intent = new Intent(context, FormPregnancyActivity.class );
             intent.putExtra("mother", mother.getName());
-            intent.putExtra("birth_date", mother.getBirth_date());
+            intent.putExtra("birth_date", dateToString(mother.getBirth_date()));
             intent.putExtra("mother_id", mother.getId());
             startActivityForResult(intent, 99);
             finish();
@@ -139,6 +142,16 @@ public class PregnanciesActivity extends BaseActivity implements
             finish();
         }
     };
+
+    String dateToString(Date date) {
+        String _date = "";
+        if (date != null) {
+            _date = new SimpleDateFormat("MM/dd/yyyy", Locale.ENGLISH).format(mother.getBirth_date());
+        } else {
+            _date = "";
+        }
+        return _date;
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
