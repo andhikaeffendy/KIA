@@ -95,7 +95,7 @@ public class MainActivity extends BaseActivity
         if(!appSession.isLogin()){
             btnLogout.setVisibility(View.GONE);
             dataList.add(new NavMenu(5, R.drawable.nav_promotion, "Sign In"));
-            dataList.add(new NavMenu(6, R.drawable.nav_promotion, "Registrasi"));
+            //dataList.add(new NavMenu(6, R.drawable.nav_promotion, "Registrasi"));
         } else {
             dataList.add(new NavMenu(1, R.drawable.nav_mother, "Profil"));
 //            dataList.add(new NavMenu(2, R.drawable.nav_child, "Anakku"));

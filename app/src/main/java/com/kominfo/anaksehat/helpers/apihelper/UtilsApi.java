@@ -7,7 +7,7 @@ package com.kominfo.anaksehat.helpers.apihelper;
 public class UtilsApi {
 
 //    public static final String BASE_URL = "https://stunting.wiradipa.com/";
-    public static final String BASE_URL = "https://stunting.wiradipa.com/";
+    public static final String BASE_URL = "http://simpus-grobogan.wiradipa.com/";
     public static final String BASE_URL_API = BASE_URL+"api/";
     public static final String GOOGLE_API_KEY = "AIzaSyBn4jmksoouUB7xGrsVq3mCSZ-N0KZ47bc";
     public static final String BASE_YOUTUBE_IMAGE_START = "https://i.ytimg.com/vi/";
