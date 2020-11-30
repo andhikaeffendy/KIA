@@ -16,6 +16,8 @@ public class Pregnancy {
     private String mother_nutrition_category;
     private String mother_weight_index;
     private String name;
+    private long give_birth_id;
+    private long mother_id;
 
     public long getId() {
         return id;
@@ -119,6 +121,22 @@ public class Pregnancy {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public long getGive_birth_id() {
+        return give_birth_id;
+    }
+
+    public void setMother_id(long mother_id) {
+        this.mother_id = mother_id;
+    }
+
+    public void setGive_birth_id(long give_birth_id) {
+        this.give_birth_id = give_birth_id;
+    }
+
+    public long getMother_id() {
+        return mother_id;
     }
 }
 

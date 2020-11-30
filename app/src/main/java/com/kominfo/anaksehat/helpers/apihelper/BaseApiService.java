@@ -525,4 +525,43 @@ public interface BaseApiService {
     @GET("contents")
     Call<ResponseBody> getContents();
 
+    @GET("give_births/{id}")
+    Call<ResponseBody> getGiveBirth(@Path("id") long id,
+                                    @Query("auth_token") String token);
+
+    @FormUrlEncoded
+    @POST("give_births")
+    Call<ResponseBody> createGiveBirth(@Field("auth_token") String token,
+                                       @Field("pregnancy_id") long pregnancy_id,
+                                       @Field("mother_id") long mother_id,
+                                       @Field("birth_date") String birth_date,
+                                       @Field("birth_time") String birth_time,
+                                       @Field("pregnancy_age") int pregnancy_age,
+                                       @Field("bitrh_helper") String bitrh_helper,
+                                       @Field("birth_way_id") String birth_way_id,
+                                       @Field("mother_condition_id") long mother_condition_id,
+                                       @Field("remarks") String remarks
+                                       );
+
+    @FormUrlEncoded
+    @PUT("give_births/{id}")
+    Call<ResponseBody> updateGiveBirth(@Path("id") long id,
+                                       @Field("id") long give_birth_id,
+                                       @Field("auth_token") String token,
+                                       @Field("pregnancy_id") long pregnancy_id,
+                                       @Field("mother_id") long mother_id,
+                                       @Field("birth_date") String birth_date,
+                                       @Field("birth_time") String birth_time,
+                                       @Field("pregnancy_age") int pregnancy_age,
+                                       @Field("bitrh_helper") String bitrh_helper,
+                                       @Field("birth_way_id") String birth_way_id,
+                                       @Field("mother_condition_id") long mother_condition_id,
+                                       @Field("remarks") String remarks);
+
+    @GET("birth_ways")
+    Call<ResponseBody> getBirthWays();
+
+    @GET("mother_conditions")
+    Call<ResponseBody> getMotherConditions();
+
 }

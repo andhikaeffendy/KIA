@@ -436,6 +436,32 @@
                 android:textSize="14dp"
                 android:textStyle="bold" />
 
+            <Button
+                android:id="@+id/submit4"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:background="@drawable/holderempty"
+                android:textColor="@color/link"
+                android:text="Perencanaan Persalinan"
+                android:textSize="14dp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/submit5"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:background="@drawable/holderempty"
+                android:textColor="@color/link"
+                android:text=" + Perencanaan Persalinan"
+                android:textSize="14dp"
+                android:textStyle="bold" />
+
         </LinearLayout>
     </ScrollView>
 

@@ -179,6 +179,8 @@
     <string name="warning_edit_pregnancy">Anda akan menghentikan proses edit data kehamilan?</string>
     <string name="warning_create_pregnancy_history">Anda akan menghentikan proses input data riwayat kehamilan?</string>
     <string name="warning_edit_pregnancy_history">Anda akan menghentikan proses edit data riwayat kehamilan?</string>
+    <string name="warning_create_give_birth">Anda akan menghentikan proses input data persalinan?</string>
+    <string name="warning_edit_give_birth">Anda akan menghentikan proses edit data persalinan?</string>
     <string name="warning_logout">Anda akan keluar aplikasi?</string>
     <string name="warning_logout_2">Apakah Anda yakin\nuntuk keluar dari aplikasi</string>
 

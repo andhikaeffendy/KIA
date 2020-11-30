@@ -31,6 +31,7 @@ import com.kominfo.anaksehat.helpers.AppLog;
 import com.kominfo.anaksehat.helpers.AppSession;
 import com.kominfo.anaksehat.helpers.DateHelper;
 import com.kominfo.anaksehat.models.ApiData;
+import com.kominfo.anaksehat.models.GiveBirth;
 import com.kominfo.anaksehat.models.Pregnancy;
 import com.kominfo.anaksehat.models.PregnancyHistory;
 
@@ -103,8 +104,17 @@ public class PregnancyDetailActivity extends BaseActivity {
         btnNext3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Intent intent = new Intent(context, PerencanaanPersalinanActivity.class);
-//                startActivity(intent);
+                if(pregnancy.getGive_birth_id()>0){
+                    mApiService.getGiveBirth(pregnancy.getGive_birth_id(), appSession.getData(AppSession.TOKEN))
+                            .enqueue(givebirthCallback.getCallback());
+                    Intent i = new Intent(context, GiveBirthDetailActivity.class);
+                    i.putExtra("data", new Gson().toJson(pregnancy));
+                    startActivity(i);
+                } else {
+                    Intent i = new Intent(context, FormGiveBirthActivity.class);
+                    i.putExtra("data", new Gson().toJson(pregnancy));
+                    startActivity(i);
+                }
             }
         });
 
@@ -269,5 +279,27 @@ public class PregnancyDetailActivity extends BaseActivity {
         mChart.invalidate();
         mChart.notifyDataSetChanged();
     }
+
+    ApiCallback givebirthCallback = new ApiCallback(){
+        @Override
+        public void onApiSuccess(String result) {
+            showProgressBar(false);
+            Gson gson = createGsonDate();
+            GiveBirth giveBirth = gson.fromJson(result, GiveBirth.class);
+            AppLog.d(new Gson().toJson(giveBirth));
+            Intent i = new Intent(context, GiveBirthDetailActivity.class);
+            i.putExtra("parent_data", new Gson().toJson(pregnancy));
+            i.putExtra("data", new Gson().toJson(giveBirth));
+            startActivity(i);
+            finish();
+        }
+
+        @Override
+        public void onApiFailure(String errorMessage) {
+            showProgressBar(false);
+            Toast.makeText(context, errorMessage, Toast.LENGTH_SHORT).show();
+            finish();
+        }
+    };
 
 }

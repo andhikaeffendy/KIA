@@ -129,6 +129,12 @@
             android:name=".PregnancyHistoryDetailActivity"
             android:screenOrientation="portrait" />
         <activity
+            android:name=".GiveBirthDetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".FormGiveBirthActivity"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".ImmunizationsActivity"
             android:screenOrientation="portrait" />
         <activity
