@@ -38,6 +38,7 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import com.kominfo.anaksehat.R;
 import com.kominfo.anaksehat.helpers.ShowcaseHelper;
+import com.kominfo.anaksehat.models.SubDistrict;
 import com.squareup.picasso.Picasso;
 import com.kominfo.anaksehat.controllers.BaseActivity;
 import com.kominfo.anaksehat.helpers.AppLog;
@@ -70,12 +71,14 @@ public class FormMotherActivity extends BaseActivity {
 
     private EditText etBirthDate,etName,etHeight,etWeight,etSpouseName, etBloodPressureTop,
             etBloodPressureBottom, etAddress, etNamaKK, etNIK, etJamStatus;
-    private AutoCompleteTextView actvState, actvDistrict;
+    private AutoCompleteTextView actvState, actvDistrict, actSubDistrict, actVillage;
     private Spinner spBloodType;
     private ImageView ivThumbnail, ivPickDate;
     private String mCurrentPhotoPath;
     private State selectedState;
     private District selectedDistrict;
+    private SubDistrict selectedSubDistrict;
+    private SubDistrict selectedVillage;
     private User user;
     private boolean editMode = false;
     private Mother mother;
@@ -114,6 +117,8 @@ public class FormMotherActivity extends BaseActivity {
         etNamaKK = findViewById(R.id.kk_name);
         etNIK = findViewById(R.id.nik);
         etJamStatus = findViewById(R.id.jampersal_status);
+        actSubDistrict = findViewById(R.id.sub_district);
+        actVillage = findViewById(R.id.village);
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.blood_types, android.R.layout.simple_spinner_item);
@@ -323,7 +328,7 @@ public class FormMotherActivity extends BaseActivity {
         String jampersal_status = etJamStatus.getText().toString();
         if(!editMode){
             showProgressBar(true);
-            mApiService.createMother(auth_token, name, birth_date, height,user.getDistrictId(), weight, kk_name,nik,jampersal_status,).enqueue(formCallback.getCallback());
+            mApiService.createMother(auth_token, name, birth_date, height,user.getDistrictId(), weight, kk_name,nik,jampersal_status).enqueue(formCallback.getCallback());
             return;
         }
 
@@ -336,9 +341,9 @@ public class FormMotherActivity extends BaseActivity {
         int blood_pressure_bottom = Integer.parseInt(etBloodPressureBottom.getText().toString());
         long id = mother.getId();
         showProgressBar(true);
-        mApiService.updateMother(id, id, auth_token, birth_date, name, blood_type,
-                spouse_name, address, state_id, district_id, height, weight,
-                blood_pressure_top, blood_pressure_bottom).enqueue(formCallback.getCallback());
+//        mApiService.updateMother(id, id, auth_token, birth_date, name, blood_type,
+//                spouse_name, state_id, district_id, height, weight,
+//                blood_pressure_top, blood_pressure_bottom,kk_name, nik,jampersal_status,address).enqueue(formCallback.getCallback());
 
     }
 
@@ -355,6 +360,9 @@ public class FormMotherActivity extends BaseActivity {
         String weight = replaceCommaToDot(etWeight.getText().toString());
         String blood_pressure_top = etBloodPressureTop.getText().toString();
         String blood_pressure_bottom = etBloodPressureBottom.getText().toString();
+        String kk_name = etNamaKK.getText().toString();
+        String nik = etNIK.getText().toString();
+        String jampersal_status = etJamStatus.getText().toString();
         File photo = new File(mCurrentPhotoPath);
 
         // create RequestBody instance from file
@@ -392,12 +400,20 @@ public class FormMotherActivity extends BaseActivity {
                 RequestBody.create(
                         MediaType.parse("text/plain"), ""+user.getDistrictId());
 
+        RequestBody rb_kkName =
+                RequestBody.create(MediaType.parse("text/plain"), kk_name);
+
+        RequestBody rb_nik =
+                RequestBody.create(MediaType.parse("text/plain"), nik);
+
+        RequestBody rb_jampersalStatus =
+                RequestBody.create(MediaType.parse("text/plain"), jampersal_status);
+
         if(!editMode){
-            mApiService.createMother(rb_auth_token, rb_name, rb_birth_date, rb_height, rb_weight, districtId,
+            mApiService.createMother(rb_auth_token, rb_name, rb_birth_date, rb_height, rb_weight, districtId, kk_name, nik, jampersal_status,
                     body).enqueue(formCallback.getCallback());
             return;
         }
-
 
         RequestBody rb_blood_type =
                 RequestBody.create(
@@ -431,9 +447,9 @@ public class FormMotherActivity extends BaseActivity {
         RequestBody rb_id =
                 RequestBody.create(
                         MediaType.parse("text/plain"), ""+mother.getId());
-        mApiService.updateMother(mother.getId(), rb_id, rb_auth_token, rb_birth_date, rb_name, rb_blood_type,
-                rb_spouse_name, rb_address, rb_state_id, rb_district_id, rb_height, rb_weight,
-                rb_blood_pressure_top, rb_blood_pressure_bottom, body).enqueue(formCallback.getCallback());
+//        mApiService.updateMother(mother.getId(), rb_id, rb_auth_token, rb_birth_date, rb_name, rb_blood_type,
+//                rb_spouse_name, rb_address, rb_state_id, rb_district_id, rb_height, rb_weight,
+//                rb_blood_pressure_top, rb_blood_pressure_bottom, body).enqueue(formCallback.getCallback());
     }
 
     ApiCallback formCallback = new ApiCallback() {

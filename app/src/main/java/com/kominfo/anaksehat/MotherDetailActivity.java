@@ -23,7 +23,7 @@ import com.kominfo.anaksehat.models.Mother;
 public class MotherDetailActivity extends BaseActivity {
     private ImageView ivAvatar;
     private TextView tvName, tvBirthDate, tvBloodType, tvHeight, tvWeight, tvSpouseName, tvAddress,
-            tvStateName, tvDistrictName, tvBloodPressureTop, getTvBloodPressureBottom;
+            tvStateName, tvDistrictName, tvBloodPressureTop, getTvBloodPressureBottom, tvKkName, tvNik, tvJamStatus;
     private Button btnChild, btnPregnancy;
     private Mother mother;
 
@@ -56,6 +56,9 @@ public class MotherDetailActivity extends BaseActivity {
         getTvBloodPressureBottom = findViewById(R.id.blood_pressure_bottom);
         btnPregnancy = findViewById(R.id.submit);
         btnChild = findViewById(R.id.submit_child);
+        tvKkName = findViewById(R.id.kk_name);
+        tvNik = findViewById(R.id.nik);
+        tvJamStatus = findViewById(R.id.jampersal_status);
 
         btnChild.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -123,6 +126,9 @@ public class MotherDetailActivity extends BaseActivity {
         tvDistrictName.setText(mother.getDistrict_name());
         tvBloodPressureTop.setText(""+mother.getBlood_pressure_top());
         getTvBloodPressureBottom.setText(""+mother.getBlood_pressure_bottom());
+        tvKkName.setText(mother.getKk_name());
+        tvNik.setText(mother.getNik());
+        tvJamStatus.setText(mother.getJampersal_status());
 
         Picasso.get().load(UtilsApi.BASE_URL+mother.getPhoto_url())
                 .transform(new CropSquareTransformation())

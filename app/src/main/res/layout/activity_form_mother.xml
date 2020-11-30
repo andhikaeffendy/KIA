@@ -413,6 +413,31 @@
                         android:singleLine="true"
                         android:nextFocusDown="@id/address"
                         android:inputType="textPersonName"/>
+
+                    <AutoCompleteTextView
+                        android:id="@+id/sub_district"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Kabupaten"
+                        android:layout_marginBottom="10dp"
+                        android:singleLine="true"
+                        android:nextFocusUp="@id/jampersal_status"
+                        android:nextFocusDown="@id/village"
+                        android:visibility="gone"
+                        android:inputType="textPersonName"/>
+
+                    <AutoCompleteTextView
+                        android:id="@+id/village"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Village"
+                        android:layout_marginBottom="10dp"
+                        android:singleLine="true"
+                        android:nextFocusUp="@id/sub_district"
+                        android:nextFocusDown="@id/address"
+                        android:visibility="gone"
+                        android:inputType="textPersonName"/>
+
                     <EditText
                         android:id="@+id/address"
                         android:layout_width="match_parent"
@@ -422,8 +447,8 @@
                         android:singleLine="true"
                         android:nextFocusUp="@id/spouse_name"
                         android:nextFocusDown="@id/state"
-                        android:inputType="textPersonName"
-                        android:visibility="gone"/>
+                        android:visibility="gone"
+                        android:inputType="textPersonName"/>
 
                     <LinearLayout
                         android:layout_width="match_parent"

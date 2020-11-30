@@ -25,6 +25,62 @@ public class Mother {
     @SerializedName("mother_weight_index")
     private String weight_index;
     private String photo_url;
+    @SerializedName("district_id")
+    private String districtId;
+    private String sub_district;
+    private String village;
+    private String kk_name;
+    private String nik;
+    private String jampersal_status;
+
+    public String getDistrictId() {
+        return districtId;
+    }
+
+    public void setDistrictId(String districtId) {
+        this.districtId = districtId;
+    }
+
+
+    public String getSub_district() {
+        return sub_district;
+    }
+
+    public void setSub_district(String sub_district) {
+        this.sub_district = sub_district;
+    }
+
+    public String getVillage() {
+        return village;
+    }
+
+    public void setVillage(String village) {
+        this.village = village;
+    }
+
+    public String getKk_name() {
+        return kk_name;
+    }
+
+    public void setKk_name(String kk_name) {
+        this.kk_name = kk_name;
+    }
+
+    public String getNik() {
+        return nik;
+    }
+
+    public void setNik(String nik) {
+        this.nik = nik;
+    }
+
+    public String getJampersal_status() {
+        return jampersal_status;
+    }
+
+    public void setJampersal_status(String jampersal_status) {
+        this.jampersal_status = jampersal_status;
+    }
 
     public void setId(long id) {
         this.id = id;
