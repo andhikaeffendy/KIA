@@ -69,7 +69,7 @@ public class FormMotherActivity extends BaseActivity {
     static final int MY_PERMISSIONS_REQUEST_STORAGE = 100;
 
     private EditText etBirthDate,etName,etHeight,etWeight,etSpouseName, etBloodPressureTop,
-            etBloodPressureBottom, etAddress;
+            etBloodPressureBottom, etAddress, etNamaKK, etNIK, etJamStatus;
     private AutoCompleteTextView actvState, actvDistrict;
     private Spinner spBloodType;
     private ImageView ivThumbnail, ivPickDate;
@@ -111,6 +111,9 @@ public class FormMotherActivity extends BaseActivity {
         actvState = findViewById(R.id.state);
         actvDistrict = findViewById(R.id.district);
         ivPickDate = findViewById(R.id.birth_icon);
+        etNamaKK = findViewById(R.id.kk_name);
+        etNIK = findViewById(R.id.nik);
+        etJamStatus = findViewById(R.id.jampersal_status);
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.blood_types, android.R.layout.simple_spinner_item);
@@ -315,9 +318,12 @@ public class FormMotherActivity extends BaseActivity {
         int height = Integer.parseInt(etHeight.getText().toString());
         double weight = Double.parseDouble(replaceCommaToDot(etWeight.getText().toString()));
         String birth_date = etBirthDate.getText().toString();
+        String kk_name = etNamaKK.getText().toString();
+        String nik = etNIK.getText().toString();
+        String jampersal_status = etJamStatus.getText().toString();
         if(!editMode){
             showProgressBar(true);
-            mApiService.createMother(auth_token, name, birth_date, height,user.getDistrictId(), weight).enqueue(formCallback.getCallback());
+            mApiService.createMother(auth_token, name, birth_date, height,user.getDistrictId(), weight, kk_name,nik,jampersal_status,).enqueue(formCallback.getCallback());
             return;
         }
 

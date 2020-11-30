@@ -165,18 +165,6 @@
                         android:inputType="textPersonName"
                         android:visibility="gone"/>
 
-                    <EditText
-                        android:id="@+id/address"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="@string/hint_address"
-                        android:layout_marginBottom="10dp"
-                        android:singleLine="true"
-                        android:nextFocusUp="@id/spouse_name"
-                        android:nextFocusDown="@id/state"
-                        android:inputType="textPersonName"
-                        android:visibility="gone"/>
-
                     <AutoCompleteTextView
                         android:id="@+id/state"
                         android:layout_width="match_parent"
@@ -296,7 +284,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:nextFocusUp="@id/height"
-                                android:nextFocusDown="@id/blood_pressure_top"
+                                android:nextFocusDown="@id/kk_name"
                                 android:layout_toLeftOf="@+id/w_right"
                                 android:singleLine="true"
                                 android:layout_toStartOf="@+id/w_right"
@@ -396,6 +384,46 @@
                         </LinearLayout>
 
                     </LinearLayout>
+
+                    <EditText
+                        android:id="@+id/kk_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Nama KK"
+                        android:layout_marginBottom="10dp"
+                        android:singleLine="true"
+                        android:nextFocusDown="@id/nik"
+                        android:inputType="textPersonName"/>
+
+                    <EditText
+                        android:id="@+id/nik"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="NIK"
+                        android:layout_marginBottom="10dp"
+                        android:singleLine="true"
+                        android:nextFocusDown="@id/jampersal_status"
+                        android:inputType="textPersonName"/>
+                    <EditText
+                        android:id="@+id/jampersal_status"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Jampersal Status"
+                        android:layout_marginBottom="10dp"
+                        android:singleLine="true"
+                        android:nextFocusDown="@id/address"
+                        android:inputType="textPersonName"/>
+                    <EditText
+                        android:id="@+id/address"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/hint_address"
+                        android:layout_marginBottom="10dp"
+                        android:singleLine="true"
+                        android:nextFocusUp="@id/spouse_name"
+                        android:nextFocusDown="@id/state"
+                        android:inputType="textPersonName"
+                        android:visibility="gone"/>
 
                     <LinearLayout
                         android:layout_width="match_parent"

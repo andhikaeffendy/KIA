@@ -169,6 +169,13 @@ public interface BaseApiService {
     Call<ResponseBody> getMother(@Path("id") long id,
                                  @Query("auth_token") String token);
 
+    @GET("sub_districts")
+    Call<ResponseBody> createSubDistrict(@Query("auth_token") String auth_token);
+
+    @GET("sub_districts/{id}")
+    Call<ResponseBody> getSubDistrict(@Field("auth_token") String auth_token,
+                                      @Path("id") int id);
+
 //    @Multipart
 //    @POST("mothers")
 //    Call<ResponseBody> createMother(@Part("auth_token") RequestBody token,
@@ -195,6 +202,11 @@ public interface BaseApiService {
                                     @Part("height") RequestBody height,
                                     @Part("weight") RequestBody weight,
                                     @Part("district_id") RequestBody district_id,
+                                    @Field("kk_name") String kk_name,
+                                    @Field("nik") String nik,
+                                    @Field("jampersal_status") String jampersal_status,
+                                    @Field("sub_district_id") int sub_district_id,
+                                    @Field("village_id") int village_id,
                                     @Part MultipartBody.Part photo);
 
     @Multipart
@@ -213,6 +225,11 @@ public interface BaseApiService {
                                     @Part("weight") RequestBody weight,
                                     @Part("blood_pressure_top") RequestBody blood_pressure_top,
                                     @Part("blood_pressure_bottom") RequestBody blood_pressure_bottom,
+                                    @Field("kk_name") String kk_name,
+                                    @Field("nik") String nik,
+                                    @Field("jampersal_status") String jampersal_status,
+                                    @Field("sub_district_id") int sub_district_id,
+                                    @Field("village_id") int village_id,
                                     @Part MultipartBody.Part photo);
 
 //    @FormUrlEncoded
@@ -237,7 +254,12 @@ public interface BaseApiService {
                                     @Field("birth_date") String birth_date,
                                     @Field("height") int height,
                                     @Field("district_id") int district_id,
-                                    @Field("weight") double weight);
+                                    @Field("weight") double weight,
+                                    @Field("kk_name") String kk_name,
+                                    @Field("nik") String nik,
+                                    @Field("jampersal_status") String jampersal_status,
+                                    @Field("sub_district_id") int sub_district_id,
+                                    @Field("village_id") int village_id);
 
     @FormUrlEncoded
     @PUT("mothers/{id}")
@@ -254,7 +276,12 @@ public interface BaseApiService {
                                     @Field("height") int height,
                                     @Field("weight") double weight,
                                     @Field("blood_pressure_top") int blood_pressure_top,
-                                    @Field("blood_pressure_bottom") int blood_pressure_bottom);
+                                    @Field("blood_pressure_bottom") int blood_pressure_bottom,
+                                    @Field("kk_name") String kk_name,
+                                    @Field("nik") String nik,
+                                    @Field("jampersal_status") String jampersal_status,
+                                    @Field("sub_district_id") int sub_district_id,
+                                    @Field("village_id") int village_id);
 
     @GET("child_histories")
     Call<ResponseBody> getChildHistories(@Query("auth_token") String token);
@@ -331,7 +358,25 @@ public interface BaseApiService {
                                        @Field("start_height") int start_height,
                                        @Field("start_weight") double start_weight,
                                        @Field("period_type") int period_type,
-                                       @Field("mother_id") long mother_id);
+                                       @Field("mother_id") long mother_id,
+                                       @Field("arm_round") int arm_round,
+                                       @Field("kek_status") int kek_status,
+                                       @Field("kontrasepsi") String kontrasepsi,
+                                       @Field("kontrasepsi") String disease_histories,
+                                       @Field("allergy_histories") String allergy_histories,
+                                       @Field("pregnancy_number") int pregnancy_number,
+                                       @Field("birth_count") int birth_count,
+                                       @Field("miscarriage_count") int miscarriage_count,
+                                       @Field("g_count") int g_count,
+                                       @Field("p_count") int p_count,
+                                       @Field("a_count") int a_count,
+                                       @Field("children_count") int children_count,
+                                       @Field("dead_birth_count") int dead_birth_count,
+                                       @Field("premature_children_count") int premature_children_count,
+                                       @Field("distance") String distance,
+                                       @Field("mmunization_status") String mmunization_status,
+                                       @Field("last_birth_helper") String last_birth_helper,
+                                       @Field("last_birth_way") String last_birth_way);
 
     @FormUrlEncoded
     @POST("pregnancies")
@@ -351,6 +396,25 @@ public interface BaseApiService {
                                        @Field("start_weight") double start_weight,
                                        @Field("period_type") int period_type,
                                        @Field("mother_id") long mother_id);
+
+//    @Field("arm_round") int arm_round,
+//    @Field("kek_status") int kek_status,
+//    @Field("kontrasepsi") String kontrasepsi,
+//    @Field("kontrasepsi") String disease_histories,
+//    @Field("allergy_histories") String allergy_histories,
+//    @Field("pregnancy_number") int pregnancy_number,
+//    @Field("birth_count") int birth_count,
+//    @Field("miscarriage_count") int miscarriage_count,
+//    @Field("g_count") int g_count,
+//    @Field("p_count") int p_count,
+//    @Field("a_count") int a_count,
+//    @Field("children_count") int children_count,
+//    @Field("dead_birth_count") int dead_birth_count,
+//    @Field("premature_children_count") int premature_children_count,
+//    @Field("distance") String distance,
+//    @Field("mmunization_status") String mmunization_status,
+//    @Field("last_birth_helper") String last_birth_helper,
+//    @Field("last_birth_way") String last_birth_way
 
     @FormUrlEncoded
     @PUT("pregnancies/{id}")
