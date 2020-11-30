@@ -147,8 +147,8 @@ public class FormMotherActivity extends BaseActivity {
             }
         });
 
-        mApiService.getDistrics(appSession.getData(AppSession.TOKEN))
-                .enqueue(districtcallback.getCallback());
+        mApiService.getDistrict(37214, appSession.getData(AppSession.TOKEN)).enqueue(districtcallback.getCallback());
+        mApiService.getSubDistricts(appSession.getData(AppSession.TOKEN)).enqueue(subdistrictcallback.getCallback());
 
         showcaseHelper = new ShowcaseHelper(context, ShowcaseHelper.FORM_MOTHER_ID);
 
@@ -299,26 +299,26 @@ public class FormMotherActivity extends BaseActivity {
                 etBloodPressureBottom.requestFocus();
                 return false;
             }
-            if (selectedState == null) {
-                actvState.setError(getString(R.string.error_state));
-                actvState.requestFocus();
-                return false;
-            }
-            if (selectedDistrict == null) {
-                actvDistrict.setError(getString(R.string.error_district));
-                actvDistrict.requestFocus();
-                return false;
-            }
-            if (selectedSubDistrict == null){
-                actSubDistrict.setError("Kecamatan tidak valid");
-                actSubDistrict.requestFocus();
-                return false;
-            }
-            if (selectedVillage == null){
-                actVillage.setError("Village tidak valid");
-                actVillage.requestFocus();
-                return false;
-            }
+//            if (selectedState == null) {
+//                actvState.setError(getString(R.string.error_state));
+//                actvState.requestFocus();
+//                return false;
+//            }
+//            if (selectedDistrict == null) {
+//                actvDistrict.setError(getString(R.string.error_district));
+//                actvDistrict.requestFocus();
+//                return false;
+//            }
+//            if (selectedSubDistrict == null){
+//                actSubDistrict.setError("Kecamatan tidak valid");
+//                actSubDistrict.requestFocus();
+//                return false;
+//            }
+//            if (selectedVillage == null){
+//                actVillage.setError("Village tidak valid");
+//                actVillage.requestFocus();
+//                return false;
+//            }
         }
 
         return true;
@@ -346,8 +346,8 @@ public class FormMotherActivity extends BaseActivity {
         String blood_type = spBloodType.getSelectedItem().toString();
         String spouse_name = etSpouseName.getText().toString();
         String address = etAddress.getText().toString();
-        long state_id = selectedState.getId();
-        long district_id = selectedDistrict.getId();
+//        long state_id = selectedState.getId();
+//        long district_id = selectedDistrict.getId();
         int blood_pressure_top = Integer.parseInt(etBloodPressureTop.getText().toString());
         int blood_pressure_bottom = Integer.parseInt(etBloodPressureBottom.getText().toString());
         long id = mother.getId();
@@ -367,7 +367,7 @@ public class FormMotherActivity extends BaseActivity {
         String blood_type = spBloodType.getSelectedItem().toString();
         String spouse_name = etSpouseName.getText().toString();
         String address = etAddress.getText().toString();
-        String state_id = ""+selectedState.getId();
+//        String state_id = ""+selectedState.getId();
         String district_id = ""+selectedDistrict.getId();
         String height = etHeight.getText().toString();
         String weight = replaceCommaToDot(etWeight.getText().toString());
@@ -411,7 +411,7 @@ public class FormMotherActivity extends BaseActivity {
 
         RequestBody districtId =
                 RequestBody.create(
-                        MediaType.parse("text/plain"), ""+user.getDistrictId());
+                        MediaType.parse("text/plain"), ""+37214);
 
         RequestBody rb_kkName =
                 RequestBody.create(MediaType.parse("text/plain"), kk_name);
@@ -440,13 +440,19 @@ public class FormMotherActivity extends BaseActivity {
                 RequestBody.create(
                         MediaType.parse("text/plain"), address);
 
-        RequestBody rb_state_id =
-                RequestBody.create(
-                        MediaType.parse("text/plain"), state_id);
+//        RequestBody rb_state_id =
+//                RequestBody.create(
+//                        MediaType.parse("text/plain"), state_id);
 
-        RequestBody rb_district_id =
+        RequestBody rb_district_id = RequestBody.create(MediaType.parse("text/plain"), ""+37214);
+
+        RequestBody rb_sub_district_id =
                 RequestBody.create(
-                        MediaType.parse("text/plain"), district_id);
+                        MediaType.parse("text/plain"), ""+selectedSubDistrict.getId());
+
+        RequestBody rb_village_id =
+                RequestBody.create(
+                        MediaType.parse("text/plain"), ""+selectedVillage.getId());
 
         RequestBody rb_blood_pressure_top =
                 RequestBody.create(
@@ -460,9 +466,9 @@ public class FormMotherActivity extends BaseActivity {
         RequestBody rb_id =
                 RequestBody.create(
                         MediaType.parse("text/plain"), ""+mother.getId());
-//        mApiService.updateMother(mother.getId(), rb_id, rb_auth_token, rb_birth_date, rb_name, rb_blood_type,
-//                rb_spouse_name, rb_address, rb_state_id, rb_district_id, rb_height, rb_weight,
-//                rb_blood_pressure_top, rb_blood_pressure_bottom, body).enqueue(formCallback.getCallback());
+        mApiService.updateMother(mother.getId(), rb_id, rb_auth_token, rb_birth_date, rb_name, rb_blood_type,
+                rb_spouse_name, rb_district_id, rb_height, rb_weight,
+                rb_blood_pressure_top, rb_blood_pressure_bottom, rb_kkName, rb_nik, rb_jampersalStatus, rb_sub_district_id, rb_village_id, rb_address, body).enqueue(formCallback.getCallback());
     }
 
     ApiCallback formCallback = new ApiCallback() {
@@ -695,26 +701,28 @@ public class FormMotherActivity extends BaseActivity {
     ApiCallback districtcallback = new ApiCallback() {
         @Override
         public void onApiSuccess(String result) {
-            ApiData<District> districtApiData = new Gson().fromJson(result, new TypeToken<ApiData<District>>(){}.getType());
+            District districtApiData = new Gson().fromJson(result, District.class);
             AppLog.d(new Gson().toJson(districtApiData));
-            ArrayAdapter<District> adapter = new ArrayAdapter<District>(context,
-                    android.R.layout.simple_dropdown_item_1line, districtApiData.getData());
-            actvDistrict.setAdapter(adapter);
-            actvDistrict.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    selectedDistrict = (District) parent.getAdapter().getItem(position);
-                    AppLog.d(new Gson().toJson(selectedDistrict));
-                    mApiService.getSubDistricts(appSession.getData(AppSession.TOKEN)).enqueue(subdistrictcallback.getCallback());
-                }
-            });
-            if(editMode){
-                selectedDistrict = getDistrict(mother.getDistrict_name(), districtApiData.getData());
-                if(selectedDistrict!=null){
-                    actvDistrict.setText(selectedDistrict.getName());
-                    mApiService.getSubDistricts(appSession.getData(AppSession.TOKEN)).enqueue(subdistrictcallback.getCallback());
-                }
-            }
+//            ArrayAdapter<District> adapter = new ArrayAdapter<District>(context,
+//                    android.R.layout.simple_dropdown_item_1line, districtApiData);
+//            actvDistrict.setAdapter(adapter);
+            actvDistrict.setEnabled(false);
+            actvDistrict.setText(districtApiData.getName());
+//            actvDistrict.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//                @Override
+//                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                    selectedDistrict = (District) parent.getAdapter().getItem(position);
+//                    AppLog.d(new Gson().toJson(selectedDistrict));
+//
+//                }
+//            });
+//            if(editMode){
+//                selectedDistrict = getDistrict(mother.getDistrict_name(), districtApiData.getData());
+//                if(selectedDistrict!=null){
+//                    actvDistrict.setText(selectedDistrict.getName());
+//                    mApiService.getSubDistricts(appSession.getData(AppSession.TOKEN)).enqueue(subdistrictcallback.getCallback());
+//                }
+//            }
         }
 
         @Override
@@ -736,16 +744,18 @@ public class FormMotherActivity extends BaseActivity {
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     selectedSubDistrict = (SubDistrict) parent.getAdapter().getItem(position);
                     AppLog.d(new Gson().toJson(selectedSubDistrict));
-                    mApiService.getVillage(selectedSubDistrict.getId(),
+                    mApiService.getVillages(selectedSubDistrict.getId(),
                             appSession.getData(AppSession.TOKEN)).enqueue(villagecallback.getCallback());
                 }
             });
 
-            if(editMode){
+            if(!mother.getSub_district_name().equals("")) {
                 selectedSubDistrict = getSubDistrict(mother.getSub_district_name(), subDistrictApiData.getData());
-                if(selectedSubDistrict!=null)
+                if(selectedSubDistrict!=null) {
                     actSubDistrict.setText(selectedSubDistrict.getName());
-                mApiService.getVillage(selectedSubDistrict.getId(),
+                }
+
+                mApiService.getVillages(selectedSubDistrict.getId(),
                         appSession.getData(AppSession.TOKEN)).enqueue(villagecallback.getCallback());
             }
         }
@@ -771,7 +781,7 @@ public class FormMotherActivity extends BaseActivity {
                 }
             });
 
-            if(editMode){
+            if(!mother.getVillage_name().equals("")){
                 selectedVillage = getVillages(mother.getVillage_name(), villagesApiData.getData());
                 if(selectedVillage!=null)
                     actVillage.setText(selectedVillage.getName());

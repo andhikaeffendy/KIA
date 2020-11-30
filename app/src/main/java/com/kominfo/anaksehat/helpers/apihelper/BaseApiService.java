@@ -100,11 +100,11 @@ public interface BaseApiService {
     Call<ResponseBody> getSubDistrict(@Path("id") long sub_district_id,
                                       @Query("auth_token") String auth_token);
 
-    @GET("village")
-    Call<ResponseBody> getVillages(@Path("sub_district_id") long sub_district_id,
+    @GET("villages")
+    Call<ResponseBody> getVillages(@Query("sub_district_id") long sub_district_id,
                                    @Query("auth_token") String auth_token);
 
-    @GET("village/{id}")
+    @GET("villages/{id}")
     Call<ResponseBody> getVillage(@Path("id") long village_id,
                                   @Query("auth_token") String auth_token);
 

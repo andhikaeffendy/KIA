@@ -28,7 +28,9 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:replace="android:icon,android:theme">
-        <activity android:name=".PerencanaanPersalinanActivity"></activity>
+        <activity android:name=".FormNeonatalActivity"></activity>
+        <activity android:name=".NeonatalActivity" />
+        <activity android:name=".PerencanaanPersalinanActivity" />
 
         <provider
             android:name="android.support.v4.content.FileProvider"
