@@ -78,20 +78,35 @@ public interface BaseApiService {
     @POST("users/forgot_password")
     Call<ResponseBody> forgotPassword(@Field("phone_number") String phone_number);
 
-    @GET("states")
-    Call<ResponseBody> getStates(@Query("auth_token") String token);
-
-    @GET("states/{id}")
-    Call<ResponseBody> getState(@Query("auth_token") String token,
-                                @Path("id") long state_id);
+//    @GET("states")
+//    Call<ResponseBody> getStates(@Query("auth_token") String token);
+//
+//    @GET("states/{id}")
+//    Call<ResponseBody> getState(@Query("auth_token") String token,
+//                                @Path("id") long state_id);
 
     @GET("districts")
-    Call<ResponseBody> getDistrics(@Query("auth_token") String token,
-                                   @Query("state_id") long state_id);
+    Call<ResponseBody> getDistrics(@Query("auth_token") String token);
+                                  // @Query("state_id") long state_id);
 
     @GET("districts/{id}")
-    Call<ResponseBody> getDistrict(@Query("auth_token") String token,
-                                   @Path("id") long district_id);
+    Call<ResponseBody> getDistrict(@Path("id") long district_id,
+                                   @Query("auth_token") String token);
+
+    @GET("sub_districts")
+    Call<ResponseBody> getSubDistricts(@Query("auth_token") String auth_token);
+
+    @GET("sub_districts/{id}")
+    Call<ResponseBody> getSubDistrict(@Path("id") long sub_district_id,
+                                      @Query("auth_token") String auth_token);
+
+    @GET("village")
+    Call<ResponseBody> getVillages(@Path("sub_district_id") long sub_district_id,
+                                   @Query("auth_token") String auth_token);
+
+    @GET("village/{id}")
+    Call<ResponseBody> getVillage(@Path("id") long village_id,
+                                  @Query("auth_token") String auth_token);
 
     @GET("children")
     Call<ResponseBody> getChildren(@Query("auth_token") String token);
@@ -171,13 +186,6 @@ public interface BaseApiService {
     Call<ResponseBody> getMother(@Path("id") long id,
                                  @Query("auth_token") String token);
 
-    @GET("sub_districts")
-    Call<ResponseBody> createSubDistrict(@Query("auth_token") String auth_token);
-
-    @GET("sub_districts/{id}")
-    Call<ResponseBody> getSubDistrict(@Field("auth_token") String auth_token,
-                                      @Path("id") int id);
-
 //    @Multipart
 //    @POST("mothers")
 //    Call<ResponseBody> createMother(@Part("auth_token") RequestBody token,
@@ -204,9 +212,9 @@ public interface BaseApiService {
                                     @Part("height") RequestBody height,
                                     @Part("weight") RequestBody weight,
                                     @Part("district_id") RequestBody district_id,
-                                    @Field("kk_name") String kk_name,
-                                    @Field("nik") String nik,
-                                    @Field("jampersal_status") String jampersal_status,
+                                    @Field("kk_name") RequestBody kk_name,
+                                    @Field("nik") RequestBody nik,
+                                    @Field("jampersal_status") RequestBody jampersal_status,
                                     @Part MultipartBody.Part photo);
 
     @Multipart
@@ -218,17 +226,17 @@ public interface BaseApiService {
                                     @Part("name") RequestBody name,
                                     @Part("blood_type") RequestBody blood_type,
                                     @Part("spouse_name") RequestBody spouse_name,
-                                    @Part("state_id") RequestBody state_id,
+                                   // @Part("state_id") RequestBody state_id,
                                     @Part("district_id") RequestBody district_id,
                                     @Part("height") RequestBody height,
                                     @Part("weight") RequestBody weight,
                                     @Part("blood_pressure_top") RequestBody blood_pressure_top,
                                     @Part("blood_pressure_bottom") RequestBody blood_pressure_bottom,
-                                    @Field("kk_name") String kk_name,
-                                    @Field("nik") String nik,
-                                    @Field("jampersal_status") String jampersal_status,
-                                    @Field("sub_district_id") int sub_district_id,
-                                    @Field("village_id") int village_id,
+                                    @Part("kk_name") RequestBody kk_name,
+                                    @Part("nik") RequestBody nik,
+                                    @Part("jampersal_status") RequestBody jampersal_status,
+                                    @Part("sub_district_id") RequestBody sub_district_id,
+                                    @Part("village_id") RequestBody village_id,
                                     @Part("address") RequestBody address,
                                     @Part MultipartBody.Part photo);
 
@@ -268,7 +276,7 @@ public interface BaseApiService {
                                     @Field("name") String name,
                                     @Field("blood_type") String blood_type,
                                     @Field("spouse_name") String spouse_name,
-                                    @Field("state_id") long state_id,
+                                    //@Field("state_id") long state_id,
                                     @Field("district_id") long district_id,
                                     @Field("height") int height,
                                     @Field("weight") double weight,
@@ -277,8 +285,8 @@ public interface BaseApiService {
                                     @Field("kk_name") String kk_name,
                                     @Field("nik") String nik,
                                     @Field("jampersal_status") String jampersal_status,
-                                    @Field("sub_district_id") int sub_district_id,
-                                    @Field("village_id") int village_id,
+                                    @Field("sub_district_id") long sub_district_id,
+                                    @Field("village_id") long village_id,
                                     @Field("address") String address);
 
     @GET("child_histories")

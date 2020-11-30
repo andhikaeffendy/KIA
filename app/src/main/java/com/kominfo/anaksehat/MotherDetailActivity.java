@@ -23,7 +23,8 @@ import com.kominfo.anaksehat.models.Mother;
 public class MotherDetailActivity extends BaseActivity {
     private ImageView ivAvatar;
     private TextView tvName, tvBirthDate, tvBloodType, tvHeight, tvWeight, tvSpouseName, tvAddress,
-            tvStateName, tvDistrictName, tvBloodPressureTop, getTvBloodPressureBottom, tvKkName, tvNik, tvJamStatus;
+            tvStateName, tvDistrictName, tvBloodPressureTop, getTvBloodPressureBottom, tvKkName, tvNik,
+            tvJamStatus, tvSubDistrict, tvVillages;
     private Button btnChild, btnPregnancy;
     private Mother mother;
 
@@ -59,6 +60,8 @@ public class MotherDetailActivity extends BaseActivity {
         tvKkName = findViewById(R.id.kk_name);
         tvNik = findViewById(R.id.nik);
         tvJamStatus = findViewById(R.id.jampersal_status);
+        tvSubDistrict = findViewById(R.id.sub_district_name);
+        tvVillages = findViewById(R.id.village);
 
         btnChild.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -129,6 +132,8 @@ public class MotherDetailActivity extends BaseActivity {
         tvKkName.setText(mother.getKk_name());
         tvNik.setText(mother.getNik());
         tvJamStatus.setText(mother.getJampersal_status());
+        tvSubDistrict.setText(mother.getSub_district_name());
+        tvVillages.setText(mother.getVillage_name());
 
         Picasso.get().load(UtilsApi.BASE_URL+mother.getPhoto_url())
                 .transform(new CropSquareTransformation())

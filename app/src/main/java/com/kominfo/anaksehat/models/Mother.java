@@ -27,8 +27,8 @@ public class Mother {
     private String photo_url;
     @SerializedName("district_id")
     private String districtId;
-    private String sub_district;
-    private String village;
+    private String sub_district_name;
+    private String village_name;
     private String kk_name;
     private String nik;
     private String jampersal_status;
@@ -41,21 +41,20 @@ public class Mother {
         this.districtId = districtId;
     }
 
-
-    public String getSub_district() {
-        return sub_district;
+    public String getSub_district_name() {
+        return sub_district_name;
     }
 
-    public void setSub_district(String sub_district) {
-        this.sub_district = sub_district;
+    public void setSub_district_name(String sub_district_name) {
+        this.sub_district_name = sub_district_name;
     }
 
-    public String getVillage() {
-        return village;
+    public String getVillage_name() {
+        return village_name;
     }
 
-    public void setVillage(String village) {
-        this.village = village;
+    public void setVillage_name(String village_name) {
+        this.village_name = village_name;
     }
 
     public String getKk_name() {

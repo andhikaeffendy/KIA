@@ -315,32 +315,32 @@ public class SignupActivity extends BaseActivity {
         }
     };
 
-    ApiCallback statecallback = new ApiCallback() {
-        @Override
-        public void onApiSuccess(String result) {
-            showProgressBar(false);
-            ApiData<State> stateApiData = new Gson().fromJson(result, new TypeToken<ApiData<State>>(){}.getType());
-            AppLog.d(new Gson().toJson(stateApiData));
-            ArrayAdapter<State> adapter = new ArrayAdapter<State>(context,
-                    android.R.layout.simple_dropdown_item_1line, stateApiData.getData());
-            actvState.setAdapter(adapter);
-            actvState.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    selectedState = (State) parent.getAdapter().getItem(position);
-                    AppLog.d(new Gson().toJson(selectedState));
-                    showProgressBar(true);
-                    mApiService.getDistrics(appSession.getData(AppSession.TOKEN),
-                            selectedState.getId()).enqueue(districtcallback.getCallback());
-                }
-            });
-        }
-
-        @Override
-        public void onApiFailure(String errorMessage) {
-            showProgressBar(false);
-        }
-    };
+//    ApiCallback statecallback = new ApiCallback() {
+//        @Override
+//        public void onApiSuccess(String result) {
+//            showProgressBar(false);
+//            ApiData<State> stateApiData = new Gson().fromJson(result, new TypeToken<ApiData<State>>(){}.getType());
+//            AppLog.d(new Gson().toJson(stateApiData));
+//            ArrayAdapter<State> adapter = new ArrayAdapter<State>(context,
+//                    android.R.layout.simple_dropdown_item_1line, stateApiData.getData());
+//            actvState.setAdapter(adapter);
+//            actvState.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//                @Override
+//                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                    selectedState = (State) parent.getAdapter().getItem(position);
+//                    AppLog.d(new Gson().toJson(selectedState));
+//                    showProgressBar(true);
+//                    mApiService.getDistrics(appSession.getData(AppSession.TOKEN),
+//                            selectedState.getId()).enqueue(districtcallback.getCallback());
+//                }
+//            });
+//        }
+//
+//        @Override
+//        public void onApiFailure(String errorMessage) {
+//            showProgressBar(false);
+//        }
+//    };
 
     ApiCallback districtcallback = new ApiCallback() {
         @Override

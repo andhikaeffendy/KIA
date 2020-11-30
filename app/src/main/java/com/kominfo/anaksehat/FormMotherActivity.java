@@ -17,6 +17,7 @@ import android.support.v4.content.ContextCompat;
 import android.support.v4.content.FileProvider;
 import android.support.v7.widget.Toolbar;
 import android.text.InputType;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -39,6 +40,7 @@ import com.google.gson.reflect.TypeToken;
 import com.kominfo.anaksehat.R;
 import com.kominfo.anaksehat.helpers.ShowcaseHelper;
 import com.kominfo.anaksehat.models.SubDistrict;
+import com.kominfo.anaksehat.models.Villages;
 import com.squareup.picasso.Picasso;
 import com.kominfo.anaksehat.controllers.BaseActivity;
 import com.kominfo.anaksehat.helpers.AppLog;
@@ -78,7 +80,7 @@ public class FormMotherActivity extends BaseActivity {
     private State selectedState;
     private District selectedDistrict;
     private SubDistrict selectedSubDistrict;
-    private SubDistrict selectedVillage;
+    private Villages selectedVillage;
     private User user;
     private boolean editMode = false;
     private Mother mother;
@@ -111,7 +113,6 @@ public class FormMotherActivity extends BaseActivity {
         etBloodPressureTop = findViewById(R.id.blood_pressure_top);
         etBloodPressureBottom = findViewById(R.id.blood_pressure_bottom);
         etAddress = findViewById(R.id.address);
-        actvState = findViewById(R.id.state);
         actvDistrict = findViewById(R.id.district);
         ivPickDate = findViewById(R.id.birth_icon);
         etNamaKK = findViewById(R.id.kk_name);
@@ -146,8 +147,8 @@ public class FormMotherActivity extends BaseActivity {
             }
         });
 
-        mApiService.getStates(appSession.getData(AppSession.TOKEN))
-                .enqueue(statecallback.getCallback());
+        mApiService.getDistrics(appSession.getData(AppSession.TOKEN))
+                .enqueue(districtcallback.getCallback());
 
         showcaseHelper = new ShowcaseHelper(context, ShowcaseHelper.FORM_MOTHER_ID);
 
@@ -308,6 +309,16 @@ public class FormMotherActivity extends BaseActivity {
                 actvDistrict.requestFocus();
                 return false;
             }
+            if (selectedSubDistrict == null){
+                actSubDistrict.setError("Kecamatan tidak valid");
+                actSubDistrict.requestFocus();
+                return false;
+            }
+            if (selectedVillage == null){
+                actVillage.setError("Village tidak valid");
+                actVillage.requestFocus();
+                return false;
+            }
         }
 
         return true;
@@ -328,7 +339,7 @@ public class FormMotherActivity extends BaseActivity {
         String jampersal_status = etJamStatus.getText().toString();
         if(!editMode){
             showProgressBar(true);
-            mApiService.createMother(auth_token, name, birth_date, height,user.getDistrictId(), weight, kk_name,nik,jampersal_status).enqueue(formCallback.getCallback());
+            mApiService.createMother(auth_token, name, birth_date, height,37214, weight, kk_name,nik,jampersal_status).enqueue(formCallback.getCallback());
             return;
         }
 
@@ -340,10 +351,12 @@ public class FormMotherActivity extends BaseActivity {
         int blood_pressure_top = Integer.parseInt(etBloodPressureTop.getText().toString());
         int blood_pressure_bottom = Integer.parseInt(etBloodPressureBottom.getText().toString());
         long id = mother.getId();
+        long sub_district_id = selectedSubDistrict.getId();
+        long village = selectedVillage.getId();
         showProgressBar(true);
-//        mApiService.updateMother(id, id, auth_token, birth_date, name, blood_type,
-//                spouse_name, state_id, district_id, height, weight,
-//                blood_pressure_top, blood_pressure_bottom,kk_name, nik,jampersal_status,address).enqueue(formCallback.getCallback());
+        mApiService.updateMother(id, id, auth_token, birth_date, name, blood_type,
+                spouse_name, 37214, height, weight,
+                blood_pressure_top, blood_pressure_bottom,kk_name, nik,jampersal_status,sub_district_id, village,address).enqueue(formCallback.getCallback());
 
     }
 
@@ -410,7 +423,7 @@ public class FormMotherActivity extends BaseActivity {
                 RequestBody.create(MediaType.parse("text/plain"), jampersal_status);
 
         if(!editMode){
-            mApiService.createMother(rb_auth_token, rb_name, rb_birth_date, rb_height, rb_weight, districtId, kk_name, nik, jampersal_status,
+            mApiService.createMother(rb_auth_token, rb_name, rb_birth_date, rb_height, rb_weight, districtId, rb_kkName, rb_nik, rb_jampersalStatus,
                     body).enqueue(formCallback.getCallback());
             return;
         }
@@ -646,43 +659,44 @@ public class FormMotherActivity extends BaseActivity {
         backFunction();
     }
 
-    ApiCallback statecallback = new ApiCallback() {
-        @Override
-        public void onApiSuccess(String result) {
-            ApiData<State> stateApiData = new Gson().fromJson(result, new TypeToken<ApiData<State>>(){}.getType());
-            AppLog.d(new Gson().toJson(stateApiData));
-            ArrayAdapter<State> adapter = new ArrayAdapter<State>(context,
-                    android.R.layout.simple_dropdown_item_1line, stateApiData.getData());
-            actvState.setAdapter(adapter);
-            actvState.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    selectedState = (State) parent.getAdapter().getItem(position);
-                    AppLog.d(new Gson().toJson(selectedState));
-                    mApiService.getDistrics(appSession.getData(AppSession.TOKEN),
-                            selectedState.getId()).enqueue(districtcallback.getCallback());
-                }
-            });
-            if(editMode){
-                selectedState = getState(mother.getState_name(), stateApiData.getData());
-                if(selectedState!=null){
-                    actvState.setText(selectedState.getName());
-                    mApiService.getDistrics(appSession.getData(AppSession.TOKEN),
-                            selectedState.getId()).enqueue(districtcallback.getCallback());
-                }
-            }
-        }
-
-        @Override
-        public void onApiFailure(String errorMessage) {
-
-        }
-    };
+//    ApiCallback statecallback = new ApiCallback() {
+//        @Override
+//        public void onApiSuccess(String result) {
+//            ApiData<State> stateApiData = new Gson().fromJson(result, new TypeToken<ApiData<State>>(){}.getType());
+//            AppLog.d(new Gson().toJson(stateApiData));
+//            ArrayAdapter<State> adapter = new ArrayAdapter<State>(context,
+//                    android.R.layout.simple_dropdown_item_1line, stateApiData.getData());
+//            actvState.setAdapter(adapter);
+//            actvState.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//                @Override
+//                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                    selectedState = (State) parent.getAdapter().getItem(position);
+//                    AppLog.d(new Gson().toJson(selectedState));
+//                    mApiService.getDistrics(appSession.getData(AppSession.TOKEN),
+//                            selectedState.getId()).enqueue(districtcallback.getCallback());
+//                }
+//            });
+//            if(editMode){
+//                selectedState = getState(mother.getState_name(), stateApiData.getData());
+//                if(selectedState!=null){
+//                    actvState.setText(selectedState.getName());
+//                    mApiService.getDistrics(appSession.getData(AppSession.TOKEN),
+//                            selectedState.getId()).enqueue(districtcallback.getCallback());
+//                }
+//            }
+//        }
+//
+//        @Override
+//        public void onApiFailure(String errorMessage) {
+//
+//        }
+//    };
 
     ApiCallback districtcallback = new ApiCallback() {
         @Override
         public void onApiSuccess(String result) {
             ApiData<District> districtApiData = new Gson().fromJson(result, new TypeToken<ApiData<District>>(){}.getType());
+            AppLog.d(new Gson().toJson(districtApiData));
             ArrayAdapter<District> adapter = new ArrayAdapter<District>(context,
                     android.R.layout.simple_dropdown_item_1line, districtApiData.getData());
             actvDistrict.setAdapter(adapter);
@@ -691,13 +705,15 @@ public class FormMotherActivity extends BaseActivity {
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     selectedDistrict = (District) parent.getAdapter().getItem(position);
                     AppLog.d(new Gson().toJson(selectedDistrict));
+                    mApiService.getSubDistricts(appSession.getData(AppSession.TOKEN)).enqueue(subdistrictcallback.getCallback());
                 }
             });
-
             if(editMode){
                 selectedDistrict = getDistrict(mother.getDistrict_name(), districtApiData.getData());
-                if(selectedDistrict!=null)
+                if(selectedDistrict!=null){
                     actvDistrict.setText(selectedDistrict.getName());
+                    mApiService.getSubDistricts(appSession.getData(AppSession.TOKEN)).enqueue(subdistrictcallback.getCallback());
+                }
             }
         }
 
@@ -707,17 +723,94 @@ public class FormMotherActivity extends BaseActivity {
         }
     };
 
-    private State getState(String state_name, List<State> states){
-        for (State row : states) {
-            if (row.getName().compareToIgnoreCase(state_name)==0)
+
+    ApiCallback subdistrictcallback = new ApiCallback() {
+        @Override
+        public void onApiSuccess(String result) {
+            ApiData<SubDistrict> subDistrictApiData = new Gson().fromJson(result, new TypeToken<ApiData<SubDistrict>>(){}.getType());
+            ArrayAdapter<SubDistrict> adapter = new ArrayAdapter<SubDistrict>(context,
+                    android.R.layout.simple_dropdown_item_1line, subDistrictApiData.getData());
+            actSubDistrict.setAdapter(adapter);
+            actSubDistrict.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    selectedSubDistrict = (SubDistrict) parent.getAdapter().getItem(position);
+                    AppLog.d(new Gson().toJson(selectedSubDistrict));
+                    mApiService.getVillage(selectedSubDistrict.getId(),
+                            appSession.getData(AppSession.TOKEN)).enqueue(villagecallback.getCallback());
+                }
+            });
+
+            if(editMode){
+                selectedSubDistrict = getSubDistrict(mother.getSub_district_name(), subDistrictApiData.getData());
+                if(selectedSubDistrict!=null)
+                    actSubDistrict.setText(selectedSubDistrict.getName());
+                mApiService.getVillage(selectedSubDistrict.getId(),
+                        appSession.getData(AppSession.TOKEN)).enqueue(villagecallback.getCallback());
+            }
+        }
+
+        @Override
+        public void onApiFailure(String errorMessage) {
+
+        }
+    };
+
+    ApiCallback villagecallback = new ApiCallback() {
+        @Override
+        public void onApiSuccess(String result) {
+            ApiData<Villages> villagesApiData = new Gson().fromJson(result, new TypeToken<ApiData<Villages>>(){}.getType());
+            ArrayAdapter<Villages> adapter = new ArrayAdapter<Villages>(context,
+                    android.R.layout.simple_dropdown_item_1line, villagesApiData.getData());
+            actVillage.setAdapter(adapter);
+            actVillage.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    selectedVillage = (Villages) parent.getAdapter().getItem(position);
+                    AppLog.d(new Gson().toJson(selectedVillage));
+                }
+            });
+
+            if(editMode){
+                selectedVillage = getVillages(mother.getVillage_name(), villagesApiData.getData());
+                if(selectedVillage!=null)
+                    actVillage.setText(selectedVillage.getName());
+            }
+        }
+
+        @Override
+        public void onApiFailure(String errorMessage) {
+
+        }
+    };
+
+//    private State getState(String state_name, List<State> states){
+//        for (State row : states) {
+//            if (row.getName().compareToIgnoreCase(state_name)==0)
+//                return row;
+//        }
+//        return null;
+//    }
+
+    private District getDistrict(String district_name, List<District> districts){
+        for (District row : districts) {
+            if (row.getName().compareToIgnoreCase(district_name)==0)
                 return row;
         }
         return null;
     }
 
-    private District getDistrict(String district_name, List<District> districts){
-        for (District row : districts) {
-            if (row.getName().compareToIgnoreCase(district_name)==0)
+    private SubDistrict getSubDistrict(String sub_district_name, List<SubDistrict> subDistricts){
+        for (SubDistrict row : subDistricts) {
+            if (row.getName().compareToIgnoreCase(sub_district_name)==0)
+                return row;
+        }
+        return null;
+    }
+
+    private Villages getVillages(String village_name, List<Villages> villages){
+        for (Villages row : villages) {
+            if (row.getName().compareToIgnoreCase(village_name)==0)
                 return row;
         }
         return null;
@@ -781,8 +874,8 @@ public class FormMotherActivity extends BaseActivity {
     }
 
     private void initEditForm(){
-        int[] edit_layouts = {R.id.birth_date_layout,R.id.spouse_name,R.id.address,R.id.state,
-                R.id.district, R.id.blood_type_layout, R.id.blood_pressure_layout};
+        int[] edit_layouts = {R.id.birth_date_layout,R.id.spouse_name,R.id.address,
+                R.id.district, R.id.blood_type_layout, R.id.blood_pressure_layout, R.id.sub_district, R.id.village};
         for (int i=0;i<edit_layouts.length;i++) {
             View view = findViewById(edit_layouts[i]);
             view.setVisibility(View.VISIBLE);

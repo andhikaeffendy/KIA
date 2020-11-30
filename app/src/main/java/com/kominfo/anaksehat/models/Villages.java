@@ -4,7 +4,7 @@ import android.support.annotation.NonNull;
 
 import com.google.gson.annotations.SerializedName;
 
-public class SubDistrict {
+public class Villages {
     private long id;
     private String name;
     @SerializedName("district_id")

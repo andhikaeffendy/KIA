@@ -165,28 +165,6 @@
                         android:inputType="textPersonName"
                         android:visibility="gone"/>
 
-                    <AutoCompleteTextView
-                        android:id="@+id/state"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="10dp"
-                        android:nextFocusUp="@id/address"
-                        android:nextFocusDown="@id/district"
-                        android:singleLine="true"
-                        android:hint="@string/hint_state"
-                        android:visibility="gone"/>
-
-                    <AutoCompleteTextView
-                        android:id="@+id/district"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="10dp"
-                        android:nextFocusUp="@id/state"
-                        android:nextFocusDown="@id/blood_type"
-                        android:singleLine="true"
-                        android:hint="@string/hint_district"
-                        android:visibility="gone"/>
-
                     <LinearLayout
                         android:id="@+id/blood_type_layout"
                         android:layout_width="match_parent"
@@ -415,13 +393,24 @@
                         android:inputType="textPersonName"/>
 
                     <AutoCompleteTextView
+                        android:id="@+id/district"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:nextFocusUp="@id/jampersal_status"
+                        android:nextFocusDown="@id/blood_type"
+                        android:singleLine="true"
+                        android:hint="@string/hint_district"
+                        android:visibility="gone"/>
+
+                    <AutoCompleteTextView
                         android:id="@+id/sub_district"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Kabupaten"
                         android:layout_marginBottom="10dp"
                         android:singleLine="true"
-                        android:nextFocusUp="@id/jampersal_status"
+                        android:nextFocusUp="@id/district"
                         android:nextFocusDown="@id/village"
                         android:visibility="gone"
                         android:inputType="textPersonName"/>
@@ -446,7 +435,6 @@
                         android:layout_marginBottom="10dp"
                         android:singleLine="true"
                         android:nextFocusUp="@id/spouse_name"
-                        android:nextFocusDown="@id/state"
                         android:visibility="gone"
                         android:inputType="textPersonName"/>
 
