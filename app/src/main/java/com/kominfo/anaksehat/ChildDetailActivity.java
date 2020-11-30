@@ -44,7 +44,7 @@ public class ChildDetailActivity extends BaseActivity {
     private ImageView ivAvatar;
     private TextView tvName, tvBirthDate, tvBloodType, tvFirstLength, tvFirstWeight, tvHeight,
             tvWeight, tvGender, tvFirstHeadRound, tvMotherName;
-    private Button btnNext, btnImun;
+    private Button btnNext, btnImun, btnNeo, btnPemBayi;
     private Child child;
     private LineChart mChart;
 
@@ -80,6 +80,8 @@ public class ChildDetailActivity extends BaseActivity {
         tvMotherName = findViewById(R.id.mother_name);
         btnNext = findViewById(R.id.submit);
         btnImun = findViewById(R.id.submit_immunization);
+        btnNeo = findViewById(R.id.submit_neonatal);
+        btnPemBayi = findViewById(R.id.submit_pemeriksaanBayi);
         mChart = findViewById(R.id.chart1);
 
         btnNext.setOnClickListener(new View.OnClickListener() {
@@ -97,6 +99,20 @@ public class ChildDetailActivity extends BaseActivity {
                 Intent i = new Intent(context, ImmunizationsActivity.class);
                 i.putExtra("data", new Gson().toJson(child));
                 startActivity(i);
+            }
+        });
+
+        btnNeo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        btnPemBayi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
             }
         });
 

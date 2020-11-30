@@ -78,13 +78,14 @@ public class MothersActivity extends BaseActivity implements
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(mAdapter);
+        recyclerView.setVisibility(View.GONE);
 
         whiteNotificationBar(recyclerView);
 
         etSearch.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
+                recyclerView.setVisibility(View.VISIBLE);
             }
 
             @Override

@@ -599,6 +599,32 @@
                     android:textSize="16dp"
                     android:textStyle="bold" />
 
+                <Button
+                    android:id="@+id/submit_neonatal"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
+                    android:background="@drawable/holderempty"
+                    android:textColor="@color/link"
+                    android:text="Pemeriksaan Neonatal"
+                    android:textSize="16dp"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/submit_pemeriksaanBayi"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
+                    android:background="@drawable/holderempty"
+                    android:textColor="@color/link"
+                    android:text="Pemeriksaan Bayi"
+                    android:textSize="16dp"
+                    android:textStyle="bold" />
+
             </LinearLayout>
 
         </LinearLayout>

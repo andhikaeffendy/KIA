@@ -102,7 +102,7 @@ public class LoginActivity extends BaseActivity {
         public void onApiSuccess(String result) {
             showProgressBar(false);
             user = new Gson().fromJson(result, User.class);
-            if(user.getToken()!=null&&user.getId()!=0) {
+            if(user.getToken()!=null&&user.getId()==0) {
                 if(user.getPosyandu()==0&&user.getMotherId()>0){
                     Log.d("Ini IF", "Posyandu = " + user.getPosyandu());
                     showProgressBar(true);
@@ -116,6 +116,8 @@ public class LoginActivity extends BaseActivity {
                     startActivity(i);
                     finish();
                 }
+            }else {
+                Log.d("Login Failed", "User ID "+user.getId() + " Token " + user.getToken());
             }
         }
 

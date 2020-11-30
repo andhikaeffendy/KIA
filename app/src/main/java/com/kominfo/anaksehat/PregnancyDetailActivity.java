@@ -42,7 +42,7 @@ public class PregnancyDetailActivity extends BaseActivity {
     private TextView tvMotherName, tvStartHeight, tvStartWeight, tvWeightGain, tvLastPeriodDate,
             tvHplDate, tvPeriodType, tvImt, tvMotherWeightIndex, tvMotherNutritionCategory;
     private ImageView ivMotherWeightIndex, ivMotherNutritionCategory;
-    private Button btnNext, btnNext2;
+    private Button btnNext, btnNext2, btnNext3;
     private Pregnancy pregnancy;
     private LineChart mChart;
 
@@ -96,6 +96,15 @@ public class PregnancyDetailActivity extends BaseActivity {
                 Intent i = new Intent(context, FormPregnancyHistoryActivity.class);
                 i.putExtra("data", new Gson().toJson(pregnancy));
                 startActivity(i);
+            }
+        });
+
+        btnNext3 = findViewById(R.id.submit3);
+        btnNext3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                Intent intent = new Intent(context, PerencanaanPersalinanActivity.class);
+//                startActivity(intent);
             }
         });
 
