@@ -119,6 +119,7 @@ public interface BaseApiService {
                                    @Part("first_weight") RequestBody first_weight,
                                    @Part("first_head_round") RequestBody first_head_round,
                                    @Part("mother_id") RequestBody mother_id,
+                                   @Part("give_birth_id") RequestBody give_birth_id,
                                    @Part MultipartBody.Part photo);
 
     @Multipart
@@ -146,7 +147,8 @@ public interface BaseApiService {
                                    @Field("first_length") int first_length,
                                    @Field("first_weight") double first_weight,
                                    @Field("first_head_round") int first_head_round,
-                                   @Field("mother_id") long mother_id);
+                                   @Field("mother_id") long mother_id,
+                                   @Field("give_birth_id") long give_birth_id);
 
     @FormUrlEncoded
     @PUT("children/{id}")

@@ -15,6 +15,7 @@ public class GiveBirth {
     private int mother_condition_id;
     private String mother_condition_name;
     private String remarks;
+    private int child_id;
     private int user_id;
 
     public long getId() {
@@ -119,6 +120,14 @@ public class GiveBirth {
 
     public void setUser_id(int user_id) {
         this.user_id = user_id;
+    }
+
+    public int getChild_id() {
+        return child_id;
+    }
+
+    public void setChild_id(int child_id) {
+        this.child_id = child_id;
     }
 }
 

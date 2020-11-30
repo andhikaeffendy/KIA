@@ -15,6 +15,7 @@ public class Child {
     private int first_head_round;
     private String mother_name;
     private String photo_url;
+    private int give_birth_id;
 
     public void setId(long id) {
         this.id = id;
@@ -115,5 +116,13 @@ public class Child {
     @Override
     public String toString() {
         return name;
+    }
+
+    public void setGive_birth_id(int give_birth_id) {
+        this.give_birth_id = give_birth_id;
+    }
+
+    public int getGive_birth_id() {
+        return give_birth_id;
     }
 }

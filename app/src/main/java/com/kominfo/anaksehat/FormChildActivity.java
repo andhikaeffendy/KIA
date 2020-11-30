@@ -79,6 +79,7 @@ public class FormChildActivity extends BaseActivity {
     private User user;
     private boolean editMode = false;
     private Child child;
+    private long give_birth_id = 0;
     private Picasso picasso;
     private ShowcaseHelper showcaseHelper;
 
@@ -139,6 +140,7 @@ public class FormChildActivity extends BaseActivity {
 
         showcaseHelper = new ShowcaseHelper(context, ShowcaseHelper.FORM_CHILD_ID);
 
+        give_birth_id = getIntent().getLongExtra("give_birth_id", 0);
         editMode = getIntent().getBooleanExtra("edit_mode", false);
         if(!editMode) {
             initCreateData();
@@ -349,7 +351,7 @@ public class FormChildActivity extends BaseActivity {
                     .enqueue(formCallback.getCallback());
         } else
             mApiService.createChild(auth_token, birth_date, name, gender, blood_type,
-                height, weight, first_head_round, mother_id)
+                height, weight, first_head_round, mother_id, give_birth_id)
                 .enqueue(formCallback.getCallback());
     }
 
@@ -414,6 +416,10 @@ public class FormChildActivity extends BaseActivity {
                 RequestBody.create(
                         MediaType.parse("text/plain"), mother_id);
 
+        RequestBody rb_give_birth_id =
+                RequestBody.create(
+                        MediaType.parse("text/plain"), ""+give_birth_id);
+
         showProgressBar(true);
         if(editMode){
             long id = child.getId();
@@ -425,7 +431,7 @@ public class FormChildActivity extends BaseActivity {
                     .enqueue(formCallback.getCallback());
         } else
             mApiService.createChild(rb_auth_token, rb_birth_date, rb_name, rb_gender, rb_blood_type,
-                rb_height, rb_weight, rb_first_head_round, rb_mother_id, body)
+                rb_height, rb_weight, rb_first_head_round, rb_mother_id, rb_give_birth_id, body)
                 .enqueue(formCallback.getCallback());
     }
 
