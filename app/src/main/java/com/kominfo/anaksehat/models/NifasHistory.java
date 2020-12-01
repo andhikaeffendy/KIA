@@ -5,6 +5,7 @@ public class NifasHistory {
     private long id;
     private long give_birth_id;
     private long nifas_history_type_id;
+    private String nifas_history_type_name;
     private Date history_date;
     private String mother_condition;
     private String blood_temp_respiration;
@@ -280,5 +281,13 @@ public class NifasHistory {
 
     public void setSuggestion(String suggestion) {
         this.suggestion = suggestion;
+    }
+
+    public String getNifas_history_type_name() {
+        return nifas_history_type_name;
+    }
+
+    public void setNifas_history_type_name(String nifas_history_type_name) {
+        this.nifas_history_type_name = nifas_history_type_name;
     }
 }
