@@ -46,7 +46,7 @@ public class PregnancyDetailActivity extends BaseActivity {
             tvACount, tvChildrenCount, tvDeadBirthCount, tvPrematureChildrenCount,tvRiwayatAlergi,
             tvBirthCount, tvDistance, tvImunisasi, tvLastBirthHelper, tvLastBirthWay;
     private ImageView ivMotherWeightIndex, ivMotherNutritionCategory;
-    private Button btnNext, btnNext2, btnNext3;
+    private Button btnNext, btnNext2, btnNext3, btnNext4, btnNext5;
     private Pregnancy pregnancy;
     private LineChart mChart;
 
@@ -136,6 +136,26 @@ public class PregnancyDetailActivity extends BaseActivity {
                     i.putExtra("data", new Gson().toJson(pregnancy));
                     startActivity(i);
                 }
+            }
+        });
+
+        btnNext4 = findViewById(R.id.submit4);
+        btnNext4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(context, BirthPlanningsActivity.class);
+                i.putExtra("data", new Gson().toJson(pregnancy));
+                startActivity(i);
+            }
+        });
+
+        btnNext5 = findViewById(R.id.submit5);
+        btnNext5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(context, FormBirthPlanningActivity.class);
+                i.putExtra("data", new Gson().toJson(pregnancy));
+                startActivity(i);
             }
         });
 

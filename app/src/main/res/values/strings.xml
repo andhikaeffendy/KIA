@@ -181,6 +181,10 @@
     <string name="warning_edit_pregnancy_history">Anda akan menghentikan proses edit data riwayat kehamilan?</string>
     <string name="warning_create_give_birth">Anda akan menghentikan proses input data persalinan?</string>
     <string name="warning_edit_give_birth">Anda akan menghentikan proses edit data persalinan?</string>
+    <string name="warning_create_nifas_history">Anda akan menghentikan proses input data pelayanan ibu nifas?</string>
+    <string name="warning_edit_nifas_history">Anda akan menghentikan proses edit data pelayanan ibu nifas?</string>
+    <string name="warning_create_birth_planning">Anda akan menghentikan proses input data perencanaan persalinan?</string>
+    <string name="warning_edit_birth_planning">Anda akan menghentikan proses edit data perencanaan persalinan?</string>
     <string name="warning_logout">Anda akan keluar aplikasi?</string>
     <string name="warning_logout_2">Apakah Anda yakin\nuntuk keluar dari aplikasi</string>
 

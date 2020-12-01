@@ -267,7 +267,6 @@ public class FormGiveBirthActivity extends BaseActivity {
         public void onApiFailure(String errorMessage) {
             showProgressBar(false);
             Toast.makeText(context, errorMessage, Toast.LENGTH_SHORT).show();
-            finish();
         }
     };
 

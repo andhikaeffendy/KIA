@@ -690,4 +690,64 @@ public interface BaseApiService {
                                           @Field("kb_consultation") String kb_consultation
     );
 
+    @GET("birth_plannings")
+    Call<ResponseBody> getBirthPlannings(@Query("auth_token") String token,
+                                         @Query("pregnancy_id") long pregnancy_id);
+
+    @GET("birth_plannings/{id}")
+    Call<ResponseBody> getBirthPlanning(@Path("id") long id,
+                                        @Query("auth_token") String token);
+
+    @FormUrlEncoded
+    @POST("birth_plannings")
+    Call<ResponseBody> createBirthPlanning(@Field("auth_token") String token,
+                                           @Field("pregnancy_id") long pregnancy_id,
+                                           @Field("mother_id") long mother_id,
+                                           @Field("meeting_date") String meeting_date,
+                                           @Field("birth_planning_date") String birth_planning_date,
+                                           @Field("location") String location,
+                                           @Field("birth_planning_place") String birth_planning_place,
+                                           @Field("birth_helper_mother") String birth_helper_mother,
+                                           @Field("birth_helper_family") String birth_helper_family,
+                                           @Field("birth_notice") String birth_notice,
+                                           @Field("danger_notice") String danger_notice,
+                                           @Field("transportation_problem") String transportation_problem,
+                                           @Field("mother_keeper") String mother_keeper,
+                                           @Field("cost_problem") String cost_problem,
+                                           @Field("blood_giver") String blood_giver,
+                                           @Field("birth_partner") String birth_partner,
+                                           @Field("children_keeper") String children_keeper,
+                                           @Field("kb_method") String kb_method,
+                                           @Field("helper_discussion") String helper_discussion,
+                                           @Field("home_condition") String home_condition,
+                                           @Field("home_equipment") String home_equipment
+    );
+
+    @FormUrlEncoded
+    @PUT("birth_plannings/{id}")
+    Call<ResponseBody> updateBirthPlanning(@Path("id") long id,
+                                           @Field("id") long birth_planning_id,
+                                           @Field("auth_token") String token,
+                                           @Field("pregnancy_id") long pregnancy_id,
+                                           @Field("mother_id") long mother_id,
+                                           @Field("meeting_date") String meeting_date,
+                                           @Field("birth_planning_date") String birth_planning_date,
+                                           @Field("location") String location,
+                                           @Field("birth_planning_place") String birth_planning_place,
+                                           @Field("birth_helper_mother") String birth_helper_mother,
+                                           @Field("birth_helper_family") String birth_helper_family,
+                                           @Field("birth_notice") String birth_notice,
+                                           @Field("danger_notice") String danger_notice,
+                                           @Field("transportation_problem") String transportation_problem,
+                                           @Field("mother_keeper") String mother_keeper,
+                                           @Field("cost_problem") String cost_problem,
+                                           @Field("blood_giver") String blood_giver,
+                                           @Field("birth_partner") String birth_partner,
+                                           @Field("children_keeper") String children_keeper,
+                                           @Field("kb_method") String kb_method,
+                                           @Field("helper_discussion") String helper_discussion,
+                                           @Field("home_condition") String home_condition,
+                                           @Field("home_equipment") String home_equipment
+    );
+
 }

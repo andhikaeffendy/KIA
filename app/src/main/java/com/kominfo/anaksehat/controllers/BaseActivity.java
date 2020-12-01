@@ -274,6 +274,7 @@ public class BaseActivity extends AppCompatActivity {
 
         public EditText holder;
         public Date minDate;
+        public Date maxDate;
 
         @Override
         public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -287,7 +288,9 @@ public class BaseActivity extends AppCompatActivity {
             DatePickerDialog dpd = new DatePickerDialog(getActivity(), this, year, month, day);
             if(minDate!=null)
                 dpd.getDatePicker().setMinDate(minDate.getTime());
-            dpd.getDatePicker().setMaxDate(new Date().getTime());
+            if(maxDate!=null){
+                dpd.getDatePicker().setMaxDate(maxDate.getTime());
+            } else dpd.getDatePicker().setMaxDate(new Date().getTime());
             return dpd;
         }
 

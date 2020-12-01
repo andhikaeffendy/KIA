@@ -58,8 +58,6 @@ public class FormNifasHistoryActivity extends BaseActivity {
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        setTitle("Input Data Persalinan");
-
         etBirthDate = findViewById(R.id.history_date);
         ivDate = findViewById(R.id.history_icon);
         etMotherCondition = findViewById(R.id.mother_condition);
@@ -305,7 +303,6 @@ public class FormNifasHistoryActivity extends BaseActivity {
         public void onApiFailure(String errorMessage) {
             showProgressBar(false);
             Toast.makeText(context, errorMessage, Toast.LENGTH_SHORT).show();
-            finish();
         }
     };
 
@@ -314,9 +311,9 @@ public class FormNifasHistoryActivity extends BaseActivity {
             Intent intent = new Intent(context, GiveBirthDetailActivity.class);
             intent.putExtra("parent_data", new Gson().toJson(giveBirth));
             intent.putExtra("data", new Gson().toJson(nifasHistory));
-            showWarning(intent, R.string.warning, R.string.warning_edit_give_birth, R.string.ok, R.string.cancel);
+            showWarning(intent, R.string.warning, R.string.warning_edit_nifas_history, R.string.ok, R.string.cancel);
         } else {
-            showWarning(R.string.warning, R.string.warning_create_give_birth, R.string.ok, R.string.cancel);
+            showWarning(R.string.warning, R.string.warning_create_nifas_history, R.string.ok, R.string.cancel);
         }
     }
 
