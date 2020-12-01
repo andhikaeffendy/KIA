@@ -112,7 +112,9 @@ public class ChildDetailActivity extends BaseActivity {
         btnPemBayi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent i = new Intent(context, PemeriksaanBayiActivity.class);
+                i.putExtra("data", new Gson().toJson(child));
+                startActivity(i);
             }
         });
 

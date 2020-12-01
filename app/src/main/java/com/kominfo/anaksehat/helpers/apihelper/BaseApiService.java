@@ -479,6 +479,59 @@ public interface BaseApiService {
     Call<ResponseBody> getPregnancyHistory(@Path("id") long id,
                                            @Query("auth_token") String token);
 
+
+    @GET("baby_histories")
+    Call<ResponseBody> getPemeriksaanBayi(@Query("auth_token") String token);
+
+    @GET("public_health_centers/pregnancies")
+    Call<ResponseBody> getPemetaanIbuHamil();
+
+    @GET("public_health_centers/children")
+    Call<ResponseBody> getPemetaanAnak();
+
+    @FormUrlEncoded
+    @POST("baby_histories")
+    Call<ResponseBody> createPemeriksaanBayi(@Field("auth_token") String token,
+                                             @Field("child_id") int child_id,
+                                             @Field("history_date") String date,
+                                             @Field("weight") float weight,
+                                             @Field("length") int length,
+                                             @Field("temp") float temp,
+                                             @Field("repiratory") int repiratory,
+                                             @Field("heart_beat") int heart_beat,
+                                             @Field("infection") String infection,
+                                             @Field("ikterus") String ikterus,
+                                             @Field("diare") String diare,
+                                             @Field("low_weight") String low_weight,
+                                             @Field("k_vitamin") String k_vitamin,
+                                             @Field("hb_bcg_polio") String hb_bcg_polio,
+                                             @Field("shk") String shk,
+                                             @Field("shk_confrimation") String shk_confrimation,
+                                             @Field("treatment") String treatment,
+                                             @Field("user_id") long user_id);
+
+    @FormUrlEncoded
+    @PUT("baby_histories/{id}")
+    Call<ResponseBody> updatePemeriksaanBayi(@Path("id") long id,
+                                             @Field("child_id") int child_id,
+                                             @Field("auth_token") String token,
+                                             @Field("history_date") String date,
+                                             @Field("weight") float weight,
+                                             @Field("length") int length,
+                                             @Field("temp") float temp,
+                                             @Field("repiratory") int repiratory,
+                                             @Field("heart_beat") int heart_beat,
+                                             @Field("infection") String infection,
+                                             @Field("ikterus") String ikterus,
+                                             @Field("diare") String diare,
+                                             @Field("low_weight") String low_weight,
+                                             @Field("k_vitamin") String k_vitamin,
+                                             @Field("hb_bcg_polio") String hb_bcg_polio,
+                                             @Field("shk") String shk,
+                                             @Field("shk_confrimation") String shk_confrimation,
+                                             @Field("treatment") String treatment,
+                                             @Field("user_id") long user_id);
+
     @FormUrlEncoded
     @POST("pregnancy_histories")
     Call<ResponseBody> createPregnancyHistory(@Field("auth_token") String token,
@@ -524,6 +577,7 @@ public interface BaseApiService {
                                               @Field("weight") double weight,
                                               @Field("gender_prediction") String gender_prediction,
                                               @Field("pregnancy_id") long pregnancy_id);
+
 
     @GET("articles")
     Call<ResponseBody> getArticles();
