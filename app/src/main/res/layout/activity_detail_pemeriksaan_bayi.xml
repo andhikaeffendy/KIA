@@ -65,13 +65,12 @@
                         android:layout_height="wrap_content">
 
                         <TextView
+                            android:id="@+id/tv_weight"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="13dp"
+                            android:layout_height="match_parent"
                             android:layout_marginLeft="2dp"
                             android:textSize="11dp"
-                            android:textStyle="bold"
-                            android:textColor="@color/white"/>
+                            android:textStyle="bold"/>
 
                     </RelativeLayout>
 
@@ -109,13 +108,13 @@
                         android:layout_height="wrap_content">
 
                         <TextView
+                            android:id="@+id/tv_height"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="13dp"
                             android:layout_marginLeft="2dp"
                             android:textSize="11dp"
-                            android:textStyle="bold"
-                            android:textColor="@color/white"/>
+                            android:textStyle="bold" />
 
                     </RelativeLayout>
 
@@ -153,13 +152,13 @@
                         android:layout_height="wrap_content">
 
                         <TextView
+                            android:id="@+id/tv_temp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="13dp"
                             android:layout_marginLeft="2dp"
                             android:textSize="11dp"
-                            android:textStyle="bold"
-                            android:textColor="@color/white"/>
+                            android:textStyle="bold"/>
 
                     </RelativeLayout>
 
@@ -197,13 +196,13 @@
                         android:layout_height="wrap_content">
 
                         <TextView
+                            android:id="@+id/tv_repiratory"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="13dp"
                             android:layout_marginLeft="2dp"
                             android:textSize="11dp"
-                            android:textStyle="bold"
-                            android:textColor="@color/white"/>
+                            android:textStyle="bold"/>
 
                     </RelativeLayout>
 
@@ -241,13 +240,13 @@
                         android:layout_height="wrap_content">
 
                         <TextView
+                            android:id="@+id/tv_heat_beat"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="13dp"
                             android:layout_marginLeft="2dp"
                             android:textSize="11dp"
-                            android:textStyle="bold"
-                            android:textColor="@color/white"/>
+                            android:textStyle="bold"/>
 
                     </RelativeLayout>
 
@@ -285,13 +284,13 @@
                         android:layout_height="wrap_content">
 
                         <TextView
+                            android:id="@+id/tv_infection"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="13dp"
                             android:layout_marginLeft="2dp"
                             android:textSize="11dp"
-                            android:textStyle="bold"
-                            android:textColor="@color/white"/>
+                            android:textStyle="bold"/>
 
                     </RelativeLayout>
 
@@ -329,13 +328,13 @@
                         android:layout_height="wrap_content">
 
                         <TextView
+                            android:id="@+id/tv_ikterus"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="13dp"
                             android:layout_marginLeft="2dp"
                             android:textSize="11dp"
-                            android:textStyle="bold"
-                            android:textColor="@color/white"/>
+                            android:textStyle="bold"/>
 
                     </RelativeLayout>
 
@@ -373,13 +372,13 @@
                         android:layout_height="wrap_content">
 
                         <TextView
+                            android:id="@+id/tv_diare"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="13dp"
                             android:layout_marginLeft="2dp"
                             android:textSize="11dp"
-                            android:textStyle="bold"
-                            android:textColor="@color/white"/>
+                            android:textStyle="bold"/>
 
                     </RelativeLayout>
 
@@ -417,13 +416,13 @@
                         android:layout_height="wrap_content">
 
                         <TextView
+                            android:id="@+id/tv_low_weight"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="13dp"
                             android:layout_marginLeft="2dp"
                             android:textSize="11dp"
-                            android:textStyle="bold"
-                            android:textColor="@color/white"/>
+                            android:textStyle="bold"/>
 
                     </RelativeLayout>
 
@@ -461,13 +460,13 @@
                         android:layout_height="wrap_content">
 
                         <TextView
+                            android:id="@+id/tv_k_vitamin"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="13dp"
                             android:layout_marginLeft="2dp"
                             android:textSize="11dp"
-                            android:textStyle="bold"
-                            android:textColor="@color/white"/>
+                            android:textStyle="bold"/>
 
                     </RelativeLayout>
 
@@ -505,13 +504,13 @@
                         android:layout_height="wrap_content">
 
                         <TextView
+                            android:id="@+id/tv_hb_bcg_polio"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="13dp"
                             android:layout_marginLeft="2dp"
                             android:textSize="11dp"
-                            android:textStyle="bold"
-                            android:textColor="@color/white"/>
+                            android:textStyle="bold"/>
 
                     </RelativeLayout>
 
@@ -549,13 +548,13 @@
                         android:layout_height="wrap_content">
 
                         <TextView
+                            android:id="@+id/tv_shk"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="13dp"
                             android:layout_marginLeft="2dp"
                             android:textSize="11dp"
-                            android:textStyle="bold"
-                            android:textColor="@color/white"/>
+                            android:textStyle="bold"/>
 
                     </RelativeLayout>
 
@@ -595,13 +594,13 @@
                         android:layout_height="wrap_content">
 
                         <TextView
+                            android:id="@+id/tv_shk_confrimation"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="13dp"
                             android:layout_marginLeft="2dp"
                             android:textSize="11dp"
-                            android:textStyle="bold"
-                            android:textColor="@color/white"/>
+                            android:textStyle="bold"/>
 
                     </RelativeLayout>
 
@@ -639,13 +638,13 @@
                         android:layout_height="wrap_content">
 
                         <TextView
+                            android:id="@+id/tv_treatment"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="13dp"
                             android:layout_marginLeft="2dp"
                             android:textSize="11dp"
-                            android:textStyle="bold"
-                            android:textColor="@color/white"/>
+                            android:textStyle="bold"/>
 
                     </RelativeLayout>
 

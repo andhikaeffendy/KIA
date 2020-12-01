@@ -9,7 +9,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
-import com.kominfo.anaksehat.R;
 import com.kominfo.anaksehat.controllers.BaseActivity;
 
 public class PromotionActivity extends BaseActivity {
@@ -63,10 +62,10 @@ public class PromotionActivity extends BaseActivity {
                 i = new Intent(context, InfographicsActivity.class);
                 break;
             case R.id.stuntingmap:
-                i = new Intent(context, MapsActivity.class);
+                i = new Intent(context, MapsPregnancyActivity.class);
                 break;
             case R.id.stuntingmap_icon:
-                i = new Intent(context, MapsActivity.class);
+                i = new Intent(context, MapsPregnancyActivity.class);
                 break;
             case android.R.id.home:
                 finish();

@@ -492,12 +492,12 @@ public interface BaseApiService {
     @FormUrlEncoded
     @POST("baby_histories")
     Call<ResponseBody> createPemeriksaanBayi(@Field("auth_token") String token,
-                                             @Field("child_id") int child_id,
+                                             @Field("child_id") long child_id,
                                              @Field("history_date") String date,
                                              @Field("weight") float weight,
-                                             @Field("length") int length,
-                                             @Field("temp") float temp,
-                                             @Field("repiratory") int repiratory,
+                                             @Field("height") int height,
+                                             @Field("temperature") float temp,
+                                             @Field("respiratory") int repiratory,
                                              @Field("heart_beat") int heart_beat,
                                              @Field("infection") String infection,
                                              @Field("ikterus") String ikterus,
@@ -506,20 +506,20 @@ public interface BaseApiService {
                                              @Field("k_vitamin") String k_vitamin,
                                              @Field("hb_bcg_polio") String hb_bcg_polio,
                                              @Field("shk") String shk,
-                                             @Field("shk_confrimation") String shk_confrimation,
+                                             @Field("shk_confirmation") String shk_confirmation,
                                              @Field("treatment") String treatment,
                                              @Field("user_id") long user_id);
 
     @FormUrlEncoded
     @PUT("baby_histories/{id}")
     Call<ResponseBody> updatePemeriksaanBayi(@Path("id") long id,
-                                             @Field("child_id") int child_id,
+                                             @Field("child_id") long child_id,
                                              @Field("auth_token") String token,
                                              @Field("history_date") String date,
                                              @Field("weight") float weight,
-                                             @Field("length") int length,
-                                             @Field("temp") float temp,
-                                             @Field("repiratory") int repiratory,
+                                             @Field("height") int height,
+                                             @Field("temperature") float temp,
+                                             @Field("respiratory") int repiratory,
                                              @Field("heart_beat") int heart_beat,
                                              @Field("infection") String infection,
                                              @Field("ikterus") String ikterus,
@@ -528,7 +528,7 @@ public interface BaseApiService {
                                              @Field("k_vitamin") String k_vitamin,
                                              @Field("hb_bcg_polio") String hb_bcg_polio,
                                              @Field("shk") String shk,
-                                             @Field("shk_confrimation") String shk_confrimation,
+                                             @Field("shk_confirmation") String shk_confirmation,
                                              @Field("treatment") String treatment,
                                              @Field("user_id") long user_id);
 

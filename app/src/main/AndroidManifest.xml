@@ -28,7 +28,8 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:replace="android:icon,android:theme">
-        <activity android:name=".PemeriksaanBayiActivity"></activity>
+        <activity android:name=".MapsChildrenActivity"></activity>
+        <activity android:name=".PemeriksaanBayiActivity" />
         <activity android:name=".DetailNeonatalActivity" />
         <activity android:name=".DetailPemeriksaanBayiActivity" />
         <activity android:name=".FormPemeriksaanBayiActivity" />
@@ -191,7 +192,7 @@
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name=".MapsActivity"
+            android:name=".MapsPregnancyActivity"
             android:label="@string/title_activity_maps"
             android:screenOrientation="portrait" />
         <activity

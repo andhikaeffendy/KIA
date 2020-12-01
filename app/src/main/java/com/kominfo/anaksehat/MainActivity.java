@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -16,7 +15,6 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageView;
@@ -335,16 +333,16 @@ public class MainActivity extends BaseActivity
                 drawer.closeDrawer(GravityCompat.START);
                 break;
             case R.id.pemetaan_ibu_hamil:
-                startActivity(new Intent(context, MapsActivity.class));
+                startActivity(new Intent(context, MapsPregnancyActivity.class));
                 break;
             case R.id.pemetaan_ibu_icon:
-                startActivity(new Intent(context, MapsActivity.class));
+                startActivity(new Intent(context, MapsPregnancyActivity.class));
                 break;
             case R.id.pemetaan_bayi_balita:
-                startActivity(new Intent(context, MapsActivity.class));
+                startActivity(new Intent(context, MapsChildrenActivity.class));
                 break;
             case R.id.pemetaan_bayi_icon:
-                startActivity(new Intent(context, MapsActivity.class));
+                startActivity(new Intent(context, MapsChildrenActivity.class));
                 break;
 //            case R.id.nav_children:
 //                gotoChildren();

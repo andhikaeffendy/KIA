@@ -9,9 +9,16 @@ public class PemeriksaanBayi {
     private int id;
     private Date history_date;
     private int weight;
-    private int length;
+    private int height;
     private int temp;
-    private int repiratory;
+    private double imt;
+    private String note;
+    private int head_round;
+    private String child_bbu_index;
+    private String child_pbu_index;
+    private String child_bbpb_index;
+    private String child_imtu_index;
+    private int respiratory;
     private int heart_beat;
     private String infection;
     private String ikterus;
@@ -20,7 +27,7 @@ public class PemeriksaanBayi {
     private String k_vitamin;
     private String hb_bcg_polio;
     private String shk;
-    private String shk_confrimation;
+    private String shk_confirmation;
     private String treatment;
     private int user_id;
 
@@ -48,12 +55,12 @@ public class PemeriksaanBayi {
         this.weight = weight;
     }
 
-    public int getLength() {
-        return length;
+    public int getHeight() {
+        return height;
     }
 
-    public void setLength(int length) {
-        this.length = length;
+    public void setHeight(int height) {
+        this.height = height;
     }
 
     public int getTemp() {
@@ -64,13 +71,6 @@ public class PemeriksaanBayi {
         this.temp = temp;
     }
 
-    public int getRepiratory() {
-        return repiratory;
-    }
-
-    public void setRepiratory(int repiratory) {
-        this.repiratory = repiratory;
-    }
 
     public int getHeart_beat() {
         return heart_beat;
@@ -136,12 +136,20 @@ public class PemeriksaanBayi {
         this.shk = shk;
     }
 
-    public String getShk_confrimation() {
-        return shk_confrimation;
+    public int getRespiratory() {
+        return respiratory;
     }
 
-    public void setShk_confrimation(String shk_confrimation) {
-        this.shk_confrimation = shk_confrimation;
+    public void setRespiratory(int respiratory) {
+        this.respiratory = respiratory;
+    }
+
+    public String getShk_confirmation() {
+        return shk_confirmation;
+    }
+
+    public void setShk_confirmation(String shk_confirmation) {
+        this.shk_confirmation = shk_confirmation;
     }
 
     public String getTreatment() {
@@ -158,5 +166,61 @@ public class PemeriksaanBayi {
 
     public void setUser_id(int user_id) {
         this.user_id = user_id;
+    }
+
+    public double getImt() {
+        return imt;
+    }
+
+    public void setImt(double imt) {
+        this.imt = imt;
+    }
+
+    public String getNote() {
+        return note;
+    }
+
+    public void setNote(String note) {
+        this.note = note;
+    }
+
+    public int getHead_round() {
+        return head_round;
+    }
+
+    public void setHead_round(int head_round) {
+        this.head_round = head_round;
+    }
+
+    public String getChild_bbu_index() {
+        return child_bbu_index;
+    }
+
+    public void setChild_bbu_index(String child_bbu_index) {
+        this.child_bbu_index = child_bbu_index;
+    }
+
+    public String getChild_pbu_index() {
+        return child_pbu_index;
+    }
+
+    public void setChild_pbu_index(String child_pbu_index) {
+        this.child_pbu_index = child_pbu_index;
+    }
+
+    public String getChild_bbpb_index() {
+        return child_bbpb_index;
+    }
+
+    public void setChild_bbpb_index(String child_bbpb_index) {
+        this.child_bbpb_index = child_bbpb_index;
+    }
+
+    public String getChild_imtu_index() {
+        return child_imtu_index;
+    }
+
+    public void setChild_imtu_index(String child_imtu_index) {
+        this.child_imtu_index = child_imtu_index;
     }
 }

@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.InputType;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -16,6 +17,7 @@ import android.widget.Toast;
 import com.google.gson.Gson;
 import com.kominfo.anaksehat.controllers.BaseActivity;
 import com.kominfo.anaksehat.helpers.AppSession;
+import com.kominfo.anaksehat.helpers.DateHelper;
 import com.kominfo.anaksehat.models.Child;
 import com.kominfo.anaksehat.models.ChildHistory;
 import com.kominfo.anaksehat.models.PemeriksaanBayi;
@@ -56,17 +58,19 @@ public class FormPemeriksaanBayiActivity extends BaseActivity {
         btnCancel = findViewById(R.id.cancel);
 
         child = new Gson().fromJson(getIntent().getStringExtra("data"), Child.class);
+//        Log.d("DEBUG", "ID CHILD : " + child.getId());
 
         etDate.setInputType(InputType.TYPE_NULL);
-//        ivDateIcon.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                BaseActivity.DatePickerFragment newFragment = new BaseActivity.DatePickerFragment();
-//                newFragment.minDate = child.getBirth_date();
-//                newFragment.holder = etDate;
-//                newFragment.show(getSupportFragmentManager(),"datePicker");
-//            }
-//        });
+        child = new Gson().fromJson(getIntent().getStringExtra("data"), Child.class);
+        ivDateIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                BaseActivity.DatePickerFragment newFragment = new BaseActivity.DatePickerFragment();
+                newFragment.minDate = child.getBirth_date();
+                newFragment.holder = etDate;
+                newFragment.show(getSupportFragmentManager(),"datePicker");
+            }
+        });
 
         etDate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,7 +80,11 @@ public class FormPemeriksaanBayiActivity extends BaseActivity {
         });
 
         editMode = getIntent().getBooleanExtra("edit_mode",false);
-        //if (editMode)
+        if (editMode) {
+            child = new Gson().fromJson(getIntent().getStringExtra("edit_child"), Child.class);
+            pemeriksaanBayi = new Gson().fromJson(getIntent().getStringExtra("edit_data"), PemeriksaanBayi.class);
+            etDate.setText(DateHelper.getDateServer(pemeriksaanBayi.getHistory_date()));
+        }
 
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -85,6 +93,18 @@ public class FormPemeriksaanBayiActivity extends BaseActivity {
             }
         });
 
+    }
+
+    private void initEditData(){
+        pemeriksaanBayi = new Gson().fromJson(getIntent().getStringExtra("edit_data"), PemeriksaanBayi.class);
+        setTitle(R.string.title_edit_child_history);
+
+        //etDate.setText(DateHelper.getDateServer(pemeriksaanBayi.getHistory_date()));
+//        etHeight.setText(""+childHistory.getHeight());
+//        etWeight.setText(replaceDotToComma(""+childHistory.getWeight()));
+//        etHeadRound.setText(""+childHistory.getHead_round());
+//        etTemperature.setText(""+childHistory.getTemperature());
+//        etNote.setText(childHistory.getNote());
     }
 
     @Override
@@ -126,13 +146,13 @@ public class FormPemeriksaanBayiActivity extends BaseActivity {
         long userId = getUserSession().getId();
 
         if (editMode){
-            int id = pemeriksaanBayi.getId();
-            mApiService.updatePemeriksaanBayi(id, id, appSession.getData(AppSession.TOKEN), historyDate, weight,length,
+            long id = pemeriksaanBayi.getId();
+            mApiService.updatePemeriksaanBayi(id, child.getId(), appSession.getData(AppSession.TOKEN), historyDate, weight,length,
                     temp,repiratory,heartBeat,infection,ikterus,diare,lowWeight,kVItamin,hbBcgPolio,shk,shkConfirm,treatment,userId).enqueue(formCallback.getCallback());
         }else {
-            int id = pemeriksaanBayi.getId();
+            long id = child.getId();
             mApiService.createPemeriksaanBayi(appSession.getData(AppSession.TOKEN), id, historyDate, weight,length,temp,repiratory,heartBeat,infection,
-                    ikterus,diare,lowWeight,kVItamin,hbBcgPolio,shk,shkConfirm,treatment,userId);
+                    ikterus,diare,lowWeight,kVItamin,hbBcgPolio,shk,shkConfirm,treatment,userId).enqueue(formCallback.getCallback());
 
         }
 

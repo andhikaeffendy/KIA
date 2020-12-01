@@ -23,18 +23,21 @@ import com.kominfo.anaksehat.helpers.adapters.MothersAdapter;
 import com.kominfo.anaksehat.models.ApiData;
 import com.kominfo.anaksehat.models.Child;
 import com.kominfo.anaksehat.models.Mother;
+import com.kominfo.anaksehat.models.PemeriksaanBayi;
 import com.kominfo.anaksehat.models.User;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class PemeriksaanBayiActivity extends BaseActivity implements AdapterListener<Child> {
+public class PemeriksaanBayiActivity extends BaseActivity implements AdapterListener<PemeriksaanBayi> {
 
     private RecyclerView recyclerView;
     private BabyAdapter mAdapter;
 
-    private List<Child> dataList;
+    private List<PemeriksaanBayi> dataList;
     private User user;
+    private PemeriksaanBayi pemeriksaanBayi;
+    private Child child;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +45,7 @@ public class PemeriksaanBayiActivity extends BaseActivity implements AdapterList
         setContentView(R.layout.activity_pemeriksaan_bayi);
 
         recyclerView = (RecyclerView) findViewById(R.id.rv_pemeriksaan_bayi);
-        dataList = new ArrayList<Child>();
+        dataList = new ArrayList<PemeriksaanBayi>();
         mAdapter = new BabyAdapter(context, dataList, this);
 
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
@@ -50,17 +53,17 @@ public class PemeriksaanBayiActivity extends BaseActivity implements AdapterList
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(mAdapter);
         whiteNotificationBar(recyclerView);
+        child = new Gson().fromJson(getIntent().getStringExtra("data"), Child.class);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context, FormPemeriksaanBayiActivity.class );
-//                intent.putExtra("data", new Gson().toJson(mAdapter));
+                intent.putExtra("data", new Gson().toJson(child));
                 startActivityForResult(intent, 99);
             }
         });
-
     }
 
     ApiCallback babyCallback = new ApiCallback() {
@@ -68,7 +71,7 @@ public class PemeriksaanBayiActivity extends BaseActivity implements AdapterList
         public void onApiSuccess(String result) {
             showProgressBar(false);
             Gson gson = createGsonDate();
-            ApiData<Child> stateApiData = gson.fromJson(result, new TypeToken<ApiData<Child>>(){}.getType());
+            ApiData<PemeriksaanBayi> stateApiData = gson.fromJson(result, new TypeToken<ApiData<PemeriksaanBayi>>(){}.getType());
             AppLog.d(new Gson().toJson(stateApiData));
             mAdapter.setData(stateApiData.getData());
         }
@@ -90,14 +93,15 @@ public class PemeriksaanBayiActivity extends BaseActivity implements AdapterList
     }
 
     @Override
-    public void onItemSelected(Child data) {
+    public void onItemSelected(PemeriksaanBayi data) {
         Intent i = new Intent(context, DetailPemeriksaanBayiActivity.class);
         i.putExtra("data", new Gson().toJson(data));
+        i.putExtra("edit_data", new Gson().toJson(child));
         startActivity(i);
     }
 
     @Override
-    public void onItemLongSelected(Child data) {
+    public void onItemLongSelected(PemeriksaanBayi data) {
 
     }
 

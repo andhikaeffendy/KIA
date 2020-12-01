@@ -1,6 +1,7 @@
 package com.kominfo.anaksehat.helpers.adapters;
 
 import android.content.Context;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +14,7 @@ import android.widget.TextView;
 import com.kominfo.anaksehat.R;
 import com.kominfo.anaksehat.models.Child;
 import com.kominfo.anaksehat.models.Mother;
+import com.kominfo.anaksehat.models.PemeriksaanBayi;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -21,12 +23,12 @@ import java.util.Locale;
 
 public class BabyAdapter extends RecyclerView.Adapter<BabyAdapter.MyViewHolder> {
     private Context context;
-    private List<Child> dataList;
-    private AdapterListener<Child> listener;
+    private List<PemeriksaanBayi> dataList;
+    private AdapterListener<PemeriksaanBayi> listener;
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView name;
-        public ImageView left_icon, right_icon;
+        private ImageView left_icon, right_icon;
 
         public MyViewHolder(View view) {
             super(view);
@@ -55,17 +57,18 @@ public class BabyAdapter extends RecyclerView.Adapter<BabyAdapter.MyViewHolder> 
         }
     }
 
-    public BabyAdapter(Context context, List<Child> dataList, AdapterListener<Child> listener) {
+    public BabyAdapter(Context context, List<PemeriksaanBayi> dataList, AdapterListener<PemeriksaanBayi> listener) {
         this.context = context;
         this.listener = listener;
         this.dataList = dataList;
     }
 
-    public void setData(List<Child> dataList){
+    public void setData(List<PemeriksaanBayi> dataList){
         this.dataList = dataList;
         notifyDataSetChanged();
     }
 
+    @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
@@ -76,14 +79,14 @@ public class BabyAdapter extends RecyclerView.Adapter<BabyAdapter.MyViewHolder> 
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, final int position) {
-        final Child data = dataList.get(position);
+        final PemeriksaanBayi data = dataList.get(position);
         String date = "";
-        if (data.getBirth_date() != null) {
-            date = new SimpleDateFormat("MM/dd/yyyy", Locale.ENGLISH).format(data.getBirth_date());
+        if (data.getHistory_date() != null) {
+            date = new SimpleDateFormat("MM/dd/yyyy", Locale.ENGLISH).format(data.getHistory_date());
         } else {
             date = "";
         }
-        holder.name.setText(data.getName() + " (" + date + ")");
+        holder.name.setText(date);
         if((position+1)%2==1){
             holder.left_icon.setVisibility(View.VISIBLE);
             holder.left_icon.setImageResource(R.drawable.item_pregnancy);

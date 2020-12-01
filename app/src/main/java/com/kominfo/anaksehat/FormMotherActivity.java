@@ -749,14 +749,15 @@ public class FormMotherActivity extends BaseActivity {
                 }
             });
 
-            if(!mother.getSub_district_name().equals("")) {
-                selectedSubDistrict = getSubDistrict(mother.getSub_district_name(), subDistrictApiData.getData());
-                if(selectedSubDistrict!=null) {
-                    actSubDistrict.setText(selectedSubDistrict.getName());
+            if(editMode) {
+                if (!mother.getSub_district_name().equals("")) {
+                    selectedSubDistrict = getSubDistrict(mother.getSub_district_name(), subDistrictApiData.getData());
+                    if(selectedSubDistrict!=null) {
+                        actSubDistrict.setText(selectedSubDistrict.getName());
+                    }
+                    mApiService.getVillages(selectedSubDistrict.getId(),
+                            appSession.getData(AppSession.TOKEN)).enqueue(villagecallback.getCallback());
                 }
-
-                mApiService.getVillages(selectedSubDistrict.getId(),
-                        appSession.getData(AppSession.TOKEN)).enqueue(villagecallback.getCallback());
             }
         }
 
@@ -781,10 +782,12 @@ public class FormMotherActivity extends BaseActivity {
                 }
             });
 
-            if(!mother.getVillage_name().equals("")){
-                selectedVillage = getVillages(mother.getVillage_name(), villagesApiData.getData());
-                if(selectedVillage!=null)
-                    actVillage.setText(selectedVillage.getName());
+            if(editMode){
+                if (!mother.getVillage_name().equals("")) {
+                    selectedVillage = getVillages(mother.getVillage_name(), villagesApiData.getData());
+                    if(selectedVillage!=null)
+                        actVillage.setText(selectedVillage.getName());
+                }
             }
         }
 
