@@ -36,7 +36,10 @@ import com.kominfo.anaksehat.models.User;
 
 public class FormPregnancyActivity extends BaseActivity {
 
-    private EditText etLastPeriodDate,etStartHeight,etStartWeight;
+    private EditText etLastPeriodDate,etStartHeight,etStartWeight, etArmRound, etKekStatus, etKontrasepsi,
+            etRiwayatPenyakit, etRiwayatAlergi, etPregnancyNumber, etBirthCount,
+            etMisCariage, etGCount, etPCount, etACount, etChildrenCount, etDeadBirthCOunt,
+            etPrematureChildrenCount, etDistance, etImmunizationStatus, etLastBirthHelper, etLastBirthWay;
     private Spinner spPeriodType;
     private AutoCompleteTextView actvMotherName;
     private Mother selectedMother;
@@ -67,6 +70,24 @@ public class FormPregnancyActivity extends BaseActivity {
         etStartHeight = findViewById(R.id.start_height);
         etStartWeight = findViewById(R.id.start_weight);
         ivPickDate = findViewById(R.id.birth_icon);
+        etArmRound = findViewById(R.id.arm_round);
+        etKekStatus = findViewById(R.id.kek_status);
+        etKontrasepsi = findViewById(R.id.kontrasepsi);
+        etRiwayatAlergi = findViewById(R.id.alergi_history);
+        etRiwayatPenyakit = findViewById(R.id.desease_history);
+        etPregnancyNumber = findViewById(R.id.pregnancy_number);
+        etBirthCount = findViewById(R.id.birth_count);
+        etMisCariage = findViewById(R.id.miscarriage_count);
+        etGCount = findViewById(R.id.g_count);
+        etPCount = findViewById(R.id.p_count);
+        etACount = findViewById(R.id.a_count);
+        etChildrenCount = findViewById(R.id.children_count);
+        etDeadBirthCOunt = findViewById(R.id.dead_birth_count);
+        etPrematureChildrenCount = findViewById(R.id.premature_children_count);
+        etDistance = findViewById(R.id.distance);
+        etImmunizationStatus = findViewById(R.id.immunization_status);
+        etLastBirthHelper = findViewById(R.id.last_birth_helper);
+        etLastBirthWay = findViewById(R.id.last_birth_way);
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.period_types, android.R.layout.simple_spinner_item);
@@ -260,6 +281,25 @@ public class FormPregnancyActivity extends BaseActivity {
         int start_height = Integer.parseInt(etStartHeight.getText().toString());
         double start_weight = Double.parseDouble(replaceCommaToDot(etStartWeight.getText().toString()));
         long mother_id = selectedMother.getId();
+        int arm_round = Integer.parseInt(etArmRound.getText().toString());
+        int kek_status = Integer.parseInt(etKekStatus.getText().toString());
+        String kontrasepsi = etKontrasepsi.getText().toString();
+        String riwayat_alergi = etRiwayatAlergi.getText().toString();
+        String riwayat_penyakit = etRiwayatPenyakit.getText().toString();
+        int pregnancy_number = Integer.parseInt(etPregnancyNumber.getText().toString());
+        int birth_count = Integer.parseInt(etBirthCount.getText().toString());
+        int miscariage = Integer.parseInt(etMisCariage.getText().toString());
+        int g_count = Integer.parseInt(etGCount.getText().toString());
+        int p_count = Integer.parseInt(etPCount.getText().toString());
+        int a_count = Integer.parseInt(etACount.getText().toString());
+        int children_count = Integer.parseInt(etChildrenCount.getText().toString());
+        int dead_birth_count = Integer.parseInt(etDeadBirthCOunt.getText().toString());
+        int premature_children = Integer.parseInt(etPrematureChildrenCount.getText().toString());
+        String distance = etDistance.getText().toString();
+        String immunisasi_status = etImmunizationStatus.getText().toString();
+        String last_birth_helper = etLastBirthHelper.getText().toString();
+        String last_birth_way = etLastBirthWay.getText().toString();
+
 //        int period_number = 2;
 //
 //        if(period_type.compareToIgnoreCase("Singkat")==0)period_number=0;
@@ -269,10 +309,14 @@ public class FormPregnancyActivity extends BaseActivity {
         if(editMode){
             long id = pregnancy.getId();
             mApiService.updatePregnancy(id, id, auth_token, last_period_date, start_height,
-                    start_weight, period_type, mother_id).enqueue(formCallback.getCallback());
+                    start_weight, period_type, mother_id, arm_round, kek_status,kontrasepsi,riwayat_penyakit,riwayat_alergi,
+                    pregnancy_number,birth_count,miscariage,g_count,p_count,a_count,children_count,
+                    dead_birth_count,premature_children,distance,immunisasi_status,last_birth_helper,last_birth_way).enqueue(formCallback.getCallback());
         } else
             mApiService.createPregnancy(auth_token, last_period_date, start_height, start_weight,
-                    period_type, mother_id).enqueue(formCallback.getCallback());
+                    period_type, mother_id,arm_round, kek_status,kontrasepsi, riwayat_penyakit,riwayat_alergi,
+                    pregnancy_number,birth_count,miscariage,g_count,p_count,a_count,children_count,
+                    dead_birth_count,premature_children,distance,immunisasi_status,last_birth_helper,last_birth_way).enqueue(formCallback.getCallback());
     }
 
     ApiCallback formCallback = new ApiCallback() {

@@ -309,7 +309,7 @@
 
                     </LinearLayout>
 
-                    <AutoCompleteTextView
+                    <EditText
                         android:id="@+id/kontrasepsi"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -318,7 +318,7 @@
                         android:singleLine="true"
                         android:hint="Kontrasepsi"/>
 
-                    <AutoCompleteTextView
+                    <EditText
                         android:id="@+id/desease_history"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -327,7 +327,7 @@
                         android:singleLine="true"
                         android:hint="Riwayat Penyakit"/>
 
-                    <AutoCompleteTextView
+                    <EditText
                         android:id="@+id/alergi_history"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -373,7 +373,7 @@
                                 android:layout_centerInParent="true"
                                 android:textSize="@dimen/form_text_size"
                                 android:layout_alignParentRight="true"
-                                android:text="@string/hint_cm"/>
+                                android:text="jumlah"/>
                         </RelativeLayout>
 
                     </LinearLayout>
@@ -714,7 +714,7 @@
 
                     </LinearLayout>
 
-                    <AutoCompleteTextView
+                    <EditText
                         android:id="@+id/distance"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -723,7 +723,7 @@
                         android:singleLine="true"
                         android:hint="Distance"/>
 
-                    <AutoCompleteTextView
+                    <EditText
                         android:id="@+id/immunization_status"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -732,7 +732,7 @@
                         android:singleLine="true"
                         android:hint="Immunization_status"/>
 
-                    <AutoCompleteTextView
+                    <EditText
                         android:id="@+id/last_birth_helper"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -741,7 +741,7 @@
                         android:singleLine="true"
                         android:hint="Pembantu Kelahiran Terakhir"/>
 
-                    <AutoCompleteTextView
+                    <EditText
                         android:id="@+id/last_birth_way"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"

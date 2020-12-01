@@ -41,7 +41,10 @@ import java.util.List;
 public class PregnancyDetailActivity extends BaseActivity {
 
     private TextView tvMotherName, tvStartHeight, tvStartWeight, tvWeightGain, tvLastPeriodDate,
-            tvHplDate, tvPeriodType, tvImt, tvMotherWeightIndex, tvMotherNutritionCategory;
+            tvHplDate, tvPeriodType, tvImt, tvMotherWeightIndex, tvMotherNutritionCategory,
+            tvArmRound, tvKekStatus, tvPregnancyNumber, tvMiscariage, tvGCount, tvPCount,tvKontrasepsi,tvDesease,
+            tvACount, tvChildrenCount, tvDeadBirthCount, tvPrematureChildrenCount,tvRiwayatAlergi,
+            tvBirthCount, tvDistance, tvImunisasi, tvLastBirthHelper, tvLastBirthWay;
     private ImageView ivMotherWeightIndex, ivMotherNutritionCategory;
     private Button btnNext, btnNext2, btnNext3;
     private Pregnancy pregnancy;
@@ -79,6 +82,24 @@ public class PregnancyDetailActivity extends BaseActivity {
         ivMotherWeightIndex = findViewById(R.id.mother_weight_index_icon);
         ivMotherNutritionCategory= findViewById(R.id.mother_nutrition_category_icon);
         mChart = findViewById(R.id.chart1);
+        tvArmRound = findViewById(R.id.arm_round);
+        tvKekStatus = findViewById(R.id.kek_status);
+        tvKontrasepsi = findViewById(R.id.kontrasepsi);
+        tvRiwayatAlergi = findViewById(R.id.alergi_history);
+        tvPregnancyNumber = findViewById(R.id.pregnancy_number);
+        tvBirthCount = findViewById(R.id.birth_count);
+        tvMiscariage = findViewById(R.id.miscarriage_count);
+        tvGCount = findViewById(R.id.g_count);
+        tvPCount = findViewById(R.id.p_count);
+        tvACount = findViewById(R.id.a_count);
+        tvChildrenCount = findViewById(R.id.children_count);
+        tvDeadBirthCount = findViewById(R.id.dead_birth_count);
+        tvPrematureChildrenCount = findViewById(R.id.premature_children_count);
+        tvDistance = findViewById(R.id.distance);
+        tvImunisasi = findViewById(R.id.immunization_status);
+        tvLastBirthHelper = findViewById(R.id.last_birth_helper);
+        tvLastBirthWay = findViewById(R.id.last_birth_way);
+        tvDesease = findViewById(R.id.desease_history);
 
         btnNext = findViewById(R.id.submit);
         btnNext.setOnClickListener(new View.OnClickListener() {
@@ -166,6 +187,26 @@ public class PregnancyDetailActivity extends BaseActivity {
         tvMotherWeightIndex.setText(pregnancy.getMother_weight_index());
         tvMotherNutritionCategory.setText(pregnancy.getMother_nutrition_category());
         tvMotherName.setText(pregnancy.getMother_name());
+        tvArmRound.setText(""+pregnancy.getArm_round()+" cm");
+        tvKekStatus.setText(""+pregnancy.getKek_status()+" cm");
+        tvPregnancyNumber.setText(""+pregnancy.getPregnancy_number()+" cm");
+        tvMiscariage.setText(""+pregnancy.getMiscariage_count()+" cm");
+        tvGCount.setText(""+pregnancy.getG_count()+" cm");
+        tvPCount.setText(""+pregnancy.getP_count()+" cm");
+        tvACount.setText(""+pregnancy.getA_count()+" cm");
+        tvChildrenCount.setText(""+pregnancy.getChildren_count()+" cm");
+        tvDeadBirthCount.setText(""+pregnancy.getDead_birth_count()+" cm");
+        tvPrematureChildrenCount.setText(""+pregnancy.getPremature_children_count()+" cm");
+        tvBirthCount.setText(""+pregnancy.getBirth_count()+" cm");
+        tvDistance.setText(pregnancy.getDistance());
+        tvKontrasepsi.setText(pregnancy.getKontrasepsi());
+        tvDesease.setText(pregnancy.getDesease_history());
+        tvRiwayatAlergi.setText(pregnancy.getAlergy_history());
+        tvImunisasi.setText(pregnancy.getImmunization_status());
+        tvLastBirthHelper.setText(pregnancy.getLast_birth_helper());
+        tvLastBirthWay.setText(pregnancy.getLast_birth_way());
+
+
 
         if(pregnancy.getMother_weight_index().compareToIgnoreCase("Gemuk")==0 ||
                 pregnancy.getMother_weight_index().compareToIgnoreCase("Sangat Gemuk")==0 ){

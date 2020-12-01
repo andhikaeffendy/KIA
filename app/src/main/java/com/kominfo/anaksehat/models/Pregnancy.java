@@ -18,6 +18,168 @@ public class Pregnancy {
     private String name;
     private long give_birth_id;
     private long mother_id;
+    private int arm_round;
+    private int kek_status;
+    private String kontrasepsi;
+    private String desease_history;
+    private String alergy_history;
+    private int pregnancy_number;
+    private int birth_count;
+    private int miscariage_count;
+    private int g_count;
+    private int p_count;
+    private int a_count;
+    private int children_count;
+    private int dead_birth_count;
+    private int premature_children_count;
+    private String distance;
+    private String immunization_status;
+    private String last_birth_helper;
+    private String last_birth_way;
+
+    public int getArm_round() {
+        return arm_round;
+    }
+
+    public void setArm_round(int arm_round) {
+        this.arm_round = arm_round;
+    }
+
+    public int getKek_status() {
+        return kek_status;
+    }
+
+    public void setKek_status(int kek_status) {
+        this.kek_status = kek_status;
+    }
+
+    public String getKontrasepsi() {
+        return kontrasepsi;
+    }
+
+    public void setKontrasepsi(String kontrasepsi) {
+        this.kontrasepsi = kontrasepsi;
+    }
+
+    public String getDesease_history() {
+        return desease_history;
+    }
+
+    public void setDesease_history(String desease_history) {
+        this.desease_history = desease_history;
+    }
+
+    public String getAlergy_history() {
+        return alergy_history;
+    }
+
+    public void setAlergy_history(String alergy_history) {
+        this.alergy_history = alergy_history;
+    }
+
+    public int getPregnancy_number() {
+        return pregnancy_number;
+    }
+
+    public void setPregnancy_number(int pregnancy_number) {
+        this.pregnancy_number = pregnancy_number;
+    }
+
+    public int getBirth_count() {
+        return birth_count;
+    }
+
+    public void setBirth_count(int birth_count) {
+        this.birth_count = birth_count;
+    }
+
+    public int getMiscariage_count() {
+        return miscariage_count;
+    }
+
+    public void setMiscariage_count(int miscariage_count) {
+        this.miscariage_count = miscariage_count;
+    }
+
+    public int getG_count() {
+        return g_count;
+    }
+
+    public void setG_count(int g_count) {
+        this.g_count = g_count;
+    }
+
+    public int getP_count() {
+        return p_count;
+    }
+
+    public void setP_count(int p_count) {
+        this.p_count = p_count;
+    }
+
+    public int getA_count() {
+        return a_count;
+    }
+
+    public void setA_count(int a_count) {
+        this.a_count = a_count;
+    }
+
+    public int getChildren_count() {
+        return children_count;
+    }
+
+    public void setChildren_count(int children_count) {
+        this.children_count = children_count;
+    }
+
+    public int getDead_birth_count() {
+        return dead_birth_count;
+    }
+
+    public void setDead_birth_count(int dead_birth_count) {
+        this.dead_birth_count = dead_birth_count;
+    }
+
+    public int getPremature_children_count() {
+        return premature_children_count;
+    }
+
+    public void setPremature_children_count(int premature_children_count) {
+        this.premature_children_count = premature_children_count;
+    }
+
+    public String getDistance() {
+        return distance;
+    }
+
+    public void setDistance(String distance) {
+        this.distance = distance;
+    }
+
+    public String getImmunization_status() {
+        return immunization_status;
+    }
+
+    public void setImmunization_status(String immunization_status) {
+        this.immunization_status = immunization_status;
+    }
+
+    public String getLast_birth_helper() {
+        return last_birth_helper;
+    }
+
+    public void setLast_birth_helper(String last_birth_helper) {
+        this.last_birth_helper = last_birth_helper;
+    }
+
+    public String getLast_birth_way() {
+        return last_birth_way;
+    }
+
+    public void setLast_birth_way(String last_birth_way) {
+        this.last_birth_way = last_birth_way;
+    }
 
     public long getId() {
         return id;
