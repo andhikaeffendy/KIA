@@ -563,49 +563,7 @@
 
             </LinearLayout>
 
-            <LinearLayout
-                android:paddingBottom="16dp"
-                android:paddingLeft="20dp"
-                android:paddingRight="20dp"
-                android:paddingTop="0dp"
-                android:layout_gravity="center"
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
 
-                <RelativeLayout
-                    android:paddingTop="10dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="3dp"
-                        android:text="Hasil Tes SHK : "
-                        android:textSize="16sp"
-                        android:textColor="#000"/>
-
-                    <RelativeLayout
-                        android:layout_alignParentEnd="true"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="13dp"
-                            android:layout_marginLeft="2dp"
-                            android:textSize="11dp"
-                            android:textStyle="bold"
-                            android:textColor="@color/white"/>
-
-                    </RelativeLayout>
-
-                </RelativeLayout>
-
-            </LinearLayout>
 
             <LinearLayout
                 android:paddingBottom="16dp"
@@ -672,50 +630,6 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="3dp"
                         android:text="Tindakan (Terapi\n/Rujukan/Umpan Balik) : "
-                        android:textSize="16sp"
-                        android:textColor="#000"/>
-
-                    <RelativeLayout
-                        android:layout_alignParentEnd="true"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="13dp"
-                            android:layout_marginLeft="2dp"
-                            android:textSize="11dp"
-                            android:textStyle="bold"
-                            android:textColor="@color/white"/>
-
-                    </RelativeLayout>
-
-                </RelativeLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:paddingBottom="16dp"
-                android:paddingLeft="20dp"
-                android:paddingRight="20dp"
-                android:paddingTop="0dp"
-                android:layout_gravity="center"
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <RelativeLayout
-                    android:paddingTop="10dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="3dp"
-                        android:text="Nama Pemeriksa : "
                         android:textSize="16sp"
                         android:textColor="#000"/>
 
