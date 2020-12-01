@@ -20,7 +20,7 @@ import com.kominfo.anaksehat.models.Child;
 import com.kominfo.anaksehat.models.GiveBirth;
 import com.kominfo.anaksehat.models.Pregnancy;
 
-public class GiveBirthDetailActivity extends BaseActivity {
+public class NifasHistoryDetailActivity extends BaseActivity {
 
     private TextView tvBirthDate, tvBirthTime, tvPregnancyAge, tvBirthHelper, tvBirthWay,
             tvMotherCondition, tvRemarks;
@@ -31,7 +31,7 @@ public class GiveBirthDetailActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_give_birth_detail);
+        setContentView(R.layout.activity_nifas_history_detail);
 
         checkSession();
 
@@ -70,9 +70,9 @@ public class GiveBirthDetailActivity extends BaseActivity {
         btnNext2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(context, NifasHistoriesActivity.class);
-                i.putExtra("data", new Gson().toJson(giveBirth));
-                startActivity(i);
+//                Intent i = new Intent(context, FormPregnancyHistoryActivity.class);
+//                i.putExtra("data", new Gson().toJson(pregnancy));
+//                startActivity(i);
             }
         });
 
@@ -80,9 +80,9 @@ public class GiveBirthDetailActivity extends BaseActivity {
         btnNext3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(context, FormNifasHistoryActivity.class);
-                i.putExtra("data", new Gson().toJson(giveBirth));
-                startActivity(i);
+//                Intent i = new Intent(context, FormPregnancyHistoryActivity.class);
+//                i.putExtra("data", new Gson().toJson(pregnancy));
+//                startActivity(i);
             }
         });
 

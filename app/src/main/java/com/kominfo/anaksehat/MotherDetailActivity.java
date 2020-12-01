@@ -23,8 +23,9 @@ import com.kominfo.anaksehat.models.Mother;
 public class MotherDetailActivity extends BaseActivity {
     private ImageView ivAvatar;
     private TextView tvName, tvBirthDate, tvBloodType, tvHeight, tvWeight, tvSpouseName, tvAddress,
-            tvStateName, tvDistrictName, tvBloodPressureTop, getTvBloodPressureBottom, tvKkName, tvNik,
+            tvDistrictName, tvBloodPressureTop, getTvBloodPressureBottom, tvKkName, tvNik,
             tvJamStatus, tvSubDistrict, tvVillages;
+//    private TextView tvStateName;
     private Button btnChild, btnPregnancy;
     private Mother mother;
 
@@ -51,7 +52,7 @@ public class MotherDetailActivity extends BaseActivity {
         tvWeight = findViewById(R.id.weight);
         tvSpouseName = findViewById(R.id.spouse_name);
         tvAddress = findViewById(R.id.address);
-        tvStateName =findViewById(R.id.state_name);
+//        tvStateName =findViewById(R.id.state_name);
         tvDistrictName = findViewById(R.id.district_name);
         tvBloodPressureTop = findViewById(R.id.blood_pressure_top);
         getTvBloodPressureBottom = findViewById(R.id.blood_pressure_bottom);
@@ -125,7 +126,7 @@ public class MotherDetailActivity extends BaseActivity {
         tvWeight.setText(replaceDotToComma(""+mother.getWeight())+" Kg");
         tvSpouseName.setText(mother.getSpouse_name());
         tvAddress.setText(mother.getAddress());
-        tvStateName.setText(mother.getState_name());
+//        tvStateName.setText(mother.getState_name());
         tvDistrictName.setText(mother.getDistrict_name());
         tvBloodPressureTop.setText(""+mother.getBlood_pressure_top());
         getTvBloodPressureBottom.setText(""+mother.getBlood_pressure_bottom());

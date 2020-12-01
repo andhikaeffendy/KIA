@@ -551,7 +551,7 @@ public interface BaseApiService {
                                        @Field("birth_way_id") String birth_way_id,
                                        @Field("mother_condition_id") long mother_condition_id,
                                        @Field("remarks") String remarks
-                                       );
+    );
 
     @FormUrlEncoded
     @PUT("give_births/{id}")
@@ -573,5 +573,86 @@ public interface BaseApiService {
 
     @GET("mother_conditions")
     Call<ResponseBody> getMotherConditions();
+
+    @GET("nifas_history_types")
+    Call<ResponseBody> getNifasHistoryTypes();
+
+    @GET("nifas_histories")
+    Call<ResponseBody> getNifasHistories(@Query("auth_token") String token,
+                                         @Query("give_birth_id") long give_birth_id);
+
+    @GET("nifas_histories/{id}")
+    Call<ResponseBody> getNifasHistory(@Path("id") long id,
+                                       @Query("auth_token") String token);
+
+    @FormUrlEncoded
+    @POST("nifas_histories")
+    Call<ResponseBody> createNifasHistory(@Field("auth_token") String token,
+                                          @Field("give_birth_id") long give_birth_id,
+                                          @Field("history_date") String history_date,
+                                          @Field("nifas_history_type_id") long nifas_history_type_id,
+                                          @Field("mother_condition") String mother_condition,
+                                          @Field("blood_temp_respiration") String blood_temp_respiration,
+                                          @Field("blooding_pervaginam") String blooding_pervaginam,
+                                          @Field("perineum") String perineum,
+                                          @Field("infection") String infection,
+                                          @Field("uteri") String uteri,
+                                          @Field("fundus_uteri") String fundus_uteri,
+                                          @Field("lokhia") String lokhia,
+                                          @Field("birth_canal") String birth_canal,
+                                          @Field("breast") String breast,
+                                          @Field("asi") String asi,
+                                          @Field("vitamin_a") String vitamin_a,
+                                          @Field("kontrasepsi") String kontrasepsi,
+                                          @Field("high_risk") String high_risk,
+                                          @Field("bab") String bab,
+                                          @Field("bak") String bak,
+                                          @Field("good_food") String good_food,
+                                          @Field("drink") String drink,
+                                          @Field("cleanliness") String cleanliness,
+                                          @Field("take_a_rest") String take_a_rest,
+                                          @Field("caesar_take_care") String caesar_take_care,
+                                          @Field("breastfeeding") String breastfeeding,
+                                          @Field("baby_treatment") String baby_treatment,
+                                          @Field("baby_cry") String baby_cry,
+                                          @Field("baby_communication") String baby_communication,
+                                          @Field("kb_consultation") String kb_consultation
+    );
+
+    @FormUrlEncoded
+    @PUT("nifas_histories/{id}")
+    Call<ResponseBody> updateNifasHistory(@Path("id") long id,
+                                          @Field("id") long nifas_history_id,
+                                          @Field("auth_token") String token,
+                                          @Field("give_birth_id") long give_birth_id,
+                                          @Field("history_date") String history_date,
+                                          @Field("nifas_history_type_id") long nifas_history_type_id,
+                                          @Field("mother_condition") String mother_condition,
+                                          @Field("blood_temp_respiration") String blood_temp_respiration,
+                                          @Field("blooding_pervaginam") String blooding_pervaginam,
+                                          @Field("perineum") String perineum,
+                                          @Field("infection") String infection,
+                                          @Field("uteri") String uteri,
+                                          @Field("fundus_uteri") String fundus_uteri,
+                                          @Field("lokhia") String lokhia,
+                                          @Field("birth_canal") String birth_canal,
+                                          @Field("breast") String breast,
+                                          @Field("asi") String asi,
+                                          @Field("vitamin_a") String vitamin_a,
+                                          @Field("kontrasepsi") String kontrasepsi,
+                                          @Field("high_risk") String high_risk,
+                                          @Field("bab") String bab,
+                                          @Field("bak") String bak,
+                                          @Field("good_food") String good_food,
+                                          @Field("drink") String drink,
+                                          @Field("cleanliness") String cleanliness,
+                                          @Field("take_a_rest") String take_a_rest,
+                                          @Field("caesar_take_care") String caesar_take_care,
+                                          @Field("breastfeeding") String breastfeeding,
+                                          @Field("baby_treatment") String baby_treatment,
+                                          @Field("baby_cry") String baby_cry,
+                                          @Field("baby_communication") String baby_communication,
+                                          @Field("kb_consultation") String kb_consultation
+    );
 
 }
