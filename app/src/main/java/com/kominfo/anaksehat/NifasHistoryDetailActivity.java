@@ -6,27 +6,24 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.kominfo.anaksehat.controllers.BaseActivity;
-import com.kominfo.anaksehat.helpers.AppLog;
-import com.kominfo.anaksehat.helpers.AppSession;
 import com.kominfo.anaksehat.helpers.DateHelper;
-import com.kominfo.anaksehat.models.Child;
 import com.kominfo.anaksehat.models.GiveBirth;
-import com.kominfo.anaksehat.models.Pregnancy;
+import com.kominfo.anaksehat.models.NifasHistory;
 
 public class NifasHistoryDetailActivity extends BaseActivity {
 
-    private TextView tvBirthDate, tvBirthTime, tvPregnancyAge, tvBirthHelper, tvBirthWay,
-            tvMotherCondition, tvRemarks;
-    private Button btnNext, btnNext2, btnNext3;
+    private TextView etBirthDate,etMotherCondition,etBloodTempTespiration,etPerineum,
+            etBloodingPervaginam,etInfection,etUteri,etFundusUteri,etLokhia,etSuggestion,
+            etBirthCanal,etBreast,etAsi,etVitaminA,etKontrasepsi,etHighRisk,etBab,
+            etBak, etGoodFood, etDrink, etCleanliness, etCaesarTakeCare, etTakeARest,
+            etBreastfeeding, etBabyTreatment, etBabyCry, etBabyCommunication, etKbConsultation,
+            etNifasHistoryType;
     private GiveBirth giveBirth;
-    private Pregnancy pregnancy;
+    private NifasHistory nifasHistory;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,50 +38,37 @@ public class NifasHistoryDetailActivity extends BaseActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        setTitle("Persalinan");
+        setTitle("Riwayat Pemeriksaan Nifas");
 
-        tvBirthDate= findViewById(R.id.birth_date);
-        tvBirthTime= findViewById(R.id.birth_time);
-        tvPregnancyAge= findViewById(R.id.pregnancy_age);
-        tvBirthHelper= findViewById(R.id.bitrh_helper);
-        tvBirthWay= findViewById(R.id.birth_way_id);
-        tvMotherCondition= findViewById(R.id.mother_condition_id);
-        tvRemarks= findViewById(R.id.remarks);
-
-        btnNext = findViewById(R.id.submit);
-        btnNext.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(giveBirth.getChild_id()>0) {
-                    mApiService.getChild(giveBirth.getChild_id(),
-                            appSession.getData(AppSession.TOKEN)).enqueue(childCallback.getCallback());
-                } else {
-                    Intent i = new Intent(context, FormChildActivity.class);
-                    i.putExtra("give_birth_id", giveBirth.getId());
-                    startActivity(i);
-                }
-            }
-        });
-
-        btnNext2 = findViewById(R.id.submit2);
-        btnNext2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-//                Intent i = new Intent(context, FormPregnancyHistoryActivity.class);
-//                i.putExtra("data", new Gson().toJson(pregnancy));
-//                startActivity(i);
-            }
-        });
-
-        btnNext3 = findViewById(R.id.submit3);
-        btnNext3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-//                Intent i = new Intent(context, FormPregnancyHistoryActivity.class);
-//                i.putExtra("data", new Gson().toJson(pregnancy));
-//                startActivity(i);
-            }
-        });
+        etBirthDate = findViewById(R.id.history_date);
+        etMotherCondition = findViewById(R.id.mother_condition);
+        etBloodTempTespiration = findViewById(R.id.blood_temp_respiration);
+        etPerineum = findViewById(R.id.perineum);
+        etBloodingPervaginam = findViewById(R.id.blooding_pervaginam);
+        etInfection = findViewById(R.id.infection);
+        etUteri = findViewById(R.id.uteri);
+        etFundusUteri = findViewById(R.id.fundus_uteri);
+        etLokhia = findViewById(R.id.lokhia);
+        etSuggestion = findViewById(R.id.suggestion);
+        etBirthCanal = findViewById(R.id.birth_canal);
+        etBreast = findViewById(R.id.breast);
+        etAsi = findViewById(R.id.asi);
+        etVitaminA = findViewById(R.id.vitamin_a);
+        etKontrasepsi = findViewById(R.id.kontrasepsi);
+        etHighRisk = findViewById(R.id.high_risk);
+        etBab = findViewById(R.id.bab);
+        etBak = findViewById(R.id.bak);
+        etGoodFood = findViewById(R.id.good_food);
+        etDrink = findViewById(R.id.drink);
+        etCleanliness = findViewById(R.id.cleanliness);
+        etCaesarTakeCare = findViewById(R.id.caesar_take_care);
+        etTakeARest = findViewById(R.id.take_a_rest);
+        etBreastfeeding = findViewById(R.id.breastfeeding);
+        etBabyTreatment = findViewById(R.id.baby_treatment);
+        etBabyCry = findViewById(R.id.baby_cry);
+        etBabyCommunication = findViewById(R.id.baby_communication);
+        etKbConsultation = findViewById(R.id.kb_consultation);
+        etNifasHistoryType = findViewById(R.id.nifas_history_type_id);
 
         initData();
     }
@@ -108,9 +92,9 @@ public class NifasHistoryDetailActivity extends BaseActivity {
                 finish();
                 break;
             case R.id.edit:
-                Intent i = new Intent(context, FormGiveBirthActivity.class);
-                i.putExtra("data", new Gson().toJson(pregnancy));
-                i.putExtra("edit_data", new Gson().toJson(giveBirth));
+                Intent i = new Intent(context, FormNifasHistoryActivity.class);
+                i.putExtra("data", new Gson().toJson(giveBirth));
+                i.putExtra("edit_data", new Gson().toJson(nifasHistory));
                 i.putExtra("edit_mode", true);
                 startActivity(i);
                 finish();
@@ -122,33 +106,37 @@ public class NifasHistoryDetailActivity extends BaseActivity {
     }
 
     private void initData(){
-        giveBirth = new Gson().fromJson(getIntent().getStringExtra("data"), GiveBirth.class);
-        pregnancy = new Gson().fromJson(getIntent().getStringExtra("parent_data"), Pregnancy.class);
-        tvBirthDate.setText("Tanggal Persalinan : "+DateHelper.getDate(giveBirth.getBirth_date()));
-        tvBirthTime.setText(giveBirth.getBirth_time());
-        tvBirthHelper.setText(giveBirth.getBitrh_helper());
-        tvBirthWay.setText(giveBirth.getBirth_way_id());
-        tvMotherCondition.setText(giveBirth.getMother_condition_name());
-        tvPregnancyAge.setText(""+giveBirth.getPregnancy_age());
-        tvRemarks.setText(""+giveBirth.getRemarks());
+        giveBirth = new Gson().fromJson(getIntent().getStringExtra("parent_data"), GiveBirth.class);
+        nifasHistory = new Gson().fromJson(getIntent().getStringExtra("data"), NifasHistory.class);
+
+        etBirthDate.setText(DateHelper.getDateServer(nifasHistory.getHistory_date()));
+        etMotherCondition.setText(nifasHistory.getMother_condition());
+        etBloodTempTespiration.setText(nifasHistory.getBlood_temp_respiration());
+        etPerineum.setText(nifasHistory.getPerineum());
+        etBloodingPervaginam.setText(nifasHistory.getBlooding_pervaginam());
+        etInfection.setText(nifasHistory.getInfection());
+        etUteri.setText(nifasHistory.getUteri());
+        etFundusUteri.setText(nifasHistory.getFundus_uteri());
+        etLokhia.setText(nifasHistory.getLokhia());
+        etSuggestion.setText(nifasHistory.getSuggestion());
+        etBirthCanal.setText(nifasHistory.getBirth_canal());
+        etBreast.setText(nifasHistory.getBreast());
+        etAsi.setText(nifasHistory.getAsi());
+        etVitaminA.setText(nifasHistory.getVitamin_a());
+        etKontrasepsi.setText(nifasHistory.getKontrasepsi());
+        etHighRisk.setText(nifasHistory.getHigh_risk());
+        etBab.setText(nifasHistory.getBab());
+        etBak.setText(nifasHistory.getBak());
+        etGoodFood.setText(nifasHistory.getGood_food());
+        etDrink.setText(nifasHistory.getDrink());
+        etCleanliness.setText(nifasHistory.getCleanliness());
+        etCaesarTakeCare.setText(nifasHistory.getCaesar_take_care());
+        etTakeARest.setText(nifasHistory.getTake_a_rest());
+        etBreastfeeding.setText(nifasHistory.getBreastfeeding());
+        etBabyTreatment.setText(nifasHistory.getBaby_treatment());
+        etBabyCry.setText(nifasHistory.getBaby_cry());
+        etBabyCommunication.setText(nifasHistory.getBaby_communication());
+        etKbConsultation.setText(nifasHistory.getKb_consultation());
+        etNifasHistoryType.setText(nifasHistory.getNifas_history_type_name());
     }
-
-    ApiCallback childCallback = new ApiCallback(){
-        @Override
-        public void onApiSuccess(String result) {
-            showProgressBar(false);
-            Gson gson = createGsonDate();
-            Child child = gson.fromJson(result, Child.class);
-            AppLog.d(new Gson().toJson(child));
-            Intent i = new Intent(context, ChildDetailActivity.class);
-            i.putExtra("data", new Gson().toJson(child));
-            startActivity(i);
-        }
-
-        @Override
-        public void onApiFailure(String errorMessage) {
-            showProgressBar(false);
-            Toast.makeText(context, errorMessage, Toast.LENGTH_SHORT).show();
-        }
-    };
 }

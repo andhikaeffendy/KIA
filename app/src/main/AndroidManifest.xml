@@ -143,6 +143,9 @@
             android:name=".FormNifasHistoryActivity"
             android:screenOrientation="portrait" />
         <activity
+            android:name=".NifasHistoryDetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".ImmunizationsActivity"
             android:screenOrientation="portrait" />
         <activity
