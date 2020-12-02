@@ -10,10 +10,12 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
+import com.kominfo.anaksehat.controllers.BaseActivity;
+import com.kominfo.anaksehat.helpers.AppSession;
 import com.kominfo.anaksehat.models.Child;
 import com.kominfo.anaksehat.models.PemeriksaanBayi;
 
-public class DetailPemeriksaanBayiActivity extends AppCompatActivity {
+public class DetailPemeriksaanBayiActivity extends BaseActivity {
 
     private TextView tvWeight, tvHeight, tvTemp, tvRepiratory, tvHeatBeat, tvInfection,
             tvIkterus, tvDiare, tvLowWeight, tvKVitamin, tvHbBcgPolio, tvShk,
@@ -52,20 +54,21 @@ public class DetailPemeriksaanBayiActivity extends AppCompatActivity {
 
     private void initData(){
         pemeriksaanBayi = new Gson().fromJson(getIntent().getStringExtra("data"), PemeriksaanBayi.class);
-        child = new Gson().fromJson(getIntent().getStringExtra("edit_data"), Child.class);
+        child = new Gson().fromJson(getIntent().getStringExtra("parent_data"), Child.class);
+
         tvWeight.setText(""+pemeriksaanBayi.getWeight() +" Kg");
         tvHeight.setText(""+pemeriksaanBayi.getHeight() + " Cm");
-        tvTemp.setText(""+pemeriksaanBayi.getTemp() +" C");
+        tvTemp.setText(""+pemeriksaanBayi.getTemperature() +" C");
         tvRepiratory.setText(""+pemeriksaanBayi.getRespiratory() +" Minute");
-        tvHeatBeat.setText(""+pemeriksaanBayi.getHeart_beat()+" Minute");
+        tvHeatBeat.setText(""+pemeriksaanBayi.getHeartBeat()+" Minute");
         tvInfection.setText(pemeriksaanBayi.getInfection());
         tvIkterus.setText(pemeriksaanBayi.getIkterus());
         tvDiare.setText(pemeriksaanBayi.getDiare());
-        tvLowWeight.setText(pemeriksaanBayi.getLow_weight());
-        tvKVitamin.setText(pemeriksaanBayi.getK_vitamin());
-        tvHbBcgPolio.setText(pemeriksaanBayi.getHb_bcg_polio());
+        tvLowWeight.setText(pemeriksaanBayi.getLowWeight());
+        tvKVitamin.setText(pemeriksaanBayi.getkVitamin());
+        tvHbBcgPolio.setText(pemeriksaanBayi.gethBP());
         tvShk.setText(pemeriksaanBayi.getShk());
-        tvShkConfirm.setText(pemeriksaanBayi.getShk_confirmation());
+        tvShkConfirm.setText(pemeriksaanBayi.getShkConfirmation());
         tvTreatment.setText(pemeriksaanBayi.getTreatment());
     }
 
@@ -89,9 +92,9 @@ public class DetailPemeriksaanBayiActivity extends AppCompatActivity {
                 break;
             case R.id.edit:
                 Intent i = new Intent(this, FormPemeriksaanBayiActivity.class);
-                i.putExtra("edit_data", new Gson().toJson(pemeriksaanBayi));
+                i.putExtra("data", new Gson().toJson(
+                        i.putExtra("edit_data", new Gson().toJson(pemeriksaanBayi))));
                 i.putExtra("edit_mode", true);
-                i.putExtra("edit_child", new Gson().toJson(child));
                 startActivity(i);
                 finish();
                 break;
@@ -101,5 +104,17 @@ public class DetailPemeriksaanBayiActivity extends AppCompatActivity {
         }
     }
 
+    ApiCallback detailPemeriksaanBayiCallback = new ApiCallback() {
+        @Override
+        public void onApiSuccess(String result) {
+            Gson gson = createGsonDate();
+            child = gson.fromJson(result, Child.class);
+        }
+
+        @Override
+        public void onApiFailure(String errorMessage) {
+
+        }
+    };
 
 }

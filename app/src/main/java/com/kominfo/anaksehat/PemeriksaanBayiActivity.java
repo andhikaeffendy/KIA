@@ -95,19 +95,16 @@ public class PemeriksaanBayiActivity extends BaseActivity implements AdapterList
 
     @Override
     public void onItemSelected(PemeriksaanBayi data) {
-        Intent i = new Intent(context, DetailPemeriksaanBayiActivity.class);
-        i.putExtra("data", new Gson().toJson(data));
-        i.putExtra("edit_data", new Gson().toJson(child));
-        startActivity(i);
+        editMode = false;
+        mApiService.getPemeriksaanBayi(data.getId(),appSession.getData(AppSession.TOKEN))
+                .enqueue(detailPemeriksaanBayiCallback.getCallback());
     }
 
     @Override
     public void onItemLongSelected(PemeriksaanBayi data) {
-        Intent i = new Intent(context, FormPemeriksaanBayiActivity.class);
-        i.putExtra("data", new Gson().toJson(child));
-        i.putExtra("edit_data", new Gson().toJson(data));
-        i.putExtra("edit_mode", true);
-        startActivity(i);
+        editMode = true;
+        mApiService.getPemeriksaanBayi(data.getId(),appSession.getData(AppSession.TOKEN))
+                .enqueue(detailPemeriksaanBayiCallback.getCallback());
     }
 
     @Override
@@ -136,4 +133,31 @@ public class PemeriksaanBayiActivity extends BaseActivity implements AdapterList
             showWarning(R.string.warning, R.string.warning_create_child_history, R.string.ok, R.string.cancel);
         }
     }
+
+    ApiCallback detailPemeriksaanBayiCallback = new ApiCallback() {
+
+        @Override
+        public void onApiSuccess(String result) {
+            showProgressBar(false);
+            Gson gson = createGsonDate();
+            PemeriksaanBayi pemeriksaanBayi = gson.fromJson(result, PemeriksaanBayi.class);
+            if(!editMode){
+                Intent i = new Intent(context, DetailPemeriksaanBayiActivity.class);
+                i.putExtra("data", new Gson().toJson(pemeriksaanBayi));
+                i.putExtra("parent_data", new Gson().toJson(child));
+                startActivity(i);
+            } else {
+                Intent i = new Intent(context, FormPemeriksaanBayiActivity.class);
+                i.putExtra("data", new Gson().toJson(child));
+                i.putExtra("edit_data", new Gson().toJson(pemeriksaanBayi));
+                i.putExtra("edit_mode", true);
+                startActivity(i);
+            }
+        }
+
+        @Override
+        public void onApiFailure(String errorMessage) {
+
+        }
+    };
 }

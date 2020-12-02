@@ -69,7 +69,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:layout_marginLeft="2dp"
-                            android:text="3"
+                            android:text="kosong"
                             android:textSize="14dp"
                             android:textStyle="bold"/>
 
@@ -234,7 +234,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="3dp"
-                        android:text="Kemungkinan \nPenyakit Berat atau \ninfeksi akteri : "
+                        android:text="Heat Beat : "
                         android:textSize="16sp"
                         android:textColor="#000"/>
 
@@ -665,7 +665,6 @@
                             android:layout_marginTop="13dp"
                             android:layout_marginLeft="2dp"
                             android:textSize="14dp"
-                            android:text="14sp"
                             android:textStyle="bold"/>
 
                     </RelativeLayout>

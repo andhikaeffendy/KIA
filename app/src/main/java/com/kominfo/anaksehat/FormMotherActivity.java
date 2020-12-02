@@ -85,7 +85,7 @@ public class FormMotherActivity extends BaseActivity {
     private boolean editMode = false;
     private Mother mother;
     private Picasso picasso;
-    private ShowcaseHelper showcaseHelper;
+    //private ShowcaseHelper showcaseHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -150,7 +150,7 @@ public class FormMotherActivity extends BaseActivity {
         mApiService.getDistrict(37214, appSession.getData(AppSession.TOKEN)).enqueue(districtcallback.getCallback());
         mApiService.getSubDistricts(appSession.getData(AppSession.TOKEN)).enqueue(subdistrictcallback.getCallback());
 
-        showcaseHelper = new ShowcaseHelper(context, ShowcaseHelper.FORM_MOTHER_ID);
+        //showcaseHelper = new ShowcaseHelper(context, ShowcaseHelper.FORM_MOTHER_ID);
 
         editMode = getIntent().getBooleanExtra("edit_mode", false);
         if(!editMode) {
@@ -161,7 +161,7 @@ public class FormMotherActivity extends BaseActivity {
             initEditData();
         }
 
-        startShowcase();
+        //startShowcase();
     }
 
     @Override
@@ -218,6 +218,13 @@ public class FormMotherActivity extends BaseActivity {
         etWeight.setText(replaceDotToComma(""+mother.getWeight()));
         etBloodPressureTop.setText(""+mother.getBlood_pressure_top());
         etBloodPressureBottom.setText(""+mother.getBlood_pressure_bottom());
+        etNamaKK.setText(mother.getKk_name());
+        etNIK.setText(mother.getNik());
+        etJamStatus.setText(mother.getJampersal_status());
+        etAddress.setText(mother.getAddress());
+        actvDistrict.setText(mother.getDistrict_name());
+        actSubDistrict.setText(mother.getSub_district_name());
+        actVillage.setText(mother.getVillage_name());
         etAddress.setText(mother.getAddress());
     }
 
@@ -865,26 +872,26 @@ public class FormMotherActivity extends BaseActivity {
         }
     }
 
-    private void startShowcase(){
-        if(editMode) {
-            showcaseHelper.addShowcaseView(etName, getString(R.string.guide_form_mother_name));
-            showcaseHelper.addShowcaseView(etBirthDate, getString(R.string.guide_form_mother_birth_date));
-            showcaseHelper.addShowcaseView(etSpouseName, getString(R.string.guide_form_mother_spouse_name));
-            showcaseHelper.addShowcaseView(etAddress, getString(R.string.guide_form_mother_address));
-            showcaseHelper.addShowcaseView(actvState, getString(R.string.guide_form_mother_state));
-            showcaseHelper.addShowcaseView(actvDistrict, getString(R.string.guide_form_mother_district));
-            showcaseHelper.addShowcaseView(spBloodType, getString(R.string.guide_form_mother_blood));
-            showcaseHelper.addShowcaseView(etHeight, getString(R.string.guide_form_mother_height));
-            showcaseHelper.addShowcaseView(etWeight, getString(R.string.guide_form_mother_weight));
-            showcaseHelper.addShowcaseView(findViewById(R.id.layout_pressure), getString(R.string.guide_form_mother_blood_pressure));
-        }
-        else {
-            showcaseHelper.addShowcaseView(etName, getString(R.string.guide_form_mother_name));
-            showcaseHelper.addShowcaseView(etHeight, getString(R.string.guide_form_mother_height));
-            showcaseHelper.addShowcaseView(etWeight, getString(R.string.guide_form_mother_weight));
-        }
-        showcaseHelper.startGuide();
-    }
+//    private void startShowcase(){
+//        if(editMode) {
+//            showcaseHelper.addShowcaseView(etName, getString(R.string.guide_form_mother_name));
+//            showcaseHelper.addShowcaseView(etBirthDate, getString(R.string.guide_form_mother_birth_date));
+//            showcaseHelper.addShowcaseView(etSpouseName, getString(R.string.guide_form_mother_spouse_name));
+//            showcaseHelper.addShowcaseView(etAddress, getString(R.string.guide_form_mother_address));
+//            showcaseHelper.addShowcaseView(actvState, getString(R.string.guide_form_mother_state));
+//            showcaseHelper.addShowcaseView(actvDistrict, getString(R.string.guide_form_mother_district));
+//            showcaseHelper.addShowcaseView(spBloodType, getString(R.string.guide_form_mother_blood));
+//            showcaseHelper.addShowcaseView(etHeight, getString(R.string.guide_form_mother_height));
+//            showcaseHelper.addShowcaseView(etWeight, getString(R.string.guide_form_mother_weight));
+//            showcaseHelper.addShowcaseView(findViewById(R.id.layout_pressure), getString(R.string.guide_form_mother_blood_pressure));
+//        }
+//        else {
+//            showcaseHelper.addShowcaseView(etName, getString(R.string.guide_form_mother_name));
+//            showcaseHelper.addShowcaseView(etHeight, getString(R.string.guide_form_mother_height));
+//            showcaseHelper.addShowcaseView(etWeight, getString(R.string.guide_form_mother_weight));
+//        }
+//        showcaseHelper.startGuide();
+//    }
 
     private void initEditForm(){
         int[] edit_layouts = {R.id.birth_date_layout,R.id.spouse_name,R.id.address,

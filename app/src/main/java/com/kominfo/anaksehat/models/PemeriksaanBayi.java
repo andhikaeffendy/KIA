@@ -2,15 +2,17 @@ package com.kominfo.anaksehat.models;
 
 import android.support.annotation.NonNull;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.Date;
 
 public class PemeriksaanBayi {
 
     private int id;
     private Date history_date;
-    private float weight;
+    private double weight;
     private int height;
-    private float temp;
+    private double temperature;
     private double imt;
     private String note;
     private int head_round;
@@ -18,16 +20,22 @@ public class PemeriksaanBayi {
     private String child_pbu_index;
     private String child_bbpb_index;
     private String child_imtu_index;
+    @SerializedName("respiratory")
     private int respiratory;
-    private int heart_beat;
+    @SerializedName("heart_beat")
+    private int heartBeat;
     private String infection;
     private String ikterus;
     private String diare;
-    private String low_weight;
-    private String k_vitamin;
-    private String hb_bcg_polio;
+    @SerializedName("low_weight")
+    private String lowWeight;
+    @SerializedName("k_vitamin")
+    private String kVitamin;
+    @SerializedName("hb_bcg_polio")
+    private String hBP;
     private String shk;
-    private String shk_confirmation;
+    @SerializedName("shk_confirmation")
+    private String shkConfirmation;
     private String treatment;
     private int user_id;
 
@@ -49,7 +57,7 @@ public class PemeriksaanBayi {
 
 
 
-    public void setWeight(int weight) {
+    public void setWeight(float weight) {
         this.weight = weight;
     }
 
@@ -61,121 +69,24 @@ public class PemeriksaanBayi {
         this.height = height;
     }
 
-    public float getWeight() {
+    public double getWeight() {
         return weight;
     }
 
-    public void setWeight(float weight) {
+    public void setWeight(double weight) {
         this.weight = weight;
     }
 
-    public float getTemp() {
-        return temp;
+    public double getTemperature() {
+        return temperature;
     }
 
-    public void setTemp(float temp) {
-        this.temp = temp;
+    public void setTemperature(double temperature) {
+        this.temperature = temperature;
     }
 
-    public void setTemp(int temp) {
-        this.temp = temp;
-    }
-
-
-    public int getHeart_beat() {
-        return heart_beat;
-    }
-
-    public void setHeart_beat(int heart_beat) {
-        this.heart_beat = heart_beat;
-    }
-
-    public String getInfection() {
-        return infection;
-    }
-
-    public void setInfection(String infection) {
-        this.infection = infection;
-    }
-
-    public String getIkterus() {
-        return ikterus;
-    }
-
-    public void setIkterus(String ikterus) {
-        this.ikterus = ikterus;
-    }
-
-    public String getDiare() {
-        return diare;
-    }
-
-    public void setDiare(String diare) {
-        this.diare = diare;
-    }
-
-    public String getLow_weight() {
-        return low_weight;
-    }
-
-    public void setLow_weight(String low_weight) {
-        this.low_weight = low_weight;
-    }
-
-    public String getK_vitamin() {
-        return k_vitamin;
-    }
-
-    public void setK_vitamin(String k_vitamin) {
-        this.k_vitamin = k_vitamin;
-    }
-
-    public String getHb_bcg_polio() {
-        return hb_bcg_polio;
-    }
-
-    public void setHb_bcg_polio(String hb_bcg_polio) {
-        this.hb_bcg_polio = hb_bcg_polio;
-    }
-
-    public String getShk() {
-        return shk;
-    }
-
-    public void setShk(String shk) {
-        this.shk = shk;
-    }
-
-    public int getRespiratory() {
-        return respiratory;
-    }
-
-    public void setRespiratory(int respiratory) {
-        this.respiratory = respiratory;
-    }
-
-    public String getShk_confirmation() {
-        return shk_confirmation;
-    }
-
-    public void setShk_confirmation(String shk_confirmation) {
-        this.shk_confirmation = shk_confirmation;
-    }
-
-    public String getTreatment() {
-        return treatment;
-    }
-
-    public void setTreatment(String treatment) {
-        this.treatment = treatment;
-    }
-
-    public int getUser_id() {
-        return user_id;
-    }
-
-    public void setUser_id(int user_id) {
-        this.user_id = user_id;
+    public void setTemperature(float temperature) {
+        this.temperature = temperature;
     }
 
     public double getImt() {
@@ -232,5 +143,101 @@ public class PemeriksaanBayi {
 
     public void setChild_imtu_index(String child_imtu_index) {
         this.child_imtu_index = child_imtu_index;
+    }
+
+    public int getRespiratory() {
+        return respiratory;
+    }
+
+    public void setRespiratory(int respiratory) {
+        this.respiratory = respiratory;
+    }
+
+    public int getHeartBeat() {
+        return heartBeat;
+    }
+
+    public void setHeartBeat(int heartBeat) {
+        this.heartBeat = heartBeat;
+    }
+
+    public String getInfection() {
+        return infection;
+    }
+
+    public void setInfection(String infection) {
+        this.infection = infection;
+    }
+
+    public String getIkterus() {
+        return ikterus;
+    }
+
+    public void setIkterus(String ikterus) {
+        this.ikterus = ikterus;
+    }
+
+    public String getDiare() {
+        return diare;
+    }
+
+    public void setDiare(String diare) {
+        this.diare = diare;
+    }
+
+    public String getLowWeight() {
+        return lowWeight;
+    }
+
+    public void setLowWeight(String lowWeight) {
+        this.lowWeight = lowWeight;
+    }
+
+    public String getkVitamin() {
+        return kVitamin;
+    }
+
+    public void setkVitamin(String kVitamin) {
+        this.kVitamin = kVitamin;
+    }
+
+    public String gethBP() {
+        return hBP;
+    }
+
+    public void sethBP(String hBP) {
+        this.hBP = hBP;
+    }
+
+    public String getShk() {
+        return shk;
+    }
+
+    public void setShk(String shk) {
+        this.shk = shk;
+    }
+
+    public String getShkConfirmation() {
+        return shkConfirmation;
+    }
+
+    public void setShkConfirmation(String shkConfirmation) {
+        this.shkConfirmation = shkConfirmation;
+    }
+
+    public String getTreatment() {
+        return treatment;
+    }
+
+    public void setTreatment(String treatment) {
+        this.treatment = treatment;
+    }
+
+    public int getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(int user_id) {
+        this.user_id = user_id;
     }
 }

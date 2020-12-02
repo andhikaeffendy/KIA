@@ -47,7 +47,7 @@ public class FormPemeriksaanBayiActivity extends BaseActivity {
         etInfection = findViewById(R.id.et_infection);
         etIkterus = findViewById(R.id.et_ikterus);
         etDiare = findViewById(R.id.et_diare);
-        etLowWeight = findViewById(R.id.et_k_vitamin);
+        etLowWeight = findViewById(R.id.et_low_weight);
         etKVitamin = findViewById(R.id.et_k_vitamin);
         etHbBcgPolio = findViewById(R.id.et_hb_bcg_polio);
         etShk = findViewById(R.id.et_shk);
@@ -81,9 +81,7 @@ public class FormPemeriksaanBayiActivity extends BaseActivity {
 
         editMode = getIntent().getBooleanExtra("edit_mode",false);
         if (editMode) {
-            child = new Gson().fromJson(getIntent().getStringExtra("edit_child"), Child.class);
-            pemeriksaanBayi = new Gson().fromJson(getIntent().getStringExtra("edit_data"), PemeriksaanBayi.class);
-            etDate.setText(DateHelper.getDateServer(pemeriksaanBayi.getHistory_date()));
+            initEditData();
         }
 
         btnSubmit.setOnClickListener(new View.OnClickListener() {
@@ -99,6 +97,21 @@ public class FormPemeriksaanBayiActivity extends BaseActivity {
         pemeriksaanBayi = new Gson().fromJson(getIntent().getStringExtra("edit_data"), PemeriksaanBayi.class);
         setTitle(R.string.title_edit_child_history);
 
+        etDate.setText(DateHelper.getDateServer(pemeriksaanBayi.getHistory_date()));
+        etWeight.setText(""+pemeriksaanBayi.getWeight());
+        etLength.setText(replaceDotToComma(""+pemeriksaanBayi.getHeight()));
+        etTemp.setText(replaceDotToComma(""+pemeriksaanBayi.getTemperature()));
+        etRepiratory.setText(""+pemeriksaanBayi.getRespiratory());
+        etHeartBeat.setText(""+pemeriksaanBayi.getHeartBeat());
+        etInfection.setText(pemeriksaanBayi.getInfection());
+        etIkterus.setText(pemeriksaanBayi.getIkterus());
+        etDiare.setText(pemeriksaanBayi.getDiare());
+        etLowWeight.setText(pemeriksaanBayi.getLowWeight());
+        etKVitamin.setText(pemeriksaanBayi.getkVitamin());
+        etHbBcgPolio.setText(pemeriksaanBayi.gethBP());
+        etShk.setText(pemeriksaanBayi.getShk());
+        etShkConfirm.setText(pemeriksaanBayi.getShkConfirmation());
+        etTreatment.setText(pemeriksaanBayi.getTreatment());
         //etDate.setText(DateHelper.getDateServer(pemeriksaanBayi.getHistory_date()));
 //        etHeight.setText(""+childHistory.getHeight());
 //        etWeight.setText(replaceDotToComma(""+childHistory.getWeight()));
@@ -129,9 +142,10 @@ public class FormPemeriksaanBayiActivity extends BaseActivity {
     private void submitData(){
 
         String historyDate = etDate.getText().toString();
-        long weight = Long.parseLong(etWeight.getText().toString());
+
         int length = Integer.parseInt(etLength.getText().toString());
-        float temp = Float.parseFloat(etTemp.getText().toString());
+        double weight = Double.parseDouble(replaceCommaToDot(etWeight.getText().toString()));
+        double temperature = Double.parseDouble(replaceCommaToDot(etTemp.getText().toString()));
         int repiratory = Integer.parseInt(etRepiratory.getText().toString());
         int heartBeat = Integer.parseInt(etHeartBeat.getText().toString());
         String infection = etInfection.getText().toString();
@@ -148,14 +162,13 @@ public class FormPemeriksaanBayiActivity extends BaseActivity {
         if (editMode){
             long id = pemeriksaanBayi.getId();
             mApiService.updatePemeriksaanBayi(id, child.getId(), appSession.getData(AppSession.TOKEN), historyDate, weight,length,
-                    temp,repiratory,heartBeat,infection,ikterus,diare,lowWeight,kVItamin,hbBcgPolio,shk,shkConfirm,treatment,userId).enqueue(formCallback.getCallback());
+                    temperature,repiratory,heartBeat,infection,ikterus,diare,lowWeight,kVItamin,hbBcgPolio,shk,shkConfirm,treatment,userId).enqueue(formCallback.getCallback());
         }else {
             long id = child.getId();
-            mApiService.createPemeriksaanBayi(appSession.getData(AppSession.TOKEN), id, historyDate, weight,length,temp,repiratory,heartBeat,infection,
+            mApiService.createPemeriksaanBayi(appSession.getData(AppSession.TOKEN), id, historyDate, weight,length,temperature,repiratory,heartBeat,infection,
                     ikterus,diare,lowWeight,kVItamin,hbBcgPolio,shk,shkConfirm,treatment,userId).enqueue(formCallback.getCallback());
 
         }
-
 
     }
 

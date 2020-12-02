@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".FormPemeriksaanBayiActivity">
 
     <include layout="@layout/header"/>
@@ -253,7 +254,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:nextFocusUp="@id/height"
-                                android:nextFocusDown="@id/first_head_round"
+                                android:nextFocusDown="@id/et_repiratory"
                                 android:singleLine="true"
                                 android:inputType="numberDecimal"
                                 android:digits="0123456789,."/>
@@ -293,8 +294,8 @@
                                 android:id="@+id/et_repiratory"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:nextFocusUp="@id/height"
-                                android:nextFocusDown="@id/first_head_round"
+                                android:nextFocusUp="@id/et_temp"
+                                android:nextFocusDown="@id/et_heart_beat"
                                 android:singleLine="true"
                                 android:inputType="numberDecimal"
                                 android:digits="0123456789,."/>
@@ -333,8 +334,8 @@
                                 android:id="@+id/et_heart_beat"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:nextFocusUp="@id/height"
-                                android:nextFocusDown="@id/first_head_round"
+                                android:nextFocusUp="@id/et_repiratory"
+                                android:nextFocusDown="@id/et_infection"
                                 android:singleLine="true"
                                 android:inputType="numberDecimal"
                                 android:digits="0123456789,."/>
@@ -359,8 +360,8 @@
                         android:layout_marginBottom="10dp"
                         android:singleLine="true"
                         android:textSize="14sp"
-                        android:nextFocusDown="@id/birth_date"
-                        android:inputType="textPersonName"/>
+                        android:nextFocusDown="@id/et_ikterus"
+                        android:inputType="text"/>
 
                     <EditText
                         android:id="@+id/et_ikterus"
@@ -370,7 +371,7 @@
                         android:layout_marginBottom="10dp"
                         android:singleLine="true"
                         android:textSize="14sp"
-                        android:nextFocusDown="@id/birth_date"
+                        android:nextFocusDown="@id/et_diare"
                         android:inputType="textPersonName"/>
 
                     <EditText
@@ -381,7 +382,7 @@
                         android:layout_marginBottom="10dp"
                         android:singleLine="true"
                         android:textSize="14sp"
-                        android:nextFocusDown="@id/birth_date"
+                        android:nextFocusDown="@id/et_low_weight"
                         android:inputType="textPersonName"/>
 
                     <EditText
@@ -392,7 +393,7 @@
                         android:layout_marginBottom="10dp"
                         android:singleLine="true"
                         android:textSize="14sp"
-                        android:nextFocusDown="@id/birth_date"
+                        android:nextFocusDown="@id/et_k_vitamin"
                         android:inputType="textPersonName"/>
 
                     <EditText
@@ -403,7 +404,7 @@
                         android:layout_marginBottom="10dp"
                         android:singleLine="true"
                         android:textSize="14sp"
-                        android:nextFocusDown="@id/birth_date"
+                        android:nextFocusDown="@id/et_hb_bcg_polio"
                         android:inputType="textPersonName"/>
 
                     <EditText
@@ -414,7 +415,7 @@
                         android:layout_marginBottom="10dp"
                         android:singleLine="true"
                         android:textSize="14sp"
-                        android:nextFocusDown="@id/birth_date"
+                        android:nextFocusDown="@id/et_shk"
                         android:inputType="textPersonName"/>
 
                     <EditText
@@ -425,7 +426,7 @@
                         android:layout_marginBottom="10dp"
                         android:singleLine="true"
                         android:textSize="14sp"
-                        android:nextFocusDown="@id/birth_date"
+                        android:nextFocusDown="@id/et_shk_confirmation"
                         android:inputType="textPersonName"/>
 
                     <EditText
@@ -436,7 +437,7 @@
                         android:layout_marginBottom="10dp"
                         android:singleLine="true"
                         android:textSize="14sp"
-                        android:nextFocusDown="@id/birth_date"
+                        android:nextFocusDown="@id/et_treatment"
                         android:inputType="textPersonName"/>
 
                     <EditText
@@ -447,7 +448,6 @@
                         android:layout_marginBottom="10dp"
                         android:singleLine="true"
                         android:textSize="14sp"
-                        android:nextFocusDown="@id/birth_date"
                         android:inputType="textPersonName"/>
 
                     <LinearLayout

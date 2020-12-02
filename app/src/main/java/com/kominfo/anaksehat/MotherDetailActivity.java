@@ -127,7 +127,7 @@ public class MotherDetailActivity extends BaseActivity {
         tvSpouseName.setText(mother.getSpouse_name());
         tvAddress.setText(mother.getAddress());
 //        tvStateName.setText(mother.getState_name());
-        tvDistrictName.setText(mother.getDistrict_name());
+        tvDistrictName.setText("GROBOGAN");
         tvBloodPressureTop.setText(""+mother.getBlood_pressure_top());
         getTvBloodPressureBottom.setText(""+mother.getBlood_pressure_bottom());
         tvKkName.setText(mother.getKk_name());
