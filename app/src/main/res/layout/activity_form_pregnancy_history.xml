@@ -344,7 +344,6 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:nextFocusUp="@id/blood_pressure_top"
-                                    android:nextFocusDown="@id/note"
                                     android:layout_toLeftOf="@+id/bpb_right"
                                     android:singleLine="true"
                                     android:layout_toStartOf="@+id/bpb_right"

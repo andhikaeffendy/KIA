@@ -141,11 +141,11 @@ public class FormPregnancyHistoryActivity extends BaseActivity {
             etHistoryDate.requestFocus();
             return false;
         }
-        if(baby_weight.isEmpty()){
-            etBabyWeight.setError(getString(R.string.error_baby_weight));
-            etBabyWeight.requestFocus();
-            return false;
-        }
+//        if(baby_weight.isEmpty()){
+//            etBabyWeight.setError(getString(R.string.error_baby_weight));
+//            etBabyWeight.requestFocus();
+//            return false;
+//        }
         if(weight.isEmpty()){
             etWeight.setError(getString(R.string.error_weight));
             etWeight.requestFocus();
@@ -182,7 +182,7 @@ public class FormPregnancyHistoryActivity extends BaseActivity {
 
     private void submitData(){
         String historyDate = etHistoryDate.getText().toString();
-        double baby_weight = Double.parseDouble(replaceCommaToDot(etBabyWeight.getText().toString()));
+        double baby_weight = 0;//Double.parseDouble(replaceCommaToDot(etBabyWeight.getText().toString()));
         double weight = Double.parseDouble(replaceCommaToDot(etWeight.getText().toString()));
         int blood_pressure_top = Integer.parseInt(etBloodPressureTop.getText().toString());
         int blood_pressure_bottom = Integer.parseInt(etBloodPressureBottom.getText().toString());
