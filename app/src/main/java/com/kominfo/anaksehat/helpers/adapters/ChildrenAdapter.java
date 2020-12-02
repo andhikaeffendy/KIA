@@ -13,8 +13,11 @@ import android.widget.TextView;
 import com.kominfo.anaksehat.R;
 import com.kominfo.anaksehat.models.Child;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * Created by emrekabir on 25/07/18.
@@ -83,7 +86,13 @@ public class ChildrenAdapter extends RecyclerView.Adapter<ChildrenAdapter.MyView
     @Override
     public void onBindViewHolder(MyViewHolder holder, final int position) {
         final Child data = dataListFiltered.get(position);
-        holder.name.setText(data.getName().toUpperCase());
+        String date = "";
+        if (data.getBirth_date() != null) {
+            date = new SimpleDateFormat("MM/dd/yyyy", Locale.ENGLISH).format(data.getBirth_date());
+        } else {
+            date = "";
+        }
+        holder.name.setText(data.getName().toUpperCase() + " (" + date + ")");
         if((position+1)%2==1){
             holder.left_icon.setVisibility(View.VISIBLE);
             holder.left_icon.setImageResource(R.drawable.item_pregnancy);

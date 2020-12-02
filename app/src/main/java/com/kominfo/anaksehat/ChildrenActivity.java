@@ -4,14 +4,13 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.v7.widget.DefaultItemAnimator;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -30,14 +29,10 @@ import com.kominfo.anaksehat.helpers.adapters.AdapterListener;
 import com.kominfo.anaksehat.helpers.adapters.ChildrenAdapter;
 import com.kominfo.anaksehat.models.ApiData;
 import com.kominfo.anaksehat.models.Child;
-import com.kominfo.anaksehat.models.Mother;
 import com.kominfo.anaksehat.models.User;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 
 public class ChildrenActivity extends BaseActivity implements
         AdapterListener<Child> {
@@ -47,7 +42,6 @@ public class ChildrenActivity extends BaseActivity implements
     private ChildrenAdapter mAdapter;
     private List<Child> dataList;
     private User user;
-    private Mother mother;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +49,6 @@ public class ChildrenActivity extends BaseActivity implements
         setContentView(R.layout.activity_children);
 
         checkSession();
-        checkMotherData();
         user = getUserSession();
 
         Toolbar myToolbar = findViewById(R.id.toolbar);
@@ -73,15 +66,15 @@ public class ChildrenActivity extends BaseActivity implements
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
-//        recyclerView.addItemDecoration(new MyDividerItemDecoration(this, DividerItemDecoration.VERTICAL, 0));
         recyclerView.setAdapter(mAdapter);
+        recyclerView.setVisibility(View.GONE);
 
         whiteNotificationBar(recyclerView);
 
         etSearch.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
+                recyclerView.setVisibility(View.VISIBLE);
             }
 
             @Override
@@ -99,59 +92,10 @@ public class ChildrenActivity extends BaseActivity implements
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                long id = getIntent().getLongExtra("id", 0);
-                Log.d("ID", "ID MOTHER " +id);
-                if (id > 0) {
-                    mApiService.getMother(id, appSession.getData(AppSession.TOKEN))
-                            .enqueue(motherCallback.getCallback());
-                } else {
-                    Intent intent = new Intent(context, FormChildActivity.class );
-                    startActivityForResult(intent, 99);
-                    finish();
-                }
-//                Intent intent = new Intent(context, FormChildActivity.class );
-//                startActivityForResult(intent, 99);
+                Intent intent = new Intent(context, FormChildActivity.class );
+                startActivityForResult(intent, 99);
             }
         });
-    }
-
-    ApiCallback motherCallback = new ApiCallback() {
-
-        @Override
-        public void onApiSuccess(String result) {
-            showProgressBar(false);
-            Gson gson = createGsonDate();
-//            Gson gson = createGsonDate();
-            mother = gson.fromJson(result, Mother.class);
-            if(user.getPosyandu()==0){
-                user.setMotherId(mother.getId());
-                appSession.setData(AppSession.USER, new Gson().toJson(user));
-                appSession.setData(AppSession.MOTHER, new Gson().toJson(mother));
-            }
-            Intent intent = new Intent(context, FormChildActivity.class );
-            intent.putExtra("mother", mother.getName());
-            intent.putExtra("birth_date", dateToString(mother.getBirth_date()));
-            intent.putExtra("mother_id", mother.getId());
-            startActivityForResult(intent, 99);
-            finish();
-        }
-
-        @Override
-        public void onApiFailure(String errorMessage) {
-            showProgressBar(false);
-            Toast.makeText(context, errorMessage, Toast.LENGTH_SHORT).show();
-            finish();
-        }
-    };
-
-    String dateToString(Date date) {
-        String _date = "";
-        if (date != null) {
-            _date = new SimpleDateFormat("MM/dd/yyyy", Locale.ENGLISH).format(mother.getBirth_date());
-        } else {
-            _date = "";
-        }
-        return _date;
     }
 
     @Override
@@ -185,17 +129,8 @@ public class ChildrenActivity extends BaseActivity implements
     }
 
     private void initData(){
-        long id = getIntent().getLongExtra("id", 0);
-        if(user.getPosyandu()==0&&user.getMotherId()>0){
-            mApiService.getChildren(appSession.getData(AppSession.TOKEN), user.getMotherId())
-                    .enqueue(childrenCallback.getCallback());
-        } else if (id > 0) {
-            mApiService.getChildren(appSession.getData(AppSession.TOKEN), id)
-                    .enqueue(childrenCallback.getCallback());
-        } else
-            mApiService.getChildren(appSession.getData(AppSession.TOKEN))
-                    .enqueue(childrenCallback.getCallback());
-
+        mApiService.getChildren(appSession.getData(AppSession.TOKEN))
+                .enqueue(childrenCallback.getCallback());
     }
 
     private void whiteNotificationBar(View view) {
