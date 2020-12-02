@@ -21,8 +21,8 @@ public class Pregnancy {
     private int arm_round;
     private int kek_status;
     private String kontrasepsi;
-    private String desease_history;
-    private String alergy_history;
+    private String disease_histories;
+    private String allergy_histories;
     private int pregnancy_number;
     private int birth_count;
     private int miscariage_count;
@@ -61,20 +61,20 @@ public class Pregnancy {
         this.kontrasepsi = kontrasepsi;
     }
 
-    public String getDesease_history() {
-        return desease_history;
+    public String getDisease_histories() {
+        return disease_histories;
     }
 
-    public void setDesease_history(String desease_history) {
-        this.desease_history = desease_history;
+    public void setDisease_histories(String disease_histories) {
+        this.disease_histories = disease_histories;
     }
 
-    public String getAlergy_history() {
-        return alergy_history;
+    public String getAllergy_histories() {
+        return allergy_histories;
     }
 
-    public void setAlergy_history(String alergy_history) {
-        this.alergy_history = alergy_history;
+    public void setAllergy_histories(String allergy_histories) {
+        this.allergy_histories = allergy_histories;
     }
 
     public int getPregnancy_number() {

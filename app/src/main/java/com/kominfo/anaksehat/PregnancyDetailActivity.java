@@ -23,9 +23,7 @@ import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.formatter.IValueFormatter;
 import com.github.mikephil.charting.utils.ViewPortHandler;
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
-import com.kominfo.anaksehat.R;
 import com.kominfo.anaksehat.controllers.BaseActivity;
 import com.kominfo.anaksehat.helpers.AppLog;
 import com.kominfo.anaksehat.helpers.AppSession;
@@ -220,13 +218,11 @@ public class PregnancyDetailActivity extends BaseActivity {
         tvBirthCount.setText(""+pregnancy.getBirth_count()+" cm");
         tvDistance.setText(pregnancy.getDistance());
         tvKontrasepsi.setText(pregnancy.getKontrasepsi());
-        tvDesease.setText(pregnancy.getDesease_history());
-        tvRiwayatAlergi.setText(pregnancy.getAlergy_history());
+        tvDesease.setText(pregnancy.getDisease_histories());
+        tvRiwayatAlergi.setText(pregnancy.getAllergy_histories());
         tvImunisasi.setText(pregnancy.getImmunization_status());
         tvLastBirthHelper.setText(pregnancy.getLast_birth_helper());
         tvLastBirthWay.setText(pregnancy.getLast_birth_way());
-
-
 
         if(pregnancy.getMother_weight_index().compareToIgnoreCase("Gemuk")==0 ||
                 pregnancy.getMother_weight_index().compareToIgnoreCase("Sangat Gemuk")==0 ){

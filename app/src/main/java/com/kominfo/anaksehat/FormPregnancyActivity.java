@@ -204,9 +204,28 @@ public class FormPregnancyActivity extends BaseActivity {
                 spPeriodType.setSelection(1);
                 break;
         }
+        actvMotherName.setText(pregnancy.getMother_name());
         etLastPeriodDate.setText(DateHelper.getDateServer(pregnancy.getLast_period_date()));
         etStartHeight.setText(""+pregnancy.getStart_height());
         etStartWeight.setText(replaceDotToComma(""+pregnancy.getStart_weight()));
+        etArmRound.setText(""+pregnancy.getArm_round());
+        etKekStatus.setText(""+pregnancy.getKek_status());
+        etPregnancyNumber.setText(""+pregnancy.getPregnancy_number());
+        etMisCariage.setText(""+pregnancy.getMiscariage_count());
+        etGCount.setText(""+pregnancy.getG_count());
+        etPCount.setText(""+pregnancy.getP_count());
+        etACount.setText(""+pregnancy.getA_count());
+        etChildrenCount.setText(""+pregnancy.getChildren_count());
+        etDeadBirthCOunt.setText(""+pregnancy.getDead_birth_count());
+        etPrematureChildrenCount.setText(""+pregnancy.getPremature_children_count());
+        etBirthCount.setText(""+pregnancy.getBirth_count());
+        etDistance.setText(pregnancy.getDistance());
+        etKontrasepsi.setText(pregnancy.getKontrasepsi());
+        etRiwayatPenyakit.setText(pregnancy.getDisease_histories());
+        etRiwayatAlergi.setText(pregnancy.getAllergy_histories());
+        etImmunizationStatus.setText(pregnancy.getImmunization_status());
+        etLastBirthHelper.setText(pregnancy.getLast_birth_helper());
+        etLastBirthWay.setText(pregnancy.getLast_birth_way());
     }
 
     @Override
@@ -356,6 +375,15 @@ public class FormPregnancyActivity extends BaseActivity {
                     AppLog.d(new Gson().toJson(selectedMother));
                 }
             });
+            if(editMode){
+                for(int i=0;i<stateApiData.getData().size();i++){
+                    if(pregnancy.getMother_id()==stateApiData.getData().get(i).getId()){
+                        actvMotherName.setText(stateApiData.getData().get(i).getName());
+                        selectedMother = stateApiData.getData().get(i);
+                        break;
+                    }
+                }
+            }
         }
 
         @Override
