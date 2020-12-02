@@ -124,6 +124,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:onClick="onClickLogin"
+                    android:visibility="gone"
                     android:orientation="horizontal">
                     <TextView
                         android:layout_width="wrap_content"
@@ -150,10 +151,12 @@
                     android:layout_gravity="center"
                     android:onClick="onClickLogin"
                     android:text="@string/forgot"
+                    android:visibility="gone"
                     android:textColor="@color/link" />
 
                 <TextView
                     android:id="@+id/resend"
+                    android:visibility="gone"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"

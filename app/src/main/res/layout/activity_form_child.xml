@@ -64,6 +64,7 @@
                             android:layout_height="match_parent"
                             android:gravity="center_vertical"
                             android:layout_weight="1"
+                            android:visibility="gone"
                             android:orientation="vertical">
                             <Button
                                 android:id="@+id/take_photo"
