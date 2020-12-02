@@ -19,7 +19,7 @@ import com.kominfo.anaksehat.models.PregnancyHistory;
 public class PregnancyHistoryDetailActivity extends BaseActivity {
 
     private TextView tvPregnancyWeightGain, tvHistoryDate, tvMotherWeightIndex, tvWeight,
-            tvBabyWeight, tvMotherNutritionCategory, tvGenderPrediction, tvAmnioticCondition,
+            tvBabyWeight, tvMotherNutritionCategory, tvAmnioticCondition,
             tvBloodPressureTop, tvBloodPressureBottom, tvNote;
     private ImageView ivMotherWeightIndex, ivMotherNutritionCategory, ivPregnancyWeightGain,
             ivAmnioticCondition;
@@ -51,7 +51,7 @@ public class PregnancyHistoryDetailActivity extends BaseActivity {
         tvNote = findViewById(R.id.note);
         tvBloodPressureTop = findViewById(R.id.blood_pressure_top);
         tvBloodPressureBottom = findViewById(R.id.blood_pressure_bottom);
-        tvGenderPrediction = findViewById(R.id.gender_prediction);
+//        tvGenderPrediction = findViewById(R.id.gender_prediction);
         tvAmnioticCondition = findViewById(R.id.amniotic_condition);
         tvPregnancyWeightGain = findViewById(R.id.pregnancy_weight_gain);
         tvMotherWeightIndex = findViewById(R.id.mother_weight_index);
@@ -103,8 +103,8 @@ public class PregnancyHistoryDetailActivity extends BaseActivity {
                 PregnancyHistory.class);
 
         String gender = "Laki-laki";
-        if(pregnancyHistory.getGender_prediction().compareToIgnoreCase("female")==0)
-            gender="Perempuan";
+//        if(pregnancyHistory.getGender_prediction().compareToIgnoreCase("female")==0)
+//            gender="Perempuan";
 
         tvHistoryDate.setText(DateHelper.getDate(pregnancyHistory.getHistory_date()));
         tvWeight.setText(replaceDotToComma(""+pregnancyHistory.getWeight())+" Kg");
@@ -113,7 +113,7 @@ public class PregnancyHistoryDetailActivity extends BaseActivity {
         tvBloodPressureTop.setText(""+pregnancyHistory.getBlood_pressure_top());
         tvBloodPressureBottom.setText(""+pregnancyHistory.getBlood_pressure_bottom());
         tvMotherNutritionCategory.setText(pregnancyHistory.getMother_nutrition_category());
-        tvGenderPrediction.setText(gender);
+//        tvGenderPrediction.setText(gender);
         tvAmnioticCondition.setText(pregnancyHistory.getAmniotic_condition());
         tvPregnancyWeightGain.setText(pregnancyHistory.getPregnancy_weight_gain());
         tvMotherWeightIndex.setText(pregnancyHistory.getMother_weight_index());
@@ -141,13 +141,13 @@ public class PregnancyHistoryDetailActivity extends BaseActivity {
             setImage(ivPregnancyWeightGain, ORANGE);
         }
 
-        if(pregnancyHistory.getAmniotic_condition().compareToIgnoreCase("Kurang Baik")==0 ){
-            setImage(ivAmnioticCondition, RED);
-        } else if (pregnancyHistory.getAmniotic_condition().compareToIgnoreCase("Baik")==0 ){
-            setImage(ivAmnioticCondition, GREEN);
-        } else {
-
-        }
+//        if(pregnancyHistory.getAmniotic_condition().compareToIgnoreCase("Kurang Baik")==0 ){
+//            setImage(ivAmnioticCondition, RED);
+//        } else if (pregnancyHistory.getAmniotic_condition().compareToIgnoreCase("Baik")==0 ){
+//            setImage(ivAmnioticCondition, GREEN);
+//        } else {
+//
+//        }
 
     }
 

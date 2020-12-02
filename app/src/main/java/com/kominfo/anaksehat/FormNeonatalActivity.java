@@ -71,7 +71,7 @@ public class FormNeonatalActivity extends BaseActivity {
 
         child = new Gson().fromJson(getIntent().getStringExtra("data"), Child.class);
 
-        setTitle(child.getName());
+//        setTitle(child.getName());
 
         etHistoryDate.setInputType(InputType.TYPE_NULL);
         ivDate.setOnClickListener(new View.OnClickListener() {
@@ -233,6 +233,7 @@ public class FormNeonatalActivity extends BaseActivity {
             Gson gson = createGsonDate();
             neonatal = gson.fromJson(result, Neonatal.class);
             Intent intent = new Intent(context, DetailNeonatalActivity.class);
+            intent.putExtra("parent_data", new Gson().toJson(child));
             intent.putExtra("data", new Gson().toJson(neonatal));
             startActivity(intent);
             finish();

@@ -28,7 +28,6 @@ public class FormPregnancyHistoryActivity extends BaseActivity {
 
     private EditText etHistoryDate,etWeight,etBabyWeight,etNote,
             etBloodPressureTop,etBloodPressureBottom;
-    private RadioButton rbGenderMale,rbGenderFemale,rbAmnioticCondition,rbAmnioticCondition2;
     private ImageView ivDate;
     private Pregnancy pregnancy;
     private boolean editMode = false;
@@ -52,13 +51,13 @@ public class FormPregnancyHistoryActivity extends BaseActivity {
         etHistoryDate = findViewById(R.id.history_date);
         etBabyWeight = findViewById(R.id.baby_weight);
         etWeight = findViewById(R.id.weight);
-        rbAmnioticCondition = findViewById(R.id.amniotic_condition);
-        rbAmnioticCondition2 = findViewById(R.id.amniotic_condition_2);
+//        rbAmnioticCondition = findViewById(R.id.amniotic_condition);
+//        rbAmnioticCondition2 = findViewById(R.id.amniotic_condition_2);
         etBloodPressureTop = findViewById(R.id.blood_pressure_top);
         etBloodPressureBottom = findViewById(R.id.blood_pressure_bottom);
         etNote = findViewById(R.id.note);
-        rbGenderMale = findViewById(R.id.gender_prediction);
-        rbGenderFemale = findViewById(R.id.gender_prediction_female);
+//        rbGenderMale = findViewById(R.id.gender_prediction);
+//        rbGenderFemale = findViewById(R.id.gender_prediction_female);
         ivDate = findViewById(R.id.history_icon);
 
         pregnancy = new Gson().fromJson(getIntent().getStringExtra("data"), Pregnancy.class);
@@ -87,7 +86,7 @@ public class FormPregnancyHistoryActivity extends BaseActivity {
         editMode = getIntent().getBooleanExtra("edit_mode", false);
         if(editMode) initEditData();
 
-        startShowcase();
+//        startShowcase();
     }
 
     @Override
@@ -121,13 +120,13 @@ public class FormPregnancyHistoryActivity extends BaseActivity {
         etHistoryDate.setText(DateHelper.getDateServer(pregnancyHistory.getHistory_date()));
         etBabyWeight.setText(replaceDotToComma(""+pregnancyHistory.getBaby_weight()));
         etWeight.setText(replaceDotToComma(""+pregnancyHistory.getWeight()));
-        if(pregnancyHistory.getAmniotic_condition().compareToIgnoreCase("Kurang Baik")==0)
-            rbAmnioticCondition2.setChecked(true);
+//        if(pregnancyHistory.getAmniotic_condition().compareToIgnoreCase("Kurang Baik")==0)
+//            rbAmnioticCondition2.setChecked(true);
         etBloodPressureTop.setText(""+pregnancyHistory.getBlood_pressure_top());
         etBloodPressureBottom.setText(""+pregnancyHistory.getBlood_pressure_bottom());
         etNote.setText(pregnancyHistory.getNote());
-        if(pregnancyHistory.getGender_prediction().compareToIgnoreCase("Female")==0)
-            rbGenderFemale.setChecked(true);
+//        if(pregnancyHistory.getGender_prediction().compareToIgnoreCase("Female")==0)
+//            rbGenderFemale.setChecked(true);
     }
 
     private boolean validateData(){
@@ -192,8 +191,8 @@ public class FormPregnancyHistoryActivity extends BaseActivity {
         String genderPrediction = "Male";
         int amniotic_condition = 1;
 
-        if(!rbGenderMale.isChecked())genderPrediction="Female";
-        if(!rbAmnioticCondition.isChecked())amniotic_condition=0;
+//        if(!rbGenderMale.isChecked())genderPrediction="Female";
+//        if(!rbAmnioticCondition.isChecked())amniotic_condition=0;
 
         showProgressBar(true);
         if(editMode){
