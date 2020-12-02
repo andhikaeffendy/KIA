@@ -69,7 +69,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:layout_marginLeft="2dp"
-                            android:textSize="11dp"
+                            android:text="3"
+                            android:textSize="14dp"
                             android:textStyle="bold"/>
 
                     </RelativeLayout>
@@ -110,10 +111,10 @@
                         <TextView
                             android:id="@+id/tv_height"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="13dp"
+                            android:layout_height="match_parent"
+                            android:text="berat"
                             android:layout_marginLeft="2dp"
-                            android:textSize="11dp"
+                            android:textSize="14dp"
                             android:textStyle="bold" />
 
                     </RelativeLayout>
@@ -156,8 +157,9 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="13dp"
+                            android:text="suhu"
                             android:layout_marginLeft="2dp"
-                            android:textSize="11dp"
+                            android:textSize="14dp"
                             android:textStyle="bold"/>
 
                     </RelativeLayout>
@@ -192,16 +194,18 @@
 
                     <RelativeLayout
                         android:layout_alignParentEnd="true"
+                        android:layout_centerInParent="true"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
 
                         <TextView
                             android:id="@+id/tv_repiratory"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_height="match_parent"
                             android:layout_marginTop="13dp"
+                            android:text="respitory"
                             android:layout_marginLeft="2dp"
-                            android:textSize="11dp"
+                            android:textSize="14dp"
                             android:textStyle="bold"/>
 
                     </RelativeLayout>
@@ -237,6 +241,7 @@
                     <RelativeLayout
                         android:layout_alignParentEnd="true"
                         android:layout_width="wrap_content"
+                        android:layout_centerInParent="true"
                         android:layout_height="wrap_content">
 
                         <TextView
@@ -245,7 +250,54 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="13dp"
                             android:layout_marginLeft="2dp"
-                            android:textSize="11dp"
+                            android:text="Heat Beat"
+                            android:textSize="14dp"
+                            android:textStyle="bold"/>
+
+                    </RelativeLayout>
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:paddingBottom="16dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:paddingTop="0dp"
+                android:layout_gravity="center"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RelativeLayout
+                    android:paddingTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:text="Pemeriksaan Infeksi : "
+                        android:textSize="16sp"
+                        android:textColor="#000"/>
+
+                    <RelativeLayout
+                        android:layout_alignParentEnd="true"
+                        android:layout_width="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/tv_infection"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="13dp"
+                            android:text="Infeksi"
+                            android:layout_marginLeft="2dp"
+                            android:textSize="14dp"
                             android:textStyle="bold"/>
 
                     </RelativeLayout>
@@ -281,15 +333,17 @@
                     <RelativeLayout
                         android:layout_alignParentEnd="true"
                         android:layout_width="wrap_content"
+                        android:layout_centerInParent="true"
                         android:layout_height="wrap_content">
 
                         <TextView
-                            android:id="@+id/tv_infection"
+                            android:id="@+id/tv_ikterus"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="13dp"
+                            android:text="Ikterus"
                             android:layout_marginLeft="2dp"
-                            android:textSize="11dp"
+                            android:textSize="14dp"
                             android:textStyle="bold"/>
 
                     </RelativeLayout>
@@ -328,12 +382,13 @@
                         android:layout_height="wrap_content">
 
                         <TextView
-                            android:id="@+id/tv_ikterus"
+                            android:id="@+id/tv_diare"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="13dp"
                             android:layout_marginLeft="2dp"
-                            android:textSize="11dp"
+                            android:text="Diare"
+                            android:textSize="14dp"
                             android:textStyle="bold"/>
 
                     </RelativeLayout>
@@ -368,16 +423,18 @@
 
                     <RelativeLayout
                         android:layout_alignParentEnd="true"
+                        android:layout_centerInParent="true"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
 
                         <TextView
-                            android:id="@+id/tv_diare"
+                            android:id="@+id/tv_low_weight"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="13dp"
                             android:layout_marginLeft="2dp"
-                            android:textSize="11dp"
+                            android:textSize="14dp"
+                            android:text="Pemeriksaan berat"
                             android:textStyle="bold"/>
 
                     </RelativeLayout>
@@ -412,16 +469,18 @@
 
                     <RelativeLayout
                         android:layout_alignParentEnd="true"
+                        android:layout_centerInParent="true"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
 
                         <TextView
-                            android:id="@+id/tv_low_weight"
+                            android:id="@+id/tv_k_vitamin"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="13dp"
                             android:layout_marginLeft="2dp"
-                            android:textSize="11dp"
+                            android:text="K Vitamin "
+                            android:textSize="14dp"
                             android:textStyle="bold"/>
 
                     </RelativeLayout>
@@ -456,50 +515,7 @@
 
                     <RelativeLayout
                         android:layout_alignParentEnd="true"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-
-                        <TextView
-                            android:id="@+id/tv_k_vitamin"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="13dp"
-                            android:layout_marginLeft="2dp"
-                            android:textSize="11dp"
-                            android:textStyle="bold"/>
-
-                    </RelativeLayout>
-
-                </RelativeLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:paddingBottom="16dp"
-                android:paddingLeft="20dp"
-                android:paddingRight="20dp"
-                android:paddingTop="0dp"
-                android:layout_gravity="center"
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <RelativeLayout
-                    android:paddingTop="10dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="3dp"
-                        android:text="Daerah Pelaksaan \nSkrinning Hipotiroid\nKongenital(SHK) : "
-                        android:textSize="16sp"
-                        android:textColor="#000"/>
-
-                    <RelativeLayout
-                        android:layout_alignParentEnd="true"
+                        android:layout_centerInParent="true"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
 
@@ -509,7 +525,8 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="13dp"
                             android:layout_marginLeft="2dp"
-                            android:textSize="11dp"
+                            android:text="Polio"
+                            android:textSize="14dp"
                             android:textStyle="bold"/>
 
                     </RelativeLayout>
@@ -544,6 +561,7 @@
 
                     <RelativeLayout
                         android:layout_alignParentEnd="true"
+                        android:layout_centerInParent="true"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
 
@@ -553,7 +571,8 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="13dp"
                             android:layout_marginLeft="2dp"
-                            android:textSize="11dp"
+                            android:textSize="14dp"
+                            android:text="SHK"
                             android:textStyle="bold"/>
 
                     </RelativeLayout>
@@ -590,6 +609,7 @@
 
                     <RelativeLayout
                         android:layout_alignParentEnd="true"
+                        android:layout_centerInParent="true"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
 
@@ -599,7 +619,8 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="13dp"
                             android:layout_marginLeft="2dp"
-                            android:textSize="11dp"
+                            android:textSize="14dp"
+                            android:text="hasil shk"
                             android:textStyle="bold"/>
 
                     </RelativeLayout>
@@ -643,7 +664,8 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="13dp"
                             android:layout_marginLeft="2dp"
-                            android:textSize="11dp"
+                            android:textSize="14dp"
+                            android:text="14sp"
                             android:textStyle="bold"/>
 
                     </RelativeLayout>

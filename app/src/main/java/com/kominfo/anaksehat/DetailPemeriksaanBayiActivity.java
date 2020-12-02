@@ -53,11 +53,11 @@ public class DetailPemeriksaanBayiActivity extends AppCompatActivity {
     private void initData(){
         pemeriksaanBayi = new Gson().fromJson(getIntent().getStringExtra("data"), PemeriksaanBayi.class);
         child = new Gson().fromJson(getIntent().getStringExtra("edit_data"), Child.class);
-        tvWeight.setText(""+pemeriksaanBayi.getWeight());
-        tvHeight.setText(""+pemeriksaanBayi.getHeight());
-        tvTemp.setText(""+pemeriksaanBayi.getTemp());
-        tvRepiratory.setText(""+pemeriksaanBayi.getRespiratory());
-        tvHeatBeat.setText(""+pemeriksaanBayi.getHeart_beat());
+        tvWeight.setText(""+pemeriksaanBayi.getWeight() +" Kg");
+        tvHeight.setText(""+pemeriksaanBayi.getHeight() + " Cm");
+        tvTemp.setText(""+pemeriksaanBayi.getTemp() +" C");
+        tvRepiratory.setText(""+pemeriksaanBayi.getRespiratory() +" Minute");
+        tvHeatBeat.setText(""+pemeriksaanBayi.getHeart_beat()+" Minute");
         tvInfection.setText(pemeriksaanBayi.getInfection());
         tvIkterus.setText(pemeriksaanBayi.getIkterus());
         tvDiare.setText(pemeriksaanBayi.getDiare());

@@ -38,6 +38,7 @@ public class PemeriksaanBayiActivity extends BaseActivity implements AdapterList
     private User user;
     private PemeriksaanBayi pemeriksaanBayi;
     private Child child;
+    private boolean editMode = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -102,7 +103,11 @@ public class PemeriksaanBayiActivity extends BaseActivity implements AdapterList
 
     @Override
     public void onItemLongSelected(PemeriksaanBayi data) {
-
+        Intent i = new Intent(context, FormPemeriksaanBayiActivity.class);
+        i.putExtra("data", new Gson().toJson(child));
+        i.putExtra("edit_data", new Gson().toJson(data));
+        i.putExtra("edit_mode", true);
+        startActivity(i);
     }
 
     @Override
@@ -112,7 +117,23 @@ public class PemeriksaanBayiActivity extends BaseActivity implements AdapterList
     }
 
     public void initData() {
-        mApiService.getPemeriksaanBayi(appSession.getData(AppSession.TOKEN))
+        mApiService.getListPemeriksaanBayi(appSession.getData(AppSession.TOKEN), child.getId())
                 .enqueue(babyCallback.getCallback());
+    }
+
+    @Override
+    public void onBackPressed() {
+        backFunction();
+    }
+
+    private void backFunction(){
+        if(editMode){
+            Intent intent = new Intent(context, ChildHistoryDetailActivity.class);
+            intent.putExtra("parent_data", new Gson().toJson(child));
+            intent.putExtra("data", new Gson().toJson(pemeriksaanBayi));
+            showWarning(intent, R.string.warning, R.string.warning_edit_baby_histories, R.string.ok, R.string.cancel);
+        } else {
+            showWarning(R.string.warning, R.string.warning_create_child_history, R.string.ok, R.string.cancel);
+        }
     }
 }

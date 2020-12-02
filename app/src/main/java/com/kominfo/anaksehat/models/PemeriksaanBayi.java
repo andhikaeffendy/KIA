@@ -8,9 +8,9 @@ public class PemeriksaanBayi {
 
     private int id;
     private Date history_date;
-    private int weight;
+    private float weight;
     private int height;
-    private int temp;
+    private float temp;
     private double imt;
     private String note;
     private int head_round;
@@ -47,9 +47,7 @@ public class PemeriksaanBayi {
         this.history_date = history_date;
     }
 
-    public int getWeight() {
-        return weight;
-    }
+
 
     public void setWeight(int weight) {
         this.weight = weight;
@@ -63,8 +61,20 @@ public class PemeriksaanBayi {
         this.height = height;
     }
 
-    public int getTemp() {
+    public float getWeight() {
+        return weight;
+    }
+
+    public void setWeight(float weight) {
+        this.weight = weight;
+    }
+
+    public float getTemp() {
         return temp;
+    }
+
+    public void setTemp(float temp) {
+        this.temp = temp;
     }
 
     public void setTemp(int temp) {

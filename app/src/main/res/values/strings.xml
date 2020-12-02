@@ -173,6 +173,7 @@
     <string name="warning_edit_child">Anda akan menghentikan proses edit data anak?</string>
     <string name="warning_create_child_history">Anda akan menghentikan proses input data riwayat anak?</string>
     <string name="warning_edit_child_history">Anda akan menghentikan proses edit data riwayat anak?</string>
+    <string name="warning_edit_baby_histories">Anda akan menghentikan proses edit data pemeriksaan anak?</string>
     <string name="warning_create_mother">Anda akan menghentikan proses input data ibu?</string>
     <string name="warning_edit_mother">Anda akan menghentikan proses edit data ibu?</string>
     <string name="warning_create_pregnancy">Anda akan menghentikan proses input data kehamilan?</string>

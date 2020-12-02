@@ -481,7 +481,12 @@ public interface BaseApiService {
 
 
     @GET("baby_histories")
-    Call<ResponseBody> getPemeriksaanBayi(@Query("auth_token") String token);
+    Call<ResponseBody> getListPemeriksaanBayi(@Query("auth_token") String token,
+                                          @Query("child_id") long id);
+
+    @GET("baby_histories/{id}")
+    Call<ResponseBody> getPemeriksaanBayi(@Path("id") long id,
+                                          @Query("auth_token") String token);
 
     @GET("public_health_centers/pregnancies")
     Call<ResponseBody> getPemetaanIbuHamil();
