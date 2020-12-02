@@ -281,7 +281,7 @@ public class FormBirthPlanningActivity extends BaseActivity {
 
     private void backFunction(){
         if(editMode){
-            Intent intent = new Intent(context, PregnancyDetailActivity.class);
+            Intent intent = new Intent(context, BirthPlanningDetailActivity.class);
             intent.putExtra("parent_data", new Gson().toJson(pregnancy));
             intent.putExtra("data", new Gson().toJson(birthPlanning));
             showWarning(intent, R.string.warning, R.string.warning_edit_birth_planning, R.string.ok, R.string.cancel);
