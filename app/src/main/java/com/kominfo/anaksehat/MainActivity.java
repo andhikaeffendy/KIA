@@ -461,11 +461,15 @@ public class MainActivity extends BaseActivity
     }
 
     private void gotoChildren(){
-        startActivity(new Intent(context, ChildrenActivity.class));
+        if(appSession.isLogin()) {
+            startActivity(new Intent(context, ChildrenActivity.class));
+        } else startActivity(new Intent(context, LoginActivity.class));
     }
 
     private void gotoMothers(){
-        startActivity(new Intent(context, MothersActivity.class));
+        if(appSession.isLogin()) {
+            startActivity(new Intent(context, MothersActivity.class));
+        } else startActivity(new Intent(context, LoginActivity.class));
     }
 
     private void gotoPromotion(){
