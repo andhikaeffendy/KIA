@@ -668,6 +668,9 @@ public interface BaseApiService {
     @GET("mother_conditions")
     Call<ResponseBody> getMotherConditions();
 
+    @GET("neonatal_visit_types")
+    Call<ResponseBody> getNeonatalVisitTypes();
+
     @GET("nifas_history_types")
     Call<ResponseBody> getNifasHistoryTypes();
 
@@ -807,6 +810,60 @@ public interface BaseApiService {
                                            @Field("helper_discussion") String helper_discussion,
                                            @Field("home_condition") String home_condition,
                                            @Field("home_equipment") String home_equipment
+    );
+
+    @GET("neonatal_histories")
+    Call<ResponseBody> getNeonatals(@Query("auth_token") String token,
+                                    @Query("child_id") long pregnancy_id);
+
+    @GET("neonatal_histories/{id}")
+    Call<ResponseBody> getNeonatal(@Path("id") long id,
+                                   @Query("auth_token") String token);
+
+    @FormUrlEncoded
+    @POST("neonatal_histories")
+    Call<ResponseBody> createNeonatal(@Field("auth_token") String token,
+                                      @Field("child_id") long child_id,
+                                      @Field("neonatal_visit_type_id") long neonatal_visit_type_id,
+                                      @Field("history_date") String history_date,
+                                      @Field("weight") double weight,
+                                      @Field("height") int height,
+                                      @Field("temperature") double temperature,
+                                      @Field("respiratory") String respiratory,
+                                      @Field("heart_beat") String heart_beat,
+                                      @Field("infection") String infection,
+                                      @Field("ikterus") String ikterus,
+                                      @Field("diare") String diare,
+                                      @Field("low_weight") String low_weight,
+                                      @Field("k_vitamin") String k_vitamin,
+                                      @Field("hb_bcg_polio") String hb_bcg_polio,
+                                      @Field("shk") String shk,
+                                      @Field("shk_confirmation") String shk_confirmation,
+                                      @Field("treatment") String treatment
+    );
+
+    @FormUrlEncoded
+    @PUT("neonatal_histories/{id}")
+    Call<ResponseBody> updateNeonatal(@Path("id") long id,
+                                      @Field("id") long neonatal_id,
+                                      @Field("auth_token") String token,
+                                      @Field("child_id") long child_id,
+                                      @Field("neonatal_visit_type_id") long neonatal_visit_type_id,
+                                      @Field("history_date") String history_date,
+                                      @Field("weight") double weight,
+                                      @Field("height") int height,
+                                      @Field("temperature") double temperature,
+                                      @Field("respiratory") String respiratory,
+                                      @Field("heart_beat") String heart_beat,
+                                      @Field("infection") String infection,
+                                      @Field("ikterus") String ikterus,
+                                      @Field("diare") String diare,
+                                      @Field("low_weight") String low_weight,
+                                      @Field("k_vitamin") String k_vitamin,
+                                      @Field("hb_bcg_polio") String hb_bcg_polio,
+                                      @Field("shk") String shk,
+                                      @Field("shk_confirmation") String shk_confirmation,
+                                      @Field("treatment") String treatment
     );
 
 }

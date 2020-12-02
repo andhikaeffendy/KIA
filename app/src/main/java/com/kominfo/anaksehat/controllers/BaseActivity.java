@@ -68,7 +68,7 @@ public class BaseActivity extends AppCompatActivity {
     public Context context;
     public BaseApiService mApiService;
     private Dialog progressDialog;
-    public String link2App = "https://play.google.com/store/apps/details?id=com.kominfo.anaksehat";
+    public String link2App = "https://play.google.com/store/apps/details?coming-soon";
 
     @Override
     public void setContentView(@LayoutRes int layoutResID) {
@@ -487,7 +487,7 @@ public class BaseActivity extends AppCompatActivity {
 
     public String createEditor(int stringId){
         String editor = getString(stringId);
-        editor = editor.replace("[link download apps stunting]", link2App);
+        editor = editor.replace("[link download apps KIA]", link2App);
         return editor;
     }
 

@@ -378,10 +378,10 @@ public class MainActivity extends BaseActivity
                 gotoGames();
                 break;
             case R.id.children:
-                gotoLastChild();
+                gotoChildren();
                 break;
             case R.id.children_icon:
-                gotoLastChild();
+                gotoChildren();
                 break;
             case R.id.submit_immunization:
                 gotoImmunization();

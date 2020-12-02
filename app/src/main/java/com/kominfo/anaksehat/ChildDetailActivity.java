@@ -26,6 +26,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import com.kominfo.anaksehat.R;
+import com.kominfo.anaksehat.models.Neonatal;
 import com.squareup.picasso.Picasso;
 import com.kominfo.anaksehat.controllers.BaseActivity;
 import com.kominfo.anaksehat.helpers.AppLog;
@@ -105,7 +106,9 @@ public class ChildDetailActivity extends BaseActivity {
         btnNeo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent i = new Intent(context, NeonatalActivity.class);
+                i.putExtra("data", new Gson().toJson(child));
+                startActivity(i);
             }
         });
 
