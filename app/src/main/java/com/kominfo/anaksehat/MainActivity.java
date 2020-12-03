@@ -344,6 +344,12 @@ public class MainActivity extends BaseActivity
             case R.id.pemetaan_bayi_icon:
                 startActivity(new Intent(context, MapsChildrenActivity.class));
                 break;
+            case R.id.summary:
+                startActivity(new Intent(context, SummaryActivity.class));
+                break;
+            case R.id.summary_icon:
+                startActivity(new Intent(context, SummaryActivity.class));
+                break;
 //            case R.id.nav_children:
 //                gotoChildren();
 //                break;

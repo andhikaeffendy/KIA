@@ -28,7 +28,8 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:replace="android:icon,android:theme">
-        <activity android:name=".MapsChildrenActivity"></activity>
+        <activity android:name=".SummaryActivity"></activity>
+        <activity android:name=".MapsChildrenActivity" />
         <activity android:name=".PemeriksaanBayiActivity" />
         <activity android:name=".DetailNeonatalActivity" />
         <activity android:name=".DetailPemeriksaanBayiActivity" />

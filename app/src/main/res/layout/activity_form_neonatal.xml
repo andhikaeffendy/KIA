@@ -17,11 +17,9 @@
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scrollbars="none">
+            android:layout_height="match_parent">
 
             <LinearLayout
-                android:focusableInTouchMode="true"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
@@ -386,84 +384,120 @@
                     </LinearLayout>
 
 
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:textSize="14sp"
+                        android:text="Kemungkinan penyakit berat atau infeksi"/>
+
                     <EditText
                         android:id="@+id/infection"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Kemungkinan penyakit berat atau infeksi"
-                        android:layout_marginBottom="10dp"
+                        android:layout_marginBottom="16dp"
                         android:singleLine="true"
                         android:textSize="14sp"
                         android:nextFocusUp="@id/heart_beat"
                         android:nextFocusDown="@id/ikterus"
                         android:inputType="textPersonName"/>
 
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="14sp"
+                        android:text="Ikterus"/>
+
                     <EditText
                         android:id="@+id/ikterus"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Iterus"
-                        android:layout_marginBottom="10dp"
+                        android:layout_marginBottom="16dp"
                         android:singleLine="true"
                         android:textSize="14sp"
                         android:nextFocusUp="@id/infection"
                         android:nextFocusDown="@id/diare"
                         android:inputType="textPersonName"/>
 
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="14sp"
+                        android:text="Diare"/>
+
                     <EditText
                         android:id="@+id/diare"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Diare"
-                        android:layout_marginBottom="10dp"
+                        android:layout_marginBottom="16dp"
                         android:singleLine="true"
                         android:textSize="14sp"
                         android:nextFocusUp="@id/ikterus"
                         android:nextFocusDown="@id/low_weight"
                         android:inputType="textPersonName"/>
 
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="14sp"
+                        android:text="Kemungkinan berat badan rendah/masalah ASI"/>
+
                     <EditText
                         android:id="@+id/low_weight"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Kemungkinan berat badan rendah/masalah ASI"
-                        android:layout_marginBottom="10dp"
+                        android:layout_marginBottom="16dp"
                         android:singleLine="true"
                         android:textSize="14sp"
                         android:nextFocusUp="@id/diare"
                         android:nextFocusDown="@id/k_vitamin"
                         android:inputType="textPersonName"/>
 
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="14sp"
+                        android:text="Status Vitamin K1"/>
+
                     <EditText
                         android:id="@+id/k_vitamin"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Status Vitamin K1"
-                        android:layout_marginBottom="10dp"
+                        android:layout_marginBottom="16dp"
                         android:singleLine="true"
                         android:textSize="14sp"
                         android:nextFocusUp="@id/low_weight"
                         android:nextFocusDown="@id/hb_bcg_polio"
                         android:inputType="textPersonName"/>
 
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="14sp"
+                        android:text="Status imunisasi HB-0, BCG, Polio"/>
+
                     <EditText
                         android:id="@+id/hb_bcg_polio"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Status imunisasi HB-0, BCG, Polio"
-                        android:layout_marginBottom="10dp"
+                        android:layout_marginBottom="16dp"
                         android:singleLine="true"
                         android:textSize="14sp"
                         android:nextFocusUp="@id/k_vitamin"
                         android:nextFocusDown="@id/shk"
                         android:inputType="textPersonName"/>
 
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="14sp"
+                        android:text="Daerah Skrinning Hipotiroid Kongenital (SHK)"/>
+
                     <EditText
                         android:id="@+id/shk"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Daerah Skrining Hipotiroid Kongenital (SHK)"
-                        android:layout_marginBottom="10dp"
+                        android:layout_marginBottom="16dp"
                         android:singleLine="true"
                         android:textSize="14sp"
                         android:nextFocusUp="@id/hb_bcg_polio"
@@ -532,24 +566,34 @@
                     </LinearLayout>
 
 
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="14sp"
+                        android:text="Konfirmasi Hasil Tes SHK"/>
+
                     <EditText
                         android:id="@+id/shk_confirmation"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Konfirmasi Hasil Tes SHK"
-                        android:layout_marginBottom="10dp"
+                        android:layout_marginBottom="16dp"
                         android:singleLine="true"
                         android:textSize="14sp"
                         android:nextFocusUp="@id/shk"
                         android:nextFocusDown="@id/treatment"
                         android:inputType="textPersonName"/>
 
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="14sp"
+                        android:text="Tindakan (Terapi/Rujukan/Umpan)"/>
+
                     <EditText
                         android:id="@+id/treatment"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Tindakan (Terapi/Rujukan/Umpan)"
-                        android:layout_marginBottom="10dp"
+                        android:layout_marginBottom="16dp"
                         android:singleLine="true"
                         android:textSize="14sp"
                         android:nextFocusUp="@id/shk_confirmation"

@@ -9,6 +9,10 @@ import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
@@ -33,9 +37,7 @@ public class PemeriksaanBayiActivity extends BaseActivity implements AdapterList
 
     private RecyclerView recyclerView;
     private BabyAdapter mAdapter;
-
     private List<PemeriksaanBayi> dataList;
-    private User user;
     private PemeriksaanBayi pemeriksaanBayi;
     private Child child;
     private boolean editMode = false;
@@ -44,6 +46,15 @@ public class PemeriksaanBayiActivity extends BaseActivity implements AdapterList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pemeriksaan_bayi);
+
+        checkSession();
+
+        Toolbar myToolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(myToolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        setTitle("Catatan Neonatal");
 
         recyclerView = (RecyclerView) findViewById(R.id.rv_pemeriksaan_bayi);
         dataList = new ArrayList<PemeriksaanBayi>();
@@ -67,22 +78,36 @@ public class PemeriksaanBayiActivity extends BaseActivity implements AdapterList
         });
     }
 
-    ApiCallback babyCallback = new ApiCallback() {
-        @Override
-        public void onApiSuccess(String result) {
-            showProgressBar(false);
-            Gson gson = createGsonDate();
-            ApiData<PemeriksaanBayi> stateApiData = gson.fromJson(result, new TypeToken<ApiData<PemeriksaanBayi>>(){}.getType());
-            AppLog.d(new Gson().toJson(stateApiData));
-            mAdapter.setData(stateApiData.getData());
-        }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.children, menu);
+        return true;
+    }
 
-        @Override
-        public void onApiFailure(String errorMessage) {
-            showProgressBar(false);
-            Toast.makeText(context, errorMessage, Toast.LENGTH_SHORT).show();
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        onClickMenu(item.getItemId());
+        return true;
+    }
+
+    public void onClickMenu(int resId){
+        switch (resId){
+            case android.R.id.home:
+                finish();
+                break;
+            default:
+//                Toast.makeText(context, getString(R.string.error_coming_soon), Toast.LENGTH_SHORT).show();
+                break;
         }
-    };
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        initData();
+    }
+
 
     private void whiteNotificationBar(View view) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -107,11 +132,22 @@ public class PemeriksaanBayiActivity extends BaseActivity implements AdapterList
                 .enqueue(detailPemeriksaanBayiCallback.getCallback());
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        initData();
-    }
+    ApiCallback babyCallback = new ApiCallback() {
+        @Override
+        public void onApiSuccess(String result) {
+            showProgressBar(false);
+            Gson gson = createGsonDate();
+            ApiData<PemeriksaanBayi> stateApiData = gson.fromJson(result, new TypeToken<ApiData<PemeriksaanBayi>>(){}.getType());
+            AppLog.d(new Gson().toJson(stateApiData));
+            mAdapter.setData(stateApiData.getData());
+        }
+
+        @Override
+        public void onApiFailure(String errorMessage) {
+            showProgressBar(false);
+            Toast.makeText(context, errorMessage, Toast.LENGTH_SHORT).show();
+        }
+    };
 
     public void initData() {
         mApiService.getListPemeriksaanBayi(appSession.getData(AppSession.TOKEN), child.getId())
@@ -157,7 +193,9 @@ public class PemeriksaanBayiActivity extends BaseActivity implements AdapterList
 
         @Override
         public void onApiFailure(String errorMessage) {
-
+            showProgressBar(false);
+            Toast.makeText(context, errorMessage, Toast.LENGTH_SHORT).show();
+            finish();
         }
     };
 }

@@ -349,7 +349,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:textSize="14dp"
-                            android:text="Jumlah Melahirkan"/>
+                            android:text="Nomor Kehamilan"/>
 
                         <RelativeLayout
                             android:layout_width="match_parent"
@@ -373,7 +373,7 @@
                                 android:layout_centerInParent="true"
                                 android:textSize="@dimen/form_text_size"
                                 android:layout_alignParentRight="true"
-                                android:text="jumlah"/>
+                                android:text="@string/anak"/>
                         </RelativeLayout>
 
                     </LinearLayout>
@@ -415,7 +415,7 @@
                                 android:layout_centerInParent="true"
                                 android:textSize="@dimen/form_text_size"
                                 android:layout_alignParentRight="true"
-                                android:text="@string/hint_cm"/>
+                                android:text="@string/anak"/>
                         </RelativeLayout>
 
                     </LinearLayout>
@@ -457,7 +457,7 @@
                                 android:layout_centerInParent="true"
                                 android:textSize="@dimen/form_text_size"
                                 android:layout_alignParentRight="true"
-                                android:text="@string/hint_cm"/>
+                                android:text="@string/anak"/>
                         </RelativeLayout>
 
                     </LinearLayout>
@@ -499,7 +499,7 @@
                                 android:layout_centerInParent="true"
                                 android:textSize="@dimen/form_text_size"
                                 android:layout_alignParentRight="true"
-                                android:text="@string/hint_cm"/>
+                                android:text="@string/anak"/>
                         </RelativeLayout>
 
                     </LinearLayout>
@@ -541,7 +541,7 @@
                                 android:layout_centerInParent="true"
                                 android:textSize="@dimen/form_text_size"
                                 android:layout_alignParentRight="true"
-                                android:text="@string/hint_cm"/>
+                                android:text="@string/anak"/>
                         </RelativeLayout>
 
                     </LinearLayout>
@@ -583,7 +583,7 @@
                                 android:layout_centerInParent="true"
                                 android:textSize="@dimen/form_text_size"
                                 android:layout_alignParentRight="true"
-                                android:text="@string/hint_cm"/>
+                                android:text="@string/anak"/>
                         </RelativeLayout>
 
                     </LinearLayout>
@@ -625,7 +625,7 @@
                                 android:layout_centerInParent="true"
                                 android:textSize="@dimen/form_text_size"
                                 android:layout_alignParentRight="true"
-                                android:text="@string/hint_cm"/>
+                                android:text="@string/anak"/>
                         </RelativeLayout>
 
                     </LinearLayout>
@@ -667,7 +667,7 @@
                                 android:layout_centerInParent="true"
                                 android:textSize="@dimen/form_text_size"
                                 android:layout_alignParentRight="true"
-                                android:text="@string/hint_cm"/>
+                                android:text="@string/anak"/>
                         </RelativeLayout>
 
                     </LinearLayout>
@@ -709,7 +709,7 @@
                                 android:layout_centerInParent="true"
                                 android:textSize="@dimen/form_text_size"
                                 android:layout_alignParentRight="true"
-                                android:text="@string/hint_cm"/>
+                                android:text="@string/anak"/>
                         </RelativeLayout>
 
                     </LinearLayout>
@@ -721,7 +721,7 @@
                         android:layout_marginBottom="10dp"
                         android:nextFocusDown="@id/last_period_date"
                         android:singleLine="true"
-                        android:hint="Distance"/>
+                        android:hint="Jarak"/>
 
                     <EditText
                         android:id="@+id/immunization_status"
@@ -730,7 +730,7 @@
                         android:layout_marginBottom="10dp"
                         android:nextFocusDown="@id/last_period_date"
                         android:singleLine="true"
-                        android:hint="Immunization_status"/>
+                        android:hint="Status Imunisasi"/>
 
                     <EditText
                         android:id="@+id/last_birth_helper"

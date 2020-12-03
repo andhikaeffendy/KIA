@@ -494,6 +494,9 @@ public interface BaseApiService {
     @GET("public_health_centers/children")
     Call<ResponseBody> getPemetaanAnak();
 
+    @GET("infographics/summary")
+    Call<ResponseBody> getSummary();
+
     @FormUrlEncoded
     @POST("baby_histories")
     Call<ResponseBody> createPemeriksaanBayi(@Field("auth_token") String token,

@@ -256,6 +256,12 @@ public class StartActivity extends BaseActivity implements AdapterListener<Conte
             case R.id.pregnancies_icon:
                 i = new Intent(context, PregnanciesActivity.class);
                 break;
+            case R.id.summary:
+                i = new Intent(context, SummaryActivity.class);
+                break;
+            case R.id.summary_icon:
+                i = new Intent(context, SummaryActivity.class);
+                break;
             case R.id.games:
                 i = new Intent(context, GameActivity.class);
 //                i = new Intent(context, UnityPlayerActivity.class);

@@ -3,6 +3,7 @@ package com.kominfo.anaksehat;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.text.InputType;
 import android.util.Log;
 import android.view.Menu;
@@ -28,7 +29,7 @@ public class FormPemeriksaanBayiActivity extends BaseActivity {
             etInfection, etIkterus, etDiare, etLowWeight, etKVitamin, etHbBcgPolio,
             etShk, etShkConfirm, etTreatment;
     private ImageView ivDateIcon;
-    private Button btnSubmit, btnCancel;
+    //private Button btnSubmit, btnCancel;
     private PemeriksaanBayi pemeriksaanBayi;
     private Child child;
     private boolean editMode = false;
@@ -37,6 +38,15 @@ public class FormPemeriksaanBayiActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_form_pemeriksaan_bayi);
+
+        checkSession();
+
+        Toolbar myToolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(myToolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        setTitle(R.string.title_create_child_history);
 
         etDate = findViewById(R.id.et_date);
         etWeight = findViewById(R.id.et_weight);
@@ -54,8 +64,8 @@ public class FormPemeriksaanBayiActivity extends BaseActivity {
         etShkConfirm = findViewById(R.id.et_shk_confirmation);
         etTreatment = findViewById(R.id.et_treatment);
         ivDateIcon = findViewById(R.id.date_icon);
-        btnSubmit = findViewById(R.id.submit);
-        btnCancel = findViewById(R.id.cancel);
+//        btnSubmit = findViewById(R.id.submit);
+//        btnCancel = findViewById(R.id.cancel);
 
         child = new Gson().fromJson(getIntent().getStringExtra("data"), Child.class);
 //        Log.d("DEBUG", "ID CHILD : " + child.getId());
@@ -84,18 +94,11 @@ public class FormPemeriksaanBayiActivity extends BaseActivity {
             initEditData();
         }
 
-        btnSubmit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                submitData();
-            }
-        });
-
     }
 
     private void initEditData(){
         pemeriksaanBayi = new Gson().fromJson(getIntent().getStringExtra("edit_data"), PemeriksaanBayi.class);
-        setTitle(R.string.title_edit_child_history);
+        setTitle("Edit Pemeriksaan");
 
         etDate.setText(DateHelper.getDateServer(pemeriksaanBayi.getHistory_date()));
         etWeight.setText(""+pemeriksaanBayi.getWeight());
@@ -112,12 +115,6 @@ public class FormPemeriksaanBayiActivity extends BaseActivity {
         etShk.setText(pemeriksaanBayi.getShk());
         etShkConfirm.setText(pemeriksaanBayi.getShkConfirmation());
         etTreatment.setText(pemeriksaanBayi.getTreatment());
-        //etDate.setText(DateHelper.getDateServer(pemeriksaanBayi.getHistory_date()));
-//        etHeight.setText(""+childHistory.getHeight());
-//        etWeight.setText(replaceDotToComma(""+childHistory.getWeight()));
-//        etHeadRound.setText(""+childHistory.getHead_round());
-//        etTemperature.setText(""+childHistory.getTemperature());
-//        etNote.setText(childHistory.getNote());
     }
 
     @Override
@@ -127,17 +124,26 @@ public class FormPemeriksaanBayiActivity extends BaseActivity {
         return true;
     }
 
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//
-//    }
-//
-//    public void onClickMenu(int resId){
-//        switch (resId){
-//            case android.R.id.home:
-//                back
-//        }
-//    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        onClickMenu(item.getItemId());
+        return true;
+    }
+
+    public void onClickMenu(int resId){
+        switch (resId){
+            case R.id.add:
+                startActivity(new Intent(context, FormChildActivity.class));
+                finish();
+                break;
+            case android.R.id.home:
+                backFunction();
+                break;
+            default:
+//                Toast.makeText(context, getString(R.string.error_coming_soon), Toast.LENGTH_SHORT).show();
+                break;
+        }
+    }
 
     private void submitData(){
 
@@ -159,13 +165,13 @@ public class FormPemeriksaanBayiActivity extends BaseActivity {
         String treatment = etTreatment.getText().toString();
         long userId = getUserSession().getId();
 
+        showProgressBar(true);
         if (editMode){
             long id = pemeriksaanBayi.getId();
-            mApiService.updatePemeriksaanBayi(id, child.getId(), appSession.getData(AppSession.TOKEN), historyDate, weight,length,
+            mApiService.updatePemeriksaanBayi(id, id, appSession.getData(AppSession.TOKEN), historyDate, weight,length,
                     temperature,repiratory,heartBeat,infection,ikterus,diare,lowWeight,kVItamin,hbBcgPolio,shk,shkConfirm,treatment,userId).enqueue(formCallback.getCallback());
         }else {
-            long id = child.getId();
-            mApiService.createPemeriksaanBayi(appSession.getData(AppSession.TOKEN), id, historyDate, weight,length,temperature,repiratory,heartBeat,infection,
+            mApiService.createPemeriksaanBayi(appSession.getData(AppSession.TOKEN), child.getId(), historyDate, weight,length,temperature,repiratory,heartBeat,infection,
                     ikterus,diare,lowWeight,kVItamin,hbBcgPolio,shk,shkConfirm,treatment,userId).enqueue(formCallback.getCallback());
 
         }
@@ -214,5 +220,48 @@ public class FormPemeriksaanBayiActivity extends BaseActivity {
             finish();
         }
     };
+
+    private boolean validateData(){
+        String historyDate = etDate.getText().toString();
+
+        if(historyDate.isEmpty()){
+            etDate.setError(getString(R.string.error_birth_date));
+            etDate.requestFocus();
+            return false;
+        }
+        return true;
+    }
+
+    public void onClickForm(View v){
+        switch (v.getId()){
+            case R.id.add:
+//                startActivity(new Intent(context, FormChildActivity.class));
+//                finish();
+                break;
+            case R.id.submit:
+                if(validateData())
+                    submitData();
+                break;
+            case R.id.cancel:
+                backFunction();
+                break;
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        backFunction();
+    }
+
+    private void backFunction(){
+        if(editMode){
+            Intent intent = new Intent(context, DetailPemeriksaanBayiActivity.class);
+            intent.putExtra("parent_data", new Gson().toJson(child));
+            intent.putExtra("data", new Gson().toJson(pemeriksaanBayi));
+            showWarning(intent, R.string.warning, R.string.warning_edit_pemeriksaan, R.string.ok, R.string.cancel);
+        } else {
+            showWarning(R.string.warning, R.string.warning_create_pemeriksaan, R.string.ok, R.string.cancel);
+        }
+    }
 
 }

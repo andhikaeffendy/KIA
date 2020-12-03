@@ -120,6 +120,15 @@
 
                     </RelativeLayout>
 
+                    <EditText
+                        android:id="@+id/note"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/hint_note"
+                        android:layout_marginBottom="10dp"
+                        android:maxLines="5"
+                        android:inputType="textMultiLine"/>
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -362,15 +371,194 @@
 
                     </LinearLayout>
 
-                    <EditText
-                        android:visibility="gone"
-                        android:id="@+id/note"
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="@string/hint_note"
+                        android:paddingLeft="4dp"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="10dp"
+                        android:weightSum="2">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:textSize="@dimen/form_text_size"
+                            android:text="Tinggi Fundus"/>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1">
+
+                            <EditText
+                                android:id="@+id/et_fundus"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:nextFocusUp="@id/history_date"
+                                android:nextFocusDown="@id/baby_weight"
+                                android:singleLine="true"
+                                android:inputType="numberDecimal"
+                                android:digits="0123456789,."/>
+
+                            <TextView
+                                android:id="@+id/fundus_right"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:textSize="@dimen/form_text_size"
+                                android:layout_alignParentRight="true"
+                                android:text="@string/hint_cm"/>
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Letak janin (Kep/Su/Li)"
+                        android:textSize="16sp"
+                        android:layout_marginTop="12sp"/>
+
+                    <EditText
+                        android:id="@+id/et_fundus_height"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
                         android:layout_marginBottom="10dp"
                         android:maxLines="5"
                         android:inputType="textMultiLine"/>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="4dp"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="10dp"
+                        android:weightSum="2">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:textSize="@dimen/form_text_size"
+                            android:text="Detak Jantung"/>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1">
+
+                            <EditText
+                                android:id="@+id/et_heart_beat_ibu"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:nextFocusUp="@id/history_date"
+                                android:nextFocusDown="@id/baby_weight"
+                                android:singleLine="true"
+                                android:inputType="numberDecimal"
+                                android:digits="0123456789,."/>
+
+                            <TextView
+                                android:id="@+id/heat_right"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:textSize="@dimen/form_text_size"
+                                android:layout_alignParentRight="true"
+                                android:text="Minute"/>
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Kaki Bengkak"
+                        android:textSize="16sp"
+                        android:layout_marginTop="12sp"/>
+
+                    <EditText
+                        android:id="@+id/et_leg"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:maxLines="5"
+                        android:inputType="textMultiLine"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Hasil Pemeriksaan Lab"
+                        android:textSize="16sp"
+                        android:layout_marginTop="12sp"/>
+
+                    <EditText
+                        android:id="@+id/et_lab"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:maxLines="5"
+                        android:inputType="textMultiLine"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Tindakan"
+                        android:textSize="16sp"
+                        android:layout_marginTop="12sp"/>
+
+                    <EditText
+                        android:id="@+id/et_treatment_ibu"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:maxLines="5"
+                        android:inputType="textMultiLine"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Nasehat"
+                        android:textSize="16sp"
+                        android:layout_marginTop="12sp"/>
+
+                    <EditText
+                        android:id="@+id/et_suggestion"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:maxLines="5"
+                        android:inputType="textMultiLine"/>
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp">
+
+                        <EditText
+                            android:id="@+id/next_visit_date"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="none"
+                            android:focusable="false"
+                            android:nextFocusDown="@id/weight"
+                            android:singleLine="true"
+                            android:hint="@string/hint_pregnancy_date" />
+
+                        <ImageView
+                            android:id="@+id/visit_date_icon"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:padding="5dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_alignParentRight="true"
+                            android:nextFocusUp="@id/history_date"
+                            android:nextFocusDown="@id/weight"
+                            android:paddingTop="20dp"
+                            android:background="@drawable/ic_date_range_black_24dp"/>
+
+                    </RelativeLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"

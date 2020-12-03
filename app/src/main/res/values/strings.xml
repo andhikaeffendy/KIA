@@ -187,7 +187,9 @@
     <string name="warning_create_birth_planning">Anda akan menghentikan proses input data perencanaan persalinan?</string>
     <string name="warning_edit_birth_planning">Anda akan menghentikan proses edit data perencanaan persalinan?</string>
     <string name="warning_create_neonatal">Anda akan menghentikan proses input data neonatal?</string>
+    <string name="warning_create_pemeriksaan">Anda akan menghentikan proses input data pemeriksaan?</string>
     <string name="warning_edit_neonatal">Anda akan menghentikan proses edit data neonatal?</string>
+    <string name="warning_edit_pemeriksaan">Anda akan menghentikan proses edit data pemeriksaan?</string>
     <string name="warning_logout">Anda akan keluar aplikasi?</string>
     <string name="warning_logout_2">Apakah Anda yakin\nuntuk keluar dari aplikasi</string>
 
@@ -395,5 +397,6 @@
         "For example, position the FAB to one side of stream of a cards so the FAB won’t interfere "
         "when a user tries to pick up one of cards.\n\n"
     </string>
+    <string name="anak">anak</string>
 
 </resources>

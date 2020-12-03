@@ -223,6 +223,36 @@
                     android:textSize="14sp" />
             </LinearLayout>
 
+            <LinearLayout
+                android:id="@+id/summary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="onClickMenu"
+                android:orientation="vertical"
+                android:paddingLeft="5dp">
+
+                <Button
+                    android:id="@+id/summary_icon"
+                    android:onClick="onClickMenu"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_gravity="center"
+                    android:adjustViewBounds="true"
+                    android:background="@drawable/menupromotion"
+                    android:maxHeight="60dp"
+                    android:maxWidth="128dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:paddingTop="8dp"
+                    android:text="Pemetaan\nBayi Balita"
+                    android:textColor="@color/white"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
         </LinearLayout>
 
         <TextView
