@@ -14,6 +14,7 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.content.FileProvider;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.InputType;
 import android.util.Log;
@@ -69,7 +70,7 @@ public class FormChildActivity extends BaseActivity {
     static final int MY_PERMISSIONS_REQUEST_STORAGE = 100;
 
     private EditText etBirthDate,etName,etFirstLength,etFirstWeight,etHeight,etWeight,
-            etFirstHeadRound;
+            etFirstHeadRound, etNote, etJampersalStatus;
     private Spinner spBloodType;
     private ImageView ivThumbnail, ivPickDate;
     private RadioButton rbGenderMale, rbGenderFemale;
@@ -82,6 +83,7 @@ public class FormChildActivity extends BaseActivity {
     private long give_birth_id = 0;
     private Picasso picasso;
     private ShowcaseHelper showcaseHelper;
+    private RecyclerView rvBabyCondition, rvBabyTreatment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,6 +100,10 @@ public class FormChildActivity extends BaseActivity {
 
 //        setTitle(R.string.title_create_child);
 
+        etNote = findViewById(R.id.et_note);
+        etJampersalStatus = findViewById(R.id.et_jampersal_status);
+        rvBabyCondition = findViewById(R.id.rv_baby_condition_ids);
+        rvBabyTreatment = findViewById(R.id.rv_baby_treatment_ids);
         ivThumbnail = findViewById(R.id.thumbnail);
         etBirthDate = findViewById(R.id.birth_date);
         etName = findViewById(R.id.name);

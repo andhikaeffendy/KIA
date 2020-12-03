@@ -44,7 +44,8 @@ import java.util.List;
 public class ChildDetailActivity extends BaseActivity {
     private ImageView ivAvatar;
     private TextView tvName, tvBirthDate, tvBloodType, tvFirstLength, tvFirstWeight, tvHeight,
-            tvWeight, tvGender, tvFirstHeadRound, tvMotherName;
+            tvWeight, tvGender, tvFirstHeadRound, tvMotherName, tvBabyCondition, tvBabyTreatment,
+            tvNote, tvJampersalStatus;
     private Button btnNext, btnImun, btnNeo, btnPemBayi;
     private Child child;
     private LineChart mChart;
@@ -68,6 +69,10 @@ public class ChildDetailActivity extends BaseActivity {
 
         setTitle(R.string.title_child);
 
+        tvBabyCondition = findViewById(R.id.tv_nb_baby_condition_ids);
+        tvBabyTreatment = findViewById(R.id.tv_nb_baby_treatment_ids);
+        tvNote = findViewById(R.id.tv_note);
+        tvJampersalStatus = findViewById(R.id.tv_jampersal_status);
         ivAvatar = findViewById(R.id.avatar);
         tvName = findViewById(R.id.name);
         tvBirthDate = findViewById(R.id.birth_date);

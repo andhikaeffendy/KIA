@@ -294,7 +294,6 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:visibility="gone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingTop="20dp"
@@ -326,6 +325,67 @@
 
                     </LinearLayout>
                 </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:textSize="14sp"
+                    android:text="Kondisi Saat Lahir"/>
+
+                <TextView
+                    android:id="@+id/tv_nb_baby_condition_ids"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="isi kondisi"
+                    android:layout_marginTop="8dp"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:textSize="14sp"
+                    android:text="Asuhan Bayi Saat Lahir"/>
+
+                <TextView
+                    android:id="@+id/tv_nb_baby_treatment_ids"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="isi kondisi"
+                    android:layout_marginTop="8dp"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:textSize="14sp"
+                    android:text="Keterangan Tambahan"/>
+
+                <TextView
+                    android:id="@+id/tv_note"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="isi kondisi"
+                    android:layout_marginTop="8dp"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:textSize="14sp"
+                    android:text="Jampersal Status"/>
+
+                <TextView
+                    android:id="@+id/tv_jampersal_status"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="isi kondisi"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="16dp"
+                    android:textSize="14sp" />
 
                 <LinearLayout
                     android:id="@+id/chart_zone"
