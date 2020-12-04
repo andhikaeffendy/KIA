@@ -1,5 +1,7 @@
 package com.kominfo.anaksehat.models;
 
+import android.support.annotation.Nullable;
+
 public class Checkbox {
     private int id;
     private String name;
@@ -20,4 +22,8 @@ public class Checkbox {
         this.name = name;
     }
 
+    @Override
+    public boolean equals(@Nullable Object obj) {
+        return ((Checkbox)obj).getId() == this.id;
+    }
 }

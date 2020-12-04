@@ -77,7 +77,7 @@ public class FormChildActivity extends BaseActivity {
     static final int MY_PERMISSIONS_REQUEST_STORAGE = 100;
 
     private EditText etBirthDate,etName,etFirstLength,etFirstWeight,etHeight,etWeight,
-            etFirstHeadRound, etNote, etJampersalStatus;
+            etFirstHeadRound, etNote, etJampersalStatus, etChildNumber;
     private Spinner spBloodType;
     private ImageView ivThumbnail, ivPickDate;
     private RadioButton rbGenderMale, rbGenderFemale;
@@ -125,6 +125,7 @@ public class FormChildActivity extends BaseActivity {
         etWeight = findViewById(R.id.weight);
         etFirstHeadRound = findViewById(R.id.first_head_round);
         etNote = findViewById(R.id.et_note);
+        etChildNumber = findViewById(R.id.child_number);
         etJampersalStatus = findViewById(R.id.et_jampersal_status);
         actvMotherName = findViewById(R.id.mother_name);
         rbGenderMale = findViewById(R.id.gender);
@@ -339,6 +340,16 @@ public class FormChildActivity extends BaseActivity {
         etFirstHeadRound.setText(""+child.getFirst_head_round());
         if(child.getGender().compareToIgnoreCase("female")==0)
             rbGenderFemale.setChecked(true);
+
+        etChildNumber.setText(""+child.getChild_number());
+        etNote.setText(child.getNote());
+        etJampersalStatus.setText(child.getJampersal_status());
+        for (Checkbox condition : child.getNb_baby_conditions()) {
+            _isCheckedConditions.add(condition.getId());
+        }
+        for (Checkbox treatment : child.getNb_baby_treatments()) {
+            _isCheckedTreatment.add(treatment.getId());
+        }
     }
 
     public void onClickForm(View v){
@@ -423,15 +434,23 @@ public class FormChildActivity extends BaseActivity {
 
         if(!rbGenderMale.isChecked()) gender = "Female";
 
+        String note = etNote.getText().toString();
+        String jampersal_status = etJampersalStatus.getText().toString();
+        int child_number = Integer.parseInt(etChildNumber.getText().toString());
+        String nb_baby_treatments = _isCheckedTreatment.toString();
+        String nb_baby_conditions = _isCheckedConditions.toString();
+
         showProgressBar(true);
         if(editMode){
             long id = child.getId();
             mApiService.updateChild(id, id, auth_token, birth_date, name, gender, blood_type,
-                    height, weight, first_head_round, mother_id)
+                    height, weight, first_head_round, mother_id, child_number, jampersal_status,
+                    note, nb_baby_conditions, nb_baby_treatments)
                     .enqueue(formCallback.getCallback());
         } else
             mApiService.createChild(auth_token, birth_date, name, gender, blood_type,
-                height, weight, first_head_round, mother_id, give_birth_id)
+                height, weight, first_head_round, mother_id, give_birth_id, child_number,
+                    jampersal_status, note, nb_baby_conditions, nb_baby_treatments)
                 .enqueue(formCallback.getCallback());
     }
 
@@ -799,7 +818,11 @@ public class FormChildActivity extends BaseActivity {
             Gson gson = createGsonDate();
             ApiData<Checkbox> stateApiData = gson.fromJson(result, new TypeToken<ApiData<Checkbox>>(){}.getType());
             AppLog.d(new Gson().toJson(stateApiData));
-            mAdapterConditions.setData(stateApiData.getData());
+            if(editMode){
+                mAdapterConditions.setData(stateApiData.getData(), child.getNb_baby_conditions());
+            } else {
+                mAdapterConditions.setData(stateApiData.getData());
+            }
         }
 
         @Override
@@ -816,7 +839,11 @@ public class FormChildActivity extends BaseActivity {
             Gson gson = createGsonDate();
             ApiData<Checkbox> stateApiData = gson.fromJson(result, new TypeToken<ApiData<Checkbox>>(){}.getType());
             AppLog.d(new Gson().toJson(stateApiData));
-            mAdapterTreatment.setData(stateApiData.getData());
+            if(editMode){
+                mAdapterTreatment.setData(stateApiData.getData(), child.getNb_baby_treatments());
+            } else {
+                mAdapterTreatment.setData(stateApiData.getData());
+            }
         }
 
         @Override

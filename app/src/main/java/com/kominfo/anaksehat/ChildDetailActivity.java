@@ -26,6 +26,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import com.kominfo.anaksehat.R;
+import com.kominfo.anaksehat.models.Checkbox;
 import com.kominfo.anaksehat.models.Neonatal;
 import com.squareup.picasso.Picasso;
 import com.kominfo.anaksehat.controllers.BaseActivity;
@@ -45,7 +46,7 @@ public class ChildDetailActivity extends BaseActivity {
     private ImageView ivAvatar;
     private TextView tvName, tvBirthDate, tvBloodType, tvFirstLength, tvFirstWeight, tvHeight,
             tvWeight, tvGender, tvFirstHeadRound, tvMotherName, tvBabyCondition, tvBabyTreatment,
-            tvNote, tvJampersalStatus;
+            tvNote, tvJampersalStatus, tvChildNumber;
     private Button btnNext, btnImun, btnNeo, btnPemBayi;
     private Child child;
     private LineChart mChart;
@@ -69,6 +70,7 @@ public class ChildDetailActivity extends BaseActivity {
 
         setTitle(R.string.title_child);
 
+        tvChildNumber = findViewById(R.id.child_number);
         tvBabyCondition = findViewById(R.id.tv_nb_baby_condition_ids);
         tvBabyTreatment = findViewById(R.id.tv_nb_baby_treatment_ids);
         tvNote = findViewById(R.id.tv_note);
@@ -187,6 +189,25 @@ public class ChildDetailActivity extends BaseActivity {
 
         mApiService.getChildHistories(appSession.getData(AppSession.TOKEN), child.getId())
                 .enqueue(childHistoriesCallback.getCallback());
+
+        tvChildNumber.setText(""+child.getChild_number());
+        tvNote.setText(child.getNote());
+        String conditions = "", treatments = "";
+        tvJampersalStatus.setText(child.getJampersal_status());
+        for (int i=0; i < child.getNb_baby_conditions().size();i++) {
+            conditions = conditions.concat("- "+child.getNb_baby_conditions().get(i).getName());
+            if( i+1 < child.getNb_baby_conditions().size()){
+                conditions = conditions.concat("\n");
+            }
+        }
+        tvBabyCondition.setText(conditions);
+        for (int i=0; i < child.getNb_baby_treatments().size();i++) {
+            treatments = treatments.concat("- "+child.getNb_baby_treatments().get(i).getName());
+            if( i+1 < child.getNb_baby_treatments().size()){
+                treatments = treatments.concat("\n");
+            }
+        }
+        tvBabyTreatment.setText(treatments);
     }
 
     ApiCallback childHistoriesCallback = new ApiCallback() {

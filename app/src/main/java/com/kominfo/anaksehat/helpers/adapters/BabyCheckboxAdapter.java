@@ -44,6 +44,11 @@ public class BabyCheckboxAdapter extends RecyclerView.Adapter<BabyCheckboxAdapte
         this.dataList = dataList;
         notifyDataSetChanged();
     }
+    public void setData(List<Checkbox> dataList, List<Checkbox> checks){
+        this.dataList = dataList;
+        this._isChecked = checks;
+        notifyDataSetChanged();
+    }
 
     @NonNull
     @Override
@@ -58,7 +63,7 @@ public class BabyCheckboxAdapter extends RecyclerView.Adapter<BabyCheckboxAdapte
     public void onBindViewHolder(BabyCheckboxAdapter.MyViewHolder holder, final int position) {
         final Checkbox data = dataList.get(position);
         holder.name.setText(data.getName());
-        if (_isChecked.contains(position)){
+        if (_isChecked.contains(data)){
             holder.name.setChecked(true);
         } else {
             holder.name.setChecked(false);

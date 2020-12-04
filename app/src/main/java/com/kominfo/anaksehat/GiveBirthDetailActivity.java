@@ -61,6 +61,9 @@ public class GiveBirthDetailActivity extends BaseActivity {
                 } else {
                     Intent i = new Intent(context, FormChildActivity.class);
                     i.putExtra("give_birth_id", giveBirth.getId());
+                    i.putExtra("mother_id", Long.parseLong(""+giveBirth.getMother_id()));
+                    i.putExtra("mother", giveBirth.getMother_name());
+                    i.putExtra("birth_date", "-");
                     startActivity(i);
                 }
             }

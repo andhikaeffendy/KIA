@@ -1,6 +1,7 @@
 package com.kominfo.anaksehat.models;
 
 import java.util.Date;
+import java.util.List;
 
 public class Child {
     private long id;
@@ -16,6 +17,11 @@ public class Child {
     private String mother_name;
     private String photo_url;
     private int give_birth_id;
+    private int child_number;
+    private String jampersal_status;
+    private String note;
+    private List<Checkbox> nb_baby_treatments;
+    private List<Checkbox> nb_baby_conditions;
 
     public void setId(long id) {
         this.id = id;
@@ -124,5 +130,45 @@ public class Child {
 
     public int getGive_birth_id() {
         return give_birth_id;
+    }
+
+    public void setNote(String note) {
+        this.note = note;
+    }
+
+    public String getNote() {
+        return note;
+    }
+
+    public int getChild_number() {
+        return child_number;
+    }
+
+    public List<Checkbox> getNb_baby_conditions() {
+        return nb_baby_conditions;
+    }
+
+    public List<Checkbox> getNb_baby_treatments() {
+        return nb_baby_treatments;
+    }
+
+    public String getJampersal_status() {
+        return jampersal_status;
+    }
+
+    public void setChild_number(int child_number) {
+        this.child_number = child_number;
+    }
+
+    public void setJampersal_status(String jampersal_status) {
+        this.jampersal_status = jampersal_status;
+    }
+
+    public void setNb_baby_conditions(List<Checkbox> nb_baby_conditions) {
+        this.nb_baby_conditions = nb_baby_conditions;
+    }
+
+    public void setNb_baby_treatments(List<Checkbox> nb_baby_treatments) {
+        this.nb_baby_treatments = nb_baby_treatments;
     }
 }

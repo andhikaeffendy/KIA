@@ -165,7 +165,12 @@ public interface BaseApiService {
                                    @Field("first_weight") double first_weight,
                                    @Field("first_head_round") int first_head_round,
                                    @Field("mother_id") long mother_id,
-                                   @Field("give_birth_id") long give_birth_id);
+                                   @Field("give_birth_id") long give_birth_id,
+                                   @Field("child_number") int child_number,
+                                   @Field("jampersal_status") String jampersal_status,
+                                   @Field("note") String note,
+                                   @Field("nb_baby_conditions_ids") String nb_baby_conditions_ids,
+                                   @Field("nb_baby_treatments_ids") String nb_baby_treatments_ids);
 
     @FormUrlEncoded
     @PUT("children/{id}")
@@ -179,7 +184,12 @@ public interface BaseApiService {
                                    @Field("first_length") int first_length,
                                    @Field("first_weight") double first_weight,
                                    @Field("first_head_round") int first_head_round,
-                                   @Field("mother_id") long mother_id);
+                                   @Field("mother_id") long mother_id,
+                                   @Field("child_number") int child_number,
+                                   @Field("jampersal_status") String jampersal_status,
+                                   @Field("note") String note,
+                                   @Field("nb_baby_conditions_ids") String nb_baby_conditions_ids,
+                                   @Field("nb_baby_treatments_ids") String nb_baby_treatments_ids);
 
     @GET("mothers")
     Call<ResponseBody> getMothers(@Query("auth_token") String token);
