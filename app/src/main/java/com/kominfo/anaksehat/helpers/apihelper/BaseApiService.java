@@ -509,6 +509,10 @@ public interface BaseApiService {
     @GET("infographics/summary")
     Call<ResponseBody> getSummary();
 
+    @GET("infographics/summary")
+    Call<ResponseBody> getFilterSummary(@Query("start_date") String start_date,
+                                        @Query("end_date") String end_date);
+
     @FormUrlEncoded
     @POST("baby_histories")
     Call<ResponseBody> createPemeriksaanBayi(@Field("auth_token") String token,
