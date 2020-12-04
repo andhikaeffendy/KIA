@@ -85,6 +85,14 @@
     <string name="error_legal_file">Surat Legalisasi harus ada</string>
     <string name="error_creating_image">Share data gagal</string>
     <string name="error_player">There was an error initializing the YouTubePlayer (%1$s)</string>
+    <string name="error_fundus_height">Tinggi Fundus harus diisi</string>
+    <string name="error_fetus_height">Letak Janin harus diisi</string>
+    <string name="error_heart_beat">Detak Jantung harus diisi</string>
+    <string name="error_leg">Kaki Bengkak harus diisi</string>
+    <string name="error_lab">Hasil Pemeriksaan Lab harus diisi</string>
+    <string name="error_treatment">Tindakan harus diisi</string>
+    <string name="error_suggestion">Nasihat harus diisi</string>
+    <string name="error_next_visit_date">Kapan Harus Kembali harus diisi</string>
 
     <string name="login">Sudah memiliki akun? Masuk</string>
     <string name="login_here"> disini</string>

@@ -19,8 +19,9 @@ import com.kominfo.anaksehat.models.PregnancyHistory;
 public class PregnancyHistoryDetailActivity extends BaseActivity {
 
     private TextView tvPregnancyWeightGain, tvHistoryDate, tvMotherWeightIndex, tvWeight,
-            tvBabyWeight, tvMotherNutritionCategory, tvAmnioticCondition,
-            tvBloodPressureTop, tvBloodPressureBottom, tvNote;
+            tvBabyWeight, tvMotherNutritionCategory, tvAmnioticCondition, tvPregnancyAge,
+            tvBloodPressureTop, tvBloodPressureBottom, tvNote, tvFundusHeight, tvFetusPosition,
+            tvHeartBeat, tvTreatment, tvSuggestion, tvNextVisitDate, tvLeg, tvLab;
     private ImageView ivMotherWeightIndex, ivMotherNutritionCategory, ivPregnancyWeightGain,
             ivAmnioticCondition;
     private PregnancyHistory pregnancyHistory;
@@ -45,8 +46,9 @@ public class PregnancyHistoryDetailActivity extends BaseActivity {
 
         setTitle(R.string.title_pregnancy_history);
 
+        tvPregnancyAge = findViewById(R.id.pregnancy_age);
         tvBabyWeight = findViewById(R.id.baby_weight);
-        tvWeight = findViewById(R.id.weight);
+        tvWeight = findViewById(R.id.tv_weight);
         tvHistoryDate = findViewById(R.id.history_date);
         tvNote = findViewById(R.id.note);
         tvBloodPressureTop = findViewById(R.id.blood_pressure_top);
@@ -56,6 +58,17 @@ public class PregnancyHistoryDetailActivity extends BaseActivity {
         tvPregnancyWeightGain = findViewById(R.id.pregnancy_weight_gain);
         tvMotherWeightIndex = findViewById(R.id.mother_weight_index);
         tvMotherNutritionCategory = findViewById(R.id.mother_nutrition_category);
+
+        tvFundusHeight = findViewById(R.id.tv_fundus_height);
+        tvFetusPosition = findViewById(R.id.tv_fetus_position);
+        tvHeartBeat = findViewById(R.id.tv_heart_beat_ibu);
+        tvTreatment = findViewById(R.id.tv_treatment_ibu);
+        tvSuggestion = findViewById(R.id.tv_suggestion);
+        tvNextVisitDate = findViewById(R.id.tv_visit_date);
+        tvLeg = findViewById(R.id.tv_leg);
+        tvLab = findViewById(R.id.tv_lab);
+
+
         ivMotherWeightIndex = findViewById(R.id.mother_weight_index_icon);
         ivMotherNutritionCategory= findViewById(R.id.mother_nutrition_category_icon);
         ivAmnioticCondition= findViewById(R.id.amniotic_condition_icon);
@@ -117,6 +130,16 @@ public class PregnancyHistoryDetailActivity extends BaseActivity {
         tvAmnioticCondition.setText(pregnancyHistory.getAmniotic_condition());
         tvPregnancyWeightGain.setText(pregnancyHistory.getPregnancy_weight_gain());
         tvMotherWeightIndex.setText(pregnancyHistory.getMother_weight_index());
+        //tvPregnancyAge.setText(pregnancyHistory.getPregnancy_age());
+
+        tvFundusHeight.setText(""+pregnancyHistory.getFundus_height());
+        tvFetusPosition.setText(pregnancyHistory.getFetus_position());
+        tvHeartBeat.setText(""+pregnancyHistory.getHeart_beat());
+        tvLeg.setText(pregnancyHistory.getLeg());
+        tvLab.setText(pregnancyHistory.getLab());
+        tvTreatment.setText(pregnancyHistory.getTreatment());
+        tvSuggestion.setText(pregnancyHistory.getSuggestion());
+        tvNextVisitDate.setText(DateHelper.getDate(pregnancyHistory.getNext_visit_date()));
 
         if(pregnancyHistory.getMother_weight_index().compareToIgnoreCase("Gemuk")==0 ||
                 pregnancyHistory.getMother_weight_index().compareToIgnoreCase("Sangat Gemuk")==0 ){

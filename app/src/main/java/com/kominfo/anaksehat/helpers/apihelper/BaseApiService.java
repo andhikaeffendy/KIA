@@ -1,5 +1,7 @@
 package com.kominfo.anaksehat.helpers.apihelper;
 
+import java.util.Date;
+
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
@@ -558,7 +560,20 @@ public interface BaseApiService {
     Call<ResponseBody> createPregnancyHistory(@Field("auth_token") String token,
                                               @Field("history_date") String history_date,
                                               @Field("weight") double weight,
+                                              @Field("blood_pressure_top") int blood_pressure_top,
+                                              @Field("blood_pressure_bottom") int blood_pressure_bottom,
+                                              @Field("baby_weight") double baby_weight,
                                               @Field("gender_prediction") String gender_prediction,
+                                              @Field("amniotic_condition") int amniotic_condition,
+                                              @Field("note") String note,
+                                              @Field("fundus_height") int fundus_height,
+                                              @Field("fetus_position") String fetus_position,
+                                              @Field("heart_beat") int heart_beat,
+                                              @Field("leg") String leg,
+                                              @Field("lab") String lab,
+                                              @Field("treatment") String treatment,
+                                              @Field("suggestion") String suggestion,
+                                              @Field("next_visit_date") String next_visit_date,
                                               @Field("pregnancy_id") long pregnancy_id);
 
     @FormUrlEncoded
@@ -583,7 +598,20 @@ public interface BaseApiService {
                                               @Field("auth_token") String token,
                                               @Field("history_date") String history_date,
                                               @Field("weight") double weight,
+                                              @Field("blood_pressure_top") int blood_pressure_top,
+                                              @Field("blood_pressure_bottom") int blood_pressure_bottom,
+                                              @Field("baby_weight") double baby_weight,
                                               @Field("gender_prediction") String gender_prediction,
+                                              @Field("amniotic_condition") int amniotic_condition,
+                                              @Field("note") String note,
+                                              @Field("fundus_height") int fundus_height,
+                                              @Field("fetus_position") String fetus_position,
+                                              @Field("heart_beat") int heart_beat,
+                                              @Field("leg") String leg,
+                                              @Field("lab") String lab,
+                                              @Field("treatment") String treatment,
+                                              @Field("suggestion") String suggestion,
+                                              @Field("next_visit_date") String next_visit_date,
                                               @Field("pregnancy_id") long pregnancy_id);
 
 
@@ -599,6 +627,12 @@ public interface BaseApiService {
     @GET("immunizations")
     Call<ResponseBody> getImmunizations(@Query("auth_token") String token,
                                         @Query("child_id") long id);
+
+    @GET("nb_baby_conditions")
+    Call<ResponseBody> getBabyConditions(@Query("auth_token") String token);
+
+    @GET("nb_baby_treatments")
+    Call<ResponseBody> getBabyTreatment(@Query("auth_token") String token);
 
     @FormUrlEncoded
     @POST("immunizations")

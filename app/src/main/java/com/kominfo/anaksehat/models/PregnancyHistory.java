@@ -15,6 +15,23 @@ public class PregnancyHistory {
     private String pregnancy_weight_gain;
     private String mother_weight_index;
     private String mother_nutrition_category;
+    private int fundus_height;
+    private String fetus_position;
+    private int heart_beat;
+    private String leg;
+    private String lab;
+    private String treatment;
+    private String suggestion;
+    private Date next_visit_date;
+    private String pregnancy_age;
+
+    public String getPregnancy_age() {
+        return pregnancy_age;
+    }
+
+    public void setPregnancy_age(String pregnancy_age) {
+        this.pregnancy_age = pregnancy_age;
+    }
 
     public void setHistory_date(Date history_date) {
         this.history_date = history_date;
@@ -110,6 +127,70 @@ public class PregnancyHistory {
 
     public String getMother_nutrition_category() {
         return mother_nutrition_category;
+    }
+
+    public int getFundus_height() {
+        return fundus_height;
+    }
+
+    public void setFundus_height(int fundus_height) {
+        this.fundus_height = fundus_height;
+    }
+
+    public String getFetus_position() {
+        return fetus_position;
+    }
+
+    public void setFetus_position(String fetus_position) {
+        this.fetus_position = fetus_position;
+    }
+
+    public int getHeart_beat() {
+        return heart_beat;
+    }
+
+    public void setHeart_beat(int heart_beat) {
+        this.heart_beat = heart_beat;
+    }
+
+    public String getLeg() {
+        return leg;
+    }
+
+    public void setLeg(String leg) {
+        this.leg = leg;
+    }
+
+    public String getLab() {
+        return lab;
+    }
+
+    public void setLab(String lab) {
+        this.lab = lab;
+    }
+
+    public String getTreatment() {
+        return treatment;
+    }
+
+    public void setTreatment(String treatment) {
+        this.treatment = treatment;
+    }
+
+    public String getSuggestion() {
+        return suggestion;
+    }
+
+    public void setSuggestion(String suggestion) {
+        this.suggestion = suggestion;
+    }
+
+    public Date getNext_visit_date() {
+        return next_visit_date;
+    }
+
+    public void setNext_visit_date(Date next_visit_date) {
+        this.next_visit_date = next_visit_date;
     }
 }
 

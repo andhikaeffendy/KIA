@@ -421,7 +421,7 @@
                         android:layout_marginTop="12sp"/>
 
                     <EditText
-                        android:id="@+id/et_fundus_height"
+                        android:id="@+id/et_fetus_position"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="10dp"
@@ -544,7 +544,7 @@
                             android:focusable="false"
                             android:nextFocusDown="@id/weight"
                             android:singleLine="true"
-                            android:hint="@string/hint_pregnancy_date" />
+                            android:hint="Next Visit Date" />
 
                         <ImageView
                             android:id="@+id/visit_date_icon"
@@ -559,6 +559,8 @@
                             android:background="@drawable/ic_date_range_black_24dp"/>
 
                     </RelativeLayout>
+
+
 
                     <LinearLayout
                         android:layout_width="match_parent"

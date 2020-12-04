@@ -14,6 +14,8 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.content.FileProvider;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.InputType;
@@ -40,6 +42,10 @@ import com.google.gson.reflect.TypeToken;
 import com.kominfo.anaksehat.R;
 import com.kominfo.anaksehat.helpers.ShowcaseHelper;
 import com.kominfo.anaksehat.helpers.adapters.AutoCompleteAdapter;
+import com.kominfo.anaksehat.helpers.adapters.BabyCheckboxAdapter;
+import com.kominfo.anaksehat.helpers.adapters.ChildrenAdapter;
+import com.kominfo.anaksehat.helpers.adapters.OnItemCheckListener;
+import com.kominfo.anaksehat.models.Checkbox;
 import com.squareup.picasso.Picasso;
 import com.kominfo.anaksehat.controllers.BaseActivity;
 import com.kominfo.anaksehat.helpers.AppLog;
@@ -56,6 +62,7 @@ import com.kominfo.anaksehat.models.User;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -83,7 +90,15 @@ public class FormChildActivity extends BaseActivity {
     private long give_birth_id = 0;
     private Picasso picasso;
     private ShowcaseHelper showcaseHelper;
+
     private RecyclerView rvBabyCondition, rvBabyTreatment;
+    private BabyCheckboxAdapter mAdapterConditions;
+    private BabyCheckboxAdapter mAdapterTreatment;
+    private List<Checkbox> dataListConditions;
+    private List<Checkbox> dataListTreatment;
+
+    private List<Integer> _isCheckedConditions = new ArrayList<Integer>();
+    private List<Integer> _isCheckedTreatment = new ArrayList<Integer>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,10 +115,6 @@ public class FormChildActivity extends BaseActivity {
 
 //        setTitle(R.string.title_create_child);
 
-        etNote = findViewById(R.id.et_note);
-        etJampersalStatus = findViewById(R.id.et_jampersal_status);
-        rvBabyCondition = findViewById(R.id.rv_baby_condition_ids);
-        rvBabyTreatment = findViewById(R.id.rv_baby_treatment_ids);
         ivThumbnail = findViewById(R.id.thumbnail);
         etBirthDate = findViewById(R.id.birth_date);
         etName = findViewById(R.id.name);
@@ -113,10 +124,59 @@ public class FormChildActivity extends BaseActivity {
         etHeight = findViewById(R.id.height);
         etWeight = findViewById(R.id.weight);
         etFirstHeadRound = findViewById(R.id.first_head_round);
+        etNote = findViewById(R.id.et_note);
+        etJampersalStatus = findViewById(R.id.et_jampersal_status);
         actvMotherName = findViewById(R.id.mother_name);
         rbGenderMale = findViewById(R.id.gender);
         rbGenderFemale = findViewById(R.id.gender_female);
         ivPickDate = findViewById(R.id.birth_icon);
+
+        rvBabyCondition = findViewById(R.id.rv_baby_condition_ids);
+        rvBabyTreatment = findViewById(R.id.rv_baby_treatment_ids);
+
+        rvBabyCondition = findViewById(R.id.rv_baby_condition_ids);
+        rvBabyTreatment = findViewById(R.id.rv_baby_treatment_ids);
+        dataListConditions = new ArrayList<Checkbox>();
+        dataListTreatment = new ArrayList<Checkbox>();
+        mAdapterConditions = new BabyCheckboxAdapter(context, dataListConditions, new OnItemCheckListener<Checkbox, String>() {
+            @Override
+            public void onItemCheck(Checkbox data, String type) {
+                _isCheckedConditions.add(data.getId());
+                Log.d("DEBUG", "CHECKED CONDITIONS" + _isCheckedConditions);
+            }
+
+            @Override
+            public void onItemUncheck(Checkbox data, String type) {
+                _isCheckedConditions.remove(Integer.valueOf(data.getId()));
+                Log.d("DEBUG", "UNCHECKED CONDITIONS" + _isCheckedConditions);
+            }
+
+        }, "Conditions");
+        mAdapterTreatment = new BabyCheckboxAdapter(context, dataListTreatment, new OnItemCheckListener<Checkbox, String>() {
+            @Override
+            public void onItemCheck(Checkbox data, String type) {
+                _isCheckedTreatment.add(data.getId());
+                Log.d("DEBUG", "CHECKED TREATMENTS" + _isCheckedTreatment);
+            }
+
+            @Override
+            public void onItemUncheck(Checkbox data, String type) {
+                _isCheckedTreatment.remove(Integer.valueOf(data.getId()));
+                Log.d("DEBUG", "UNCHECKED TREATMENTS" + _isCheckedTreatment);
+            }
+        }, "Treatments");
+
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
+        RecyclerView.LayoutManager mLayoutManager1 = new LinearLayoutManager(getApplicationContext());
+        rvBabyCondition.setLayoutManager(mLayoutManager);
+        rvBabyCondition.setItemAnimator(new DefaultItemAnimator());
+        rvBabyCondition.setAdapter(mAdapterConditions);
+//        rvBabyCondition.setVisibility(View.GONE);
+
+        rvBabyTreatment.setLayoutManager(mLayoutManager1);
+        rvBabyTreatment.setItemAnimator(new DefaultItemAnimator());
+        rvBabyTreatment.setAdapter(mAdapterTreatment);
+//        rvBabyTreatment.setVisibility(View.GONE);
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.blood_types, android.R.layout.simple_spinner_item);
@@ -153,6 +213,20 @@ public class FormChildActivity extends BaseActivity {
         } else initEditData();
 
         startShowcase();
+    }
+
+    private void initData() {
+        mApiService.getBabyConditions(appSession.getData(AppSession.TOKEN))
+                .enqueue(babyConditionsCallback.getCallback());
+
+        mApiService.getBabyTreatment(appSession.getData(AppSession.TOKEN))
+                .enqueue(babyTreatmentCallback.getCallback());
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        initData();
     }
 
     @Override
@@ -717,4 +791,38 @@ public class FormChildActivity extends BaseActivity {
         showcaseHelper.addShowcaseView(etFirstHeadRound, getString(R.string.guide_form_child_round));
         showcaseHelper.startGuide();
     }
+
+    ApiCallback babyConditionsCallback = new ApiCallback() {
+        @Override
+        public void onApiSuccess(String result) {
+            showProgressBar(false);
+            Gson gson = createGsonDate();
+            ApiData<Checkbox> stateApiData = gson.fromJson(result, new TypeToken<ApiData<Checkbox>>(){}.getType());
+            AppLog.d(new Gson().toJson(stateApiData));
+            mAdapterConditions.setData(stateApiData.getData());
+        }
+
+        @Override
+        public void onApiFailure(String errorMessage) {
+            showProgressBar(false);
+            Toast.makeText(context, errorMessage, Toast.LENGTH_SHORT).show();
+        }
+    };
+
+    ApiCallback babyTreatmentCallback = new ApiCallback() {
+        @Override
+        public void onApiSuccess(String result) {
+            showProgressBar(false);
+            Gson gson = createGsonDate();
+            ApiData<Checkbox> stateApiData = gson.fromJson(result, new TypeToken<ApiData<Checkbox>>(){}.getType());
+            AppLog.d(new Gson().toJson(stateApiData));
+            mAdapterTreatment.setData(stateApiData.getData());
+        }
+
+        @Override
+        public void onApiFailure(String errorMessage) {
+            showProgressBar(false);
+            Toast.makeText(context, errorMessage, Toast.LENGTH_SHORT).show();
+        }
+    };
 }

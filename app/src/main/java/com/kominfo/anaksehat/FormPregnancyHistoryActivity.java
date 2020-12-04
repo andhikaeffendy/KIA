@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.text.InputType;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -24,11 +25,17 @@ import com.kominfo.anaksehat.helpers.ShowcaseHelper;
 import com.kominfo.anaksehat.models.Pregnancy;
 import com.kominfo.anaksehat.models.PregnancyHistory;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
 public class FormPregnancyHistoryActivity extends BaseActivity {
 
     private EditText etHistoryDate,etWeight,etBabyWeight,etNote,
-            etBloodPressureTop,etBloodPressureBottom;
-    private ImageView ivDate;
+            etBloodPressureTop,etBloodPressureBottom, etFundusHeight, etFetusPosition,
+            etHeartBeat, etLeg, etLab, etTreatment, etSuggestion, etNextVisitDate;
+    private ImageView ivDate, ivVisitDate;
     private Pregnancy pregnancy;
     private boolean editMode = false;
     private PregnancyHistory pregnancyHistory;
@@ -51,6 +58,14 @@ public class FormPregnancyHistoryActivity extends BaseActivity {
         etHistoryDate = findViewById(R.id.history_date);
         etBabyWeight = findViewById(R.id.baby_weight);
         etWeight = findViewById(R.id.weight);
+        etFundusHeight = findViewById(R.id.et_fundus);
+        etFetusPosition = findViewById(R.id.et_fetus_position);
+        etHeartBeat = findViewById(R.id.et_heart_beat_ibu);
+        etLeg = findViewById(R.id.et_leg);
+        etLab = findViewById(R.id.et_lab);
+        etTreatment = findViewById(R.id.et_treatment_ibu);
+        etSuggestion = findViewById(R.id.et_suggestion);
+        etNextVisitDate = findViewById(R.id.next_visit_date);
 //        rbAmnioticCondition = findViewById(R.id.amniotic_condition);
 //        rbAmnioticCondition2 = findViewById(R.id.amniotic_condition_2);
         etBloodPressureTop = findViewById(R.id.blood_pressure_top);
@@ -59,12 +74,14 @@ public class FormPregnancyHistoryActivity extends BaseActivity {
 //        rbGenderMale = findViewById(R.id.gender_prediction);
 //        rbGenderFemale = findViewById(R.id.gender_prediction_female);
         ivDate = findViewById(R.id.history_icon);
+        ivVisitDate = findViewById(R.id.visit_date_icon);
 
         pregnancy = new Gson().fromJson(getIntent().getStringExtra("data"), Pregnancy.class);
 
         setTitle(pregnancy.getName());
 
         etHistoryDate.setInputType(InputType.TYPE_NULL);
+        etNextVisitDate.setInputType(InputType.TYPE_NULL);
         ivDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -78,6 +95,26 @@ public class FormPregnancyHistoryActivity extends BaseActivity {
             @Override
             public void onClick(View view) {
                 ivDate.performClick();
+            }
+        });
+
+        ivVisitDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Calendar cal=Calendar.getInstance();
+                cal.add(Calendar.MONTH,1);
+                DatePickerFragment newFragment = new DatePickerFragment();
+                newFragment.minDate = new Date();
+                newFragment.maxDate = new Date(cal.getTimeInMillis());
+                newFragment.holder = etNextVisitDate;
+                newFragment.show(getSupportFragmentManager(), "datePicker");
+            }
+        });
+
+        etNextVisitDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ivVisitDate.performClick();
             }
         });
 
@@ -120,6 +157,15 @@ public class FormPregnancyHistoryActivity extends BaseActivity {
         etHistoryDate.setText(DateHelper.getDateServer(pregnancyHistory.getHistory_date()));
         etBabyWeight.setText(replaceDotToComma(""+pregnancyHistory.getBaby_weight()));
         etWeight.setText(replaceDotToComma(""+pregnancyHistory.getWeight()));
+        etNextVisitDate.setText(DateHelper.getDateServer(pregnancyHistory.getNext_visit_date()));
+        etFundusHeight.setText(""+pregnancyHistory.getFundus_height());
+        etFetusPosition.setText(pregnancyHistory.getFetus_position());
+        etHeartBeat.setText(""+pregnancyHistory.getHeart_beat());
+        etTreatment.setText(pregnancyHistory.getTreatment());
+        etSuggestion.setText(pregnancyHistory.getSuggestion());
+        etLeg.setText(pregnancyHistory.getLeg());
+        etLab.setText(pregnancyHistory.getLab());
+
 //        if(pregnancyHistory.getAmniotic_condition().compareToIgnoreCase("Kurang Baik")==0)
 //            rbAmnioticCondition2.setChecked(true);
         etBloodPressureTop.setText(""+pregnancyHistory.getBlood_pressure_top());
@@ -135,10 +181,66 @@ public class FormPregnancyHistoryActivity extends BaseActivity {
         String weight = etWeight.getText().toString();
         String blood_pressure_top = etBloodPressureTop.getText().toString();
         String blood_pressure_bottom = etBloodPressureBottom.getText().toString();
+        String fundusHeight = etFundusHeight.getText().toString();
+        String heartBeat = etHeartBeat.getText().toString();
+        String fetusPosition = etFetusPosition.getText().toString();
+        String leg = etLeg.getText().toString();
+        String lab = etLab.getText().toString();
+        String treatment = etTreatment.getText().toString();
+        String suggestion = etSuggestion.getText().toString();
+        String nextVisitDate = etNextVisitDate.getText().toString();
 
         if(historyDate.isEmpty()){
             etHistoryDate.setError(getString(R.string.error_birth_date));
             etHistoryDate.requestFocus();
+            return false;
+        }
+
+        if(fundusHeight.isEmpty()){
+            etFundusHeight.setError(getString(R.string.error_fundus_height));
+            etFundusHeight.requestFocus();
+            return false;
+        }
+
+        if(heartBeat.isEmpty()){
+            etHeartBeat.setError(getString(R.string.error_heart_beat));
+            etHeartBeat.requestFocus();
+            return false;
+        }
+
+        if(fetusPosition.isEmpty()){
+            etFetusPosition.setError(getString(R.string.error_fetus_height));
+            etFetusPosition.requestFocus();
+            return false;
+        }
+
+        if(leg.isEmpty()){
+            etLeg.setError(getString(R.string.error_leg));
+            etLeg.requestFocus();
+            return false;
+        }
+
+        if(lab.isEmpty()){
+            etLab.setError(getString(R.string.error_lab));
+            etLab.requestFocus();
+            return false;
+        }
+
+        if(treatment.isEmpty()){
+            etTreatment.setError(getString(R.string.error_treatment));
+            etTreatment.requestFocus();
+            return false;
+        }
+
+        if(suggestion.isEmpty()){
+            etSuggestion.setError(getString(R.string.error_suggestion));
+            etSuggestion.requestFocus();
+            return false;
+        }
+
+        if(nextVisitDate.isEmpty()){
+            etNextVisitDate.setError(getString(R.string.error_next_visit_date));
+            etNextVisitDate.requestFocus();
             return false;
         }
 //        if(baby_weight.isEmpty()){
@@ -190,6 +292,25 @@ public class FormPregnancyHistoryActivity extends BaseActivity {
         long pregnancyId = pregnancy.getId();
         String genderPrediction = "Male";
         int amniotic_condition = 1;
+        String note = etNote.getText().toString();
+        int fundusHeight = Integer.parseInt(etFundusHeight.getText().toString());
+        int heartBeat = Integer.parseInt(etHeartBeat.getText().toString());
+        String fetusPosition = etFetusPosition.getText().toString();
+        String leg = etLeg.getText().toString();
+        String lab = etLab.getText().toString();
+        String treatment = etTreatment.getText().toString();
+        String suggestion = etSuggestion.getText().toString();
+        Date nextVisitDate = null;
+        String dateVisitDate = "";
+        try {
+            nextVisitDate = new SimpleDateFormat("dd-MM-yyyy").parse(etNextVisitDate.getText().toString());
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+            dateVisitDate = formatter.format(nextVisitDate);
+            Log.d("DEBUG", "DATE : " + dateVisitDate);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
 
 //        if(!rbGenderMale.isChecked())genderPrediction="Female";
 //        if(!rbAmnioticCondition.isChecked())amniotic_condition=0;
@@ -199,12 +320,14 @@ public class FormPregnancyHistoryActivity extends BaseActivity {
             long id = pregnancyHistory.getId();
             mApiService.updatePregnancyHistory(id, id, appSession.getData(AppSession.TOKEN),
                     historyDate, weight, blood_pressure_top, blood_pressure_bottom, baby_weight,
-                    genderPrediction, amniotic_condition, null, pregnancyId)
+                    genderPrediction, amniotic_condition, note, fundusHeight, fetusPosition, heartBeat, leg, lab, treatment,
+                    suggestion, dateVisitDate, pregnancyId)
                     .enqueue(formCallback.getCallback());
         } else
             mApiService.createPregnancyHistory(appSession.getData(AppSession.TOKEN), historyDate,
                     weight, blood_pressure_top, blood_pressure_bottom, baby_weight,
-                    genderPrediction, amniotic_condition, null, pregnancyId).enqueue(formCallback.getCallback());
+                    genderPrediction, amniotic_condition, note, fundusHeight, fetusPosition, heartBeat, leg, lab, treatment,
+                    suggestion, dateVisitDate, pregnancyId).enqueue(formCallback.getCallback());
     }
 
     ApiCallback formCallback = new ApiCallback() {
