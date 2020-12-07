@@ -18,8 +18,7 @@
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scrollbars="none">
+            android:layout_height="match_parent">
 
             <LinearLayout
                 android:focusableInTouchMode="true"
@@ -273,11 +272,17 @@
 
                     </LinearLayout>
 
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Catatan"
+                        android:layout_marginTop="10dp"
+                        android:textSize="18sp"/>
+
                     <EditText
                         android:id="@+id/remarks"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="@string/hint_note"
                         android:layout_marginBottom="10dp"
                         android:maxLines="5"
                         android:inputType="textMultiLine"/>

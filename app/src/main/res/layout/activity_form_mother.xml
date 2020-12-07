@@ -364,30 +364,47 @@
 
                     </LinearLayout>
 
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="18sp"
+                        android:layout_marginTop="10dp"
+                        android:text="Nama KK"/>
+
                     <EditText
                         android:id="@+id/kk_name"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Nama KK"
                         android:layout_marginBottom="10dp"
                         android:singleLine="true"
                         android:nextFocusDown="@id/nik"
                         android:inputType="textPersonName"/>
 
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="18sp"
+                        android:text="NIK"/>
+
                     <EditText
                         android:id="@+id/nik"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="NIK"
                         android:layout_marginBottom="10dp"
                         android:singleLine="true"
                         android:nextFocusDown="@id/jampersal_status"
                         android:inputType="textPersonName"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="18sp"
+                        android:text="Jampersal Status"/>
+
                     <EditText
                         android:id="@+id/jampersal_status"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Jampersal Status"
                         android:layout_marginBottom="10dp"
                         android:singleLine="true"
                         android:nextFocusDown="@id/address"
