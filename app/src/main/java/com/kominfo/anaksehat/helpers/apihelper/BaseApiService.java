@@ -394,7 +394,9 @@ public interface BaseApiService {
                                        @Field("distance") String distance,
                                        @Field("immunization_status") String immunization_status,
                                        @Field("last_birth_helper") String last_birth_helper,
-                                       @Field("last_birth_way") String last_birth_way);
+                                       @Field("last_birth_way") String last_birth_way,
+                                       @Field("last_give_birth_date") String last_give_birth_date
+                                       );
 
     @FormUrlEncoded
     @POST("pregnancies")
@@ -449,7 +451,8 @@ public interface BaseApiService {
                                        @Field("distance") String distance,
                                        @Field("immunization_status") String immunization_status,
                                        @Field("last_birth_helper") String last_birth_helper,
-                                       @Field("last_birth_way") String last_birth_way);
+                                       @Field("last_birth_way") String last_birth_way,
+                                       @Field("last_give_birth_date") String last_give_birth_date);
 
 //    @Field("arm_round") int arm_round,
 //    @Field("kek_status") int kek_status,
@@ -588,6 +591,10 @@ public interface BaseApiService {
                                               @Field("treatment") String treatment,
                                               @Field("suggestion") String suggestion,
                                               @Field("next_visit_date") String next_visit_date,
+                                              @Field("blooding") int blooding,
+                                              @Field("infection") int infection,
+                                              @Field("hb") double hb,
+                                              @Field("other_risks") String other_risks,
                                               @Field("pregnancy_id") long pregnancy_id);
 
     @FormUrlEncoded
@@ -626,6 +633,10 @@ public interface BaseApiService {
                                               @Field("treatment") String treatment,
                                               @Field("suggestion") String suggestion,
                                               @Field("next_visit_date") String next_visit_date,
+                                              @Field("blooding") int blooding,
+                                              @Field("infection") int infection,
+                                              @Field("hb") double hb,
+                                              @Field("other_risks") String other_risks,
                                               @Field("pregnancy_id") long pregnancy_id);
 
 

@@ -24,6 +24,10 @@ public class PregnancyHistory {
     private String suggestion;
     private Date next_visit_date;
     private String pregnancy_age;
+    private int blooding;
+    private int infection;
+    private double hb;
+    private String other_risks;
 
     public String getPregnancy_age() {
         return pregnancy_age;
@@ -191,6 +195,38 @@ public class PregnancyHistory {
 
     public void setNext_visit_date(Date next_visit_date) {
         this.next_visit_date = next_visit_date;
+    }
+
+    public void setInfection(int infection) {
+        this.infection = infection;
+    }
+
+    public double getHb() {
+        return hb;
+    }
+
+    public int getBlooding() {
+        return blooding;
+    }
+
+    public int getInfection() {
+        return infection;
+    }
+
+    public String getOther_risks() {
+        return other_risks;
+    }
+
+    public void setBlooding(int blooding) {
+        this.blooding = blooding;
+    }
+
+    public void setHb(double hb) {
+        this.hb = hb;
+    }
+
+    public void setOther_risks(String other_risks) {
+        this.other_risks = other_risks;
     }
 }
 

@@ -34,12 +34,13 @@ public class FormPregnancyHistoryActivity extends BaseActivity {
 
     private EditText etHistoryDate,etWeight,etBabyWeight,etNote,
             etBloodPressureTop,etBloodPressureBottom, etFundusHeight, etFetusPosition,
-            etHeartBeat, etLeg, etLab, etTreatment, etSuggestion, etNextVisitDate;
+            etHeartBeat, etLeg, etLab, etTreatment, etSuggestion, etNextVisitDate, etHb, etOtherRisk;
     private ImageView ivDate, ivVisitDate;
     private Pregnancy pregnancy;
     private boolean editMode = false;
     private PregnancyHistory pregnancyHistory;
     private ShowcaseHelper showcaseHelper;
+    private RadioButton rbBlooding0, rbBlooding1, rbInfection0, rbInfection1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,6 +76,12 @@ public class FormPregnancyHistoryActivity extends BaseActivity {
 //        rbGenderFemale = findViewById(R.id.gender_prediction_female);
         ivDate = findViewById(R.id.history_icon);
         ivVisitDate = findViewById(R.id.visit_date_icon);
+        rbBlooding0 = findViewById(R.id.blooding_0);
+        rbBlooding1 = findViewById(R.id.blooding_1);
+        rbInfection0 = findViewById(R.id.infection_0);
+        rbInfection1 = findViewById(R.id.infection_1);
+        etOtherRisk = findViewById(R.id.et_other_risk);
+        etHb = findViewById(R.id.hb);
 
         pregnancy = new Gson().fromJson(getIntent().getStringExtra("data"), Pregnancy.class);
 
@@ -173,6 +180,11 @@ public class FormPregnancyHistoryActivity extends BaseActivity {
         etNote.setText(pregnancyHistory.getNote());
 //        if(pregnancyHistory.getGender_prediction().compareToIgnoreCase("Female")==0)
 //            rbGenderFemale.setChecked(true);
+
+        etHb.setText(replaceDotToComma(""+pregnancyHistory.getHb()));
+        etOtherRisk.setText(pregnancyHistory.getOther_risks());
+        if(pregnancyHistory.getInfection()==1) rbInfection1.setChecked(true);
+        if(pregnancyHistory.getBlooding()==1) rbBlooding1.setChecked(true);
     }
 
     private boolean validateData(){
@@ -302,6 +314,11 @@ public class FormPregnancyHistoryActivity extends BaseActivity {
         String suggestion = etSuggestion.getText().toString();
         Date nextVisitDate = null;
         String dateVisitDate = "";
+        double hb = Double.parseDouble(replaceCommaToDot(etHb.getText().toString()));
+        String other_risk = etOtherRisk.getText().toString();
+        int blooding=0,infection=0;
+        if(rbBlooding1.isChecked())blooding=1;
+        if(rbInfection1.isChecked())infection=1;
         try {
             nextVisitDate = new SimpleDateFormat("dd-MM-yyyy").parse(etNextVisitDate.getText().toString());
             SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
@@ -321,13 +338,14 @@ public class FormPregnancyHistoryActivity extends BaseActivity {
             mApiService.updatePregnancyHistory(id, id, appSession.getData(AppSession.TOKEN),
                     historyDate, weight, blood_pressure_top, blood_pressure_bottom, baby_weight,
                     genderPrediction, amniotic_condition, note, fundusHeight, fetusPosition, heartBeat, leg, lab, treatment,
-                    suggestion, dateVisitDate, pregnancyId)
+                    suggestion, dateVisitDate, blooding, infection, hb, other_risk, pregnancyId)
                     .enqueue(formCallback.getCallback());
         } else
             mApiService.createPregnancyHistory(appSession.getData(AppSession.TOKEN), historyDate,
                     weight, blood_pressure_top, blood_pressure_bottom, baby_weight,
                     genderPrediction, amniotic_condition, note, fundusHeight, fetusPosition, heartBeat, leg, lab, treatment,
-                    suggestion, dateVisitDate, pregnancyId).enqueue(formCallback.getCallback());
+                    suggestion, dateVisitDate, blooding, infection, hb, other_risk, pregnancyId)
+                    .enqueue(formCallback.getCallback());
     }
 
     ApiCallback formCallback = new ApiCallback() {

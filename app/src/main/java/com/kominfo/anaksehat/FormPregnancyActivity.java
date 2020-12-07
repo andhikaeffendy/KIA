@@ -39,14 +39,15 @@ public class FormPregnancyActivity extends BaseActivity {
     private EditText etLastPeriodDate,etStartHeight,etStartWeight, etArmRound, etKekStatus, etKontrasepsi,
             etRiwayatPenyakit, etRiwayatAlergi, etPregnancyNumber, etBirthCount,
             etMisCariage, etGCount, etPCount, etACount, etChildrenCount, etDeadBirthCOunt,
-            etPrematureChildrenCount, etDistance, etImmunizationStatus, etLastBirthHelper, etLastBirthWay;
+            etPrematureChildrenCount, etDistance, etImmunizationStatus, etLastBirthHelper, etLastBirthWay,
+            etLastGiveBirthDate;
     private Spinner spPeriodType;
     private AutoCompleteTextView actvMotherName;
     private Mother selectedMother;
     private User user;
     private boolean editMode = false;
     private Pregnancy pregnancy;
-    private ImageView ivPickDate;
+    private ImageView ivPickDate, ivLastGiveBirthDate;
     private ShowcaseHelper showcaseHelper;
 
     @Override
@@ -88,6 +89,8 @@ public class FormPregnancyActivity extends BaseActivity {
         etImmunizationStatus = findViewById(R.id.immunization_status);
         etLastBirthHelper = findViewById(R.id.last_birth_helper);
         etLastBirthWay = findViewById(R.id.last_birth_way);
+        etLastGiveBirthDate = findViewById(R.id.last_give_birth_date);
+        ivLastGiveBirthDate = findViewById(R.id.last_give_birth_date_icon);
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.period_types, android.R.layout.simple_spinner_item);
@@ -100,6 +103,13 @@ public class FormPregnancyActivity extends BaseActivity {
             @Override
             public void onClick(View view) {
                 ivPickDate.performClick();
+            }
+        });
+        etLastGiveBirthDate.setInputType(InputType.TYPE_NULL);
+        etLastGiveBirthDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ivLastGiveBirthDate.performClick();
             }
         });
         etStartWeight.setOnEditorActionListener(new TextView.OnEditorActionListener() {
@@ -226,6 +236,7 @@ public class FormPregnancyActivity extends BaseActivity {
         etImmunizationStatus.setText(pregnancy.getImmunization_status());
         etLastBirthHelper.setText(pregnancy.getLast_birth_helper());
         etLastBirthWay.setText(pregnancy.getLast_birth_way());
+        etLastGiveBirthDate.setText(DateHelper.getDateServer(pregnancy.getLast_give_birth_date()));
     }
 
     @Override
@@ -318,6 +329,7 @@ public class FormPregnancyActivity extends BaseActivity {
         String immunisasi_status = etImmunizationStatus.getText().toString();
         String last_birth_helper = etLastBirthHelper.getText().toString();
         String last_birth_way = etLastBirthWay.getText().toString();
+        String last_give_birth_date = etLastGiveBirthDate.getText().toString();
 
 //        int period_number = 2;
 //
@@ -330,12 +342,14 @@ public class FormPregnancyActivity extends BaseActivity {
             mApiService.updatePregnancy(id, id, auth_token, last_period_date, start_height,
                     start_weight, period_type, mother_id, arm_round, kek_status,kontrasepsi,riwayat_penyakit,riwayat_alergi,
                     pregnancy_number,birth_count,miscariage,g_count,p_count,a_count,children_count,
-                    dead_birth_count,premature_children,distance,immunisasi_status,last_birth_helper,last_birth_way).enqueue(formCallback.getCallback());
+                    dead_birth_count,premature_children,distance,immunisasi_status,last_birth_helper,last_birth_way,
+                    last_give_birth_date).enqueue(formCallback.getCallback());
         } else
             mApiService.createPregnancy(auth_token, last_period_date, start_height, start_weight,
                     period_type, mother_id,arm_round, kek_status,kontrasepsi, riwayat_penyakit,riwayat_alergi,
                     pregnancy_number,birth_count,miscariage,g_count,p_count,a_count,children_count,
-                    dead_birth_count,premature_children,distance,immunisasi_status,last_birth_helper,last_birth_way).enqueue(formCallback.getCallback());
+                    dead_birth_count,premature_children,distance,immunisasi_status,last_birth_helper,last_birth_way,
+                    last_give_birth_date).enqueue(formCallback.getCallback());
     }
 
     ApiCallback formCallback = new ApiCallback() {

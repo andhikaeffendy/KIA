@@ -21,7 +21,8 @@ public class PregnancyHistoryDetailActivity extends BaseActivity {
     private TextView tvPregnancyWeightGain, tvHistoryDate, tvMotherWeightIndex, tvWeight,
             tvBabyWeight, tvMotherNutritionCategory, tvAmnioticCondition, tvPregnancyAge,
             tvBloodPressureTop, tvBloodPressureBottom, tvNote, tvFundusHeight, tvFetusPosition,
-            tvHeartBeat, tvTreatment, tvSuggestion, tvNextVisitDate, tvLeg, tvLab;
+            tvHeartBeat, tvTreatment, tvSuggestion, tvNextVisitDate, tvLeg, tvLab,
+            tvBlooding, tvInfection, tvHb, tvOtherRisk;
     private ImageView ivMotherWeightIndex, ivMotherNutritionCategory, ivPregnancyWeightGain,
             ivAmnioticCondition;
     private PregnancyHistory pregnancyHistory;
@@ -68,6 +69,10 @@ public class PregnancyHistoryDetailActivity extends BaseActivity {
         tvLeg = findViewById(R.id.tv_leg);
         tvLab = findViewById(R.id.tv_lab);
 
+        tvBlooding = findViewById(R.id.blooding);
+        tvInfection = findViewById(R.id.infection);
+        tvHb = findViewById(R.id.hb);
+        tvOtherRisk = findViewById(R.id.et_other_risk);
 
         ivMotherWeightIndex = findViewById(R.id.mother_weight_index_icon);
         ivMotherNutritionCategory= findViewById(R.id.mother_nutrition_category_icon);
@@ -140,6 +145,11 @@ public class PregnancyHistoryDetailActivity extends BaseActivity {
         tvTreatment.setText(pregnancyHistory.getTreatment());
         tvSuggestion.setText(pregnancyHistory.getSuggestion());
         tvNextVisitDate.setText(DateHelper.getDate(pregnancyHistory.getNext_visit_date()));
+
+        tvBlooding.setText(pregnancyHistory.getBlooding()==1 ? "Iya" : "Tidak");
+        tvInfection.setText(pregnancyHistory.getInfection()==1 ? "Iya" : "Tidak");
+        tvOtherRisk.setText(pregnancyHistory.getOther_risks());
+        tvHb.setText(replaceDotToComma(""+pregnancyHistory.getHb()));
 
         if(pregnancyHistory.getMother_weight_index().compareToIgnoreCase("Gemuk")==0 ||
                 pregnancyHistory.getMother_weight_index().compareToIgnoreCase("Sangat Gemuk")==0 ){

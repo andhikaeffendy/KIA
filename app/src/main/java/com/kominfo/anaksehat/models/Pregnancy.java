@@ -36,6 +36,7 @@ public class Pregnancy {
     private String immunization_status;
     private String last_birth_helper;
     private String last_birth_way;
+    private Date last_give_birth_date;
 
     public int getArm_round() {
         return arm_round;
@@ -299,6 +300,14 @@ public class Pregnancy {
 
     public long getMother_id() {
         return mother_id;
+    }
+
+    public Date getLast_give_birth_date() {
+        return last_give_birth_date;
+    }
+
+    public void setLast_give_birth_date(Date last_give_birth_date) {
+        this.last_give_birth_date = last_give_birth_date;
     }
 }
 

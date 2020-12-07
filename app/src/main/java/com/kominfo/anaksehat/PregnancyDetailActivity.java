@@ -42,7 +42,7 @@ public class PregnancyDetailActivity extends BaseActivity {
             tvHplDate, tvPeriodType, tvImt, tvMotherWeightIndex, tvMotherNutritionCategory,
             tvArmRound, tvKekStatus, tvPregnancyNumber, tvMiscariage, tvGCount, tvPCount,tvKontrasepsi,tvDesease,
             tvACount, tvChildrenCount, tvDeadBirthCount, tvPrematureChildrenCount,tvRiwayatAlergi,
-            tvBirthCount, tvDistance, tvImunisasi, tvLastBirthHelper, tvLastBirthWay;
+            tvBirthCount, tvDistance, tvImunisasi, tvLastBirthHelper, tvLastBirthWay, tvLastGiveBirthDate;
     private ImageView ivMotherWeightIndex, ivMotherNutritionCategory;
     private Button btnNext, btnNext2, btnNext3, btnNext4, btnNext5;
     private Pregnancy pregnancy;
@@ -100,6 +100,7 @@ public class PregnancyDetailActivity extends BaseActivity {
         tvLastBirthHelper = findViewById(R.id.last_birth_helper);
         tvLastBirthWay = findViewById(R.id.last_birth_way);
         tvDesease = findViewById(R.id.desease_history);
+        tvLastGiveBirthDate = findViewById(R.id.last_give_birth_date);
 
         btnNext = findViewById(R.id.submit);
         btnNext.setOnClickListener(new View.OnClickListener() {
@@ -222,6 +223,7 @@ public class PregnancyDetailActivity extends BaseActivity {
         tvImunisasi.setText(pregnancy.getImmunization_status());
         tvLastBirthHelper.setText(pregnancy.getLast_birth_helper());
         tvLastBirthWay.setText(pregnancy.getLast_birth_way());
+        tvLastGiveBirthDate.setText(DateHelper.getDate(pregnancy.getLast_give_birth_date()));
 
         if(pregnancy.getMother_weight_index().compareToIgnoreCase("Gemuk")==0 ||
                 pregnancy.getMother_weight_index().compareToIgnoreCase("Sangat Gemuk")==0 ){

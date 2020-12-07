@@ -14,6 +14,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.TileOverlay;
 import com.google.android.gms.maps.model.TileOverlayOptions;
 import com.google.maps.android.heatmaps.HeatmapTileProvider;
+import com.google.maps.android.heatmaps.WeightedLatLng;
 import com.kominfo.anaksehat.controllers.BaseActivity;
 
 import org.json.JSONArray;
@@ -32,7 +33,7 @@ import retrofit2.Response;
 public class MapsPregnancyActivity extends BaseActivity implements OnMapReadyCallback {
 
     private GoogleMap gMap;
-    private List<LatLng> list;
+    private List<WeightedLatLng> list;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,7 +71,7 @@ public class MapsPregnancyActivity extends BaseActivity implements OnMapReadyCal
 
         list = new ArrayList<>();
 
-        mApiService.getPemetaanAnak().enqueue(new Callback<ResponseBody>() {
+        mApiService.getPemetaanIbuHamil().enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 if (response.isSuccessful()){
@@ -81,7 +82,9 @@ public class MapsPregnancyActivity extends BaseActivity implements OnMapReadyCal
                         for (int i = 0; i<jsonArray.length(); i++){
                             double lat = Double.parseDouble(jsonArray.getJSONObject(i).getString("lat"));
                             double mLong = Double.parseDouble(jsonArray.getJSONObject(i).getString("long"));
-                            list.add(new LatLng(lat, mLong));
+                            int preg_count = jsonArray.getJSONObject(i).getInt("pregnancy_count");
+                            int risk_status = jsonArray.getJSONObject(i).getInt("risk_status");
+                            list.add(new WeightedLatLng(new LatLng(lat, mLong), risk_status*100+100+2*preg_count));
                         }
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -90,7 +93,8 @@ public class MapsPregnancyActivity extends BaseActivity implements OnMapReadyCal
                     }
 
                     HeatmapTileProvider mProvider = new HeatmapTileProvider.Builder()
-                            .data(list)
+                            .weightedData(list)
+                            .radius(50)
                             .build();
 
                     TileOverlay mOverlay = gMap.addTileOverlay(new TileOverlayOptions().tileProvider(mProvider));
