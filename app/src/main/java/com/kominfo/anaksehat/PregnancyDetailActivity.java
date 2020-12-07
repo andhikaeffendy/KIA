@@ -52,6 +52,8 @@ public class PregnancyDetailActivity extends BaseActivity {
     private final static int ORANGE = 1;
     private final static int GREEN = 2;
 
+    private final int NEW_GIVE_BIRTH = 101;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -126,13 +128,10 @@ public class PregnancyDetailActivity extends BaseActivity {
                 if(pregnancy.getGive_birth_id()>0){
                     mApiService.getGiveBirth(pregnancy.getGive_birth_id(), appSession.getData(AppSession.TOKEN))
                             .enqueue(givebirthCallback.getCallback());
-                    Intent i = new Intent(context, GiveBirthDetailActivity.class);
-                    i.putExtra("data", new Gson().toJson(pregnancy));
-                    startActivity(i);
                 } else {
                     Intent i = new Intent(context, FormGiveBirthActivity.class);
                     i.putExtra("data", new Gson().toJson(pregnancy));
-                    startActivity(i);
+                    startActivityForResult(i,NEW_GIVE_BIRTH);
                 }
             }
         });
@@ -348,15 +347,25 @@ public class PregnancyDetailActivity extends BaseActivity {
             i.putExtra("parent_data", new Gson().toJson(pregnancy));
             i.putExtra("data", new Gson().toJson(giveBirth));
             startActivity(i);
-            finish();
         }
 
         @Override
         public void onApiFailure(String errorMessage) {
             showProgressBar(false);
             Toast.makeText(context, errorMessage, Toast.LENGTH_SHORT).show();
-            finish();
         }
     };
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == NEW_GIVE_BIRTH && resultCode == RESULT_OK) {
+            GiveBirth giveBirth = new Gson().fromJson(data.getStringExtra("result"), GiveBirth.class);
+            pregnancy.setGive_birth_id(giveBirth.getId());
+            Intent i = new Intent(context, GiveBirthDetailActivity.class);
+            i.putExtra("parent_data", new Gson().toJson(pregnancy));
+            i.putExtra("data", new Gson().toJson(giveBirth));
+            startActivity(i);
+        }
+    }
 
 }

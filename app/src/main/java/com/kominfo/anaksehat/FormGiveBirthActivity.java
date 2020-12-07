@@ -1,5 +1,6 @@
 package com.kominfo.anaksehat;
 
+import android.app.Activity;
 import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -226,11 +227,15 @@ public class FormGiveBirthActivity extends BaseActivity {
                 Gson gson = createGsonDate();
                 giveBirth = gson.fromJson(result, GiveBirth.class);
                 AppLog.d(new Gson().toJson(giveBirth));
-                Intent i = new Intent(context, GiveBirthDetailActivity.class);
-                i.putExtra("parent_data", new Gson().toJson(pregnancy));
-                i.putExtra("data", new Gson().toJson(giveBirth));
-                startActivity(i);
+                Intent returnIntent = new Intent();
+                returnIntent.putExtra("result",new Gson().toJson(giveBirth));
+                setResult(Activity.RESULT_OK,returnIntent);
                 finish();
+//                Intent i = new Intent(context, GiveBirthDetailActivity.class);
+//                i.putExtra("parent_data", new Gson().toJson(pregnancy));
+//                i.putExtra("data", new Gson().toJson(giveBirth));
+//                startActivity(i);
+//                finish();
             } else {
                 mApiService.getGiveBirth(giveBirth.getId(), appSession.getData(AppSession.TOKEN))
                         .enqueue(givebirthCallback.getCallback());

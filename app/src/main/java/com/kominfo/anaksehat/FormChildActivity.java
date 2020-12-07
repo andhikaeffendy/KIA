@@ -1,6 +1,7 @@
 package com.kominfo.anaksehat;
 
 import android.Manifest;
+import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -303,6 +304,7 @@ public class FormChildActivity extends BaseActivity {
 
     private void initEditData(){
         child = new Gson().fromJson(getIntent().getStringExtra("edit_data"), Child.class);
+        give_birth_id = child.getGive_birth_id();
         if(user.getPosyandu()==0&&user.getMotherId()>0){
             selectedMother = getMotherSession();
             actvMotherName.setVisibility(View.GONE);
@@ -662,7 +664,13 @@ public class FormChildActivity extends BaseActivity {
                 Gson gson = createGsonDate();
                 child = gson.fromJson(result, Child.class);
             }
-            mApiService.getChild(child.getId(), appSession.getData(AppSession.TOKEN))
+            if(!editMode && give_birth_id > 0){
+                Intent returnIntent = new Intent();
+                returnIntent.putExtra("result",new Gson().toJson(child));
+                setResult(Activity.RESULT_OK,returnIntent);
+                finish();
+            } else
+                mApiService.getChild(child.getId(), appSession.getData(AppSession.TOKEN))
                     .enqueue(childCallback.getCallback());
         }
 
@@ -722,7 +730,7 @@ public class FormChildActivity extends BaseActivity {
         public void onApiFailure(String errorMessage) {
             showProgressBar(false);
             Toast.makeText(context, errorMessage, Toast.LENGTH_SHORT).show();
-            finish();
+//            finish();
         }
     };
 

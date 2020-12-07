@@ -130,7 +130,7 @@ public class PregnancyHistoryDetailActivity extends BaseActivity {
         tvAmnioticCondition.setText(pregnancyHistory.getAmniotic_condition());
         tvPregnancyWeightGain.setText(pregnancyHistory.getPregnancy_weight_gain());
         tvMotherWeightIndex.setText(pregnancyHistory.getMother_weight_index());
-        //tvPregnancyAge.setText(pregnancyHistory.getPregnancy_age());
+        tvPregnancyAge.setText(pregnancyHistory.getPregnancy_age());
 
         tvFundusHeight.setText(""+pregnancyHistory.getFundus_height());
         tvFetusPosition.setText(pregnancyHistory.getFetus_position());

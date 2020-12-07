@@ -28,6 +28,8 @@ public class GiveBirthDetailActivity extends BaseActivity {
     private GiveBirth giveBirth;
     private Pregnancy pregnancy;
 
+    private final int NEW_CHILD = 101;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,7 +66,7 @@ public class GiveBirthDetailActivity extends BaseActivity {
                     i.putExtra("mother_id", Long.parseLong(""+giveBirth.getMother_id()));
                     i.putExtra("mother", giveBirth.getMother_name());
                     i.putExtra("birth_date", "-");
-                    startActivity(i);
+                    startActivityForResult(i, NEW_CHILD);
                 }
             }
         });
@@ -154,4 +156,16 @@ public class GiveBirthDetailActivity extends BaseActivity {
             Toast.makeText(context, errorMessage, Toast.LENGTH_SHORT).show();
         }
     };
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == NEW_CHILD && resultCode == RESULT_OK) {
+            Child child = new Gson().fromJson(data.getStringExtra("result"), Child.class);
+            giveBirth.setChild_id(child.getId());
+            Intent i = new Intent(context, ChildDetailActivity.class);
+            i.putExtra("parent_data", new Gson().toJson(giveBirth));
+            i.putExtra("data", new Gson().toJson(child));
+            startActivity(i);
+        }
+    }
 }
