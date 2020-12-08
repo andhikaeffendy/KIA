@@ -22,7 +22,7 @@ public class PregnancyHistoryDetailActivity extends BaseActivity {
             tvBabyWeight, tvMotherNutritionCategory, tvAmnioticCondition, tvPregnancyAge,
             tvBloodPressureTop, tvBloodPressureBottom, tvNote, tvFundusHeight, tvFetusPosition,
             tvHeartBeat, tvTreatment, tvSuggestion, tvNextVisitDate, tvLeg, tvLab,
-            tvBlooding, tvInfection, tvHb, tvOtherRisk;
+            tvBlooding, tvInfection, tvHb, tvOtherRisk, tvComplaint, tvRemarks;
     private ImageView ivMotherWeightIndex, ivMotherNutritionCategory, ivPregnancyWeightGain,
             ivAmnioticCondition;
     private PregnancyHistory pregnancyHistory;
@@ -47,6 +47,8 @@ public class PregnancyHistoryDetailActivity extends BaseActivity {
 
         setTitle(R.string.title_pregnancy_history);
 
+        tvRemarks = findViewById(R.id.tv_remarks);
+        tvComplaint = findViewById(R.id.tv_complaint);
         tvPregnancyAge = findViewById(R.id.pregnancy_age);
         tvBabyWeight = findViewById(R.id.baby_weight);
         tvWeight = findViewById(R.id.tv_weight);
@@ -136,6 +138,8 @@ public class PregnancyHistoryDetailActivity extends BaseActivity {
         tvPregnancyWeightGain.setText(pregnancyHistory.getPregnancy_weight_gain());
         tvMotherWeightIndex.setText(pregnancyHistory.getMother_weight_index());
         tvPregnancyAge.setText(pregnancyHistory.getPregnancy_age());
+        tvComplaint.setText(pregnancyHistory.getComplaint());
+        tvRemarks.setText(pregnancyHistory.getRemarks());
 
         tvFundusHeight.setText(""+pregnancyHistory.getFundus_height());
         tvFetusPosition.setText(pregnancyHistory.getFetus_position());

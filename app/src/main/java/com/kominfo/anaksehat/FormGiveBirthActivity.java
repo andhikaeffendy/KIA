@@ -6,12 +6,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.text.InputType;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TimePicker;
 import android.widget.Toast;
@@ -30,10 +33,12 @@ import com.kominfo.anaksehat.models.MotherCondition;
 import com.kominfo.anaksehat.models.Pregnancy;
 
 import java.util.Calendar;
+import java.util.Date;
 
 public class FormGiveBirthActivity extends BaseActivity {
 
-    private EditText etBirthDate,etBirthTime,etPregnancyAge,etBirthHelper,etRemarks;
+    private EditText etBirthDate,etBirthTime,etPregnancyAge,etBirthHelper,etRemarks, etTreatment;
+    private LinearLayout lnTreatment;
     private Spinner spMotherCondition, spBirthWay;
     private ImageView ivDate;
     private Pregnancy pregnancy;
@@ -57,6 +62,8 @@ public class FormGiveBirthActivity extends BaseActivity {
 
         setTitle("Input Data Persalinan");
 
+        lnTreatment = findViewById(R.id.layout_treatment);
+        etTreatment = findViewById(R.id.treatment);
         etBirthDate = findViewById(R.id.birth_date);
         etBirthTime = findViewById(R.id.birth_time);
         etPregnancyAge = findViewById(R.id.pregnancy_age);
@@ -91,8 +98,11 @@ public class FormGiveBirthActivity extends BaseActivity {
         ivDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Calendar cal=Calendar.getInstance();
+                cal.add(Calendar.YEAR,1);
                 DatePickerFragment newFragment = new DatePickerFragment();
                 newFragment.minDate = pregnancy.getLast_period_date();
+                newFragment.maxDate = new Date(cal.getTimeInMillis());
                 newFragment.holder = etBirthDate;
                 newFragment.show(getSupportFragmentManager(), "datePicker");
             }
@@ -144,6 +154,7 @@ public class FormGiveBirthActivity extends BaseActivity {
         etPregnancyAge.setText(""+giveBirth.getPregnancy_age());
         etBirthHelper.setText(giveBirth.getBitrh_helper());
         etRemarks.setText(giveBirth.getRemarks());
+        if (giveBirth.getTreatment() != null) etTreatment.setText(giveBirth.getTreatment());
     }
 
     private boolean validateData(){
@@ -200,6 +211,7 @@ public class FormGiveBirthActivity extends BaseActivity {
         MotherCondition selected = (MotherCondition) spMotherCondition.getSelectedItem();
         long motherConditionId = selected.getId();
         String birthWay = spBirthWay.getSelectedItem().toString();
+        String treatment = etTreatment.getText().toString();
 
         long pregnancyId = pregnancy.getId();
         long motherId = pregnancy.getMother_id();
@@ -209,12 +221,12 @@ public class FormGiveBirthActivity extends BaseActivity {
             long id = giveBirth.getId();
             mApiService.updateGiveBirth(id, id, appSession.getData(AppSession.TOKEN),
                     pregnancyId, motherId, birthDate, birthTime, pregnancyAge, birthHelper,
-                    birthWay, motherConditionId, remarks)
+                    birthWay, motherConditionId, remarks, treatment)
                     .enqueue(formCallback.getCallback());
         } else
             mApiService.createGiveBirth(appSession.getData(AppSession.TOKEN), pregnancyId, motherId,
                     birthDate, birthTime, pregnancyAge, birthHelper, birthWay, motherConditionId,
-                    remarks)
+                    remarks,treatment)
                     .enqueue(formCallback.getCallback());
     }
 
@@ -320,9 +332,51 @@ public class FormGiveBirthActivity extends BaseActivity {
             birthWaySpinAdapter = new SpinAdapter<BirthWay>(context,
                     android.R.layout.simple_spinner_item, birthWayApiData.getData());
             spBirthWay.setAdapter(birthWaySpinAdapter);
+            spBirthWay.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                    switch (position){
+                        case 1:
+                            Log.d("satu", ""+spBirthWay.getItemAtPosition(position));
+                            lnTreatment.setVisibility(View.VISIBLE);
+                            if (giveBirth.getTreatment() != null) etTreatment.setText(giveBirth.getTreatment());
+                            break;
+                        case 0:
+                            Log.d("nol", ""+spBirthWay.getItemAtPosition(position));
+                            lnTreatment.setVisibility(View.GONE);
+                            break;
+                    }
+                }
+
+                @Override
+                public void onNothingSelected(AdapterView<?> parent) {
+                    etTreatment.setText(giveBirth.getTreatment());
+                }
+            });
             if(editMode){
                 for(int i=0;i<birthWayApiData.getData().size();i++){
                     if(birthWayApiData.getData().get(i).getName().equalsIgnoreCase(giveBirth.getBirth_way_id())){
+                        spBirthWay.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                            @Override
+                            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                                switch (position){
+                                    case 1:
+                                        Log.d("satu", ""+spBirthWay.getItemAtPosition(position));
+                                        lnTreatment.setVisibility(View.VISIBLE);
+                                        if (giveBirth.getTreatment() != null) etTreatment.setText(giveBirth.getTreatment());
+                                        break;
+                                    case 0:
+                                        Log.d("default", ""+spBirthWay.getItemAtPosition(position));
+                                        lnTreatment.setVisibility(View.GONE);
+                                        break;
+                                }
+                            }
+
+                            @Override
+                            public void onNothingSelected(AdapterView<?> parent) {
+
+                            }
+                        });
                         spBirthWay.setSelection(i);
                         break;
                     }

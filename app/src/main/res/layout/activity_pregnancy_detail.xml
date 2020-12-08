@@ -324,7 +324,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Lebar Tangan"/>
+                        android:text="LILA"/>
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -357,7 +357,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Kek Status"/>
+                        android:text="KEK Status"/>
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -382,6 +382,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:visibility="gone"
                     android:paddingTop="20dp"
                     android:orientation="horizontal"
                     android:weightSum="2">
@@ -415,6 +416,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:visibility="gone"
                     android:paddingTop="20dp"
                     android:orientation="horizontal"
                     android:weightSum="2">
@@ -648,6 +650,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:visibility="gone"
                     android:paddingTop="20dp"
                     android:orientation="horizontal"
                     android:weightSum="2">

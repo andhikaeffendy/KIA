@@ -34,11 +34,12 @@ import java.util.Calendar;
 
 public class FormNifasHistoryActivity extends BaseActivity {
 
-    private EditText etBirthDate,etMotherCondition,etBloodTempTespiration,etPerineum,
+    private EditText etBirthDate,etMotherCondition,etPerineum,
             etBloodingPervaginam,etInfection,etUteri,etFundusUteri,etLokhia,etSuggestion,
             etBirthCanal,etBreast,etAsi,etVitaminA,etKontrasepsi,etHighRisk,etBab,
             etBak, etGoodFood, etDrink, etCleanliness, etCaesarTakeCare, etTakeARest,
-            etBreastfeeding, etBabyTreatment, etBabyCry, etBabyCommunication, etKbConsultation;
+            etBreastfeeding, etBabyTreatment, etBabyCry, etBabyCommunication, etKbConsultation,
+            etBloodPressureTop, etBloodPressureBottom, etTemperature, etRespiration, etPulse;
     private Spinner spNifasHistoryType;
     private ImageView ivDate;
     private GiveBirth giveBirth;
@@ -58,10 +59,14 @@ public class FormNifasHistoryActivity extends BaseActivity {
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        etBloodPressureTop = findViewById(R.id.blood_pressure_top);
+        etBloodPressureBottom = findViewById(R.id.blood_pressure_bottom);
+        etTemperature = findViewById(R.id.et_temperature);
+        etRespiration = findViewById(R.id.et_respiration);
+        etPulse = findViewById(R.id.et_pulse);
         etBirthDate = findViewById(R.id.history_date);
         ivDate = findViewById(R.id.history_icon);
         etMotherCondition = findViewById(R.id.mother_condition);
-        etBloodTempTespiration = findViewById(R.id.blood_temp_respiration);
         etPerineum = findViewById(R.id.perineum);
         etBloodingPervaginam = findViewById(R.id.blooding_pervaginam);
         etInfection = findViewById(R.id.infection);
@@ -97,7 +102,7 @@ public class FormNifasHistoryActivity extends BaseActivity {
         ivDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DatePickerFragment newFragment = new DatePickerFragment();
+                BaseActivity.DatePickerFragment newFragment = new BaseActivity.DatePickerFragment();
                 newFragment.minDate = giveBirth.getBirth_date();
                 newFragment.holder = etBirthDate;
                 newFragment.show(getSupportFragmentManager(), "datePicker");
@@ -146,7 +151,6 @@ public class FormNifasHistoryActivity extends BaseActivity {
 
         etBirthDate.setText(DateHelper.getDateServer(nifasHistory.getHistory_date()));
         etMotherCondition.setText(nifasHistory.getMother_condition());
-        etBloodTempTespiration.setText(nifasHistory.getBlood_temp_respiration());
         etPerineum.setText(nifasHistory.getPerineum());
         etBloodingPervaginam.setText(nifasHistory.getBlooding_pervaginam());
         etInfection.setText(nifasHistory.getInfection());
@@ -172,6 +176,11 @@ public class FormNifasHistoryActivity extends BaseActivity {
         etBabyCry.setText(nifasHistory.getBaby_cry());
         etBabyCommunication.setText(nifasHistory.getBaby_communication());
         etKbConsultation.setText(nifasHistory.getKb_consultation());
+        etBloodPressureTop.setText(""+nifasHistory.getBlood_pressure_top());
+        etBloodPressureBottom.setText(""+nifasHistory.getBlood_pressure_bottom());
+        etTemperature.setText(replaceCommaToDot("" + nifasHistory.getTemp()));
+        etRespiration.setText(replaceCommaToDot(""+ nifasHistory.getRespiration()));
+        etPulse.setText(replaceCommaToDot("" + nifasHistory.getPulse()));
     }
 
     private boolean validateData(){
@@ -208,7 +217,7 @@ public class FormNifasHistoryActivity extends BaseActivity {
 
         String birtDate = etBirthDate.getText().toString();
         String motherCondition = etMotherCondition.getText().toString();
-        String bloodTempTespiration = etBloodTempTespiration.getText().toString();
+        //String bloodTempTespiration = etBloodTempTespiration.getText().toString();
         String perineum = etPerineum.getText().toString();
         String bloodingPervaginam = etBloodingPervaginam.getText().toString();
         String infection = etInfection.getText().toString();
@@ -234,22 +243,29 @@ public class FormNifasHistoryActivity extends BaseActivity {
         String babyCry = etBabyCry.getText().toString();
         String babyCommunication = etBabyCommunication.getText().toString();
         String kbConsultation = etKbConsultation.getText().toString();
+        int blood_pressure_top = Integer.parseInt(etBloodPressureTop.getText().toString());
+        int blood_pressure_bottom = Integer.parseInt(etBloodPressureBottom.getText().toString());
+        double temp = Double.parseDouble(replaceCommaToDot(etTemperature.getText().toString()));
+        double respiration = Double.parseDouble(replaceCommaToDot(etRespiration.getText().toString()));
+        double pulse = Double.parseDouble(replaceCommaToDot(etPulse.getText().toString()));
 
         showProgressBar(true);
         if(editMode){
             long id = nifasHistory.getId();
             mApiService.updateNifasHistory(id,id,appSession.getData(AppSession.TOKEN),giveBirthId,
-                    birtDate,nifasHistoryTypeId,motherCondition,bloodTempTespiration,
+                    birtDate,nifasHistoryTypeId,motherCondition,
                     bloodingPervaginam,perineum,infection,uteri,fundusUteri,lokhia,birthCanal,breast,
                     asi,vitaminA,kontrasepsi,highRisk,bab,bak,goodFood,drink,cleanliness,takeARest,
-                    caesarTakeCare,breastfeeding,babyTreatment,babyCry,babyCommunication,kbConsultation)
+                    caesarTakeCare,breastfeeding,babyTreatment,babyCry,babyCommunication,kbConsultation,
+                    blood_pressure_top,blood_pressure_bottom,temp,respiration,pulse)
                     .enqueue(formCallback.getCallback());
         } else
             mApiService.createNifasHistory(appSession.getData(AppSession.TOKEN), giveBirthId,
-                    birtDate,nifasHistoryTypeId,motherCondition,bloodTempTespiration,
+                    birtDate,nifasHistoryTypeId,motherCondition,
                     bloodingPervaginam,perineum,infection,uteri,fundusUteri,lokhia,birthCanal,breast,
                     asi,vitaminA,kontrasepsi,highRisk,bab,bak,goodFood,drink,cleanliness,takeARest,
-                    caesarTakeCare,breastfeeding,babyTreatment,babyCry,babyCommunication,kbConsultation)
+                    caesarTakeCare,breastfeeding,babyTreatment,babyCry,babyCommunication,kbConsultation,
+                    blood_pressure_top,blood_pressure_bottom,temp,respiration,pulse)
                     .enqueue(formCallback.getCallback());
     }
 

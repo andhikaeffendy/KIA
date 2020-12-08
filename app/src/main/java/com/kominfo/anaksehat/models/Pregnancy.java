@@ -19,7 +19,7 @@ public class Pregnancy {
     private long give_birth_id;
     private long mother_id;
     private int arm_round;
-    private int kek_status;
+    private String kek_status;
     private String kontrasepsi;
     private String disease_histories;
     private String allergy_histories;
@@ -46,11 +46,11 @@ public class Pregnancy {
         this.arm_round = arm_round;
     }
 
-    public int getKek_status() {
+    public String getKek_status() {
         return kek_status;
     }
 
-    public void setKek_status(int kek_status) {
+    public void setKek_status(String kek_status) {
         this.kek_status = kek_status;
     }
 

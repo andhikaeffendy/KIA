@@ -8,7 +8,6 @@ public class NifasHistory {
     private String nifas_history_type_name;
     private Date history_date;
     private String mother_condition;
-    private String blood_temp_respiration;
     private String blooding_pervaginam;
     private String perineum;
     private String infection;
@@ -34,6 +33,11 @@ public class NifasHistory {
     private String baby_cry;
     private String baby_communication;
     private String kb_consultation;
+    private int blood_pressure_top;
+    private int blood_pressure_bottom;
+    private double temp;
+    private double respiration;
+    private double pulse;
 
     public void setGive_birth_id(long give_birth_id) {
         this.give_birth_id = give_birth_id;
@@ -57,10 +61,6 @@ public class NifasHistory {
 
     public String getBirth_canal() {
         return birth_canal;
-    }
-
-    public String getBlood_temp_respiration() {
-        return blood_temp_respiration;
     }
 
     public String getBlooding_pervaginam() {
@@ -127,8 +127,44 @@ public class NifasHistory {
         this.bab = bab;
     }
 
-    public void setBlood_temp_respiration(String blood_temp_respiration) {
-        this.blood_temp_respiration = blood_temp_respiration;
+    public int getBlood_pressure_top() {
+        return blood_pressure_top;
+    }
+
+    public void setBlood_pressure_top(int blood_pressure_top) {
+        this.blood_pressure_top = blood_pressure_top;
+    }
+
+    public int getBlood_pressure_bottom() {
+        return blood_pressure_bottom;
+    }
+
+    public void setBlood_pressure_bottom(int blood_pressure_bottom) {
+        this.blood_pressure_bottom = blood_pressure_bottom;
+    }
+
+    public double getTemp() {
+        return temp;
+    }
+
+    public void setTemp(double temp) {
+        this.temp = temp;
+    }
+
+    public double getRespiration() {
+        return respiration;
+    }
+
+    public void setRespiration(double respiration) {
+        this.respiration = respiration;
+    }
+
+    public double getPulse() {
+        return pulse;
+    }
+
+    public void setPulse(double pulse) {
+        this.pulse = pulse;
     }
 
     public void setBlooding_pervaginam(String blooding_pervaginam) {

@@ -28,6 +28,24 @@ public class PregnancyHistory {
     private int infection;
     private double hb;
     private String other_risks;
+    private String complaint;
+    private String remarks;
+
+    public String getRemarks() {
+        return remarks;
+    }
+
+    public void setRemarks(String remarks) {
+        this.remarks = remarks;
+    }
+
+    public String getComplaint() {
+        return complaint;
+    }
+
+    public void setComplaint(String complaint) {
+        this.complaint = complaint;
+    }
 
     public String getPregnancy_age() {
         return pregnancy_age;

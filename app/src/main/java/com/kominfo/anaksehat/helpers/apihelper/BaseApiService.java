@@ -378,7 +378,7 @@ public interface BaseApiService {
                                        @Field("period_type") int period_type,
                                        @Field("mother_id") long mother_id,
                                        @Field("arm_round") int arm_round,
-                                       @Field("kek_status") int kek_status,
+                                       @Field("kek_status") String kek_status,
                                        @Field("kontrasepsi") String kontrasepsi,
                                        @Field("disease_histories") String disease_histories,
                                        @Field("allergy_histories") String allergy_histories,
@@ -435,7 +435,7 @@ public interface BaseApiService {
                                        @Field("period_type") int period_type,
                                        @Field("mother_id") long mother_id,
                                        @Field("arm_round") int arm_round,
-                                       @Field("kek_status") int kek_status,
+                                       @Field("kek_status") String kek_status,
                                        @Field("kontrasepsi") String kontrasepsi,
                                        @Field("disease_histories") String disease_histories,
                                        @Field("allergy_histories") String allergy_histories,
@@ -595,7 +595,9 @@ public interface BaseApiService {
                                               @Field("infection") int infection,
                                               @Field("hb") double hb,
                                               @Field("other_risks") String other_risks,
-                                              @Field("pregnancy_id") long pregnancy_id);
+                                              @Field("pregnancy_id") long pregnancy_id,
+                                              @Field("complaint") String complaint,
+                                              @Field("remarks") String remarks);
 
     @FormUrlEncoded
     @PUT("pregnancy_histories/{id}")
@@ -637,7 +639,10 @@ public interface BaseApiService {
                                               @Field("infection") int infection,
                                               @Field("hb") double hb,
                                               @Field("other_risks") String other_risks,
-                                              @Field("pregnancy_id") long pregnancy_id);
+                                              @Field("pregnancy_id") long pregnancy_id,
+                                              @Field("complaint") String complaint,
+                                              @Field("remarks") String remarks
+                                              );
 
 
     @GET("articles")
@@ -706,7 +711,8 @@ public interface BaseApiService {
                                        @Field("bitrh_helper") String bitrh_helper,
                                        @Field("birth_way_id") String birth_way_id,
                                        @Field("mother_condition_id") long mother_condition_id,
-                                       @Field("remarks") String remarks
+                                       @Field("remarks") String remarks,
+                                       @Field("treatment") String treatment
     );
 
     @FormUrlEncoded
@@ -722,7 +728,9 @@ public interface BaseApiService {
                                        @Field("bitrh_helper") String bitrh_helper,
                                        @Field("birth_way_id") String birth_way_id,
                                        @Field("mother_condition_id") long mother_condition_id,
-                                       @Field("remarks") String remarks);
+                                       @Field("remarks") String remarks,
+                                       @Field("treatment") String treatment
+                                       );
 
     @GET("birth_ways")
     Call<ResponseBody> getBirthWays();
@@ -751,7 +759,6 @@ public interface BaseApiService {
                                           @Field("history_date") String history_date,
                                           @Field("nifas_history_type_id") long nifas_history_type_id,
                                           @Field("mother_condition") String mother_condition,
-                                          @Field("blood_temp_respiration") String blood_temp_respiration,
                                           @Field("blooding_pervaginam") String blooding_pervaginam,
                                           @Field("perineum") String perineum,
                                           @Field("infection") String infection,
@@ -775,7 +782,12 @@ public interface BaseApiService {
                                           @Field("baby_treatment") String baby_treatment,
                                           @Field("baby_cry") String baby_cry,
                                           @Field("baby_communication") String baby_communication,
-                                          @Field("kb_consultation") String kb_consultation
+                                          @Field("kb_consultation") String kb_consultation,
+                                          @Field("blood_pressure_top") int blood_pressure_top,
+                                          @Field("blood_pressure_bottom") int blood_pressure_bottom,
+                                          @Field("temp") double temp,
+                                          @Field("respiration") double respiration,
+                                          @Field("pulse") double pulse
     );
 
     @FormUrlEncoded
@@ -787,7 +799,6 @@ public interface BaseApiService {
                                           @Field("history_date") String history_date,
                                           @Field("nifas_history_type_id") long nifas_history_type_id,
                                           @Field("mother_condition") String mother_condition,
-                                          @Field("blood_temp_respiration") String blood_temp_respiration,
                                           @Field("blooding_pervaginam") String blooding_pervaginam,
                                           @Field("perineum") String perineum,
                                           @Field("infection") String infection,
@@ -811,7 +822,12 @@ public interface BaseApiService {
                                           @Field("baby_treatment") String baby_treatment,
                                           @Field("baby_cry") String baby_cry,
                                           @Field("baby_communication") String baby_communication,
-                                          @Field("kb_consultation") String kb_consultation
+                                          @Field("kb_consultation") String kb_consultation,
+                                          @Field("blood_pressure_top") int blood_pressure_top,
+                                          @Field("blood_pressure_bottom") int blood_pressure_bottom,
+                                          @Field("temp") double temp,
+                                          @Field("respiration") double respiration,
+                                          @Field("pulse") double pulse
     );
 
     @GET("birth_plannings")

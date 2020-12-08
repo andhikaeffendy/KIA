@@ -21,7 +21,7 @@ public class NifasHistoryDetailActivity extends BaseActivity {
             etBirthCanal,etBreast,etAsi,etVitaminA,etKontrasepsi,etHighRisk,etBab,
             etBak, etGoodFood, etDrink, etCleanliness, etCaesarTakeCare, etTakeARest,
             etBreastfeeding, etBabyTreatment, etBabyCry, etBabyCommunication, etKbConsultation,
-            etNifasHistoryType;
+            etNifasHistoryType, tvBloodPressureTop, tvBloodPressureBottom, tvTemperature, tvRespiration, tvPulse;
     private GiveBirth giveBirth;
     private NifasHistory nifasHistory;
 
@@ -40,6 +40,11 @@ public class NifasHistoryDetailActivity extends BaseActivity {
 
         setTitle("Riwayat Pemeriksaan Nifas");
 
+        tvBloodPressureTop = findViewById(R.id.tv_blood_pressure_top);
+        tvBloodPressureBottom = findViewById(R.id.tv_blood_pressure_bottom);
+        tvTemperature = findViewById(R.id.tv_temp);
+        tvRespiration = findViewById(R.id.tv_respiration);
+        tvPulse = findViewById(R.id.tv_pulse);
         etBirthDate = findViewById(R.id.history_date);
         etMotherCondition = findViewById(R.id.mother_condition);
         etBloodTempTespiration = findViewById(R.id.blood_temp_respiration);
@@ -111,7 +116,7 @@ public class NifasHistoryDetailActivity extends BaseActivity {
 
         etBirthDate.setText(DateHelper.getDateServer(nifasHistory.getHistory_date()));
         etMotherCondition.setText(nifasHistory.getMother_condition());
-        etBloodTempTespiration.setText(nifasHistory.getBlood_temp_respiration());
+//        etBloodTempTespiration.setText(nifasHistory.getBlood_temp_respiration());
         etPerineum.setText(nifasHistory.getPerineum());
         etBloodingPervaginam.setText(nifasHistory.getBlooding_pervaginam());
         etInfection.setText(nifasHistory.getInfection());
@@ -138,5 +143,10 @@ public class NifasHistoryDetailActivity extends BaseActivity {
         etBabyCommunication.setText(nifasHistory.getBaby_communication());
         etKbConsultation.setText(nifasHistory.getKb_consultation());
         etNifasHistoryType.setText(nifasHistory.getNifas_history_type_name());
+        tvBloodPressureTop.setText("" + nifasHistory.getBlood_pressure_top());
+        tvBloodPressureBottom.setText("" + nifasHistory.getBlood_pressure_top());
+        tvTemperature.setText(replaceCommaToDot("" + nifasHistory.getTemp()));
+        tvRespiration.setText(replaceCommaToDot("" + nifasHistory.getRespiration()));
+        tvPulse.setText(replaceCommaToDot("" + nifasHistory.getPulse()));
     }
 }

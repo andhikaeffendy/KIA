@@ -174,9 +174,9 @@ public class ChildDetailActivity extends BaseActivity {
         tvBirthDate.setText(DateHelper.getDate(child.getBirth_date()));
         tvBloodType.setText(child.getBlood_type());
         tvFirstLength.setText(""+child.getFirst_length()+" cm");
-        tvFirstWeight.setText(replaceDotToComma(""+child.getFirst_weight())+" Kg");
+        tvFirstWeight.setText(replaceDotToComma(""+child.getFirst_weight())+" Gram");
         tvHeight.setText(""+child.getHeight()+" cm");
-        tvWeight.setText(replaceDotToComma(""+child.getWeight())+" Kg");
+        tvWeight.setText(replaceDotToComma(""+child.getWeight())+" Gram");
         tvGender.setText(gender);
         tvFirstHeadRound.setText(""+child.getFirst_head_round()+" cm");
         tvMotherName.setText(child.getMother_name());

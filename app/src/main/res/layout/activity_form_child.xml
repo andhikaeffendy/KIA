@@ -423,7 +423,7 @@
                                 android:layout_centerInParent="true"
                                 android:textSize="@dimen/form_text_size"
                                 android:layout_alignParentRight="true"
-                                android:text="@string/hint_kg"/>
+                                android:text="@string/hint_gram"/>
                         </RelativeLayout>
 
                     </LinearLayout>
@@ -517,6 +517,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:visibility="gone"
                         android:text="Jampersal Status"
                         android:textSize="16sp"
                         android:layout_marginTop="10dp"/>
@@ -526,6 +527,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="16dp"
+                        android:visibility="gone"
                         android:singleLine="true"
                         android:inputType="textPersonName"/>
 

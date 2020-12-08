@@ -56,7 +56,7 @@ public class DetailPemeriksaanBayiActivity extends BaseActivity {
         pemeriksaanBayi = new Gson().fromJson(getIntent().getStringExtra("data"), PemeriksaanBayi.class);
         child = new Gson().fromJson(getIntent().getStringExtra("parent_data"), Child.class);
 
-        tvWeight.setText(""+pemeriksaanBayi.getWeight() +" Kg");
+        tvWeight.setText(""+pemeriksaanBayi.getWeight() +" Gram");
         tvHeight.setText(""+pemeriksaanBayi.getHeight() + " Cm");
         tvTemp.setText(""+pemeriksaanBayi.getTemperature() +" C");
         tvRepiratory.setText(""+pemeriksaanBayi.getRespiratory() +" Minute");

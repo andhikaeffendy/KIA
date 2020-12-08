@@ -238,7 +238,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:textSize="14dp"
-                            android:text="Lebar Tangan"/>
+                            android:text="LILA"/>
 
                         <RelativeLayout
                             android:layout_width="match_parent"
@@ -280,7 +280,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:textSize="14dp"
-                            android:text="Kek Status"/>
+                            android:text="KEK"/>
 
                         <RelativeLayout
                             android:layout_width="match_parent"
@@ -294,20 +294,17 @@
                                 android:nextFocusUp="@id/start_height"
                                 android:imeOptions="actionSend"
                                 android:singleLine="true"
-                                android:inputType="numberDecimal"
-                                android:digits="0123456789,."/>
-
-                            <TextView
-                                android:id="@+id/kek"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_centerInParent="true"
-                                android:textSize="@dimen/form_text_size"
-                                android:layout_alignParentRight="true"
-                                android:text="@string/hint_cm"/>
+                                android:inputType="text"/>
                         </RelativeLayout>
 
                     </LinearLayout>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Kontrasepsi"
+                        android:textSize="14sp"
+                        android:layout_marginTop="10dp"/>
 
                     <EditText
                         android:id="@+id/kontrasepsi"
@@ -315,8 +312,14 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="10dp"
                         android:nextFocusDown="@id/last_period_date"
-                        android:singleLine="true"
-                        android:hint="Kontrasepsi"/>
+                        android:singleLine="true"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Riwayat Penyakit"
+                        android:textSize="14sp"
+                        android:layout_marginTop="10dp"/>
 
                     <EditText
                         android:id="@+id/desease_history"
@@ -324,8 +327,14 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="10dp"
                         android:nextFocusDown="@id/last_period_date"
-                        android:singleLine="true"
-                        android:hint="Riwayat Penyakit"/>
+                        android:singleLine="true"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Riwayat Alergi"
+                        android:textSize="14sp"
+                        android:layout_marginTop="10dp"/>
 
                     <EditText
                         android:id="@+id/alergi_history"
@@ -333,12 +342,12 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="10dp"
                         android:nextFocusDown="@id/last_period_date"
-                        android:singleLine="true"
-                        android:hint="Riwayat Alergi"/>
+                        android:singleLine="true"/>
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:visibility="gone"
                         android:paddingLeft="4dp"
                         android:orientation="horizontal"
                         android:layout_marginBottom="10dp"
@@ -381,6 +390,7 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:visibility="gone"
                         android:paddingLeft="4dp"
                         android:orientation="horizontal"
                         android:layout_marginBottom="10dp"
@@ -423,6 +433,7 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:visibility="gone"
                         android:paddingLeft="4dp"
                         android:orientation="horizontal"
                         android:layout_marginBottom="10dp"
@@ -491,15 +502,6 @@
                                 android:singleLine="true"
                                 android:inputType="numberDecimal"
                                 android:digits="0123456789,."/>
-
-                            <TextView
-                                android:id="@+id/gcon"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_centerInParent="true"
-                                android:textSize="@dimen/form_text_size"
-                                android:layout_alignParentRight="true"
-                                android:text="@string/anak"/>
                         </RelativeLayout>
 
                     </LinearLayout>
@@ -534,14 +536,7 @@
                                 android:inputType="numberDecimal"
                                 android:digits="0123456789,."/>
 
-                            <TextView
-                                android:id="@+id/pcon"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_centerInParent="true"
-                                android:textSize="@dimen/form_text_size"
-                                android:layout_alignParentRight="true"
-                                android:text="@string/anak"/>
+
                         </RelativeLayout>
 
                     </LinearLayout>
@@ -575,15 +570,6 @@
                                 android:singleLine="true"
                                 android:inputType="numberDecimal"
                                 android:digits="0123456789,."/>
-
-                            <TextView
-                                android:id="@+id/acon"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_centerInParent="true"
-                                android:textSize="@dimen/form_text_size"
-                                android:layout_alignParentRight="true"
-                                android:text="@string/anak"/>
                         </RelativeLayout>
 
                     </LinearLayout>
@@ -714,14 +700,27 @@
 
                     </LinearLayout>
 
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Jarak kehamilan dengan persalinan terakhir"
+                        android:textSize="14sp"
+                        android:layout_marginTop="10dp"/>
+
                     <EditText
                         android:id="@+id/distance"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="10dp"
                         android:nextFocusDown="@id/last_period_date"
-                        android:singleLine="true"
-                        android:hint="Jarak"/>
+                        android:singleLine="true"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Status Imunisasi"
+                        android:textSize="14sp"
+                        android:layout_marginTop="10dp"/>
 
                     <EditText
                         android:id="@+id/immunization_status"
@@ -729,8 +728,14 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="10dp"
                         android:nextFocusDown="@id/last_period_date"
-                        android:singleLine="true"
-                        android:hint="Status Imunisasi"/>
+                        android:singleLine="true"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Penolong Kelahiran Terakhir"
+                        android:textSize="14sp"
+                        android:layout_marginTop="10dp"/>
 
                     <EditText
                         android:id="@+id/last_birth_helper"
@@ -738,8 +743,14 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="10dp"
                         android:nextFocusDown="@id/last_period_date"
-                        android:singleLine="true"
-                        android:hint="Pembantu Kelahiran Terakhir"/>
+                        android:singleLine="true"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Cara Persalinan Terakhir"
+                        android:textSize="14sp"
+                        android:layout_marginTop="10dp"/>
 
                     <EditText
                         android:id="@+id/last_birth_way"
@@ -747,8 +758,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="10dp"
                         android:nextFocusDown="@id/last_period_date"
-                        android:singleLine="true"
-                        android:hint="Cara Kelahiran Terakhir"/>
+                        android:singleLine="true"/>
 
                     <RelativeLayout
                         android:layout_width="wrap_content"

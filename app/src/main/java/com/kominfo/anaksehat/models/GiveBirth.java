@@ -17,6 +17,15 @@ public class GiveBirth {
     private String remarks;
     private long child_id;
     private int user_id;
+    private String treatment;
+
+    public String getTreatment() {
+        return treatment;
+    }
+
+    public void setTreatment(String treatment) {
+        this.treatment = treatment;
+    }
 
     public long getId() {
         return id;

@@ -104,7 +104,7 @@ public class ChildHistoryDetailActivity extends BaseActivity {
 
         tvName.setText(childHistory.getChild_name());
         tvHeight.setText(""+childHistory.getHeight()+" cm");
-        tvWeight.setText(replaceDotToComma(""+childHistory.getWeight())+" Kg");
+        tvWeight.setText(replaceDotToComma(""+childHistory.getWeight())+" Gram");
         tvHeadRound.setText(""+childHistory.getHead_round()+" cm");
         tvTemperature.setText(""+childHistory.getTemperature()+" °C");
         tvHistoryDate.setText(DateHelper.getDateWithNameDay(childHistory.getHistory_date()));

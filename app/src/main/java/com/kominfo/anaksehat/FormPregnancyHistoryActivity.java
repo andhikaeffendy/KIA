@@ -34,7 +34,8 @@ public class FormPregnancyHistoryActivity extends BaseActivity {
 
     private EditText etHistoryDate,etWeight,etBabyWeight,etNote,
             etBloodPressureTop,etBloodPressureBottom, etFundusHeight, etFetusPosition,
-            etHeartBeat, etLeg, etLab, etTreatment, etSuggestion, etNextVisitDate, etHb, etOtherRisk;
+            etHeartBeat, etLeg, etLab, etTreatment, etSuggestion, etNextVisitDate, etHb,
+            etOtherRisk, etComplaint, etRemarks;
     private ImageView ivDate, ivVisitDate;
     private Pregnancy pregnancy;
     private boolean editMode = false;
@@ -56,6 +57,8 @@ public class FormPregnancyHistoryActivity extends BaseActivity {
 
         setTitle(R.string.title_create_pregnancy_history);
 
+        etRemarks = findViewById(R.id.et_remarks);
+        etComplaint = findViewById(R.id.complaint);
         etHistoryDate = findViewById(R.id.history_date);
         etBabyWeight = findViewById(R.id.baby_weight);
         etWeight = findViewById(R.id.weight);
@@ -172,6 +175,8 @@ public class FormPregnancyHistoryActivity extends BaseActivity {
         etSuggestion.setText(pregnancyHistory.getSuggestion());
         etLeg.setText(pregnancyHistory.getLeg());
         etLab.setText(pregnancyHistory.getLab());
+        etComplaint.setText(pregnancyHistory.getComplaint());
+        etRemarks.setText(pregnancyHistory.getRemarks());
 
 //        if(pregnancyHistory.getAmniotic_condition().compareToIgnoreCase("Kurang Baik")==0)
 //            rbAmnioticCondition2.setChecked(true);
@@ -201,6 +206,8 @@ public class FormPregnancyHistoryActivity extends BaseActivity {
         String treatment = etTreatment.getText().toString();
         String suggestion = etSuggestion.getText().toString();
         String nextVisitDate = etNextVisitDate.getText().toString();
+        String complaint = etComplaint.getText().toString();
+        String remarks = etRemarks.getText().toString();
 
         if(historyDate.isEmpty()){
             etHistoryDate.setError(getString(R.string.error_birth_date));
@@ -316,6 +323,8 @@ public class FormPregnancyHistoryActivity extends BaseActivity {
         String dateVisitDate = "";
         double hb = Double.parseDouble(replaceCommaToDot(etHb.getText().toString()));
         String other_risk = etOtherRisk.getText().toString();
+        String complaint = etComplaint.getText().toString();
+        String remarks = etRemarks.getText().toString();
         int blooding=0,infection=0;
         if(rbBlooding1.isChecked())blooding=1;
         if(rbInfection1.isChecked())infection=1;
@@ -338,13 +347,13 @@ public class FormPregnancyHistoryActivity extends BaseActivity {
             mApiService.updatePregnancyHistory(id, id, appSession.getData(AppSession.TOKEN),
                     historyDate, weight, blood_pressure_top, blood_pressure_bottom, baby_weight,
                     genderPrediction, amniotic_condition, note, fundusHeight, fetusPosition, heartBeat, leg, lab, treatment,
-                    suggestion, dateVisitDate, blooding, infection, hb, other_risk, pregnancyId)
+                    suggestion, dateVisitDate, blooding, infection, hb, other_risk, pregnancyId, complaint,remarks)
                     .enqueue(formCallback.getCallback());
         } else
             mApiService.createPregnancyHistory(appSession.getData(AppSession.TOKEN), historyDate,
                     weight, blood_pressure_top, blood_pressure_bottom, baby_weight,
                     genderPrediction, amniotic_condition, note, fundusHeight, fetusPosition, heartBeat, leg, lab, treatment,
-                    suggestion, dateVisitDate, blooding, infection, hb, other_risk, pregnancyId)
+                    suggestion, dateVisitDate, blooding, infection, hb, other_risk, pregnancyId,complaint,remarks)
                     .enqueue(formCallback.getCallback());
     }
 

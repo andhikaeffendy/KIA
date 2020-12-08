@@ -120,11 +120,17 @@
 
                     </RelativeLayout>
 
-                    <EditText
-                        android:id="@+id/note"
+                    <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="@string/hint_note"
+                        android:textSize="16sp"
+                        android:layout_marginTop="10dp"
+                        android:text="Keluhan Sekarang"/>
+
+                    <EditText
+                        android:id="@+id/complaint"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
                         android:layout_marginBottom="10dp"
                         android:maxLines="5"
                         android:inputType="textMultiLine"/>
@@ -168,7 +174,7 @@
                                 android:layout_centerInParent="true"
                                 android:textSize="@dimen/form_text_size"
                                 android:layout_alignParentRight="true"
-                                android:text="@string/hint_kg"/>
+                                android:text="@string/hint_gram"/>
                         </RelativeLayout>
 
                     </LinearLayout>
@@ -633,6 +639,36 @@
 
                     <EditText
                         android:id="@+id/et_suggestion"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:maxLines="5"
+                        android:inputType="textMultiLine"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Keterangan tempat pelaksanaan\natau nama pemeriksa"
+                        android:textSize="16sp"
+                        android:layout_marginTop="12sp"/>
+
+                    <EditText
+                        android:id="@+id/et_remarks"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:maxLines="5"
+                        android:inputType="textMultiLine"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="16sp"
+                        android:layout_marginTop="10dp"
+                        android:text="Catatan"/>
+
+                    <EditText
+                        android:id="@+id/note"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="10dp"

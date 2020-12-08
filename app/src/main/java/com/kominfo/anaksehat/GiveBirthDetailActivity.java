@@ -23,7 +23,7 @@ import com.kominfo.anaksehat.models.Pregnancy;
 public class GiveBirthDetailActivity extends BaseActivity {
 
     private TextView tvBirthDate, tvBirthTime, tvPregnancyAge, tvBirthHelper, tvBirthWay,
-            tvMotherCondition, tvRemarks;
+            tvMotherCondition, tvRemarks, tvTreatment;
     private Button btnNext, btnNext2, btnNext3;
     private GiveBirth giveBirth;
     private Pregnancy pregnancy;
@@ -45,6 +45,7 @@ public class GiveBirthDetailActivity extends BaseActivity {
 
         setTitle("Persalinan");
 
+        tvTreatment = findViewById(R.id.tv_treatment);
         tvBirthDate= findViewById(R.id.birth_date);
         tvBirthTime= findViewById(R.id.birth_time);
         tvPregnancyAge= findViewById(R.id.pregnancy_age);
@@ -136,6 +137,7 @@ public class GiveBirthDetailActivity extends BaseActivity {
         tvMotherCondition.setText(giveBirth.getMother_condition_name());
         tvPregnancyAge.setText(""+giveBirth.getPregnancy_age());
         tvRemarks.setText(""+giveBirth.getRemarks());
+        tvTreatment.setText(giveBirth.getTreatment());
     }
 
     ApiCallback childCallback = new ApiCallback(){

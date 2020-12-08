@@ -174,8 +174,197 @@
                     </LinearLayout>
 
                     <LinearLayout
+                        android:id="@+id/blood_pressure_layout"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:paddingLeft="4dp"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="10dp"
+                        android:weightSum="2">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_gravity="center_vertical"
+                            android:textSize="@dimen/form_text_size"
+                            android:text="@string/hint_blood_pressure"/>
+
+                        <LinearLayout
+                            android:id="@+id/layout_pressure"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_weight="1"
+                            android:weightSum="2">
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1">
+
+                                <EditText
+                                    android:id="@+id/blood_pressure_top"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:nextFocusUp="@id/weight"
+                                    android:nextFocusDown="@id/blood_pressure_bottom"
+                                    android:layout_toLeftOf="@+id/bpt_right"
+                                    android:singleLine="true"
+                                    android:layout_toStartOf="@+id/bpt_right"
+                                    android:inputType="numberDecimal"
+                                    android:digits="0123456789,."/>
+
+                                <TextView
+                                    android:id="@+id/bpt_right"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerInParent="true"
+                                    android:textSize="@dimen/form_text_size"
+                                    android:layout_alignParentRight="true"
+                                    android:text="@string/hint_top"/>
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1">
+
+                                <EditText
+                                    android:id="@+id/blood_pressure_bottom"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:nextFocusUp="@id/blood_pressure_top"
+                                    android:imeOptions="actionSend"
+                                    android:layout_toLeftOf="@+id/bpb_right"
+                                    android:singleLine="true"
+                                    android:layout_toStartOf="@+id/bpb_right"
+                                    android:inputType="number"/>
+
+                                <TextView
+                                    android:id="@+id/bpb_right"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerInParent="true"
+                                    android:textSize="@dimen/form_text_size"
+                                    android:layout_alignParentRight="true"
+                                    android:text="@string/hint_bottom"/>
+                            </RelativeLayout>
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="4dp"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="10dp"
+                        android:weightSum="2">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:textSize="16dp"
+                            android:text="Suhu Badan"/>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1">
+
+                            <EditText
+                                android:id="@+id/et_temperature"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:nextFocusUp="@id/height"
+                                android:nextFocusDown="@id/et_repiratory"
+                                android:singleLine="true"
+                                android:inputType="numberDecimal"
+                                android:digits="0123456789,."/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:textSize="@dimen/form_text_size"
+                                android:layout_alignParentRight="true"
+                                android:text="@string/hint_celcius"/>
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="4dp"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="10dp"
+                        android:weightSum="2">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:textSize="16dp"
+                            android:text="Respirasi"/>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1">
+
+                            <EditText
+                                android:id="@+id/et_respiration"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:nextFocusUp="@id/height"
+                                android:nextFocusDown="@id/et_repiratory"
+                                android:singleLine="true"
+                                android:inputType="numberDecimal"
+                                android:digits="0123456789,."/>
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="4dp"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="10dp"
+                        android:weightSum="2">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:textSize="16dp"
+                            android:text="Nadi"/>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1">
+
+                            <EditText
+                                android:id="@+id/et_pulse"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:nextFocusUp="@id/height"
+                                android:nextFocusDown="@id/et_repiratory"
+                                android:singleLine="true"
+                                android:inputType="numberDecimal"
+                                android:digits="0123456789,."/>
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone"
                         android:paddingLeft="4dp"
                         android:orientation="horizontal"
                         android:layout_marginBottom="10dp"
