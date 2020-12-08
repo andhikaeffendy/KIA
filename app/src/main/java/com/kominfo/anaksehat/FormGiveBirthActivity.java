@@ -48,6 +48,7 @@ public class FormGiveBirthActivity extends BaseActivity {
     private TimePickerDialog picker;
     private boolean editMode = false;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,7 +64,7 @@ public class FormGiveBirthActivity extends BaseActivity {
         setTitle("Input Data Persalinan");
 
         lnTreatment = findViewById(R.id.layout_treatment);
-        etTreatment = findViewById(R.id.treatment);
+        etTreatment = findViewById(R.id.et_treatment);
         etBirthDate = findViewById(R.id.birth_date);
         etBirthTime = findViewById(R.id.birth_time);
         etPregnancyAge = findViewById(R.id.pregnancy_age);
@@ -211,7 +212,12 @@ public class FormGiveBirthActivity extends BaseActivity {
         MotherCondition selected = (MotherCondition) spMotherCondition.getSelectedItem();
         long motherConditionId = selected.getId();
         String birthWay = spBirthWay.getSelectedItem().toString();
-        String treatment = etTreatment.getText().toString();
+        String treatment = "";
+        if (spBirthWay.getSelectedItemPosition() == 1) {
+            treatment = etTreatment.getText().toString();
+        } else {
+            treatment = "";
+        }
 
         long pregnancyId = pregnancy.getId();
         long motherId = pregnancy.getMother_id();
@@ -339,7 +345,6 @@ public class FormGiveBirthActivity extends BaseActivity {
                         case 1:
                             Log.d("satu", ""+spBirthWay.getItemAtPosition(position));
                             lnTreatment.setVisibility(View.VISIBLE);
-                            if (giveBirth.getTreatment() != null) etTreatment.setText(giveBirth.getTreatment());
                             break;
                         case 0:
                             Log.d("nol", ""+spBirthWay.getItemAtPosition(position));
@@ -350,7 +355,7 @@ public class FormGiveBirthActivity extends BaseActivity {
 
                 @Override
                 public void onNothingSelected(AdapterView<?> parent) {
-                    etTreatment.setText(giveBirth.getTreatment());
+
                 }
             });
             if(editMode){

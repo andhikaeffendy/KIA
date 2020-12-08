@@ -28,7 +28,7 @@
     <string name="title_other_articles">Artikel Lainnya</string>
     <string name="title_Article">Artikel</string>
     <string name="title_pregnancies">Kehamilan Ibu Hamil</string>
-    <string name="title_pregnancy_history">Riwayat Pemeriksaan Kehamilan</string>
+    <string name="title_pregnancy_history">Riwayat Pemeriksaan Kehamilan Saat Ini</string>
     <string name="title_immunization">Riwayat Imunisasi</string>
     <string name="title_menu_immunizations">Jadwal Imunisasi</string>
     <string name="title_form_immunization">Vaksinasi Bayi</string>
@@ -314,7 +314,7 @@
 
     <string name="add_pregnancy">+ Kehamilan</string>
     <string name="add_child">+ Anak</string>
-    <string name="check_pregnancy">Periksa Kehamilan</string>
+    <string name="check_pregnancy">+ Periksa Kehamilan Saat Ini</string>
     <string name="title_activity_scrolling">ScrollingActivity</string>
     <string name="large_text">
         "Material is the metaphor.\n\n"

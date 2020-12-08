@@ -3,11 +3,13 @@ package com.kominfo.anaksehat;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,6 +27,7 @@ public class GiveBirthDetailActivity extends BaseActivity {
     private TextView tvBirthDate, tvBirthTime, tvPregnancyAge, tvBirthHelper, tvBirthWay,
             tvMotherCondition, tvRemarks, tvTreatment;
     private Button btnNext, btnNext2, btnNext3;
+    private LinearLayout lnJenisPersalinan;
     private GiveBirth giveBirth;
     private Pregnancy pregnancy;
 
@@ -45,6 +48,7 @@ public class GiveBirthDetailActivity extends BaseActivity {
 
         setTitle("Persalinan");
 
+        lnJenisPersalinan = findViewById(R.id.layout_jenis);
         tvTreatment = findViewById(R.id.tv_treatment);
         tvBirthDate= findViewById(R.id.birth_date);
         tvBirthTime= findViewById(R.id.birth_time);
@@ -137,7 +141,14 @@ public class GiveBirthDetailActivity extends BaseActivity {
         tvMotherCondition.setText(giveBirth.getMother_condition_name());
         tvPregnancyAge.setText(""+giveBirth.getPregnancy_age());
         tvRemarks.setText(""+giveBirth.getRemarks());
-        tvTreatment.setText(giveBirth.getTreatment());
+        if (giveBirth.getBirth_way_id().equals("Normal")){
+            lnJenisPersalinan.setVisibility(View.GONE);
+            Log.d("ini if ", giveBirth.getBirth_way_id());
+        } else {
+            lnJenisPersalinan.setVisibility(View.VISIBLE);
+            tvTreatment.setText(giveBirth.getTreatment());
+            Log.d("ini if ", giveBirth.getBirth_way_id());
+        }
     }
 
     ApiCallback childCallback = new ApiCallback(){
