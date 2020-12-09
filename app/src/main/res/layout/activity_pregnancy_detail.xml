@@ -39,8 +39,14 @@
                     android:scaleType="fitStart"/>
 
                 <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Nama Ibu"
+                    android:layout_marginTop="20dp"/>
+
+                <TextView
                     android:id="@+id/mother_name"
-                    android:paddingTop="20dp"
+                    android:paddingTop="10dp"
                     android:textColor="#000"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
@@ -50,8 +56,14 @@
                     android:layout_height="1dp" />
 
                 <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Terakhir Menstruasi"
+                    android:layout_marginTop="20dp"/>
+
+                <TextView
                     android:id="@+id/last_period_date"
-                    android:paddingTop="20dp"
+                    android:paddingTop="10dp"
                     android:textColor="#000"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
@@ -61,8 +73,14 @@
                     android:background="#000"/>
 
                 <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="HPL"
+                    android:layout_marginTop="20dp"/>
+
+                <TextView
                     android:id="@+id/hpl_date"
-                    android:paddingTop="20dp"
+                    android:paddingTop="10dp"
                     android:textColor="#000"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
@@ -70,6 +88,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:background="#000"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Jarak kehamilan dan persalinan terakhir"
+                    android:layout_marginTop="20dp"/>
 
                 <TextView
                     android:id="@+id/distance"
@@ -83,8 +107,14 @@
                     android:background="#000"/>
 
                 <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Kontrasepsi Sebelum Kehamilan"
+                    android:layout_marginTop="20dp"/>
+
+                <TextView
                     android:id="@+id/kontrasepsi"
-                    android:paddingTop="20dp"
+                    android:paddingTop="10dp"
                     android:textColor="#000"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
@@ -92,10 +122,16 @@
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:background="#000"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Riwayat Penyakit yang di derita"
+                    android:layout_marginTop="20dp"/>
 
                 <TextView
                     android:id="@+id/desease_history"
-                    android:paddingTop="20dp"
+                    android:paddingTop="10dp"
                     android:textColor="#000"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
@@ -103,10 +139,16 @@
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:background="#000"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Riwayat Alergi"
+                    android:layout_marginTop="20dp"/>
 
                 <TextView
                     android:id="@+id/alergi_history"
-                    android:paddingTop="20dp"
+                    android:paddingTop="10dp"
                     android:textColor="#000"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
@@ -114,10 +156,16 @@
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:background="#000"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Status imunisasi TT Terakhir"
+                    android:layout_marginTop="20dp"/>
 
                 <TextView
                     android:id="@+id/immunization_status"
-                    android:paddingTop="20dp"
+                    android:paddingTop="10dp"
                     android:textColor="#000"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
@@ -127,8 +175,14 @@
                     android:background="#000"/>
 
                 <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Penolong Persalinan Terakhir"
+                    android:layout_marginTop="20dp"/>
+
+                <TextView
                     android:id="@+id/last_birth_helper"
-                    android:paddingTop="20dp"
+                    android:paddingTop="10dp"
                     android:textColor="#000"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
@@ -136,6 +190,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:background="#000"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Cara Persalinan Terakhir"
+                    android:layout_marginTop="20dp"/>
 
                 <TextView
                     android:id="@+id/last_birth_way"
@@ -557,7 +617,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Jumlah Anak"/>
+                        android:text="Jumlah Anak Hidup"/>
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -590,7 +650,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Jumlah Kelahiran Meninggal"/>
+                        android:text="Jumlah Lahir Mati"/>
 
                     <LinearLayout
                         android:layout_width="match_parent"

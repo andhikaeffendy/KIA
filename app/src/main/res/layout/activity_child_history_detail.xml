@@ -43,6 +43,12 @@
                         android:scaleType="fitStart"/>
 
                     <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Tanggal Pemeriksaan"
+                        android:layout_marginTop="10dp"/>
+
+                    <TextView
                         android:id="@+id/history_date"
                         android:paddingTop="20dp"
                         android:textColor="#000"
@@ -52,6 +58,12 @@
                         android:background="#000"
                         android:layout_width="match_parent"
                         android:layout_height="1dp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Nama Anak"
+                        android:layout_marginTop="10dp"/>
 
                     <TextView
                         android:id="@+id/name"

@@ -195,8 +195,8 @@ public class PregnancyDetailActivity extends BaseActivity {
         pregnancy = new Gson().fromJson(getIntent().getStringExtra("data"), Pregnancy.class);
         initMPChart();
 
-        tvLastPeriodDate.setText("Menstruasi Terakhir : "+DateHelper.getDate(pregnancy.getLast_period_date()));
-        tvHplDate.setText("HPL : "+DateHelper.getDate(pregnancy.getHpl_date()));
+        tvLastPeriodDate.setText(""+DateHelper.getDate(pregnancy.getLast_period_date()));
+        tvHplDate.setText(""+DateHelper.getDate(pregnancy.getHpl_date()));
         tvStartHeight.setText(""+pregnancy.getStart_height()+" cm");
         tvStartWeight.setText(replaceDotToComma(""+pregnancy.getStart_weight())+" gram");
         tvWeightGain.setText(replaceDotToComma(""+pregnancy.getWeight_gain())+" gram");

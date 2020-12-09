@@ -111,11 +111,17 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Nama Ibu"
+                        android:textSize="18sp"
+                        android:layout_marginTop="10dp"/>
+
                     <EditText
                         android:id="@+id/name"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="@string/hint_name"
                         android:layout_marginBottom="10dp"
                         android:singleLine="true"
                         android:nextFocusDown="@id/birth_date"
@@ -410,6 +416,13 @@
                         android:nextFocusDown="@id/address"
                         android:inputType="textPersonName"/>
 
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="18sp"
+                        android:layout_marginTop="10dp"
+                        android:text="Kabupaten"/>
+
                     <AutoCompleteTextView
                         android:id="@+id/district"
                         android:layout_width="match_parent"
@@ -418,14 +431,19 @@
                         android:nextFocusUp="@id/jampersal_status"
                         android:nextFocusDown="@id/blood_type"
                         android:singleLine="true"
-                        android:hint="@string/hint_district"
                         android:visibility="gone"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="18sp"
+                        android:layout_marginTop="10dp"
+                        android:text="Kecamatan"/>
 
                     <AutoCompleteTextView
                         android:id="@+id/sub_district"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Kabupaten"
                         android:layout_marginBottom="10dp"
                         android:singleLine="true"
                         android:nextFocusUp="@id/district"
@@ -433,17 +451,30 @@
                         android:visibility="gone"
                         android:inputType="textPersonName"/>
 
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:textSize="18sp"
+                        android:text="Desa"/>
+
                     <AutoCompleteTextView
                         android:id="@+id/village"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Village"
                         android:layout_marginBottom="10dp"
                         android:singleLine="true"
                         android:nextFocusUp="@id/sub_district"
                         android:nextFocusDown="@id/address"
                         android:visibility="gone"
                         android:inputType="textPersonName"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:textSize="18sp"
+                        android:text="Alamat"/>
 
                     <EditText
                         android:id="@+id/address"

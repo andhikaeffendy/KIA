@@ -44,8 +44,14 @@
                         android:scaleType="fitStart"/>
 
                     <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Tanggal Pemeriksaan"
+                        android:layout_marginTop="20dp"/>
+
+                    <TextView
                         android:id="@+id/history_date"
-                        android:paddingTop="20dp"
+                        android:paddingTop="10dp"
                         android:textColor="#000"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"/>

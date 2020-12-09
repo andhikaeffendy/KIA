@@ -141,14 +141,29 @@ public class GiveBirthDetailActivity extends BaseActivity {
         tvMotherCondition.setText(giveBirth.getMother_condition_name());
         tvPregnancyAge.setText(""+giveBirth.getPregnancy_age());
         tvRemarks.setText(""+giveBirth.getRemarks());
-        if (giveBirth.getBirth_way_id().equals("Normal")){
-            lnJenisPersalinan.setVisibility(View.GONE);
-            Log.d("ini if ", giveBirth.getBirth_way_id());
-        } else {
-            lnJenisPersalinan.setVisibility(View.VISIBLE);
-            tvTreatment.setText(giveBirth.getTreatment());
-            Log.d("ini if ", giveBirth.getBirth_way_id());
+        tvTreatment.setText(giveBirth.getTreatment());
+
+        switch (giveBirth.getBirth_way_id()){
+            case "Normal":
+                lnJenisPersalinan.setVisibility(View.GONE);
+                break;
+            case "Tindakan":
+                lnJenisPersalinan.setVisibility(View.VISIBLE);
+                tvTreatment.setText(giveBirth.getTreatment());
+                break;
+            default:
+                break;
         }
+
+//        if (giveBirth.getBirth_way_id().equalsIgnoreCase("Normal")){
+//            lnJenisPersalinan.setVisibility(View.GONE);
+//        } else if(giveBirth.getBirth_way_id().equalsIgnoreCase("Tindakan")){
+//            lnJenisPersalinan.setVisibility(View.VISIBLE);
+//            tvTreatment.setText(giveBirth.getTreatment());
+//            //Log.d("ini if ", giveBirth.getBirth_way_id());
+//        }else {
+//            tvTreatment.setText(giveBirth.getTreatment());
+//        }
     }
 
     ApiCallback childCallback = new ApiCallback(){
@@ -162,7 +177,7 @@ public class GiveBirthDetailActivity extends BaseActivity {
             i.putExtra("data", new Gson().toJson(child));
             startActivity(i);
         }
-        //
+
 
         @Override
         public void onApiFailure(String errorMessage) {

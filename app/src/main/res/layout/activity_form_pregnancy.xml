@@ -70,14 +70,21 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Nama Ibu"
+                        android:textSize="18sp"
+                        android:layout_marginTop="20dp"/>
+
                     <AutoCompleteTextView
                         android:id="@+id/mother_name"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="10dp"
                         android:nextFocusDown="@id/last_period_date"
-                        android:singleLine="true"
-                        android:hint="@string/hint_mother"/>
+                        android:singleLine="true"/>
 
                     <RelativeLayout
                         android:layout_width="wrap_content"
@@ -302,7 +309,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Kontrasepsi"
+                        android:text="Kontrasepsi sebelum kehamilan"
                         android:textSize="14sp"
                         android:layout_marginTop="10dp"/>
 
@@ -317,7 +324,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Riwayat Penyakit"
+                        android:text="Riwayat Penyakit yang diderita"
                         android:textSize="14sp"
                         android:layout_marginTop="10dp"/>
 
@@ -587,7 +594,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:textSize="14dp"
-                            android:text="Jumlah Anak"/>
+                            android:text="Jumlah Anak Hidup"/>
 
                         <RelativeLayout
                             android:layout_width="match_parent"
@@ -629,7 +636,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:textSize="14dp"
-                            android:text="Jumlah Kelahiran Meninggal"/>
+                            android:text="Jumlah lahir mati"/>
 
                         <RelativeLayout
                             android:layout_width="match_parent"
@@ -718,7 +725,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Status Imunisasi"
+                        android:text="Status Imunisasi TT Terakhir"
                         android:textSize="14sp"
                         android:layout_marginTop="10dp"/>
 
@@ -733,7 +740,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Penolong Kelahiran Terakhir"
+                        android:text="Penolong Persalinan Terakhir"
                         android:textSize="14sp"
                         android:layout_marginTop="10dp"/>
 

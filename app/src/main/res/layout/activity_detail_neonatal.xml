@@ -127,7 +127,7 @@
                         android:layout_weight="1"
                         android:textSize="16sp"
                         android:textColor="#000"
-                        android:text="Berat Badan (Kg)"/>
+                        android:text="Berat Badan (Gram)"/>
 
                     <LinearLayout
                         android:layout_width="match_parent"
