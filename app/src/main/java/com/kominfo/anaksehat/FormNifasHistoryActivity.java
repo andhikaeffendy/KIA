@@ -324,7 +324,7 @@ public class FormNifasHistoryActivity extends BaseActivity {
 
     private void backFunction(){
         if(editMode){
-            Intent intent = new Intent(context, GiveBirthDetailActivity.class);
+            Intent intent = new Intent(context, NifasHistoryDetailActivity.class);
             intent.putExtra("parent_data", new Gson().toJson(giveBirth));
             intent.putExtra("data", new Gson().toJson(nifasHistory));
             showWarning(intent, R.string.warning, R.string.warning_edit_nifas_history, R.string.ok, R.string.cancel);
