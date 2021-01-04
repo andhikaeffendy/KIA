@@ -132,7 +132,7 @@ public class FormPregnancyActivity extends BaseActivity {
             initCreateData();
         } else initEditData();
 
-        startShowcase();
+        //startShowcase();
     }
 
 //    private void initCreateData(){

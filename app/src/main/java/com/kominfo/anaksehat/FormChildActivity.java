@@ -214,7 +214,7 @@ public class FormChildActivity extends BaseActivity {
             initCreateData();
         } else initEditData();
 
-        startShowcase();
+        //startShowcase();
     }
 
     private void initData() {

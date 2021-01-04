@@ -73,6 +73,7 @@ public class FormMotherActivity extends BaseActivity {
 
     private EditText etBirthDate,etName,etHeight,etWeight,etSpouseName, etBloodPressureTop,
             etBloodPressureBottom, etAddress, etNamaKK, etNIK, etJamStatus;
+    private TextView tvKecamatan, tvKabupaten, tvDesa, tvAlamat;
     private AutoCompleteTextView actvState, actvDistrict, actSubDistrict, actVillage;
     private Spinner spBloodType;
     private ImageView ivThumbnail, ivPickDate;
@@ -120,6 +121,10 @@ public class FormMotherActivity extends BaseActivity {
         etJamStatus = findViewById(R.id.jampersal_status);
         actSubDistrict = findViewById(R.id.sub_district);
         actVillage = findViewById(R.id.village);
+        tvDesa = findViewById(R.id.tv_desa);
+        tvKecamatan = findViewById(R.id.tv_kecamatan);
+        tvKabupaten = findViewById(R.id.tv_kabupaten);
+        tvAlamat = findViewById(R.id.tv_alamat);
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.blood_types, android.R.layout.simple_spinner_item);
@@ -306,26 +311,25 @@ public class FormMotherActivity extends BaseActivity {
                 etBloodPressureBottom.requestFocus();
                 return false;
             }
-//            if (selectedState == null) {
-//                actvState.setError(getString(R.string.error_state));
-//                actvState.requestFocus();
-//                return false;
-//            }
+
 //            if (selectedDistrict == null) {
 //                actvDistrict.setError(getString(R.string.error_district));
 //                actvDistrict.requestFocus();
 //                return false;
 //            }
-//            if (selectedSubDistrict == null){
-//                actSubDistrict.setError("Kecamatan tidak valid");
-//                actSubDistrict.requestFocus();
-//                return false;
-//            }
-//            if (selectedVillage == null){
-//                actVillage.setError("Village tidak valid");
-//                actVillage.requestFocus();
-//                return false;
-//            }
+
+            if (selectedSubDistrict == null){
+                actSubDistrict.setError("Kecamatan harus dipilih");
+                actSubDistrict.requestFocus();
+                return false;
+            }
+
+            if (selectedVillage == null){
+                actVillage.setError("Desa harus dipilih");
+                actVillage.requestFocus();
+                return false;
+            }
+
         }
 
         return true;
@@ -895,7 +899,8 @@ public class FormMotherActivity extends BaseActivity {
 
     private void initEditForm(){
         int[] edit_layouts = {R.id.birth_date_layout,R.id.spouse_name,R.id.address,
-                R.id.district, R.id.blood_type_layout, R.id.blood_pressure_layout, R.id.sub_district, R.id.village};
+                R.id.district, R.id.blood_type_layout, R.id.blood_pressure_layout, R.id.sub_district,
+                R.id.village, R.id.tv_alamat, R.id.tv_desa, R.id.tv_kecamatan, R.id.tv_kabupaten};
         for (int i=0;i<edit_layouts.length;i++) {
             View view = findViewById(edit_layouts[i]);
             view.setVisibility(View.VISIBLE);

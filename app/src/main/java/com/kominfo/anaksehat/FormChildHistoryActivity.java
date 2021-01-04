@@ -79,7 +79,7 @@ public class FormChildHistoryActivity extends BaseActivity {
         editMode = getIntent().getBooleanExtra("edit_mode", false);
         if(editMode) initEditData();
 
-        startShowcase();
+        //startShowcase();
     }
 
     @Override

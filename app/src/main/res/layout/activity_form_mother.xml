@@ -417,8 +417,10 @@
                         android:inputType="textPersonName"/>
 
                     <TextView
+                        android:id="@+id/tv_kabupaten"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:visibility="gone"
                         android:textSize="18sp"
                         android:layout_marginTop="10dp"
                         android:text="Kabupaten"/>
@@ -434,10 +436,12 @@
                         android:visibility="gone"/>
 
                     <TextView
+                        android:id="@+id/tv_kecamatan"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textSize="18sp"
                         android:layout_marginTop="10dp"
+                        android:visibility="gone"
                         android:text="Kecamatan"/>
 
                     <AutoCompleteTextView
@@ -452,10 +456,12 @@
                         android:inputType="textPersonName"/>
 
                     <TextView
+                        android:id="@+id/tv_desa"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:textSize="18sp"
+                        android:visibility="gone"
                         android:text="Desa"/>
 
                     <AutoCompleteTextView
@@ -470,8 +476,10 @@
                         android:inputType="textPersonName"/>
 
                     <TextView
+                        android:id="@+id/tv_alamat"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:visibility="gone"
                         android:layout_marginTop="10dp"
                         android:textSize="18sp"
                         android:text="Alamat"/>

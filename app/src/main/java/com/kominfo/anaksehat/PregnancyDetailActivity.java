@@ -198,8 +198,8 @@ public class PregnancyDetailActivity extends BaseActivity {
         tvLastPeriodDate.setText(""+DateHelper.getDate(pregnancy.getLast_period_date()));
         tvHplDate.setText(""+DateHelper.getDate(pregnancy.getHpl_date()));
         tvStartHeight.setText(""+pregnancy.getStart_height()+" cm");
-        tvStartWeight.setText(replaceDotToComma(""+pregnancy.getStart_weight())+" gram");
-        tvWeightGain.setText(replaceDotToComma(""+pregnancy.getWeight_gain())+" gram");
+        tvStartWeight.setText(replaceDotToComma(""+pregnancy.getStart_weight())+" Kg");
+        tvWeightGain.setText(replaceDotToComma(""+pregnancy.getWeight_gain())+" Kg");
         tvPeriodType.setText(pregnancy.getPeriod_type());
         tvImt.setText(replaceDotToComma(""+pregnancy.getImt()));
         tvMotherWeightIndex.setText(pregnancy.getMother_weight_index());
