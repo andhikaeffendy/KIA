@@ -879,6 +879,383 @@
 
                 </RelativeLayout>
 
+                <RelativeLayout
+                    android:paddingTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:text="Tinggi Badan"
+                        android:textSize="16sp"
+                        android:textColor="#000"/>
+
+                    <RelativeLayout
+                        android:layout_alignParentEnd="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:id="@+id/mother_height_category_icon"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:adjustViewBounds="true"
+                            android:maxHeight="60dp"
+                            android:maxWidth="180dp"/>
+
+                        <TextView
+                            android:id="@+id/mother_height_category"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="13dp"
+                            android:layout_marginLeft="2dp"
+                            android:textSize="11dp"
+                            android:textStyle="bold"
+                            android:textColor="@color/white"/>
+
+                    </RelativeLayout>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:paddingTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:text="Umur"
+                        android:textSize="16sp"
+                        android:textColor="#000"/>
+
+                    <RelativeLayout
+                        android:layout_alignParentEnd="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:id="@+id/pregnancy_age_status_icon"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:adjustViewBounds="true"
+                            android:maxHeight="60dp"
+                            android:maxWidth="180dp"/>
+
+                        <TextView
+                            android:id="@+id/pregnancy_age_status"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="13dp"
+                            android:layout_marginLeft="2dp"
+                            android:textSize="11dp"
+                            android:textStyle="bold"
+                            android:textColor="@color/white"/>
+
+                    </RelativeLayout>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:paddingTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:text="Pendarahan"
+                        android:textSize="16sp"
+                        android:textColor="#000"/>
+
+                    <RelativeLayout
+                        android:layout_alignParentEnd="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:id="@+id/pregnancy_blooding_status_icon"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:adjustViewBounds="true"
+                            android:maxHeight="60dp"
+                            android:maxWidth="180dp"/>
+
+                        <TextView
+                            android:id="@+id/pregnancy_blooding_status"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="13dp"
+                            android:layout_marginLeft="2dp"
+                            android:textSize="11dp"
+                            android:textStyle="bold"
+                            android:textColor="@color/white"/>
+
+                    </RelativeLayout>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:paddingTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:text="Infeksi"
+                        android:textSize="16sp"
+                        android:textColor="#000"/>
+
+                    <RelativeLayout
+                        android:layout_alignParentEnd="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:id="@+id/pregnancy_infection_status_icon"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:adjustViewBounds="true"
+                            android:maxHeight="60dp"
+                            android:maxWidth="180dp"/>
+
+                        <TextView
+                            android:id="@+id/pregnancy_infection_status"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="13dp"
+                            android:layout_marginLeft="2dp"
+                            android:textSize="11dp"
+                            android:textStyle="bold"
+                            android:textColor="@color/white"/>
+
+                    </RelativeLayout>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:paddingTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:text="HB"
+                        android:textSize="16sp"
+                        android:textColor="#000"/>
+
+                    <RelativeLayout
+                        android:layout_alignParentEnd="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:id="@+id/pregnancy_hb_status_icon"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:adjustViewBounds="true"
+                            android:maxHeight="60dp"
+                            android:maxWidth="180dp"/>
+
+                        <TextView
+                            android:id="@+id/pregnancy_hb_status"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="13dp"
+                            android:layout_marginLeft="2dp"
+                            android:textSize="11dp"
+                            android:textStyle="bold"
+                            android:textColor="@color/white"/>
+
+                    </RelativeLayout>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:paddingTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:text="Lingkar Lengan"
+                        android:textSize="16sp"
+                        android:textColor="#000"/>
+
+                    <RelativeLayout
+                        android:layout_alignParentEnd="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:id="@+id/pregnancy_arm_status_icon"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:adjustViewBounds="true"
+                            android:maxHeight="60dp"
+                            android:maxWidth="180dp"/>
+
+                        <TextView
+                            android:id="@+id/pregnancy_arm_status"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="13dp"
+                            android:layout_marginLeft="2dp"
+                            android:textSize="11dp"
+                            android:textStyle="bold"
+                            android:textColor="@color/white"/>
+
+                    </RelativeLayout>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:paddingTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:text="Risiko Lain"
+                        android:textSize="16sp"
+                        android:textColor="#000"/>
+
+                    <RelativeLayout
+                        android:layout_alignParentEnd="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:id="@+id/pregnancy_other_risk_status_icon"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:adjustViewBounds="true"
+                            android:maxHeight="60dp"
+                            android:maxWidth="180dp"/>
+
+                        <TextView
+                            android:id="@+id/pregnancy_other_risk_status"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="13dp"
+                            android:layout_marginLeft="2dp"
+                            android:textSize="11dp"
+                            android:textStyle="bold"
+                            android:textColor="@color/white"/>
+
+                    </RelativeLayout>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:paddingTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:text="Tekanan Darah"
+                        android:textSize="16sp"
+                        android:textColor="#000"/>
+
+                    <RelativeLayout
+                        android:layout_alignParentEnd="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:id="@+id/pregnancy_blood_pressure_status_icon"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:adjustViewBounds="true"
+                            android:maxHeight="60dp"
+                            android:maxWidth="180dp"/>
+
+                        <TextView
+                            android:id="@+id/pregnancy_blood_pressure_status"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="13dp"
+                            android:layout_marginLeft="2dp"
+                            android:textSize="11dp"
+                            android:textStyle="bold"
+                            android:textColor="@color/white"/>
+
+                    </RelativeLayout>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:paddingTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:text="Jarak Kehamilan"
+                        android:textSize="16sp"
+                        android:textColor="#000"/>
+
+                    <RelativeLayout
+                        android:layout_alignParentEnd="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:id="@+id/pregnancy_last_pregnancy_status_icon"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:adjustViewBounds="true"
+                            android:maxHeight="60dp"
+                            android:maxWidth="180dp"/>
+
+                        <TextView
+                            android:id="@+id/pregnancy_last_pregnancy_status"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="13dp"
+                            android:layout_marginLeft="2dp"
+                            android:textSize="11dp"
+                            android:textStyle="bold"
+                            android:textColor="@color/white"/>
+
+                    </RelativeLayout>
+
+                </RelativeLayout>
 
 
             </LinearLayout>

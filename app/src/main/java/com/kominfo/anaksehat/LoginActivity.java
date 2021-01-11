@@ -67,11 +67,11 @@ public class LoginActivity extends BaseActivity {
             etUsername.requestFocus();
             return false;
         }
-        if(password.length()<8){
-            etPassword.setError(getString(R.string.error_password_short));
-            etPassword.requestFocus();
-            return false;
-        }
+//        if(password.length()<8){
+//            etPassword.setError(getString(R.string.error_password_short));
+//            etPassword.requestFocus();
+//            return false;
+//        }
         return true;
     }
 

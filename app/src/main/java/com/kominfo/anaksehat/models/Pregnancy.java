@@ -37,6 +37,87 @@ public class Pregnancy {
     private String last_birth_helper;
     private String last_birth_way;
     private Date last_give_birth_date;
+    private int age_status;
+    private int height_status;
+    private int blood_pressure_status;
+    private int hb_status;
+    private int blood_status;
+    private int infection_status;
+    private int arm_status;
+    private int other_risks_status;
+    private int last_pregancy_status;
+
+    public int getAge_status() {
+        return age_status;
+    }
+
+    public void setAge_status(int age_status) {
+        this.age_status = age_status;
+    }
+
+    public int getHeight_status() {
+        return height_status;
+    }
+
+    public void setHeight_status(int height_status) {
+        this.height_status = height_status;
+    }
+
+    public int getBlood_pressure_status() {
+        return blood_pressure_status;
+    }
+
+    public void setBlood_pressure_status(int blood_pressure_status) {
+        this.blood_pressure_status = blood_pressure_status;
+    }
+
+    public int getHb_status() {
+        return hb_status;
+    }
+
+    public void setHb_status(int hb_status) {
+        this.hb_status = hb_status;
+    }
+
+    public int getBlood_status() {
+        return blood_status;
+    }
+
+    public void setBlood_status(int blood_status) {
+        this.blood_status = blood_status;
+    }
+
+    public int getInfection_status() {
+        return infection_status;
+    }
+
+    public void setInfection_status(int infection_status) {
+        this.infection_status = infection_status;
+    }
+
+    public int getArm_status() {
+        return arm_status;
+    }
+
+    public void setArm_status(int arm_status) {
+        this.arm_status = arm_status;
+    }
+
+    public int getOther_risks_status() {
+        return other_risks_status;
+    }
+
+    public void setOther_risks_status(int other_risks_status) {
+        this.other_risks_status = other_risks_status;
+    }
+
+    public int getLast_pregancy_status() {
+        return last_pregancy_status;
+    }
+
+    public void setLast_pregancy_status(int last_pregancy_status) {
+        this.last_pregancy_status = last_pregancy_status;
+    }
 
     public int getArm_round() {
         return arm_round;

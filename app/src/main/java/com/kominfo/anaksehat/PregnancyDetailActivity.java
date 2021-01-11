@@ -4,11 +4,13 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -39,11 +41,14 @@ import java.util.List;
 public class PregnancyDetailActivity extends BaseActivity {
 
     private TextView tvMotherName, tvStartHeight, tvStartWeight, tvWeightGain, tvLastPeriodDate,
-            tvHplDate, tvPeriodType, tvImt, tvMotherWeightIndex, tvMotherNutritionCategory,
+            tvHplDate, tvPeriodType, tvImt, tvMotherWeightIndex, tvMotherNutritionCategory, tvMotherHeightCategory,
             tvArmRound, tvKekStatus, tvPregnancyNumber, tvMiscariage, tvGCount, tvPCount,tvKontrasepsi,tvDesease,
             tvACount, tvChildrenCount, tvDeadBirthCount, tvPrematureChildrenCount,tvRiwayatAlergi,
-            tvBirthCount, tvDistance, tvImunisasi, tvLastBirthHelper, tvLastBirthWay, tvLastGiveBirthDate;
-    private ImageView ivMotherWeightIndex, ivMotherNutritionCategory;
+            tvBirthCount, tvDistance, tvImunisasi, tvLastBirthHelper, tvLastBirthWay, tvLastGiveBirthDate,
+            tvAgeStatus, tvBloodingStatus, tvInfectionStatus, tvHbStatus, tvArmStatus, tvOtherRiskStatus,
+            tvBloodPressureStatus, tvLastPregnancyStatus;
+    private ImageView ivMotherWeightIndex, ivMotherNutritionCategory, ivMotherHeightCategory, ivAgeStatus,
+            ivBloodingStatus, ivInfectionStatus, ivHbStatus, ivArmStatus, ivOtherRiskStatus, ivBloodPressureStatus, ivLastPregnancyStatus;
     private Button btnNext, btnNext2, btnNext3, btnNext4, btnNext5;
     private Pregnancy pregnancy;
     private LineChart mChart;
@@ -77,6 +82,24 @@ public class PregnancyDetailActivity extends BaseActivity {
         tvHplDate = findViewById(R.id.hpl_date);
         tvPeriodType = findViewById(R.id.period_type);
         tvImt = findViewById(R.id.imt);
+        tvMotherHeightCategory = findViewById(R.id.mother_height_category);
+        ivMotherHeightCategory = findViewById(R.id.mother_height_category_icon);
+        tvAgeStatus = findViewById(R.id.pregnancy_age_status);
+        ivAgeStatus = findViewById(R.id.pregnancy_age_status_icon);
+        tvBloodingStatus = findViewById(R.id.pregnancy_blooding_status);
+        ivBloodingStatus = findViewById(R.id.pregnancy_blooding_status_icon);
+        tvInfectionStatus = findViewById(R.id.pregnancy_infection_status);
+        ivInfectionStatus = findViewById(R.id.pregnancy_infection_status_icon);
+        tvHbStatus = findViewById(R.id.pregnancy_hb_status);
+        ivHbStatus = findViewById(R.id.pregnancy_hb_status_icon);
+        tvArmStatus = findViewById(R.id.pregnancy_arm_status);
+        ivArmStatus = findViewById(R.id.pregnancy_arm_status_icon);
+        tvOtherRiskStatus = findViewById(R.id.pregnancy_other_risk_status);
+        ivOtherRiskStatus = findViewById(R.id.pregnancy_other_risk_status_icon);
+        tvBloodPressureStatus = findViewById(R.id.pregnancy_blood_pressure_status);
+        ivBloodPressureStatus = findViewById(R.id.pregnancy_blood_pressure_status_icon);
+        tvLastPregnancyStatus = findViewById(R.id.pregnancy_last_pregnancy_status);
+        ivLastPregnancyStatus = findViewById(R.id.pregnancy_last_pregnancy_status_icon);
         tvMotherWeightIndex = findViewById(R.id.mother_weight_index);
         tvMotherNutritionCategory = findViewById(R.id.mother_nutrition_category);
         ivMotherWeightIndex = findViewById(R.id.mother_weight_index_icon);
@@ -240,6 +263,107 @@ public class PregnancyDetailActivity extends BaseActivity {
             setImage(ivMotherNutritionCategory, GREEN);
         } else {
             setImage(ivMotherNutritionCategory, ORANGE);
+        }
+
+        if (pregnancy.getHeight_status()==0){
+            setImage(ivMotherHeightCategory, GREEN);
+            tvMotherHeightCategory.setText("Aman");
+            Log.d("Height Status",""+pregnancy.getHeight_status());
+            Log.d("Age Status",""+pregnancy.getAge_status());
+        } else{
+            setImage(ivMotherHeightCategory, RED);
+            tvMotherHeightCategory.setText("Risiko Tinggi");
+        }
+
+        if (pregnancy.getAge_status()==0){
+            setImage(ivAgeStatus, GREEN);
+            tvAgeStatus.setText("Aman");
+        } else if (pregnancy.getAge_status()==1){
+            Log.d("Ini 1","Aman");
+            setImage(ivAgeStatus, RED);
+            tvAgeStatus.setText("Risiko Tinggi");
+        } else {
+            setImage(ivAgeStatus, ORANGE);
+        }
+//
+        if (pregnancy.getBlood_status()==0){
+            setImage(ivBloodingStatus, GREEN);
+            tvBloodingStatus.setText("Ya");
+        } else if (pregnancy.getBlood_status()==1){
+            setImage(ivBloodingStatus, RED);
+            tvBloodingStatus.setText("Tidak");
+        } else {
+            setImage(ivBloodingStatus, ORANGE);
+        }
+
+        if (pregnancy.getBlood_status()==0){
+            setImage(ivBloodingStatus, GREEN);
+            tvBloodingStatus.setText("Ya");
+        } else if (pregnancy.getBlood_status()==1){
+            setImage(ivBloodingStatus, RED);
+            tvBloodingStatus.setText("Tidak");
+        } else {
+            setImage(ivBloodingStatus, ORANGE);
+        }
+
+        if (pregnancy.getInfection_status()==0){
+            setImage(ivInfectionStatus, GREEN);
+            tvInfectionStatus.setText("Aman");
+        } else if (pregnancy.getInfection_status()==1){
+            setImage(ivInfectionStatus, RED);
+            tvInfectionStatus.setText("Risiko Tinggi");
+        } else {
+            setImage(ivInfectionStatus, ORANGE);
+        }
+
+        if (pregnancy.getHb_status()==0){
+            setImage(ivHbStatus, GREEN);
+            tvHbStatus.setText("Aman");
+        } else if (pregnancy.getHb_status()==1){
+            setImage(ivHbStatus, RED);
+            tvHbStatus.setText("Risiko Tinggi");
+        } else {
+            setImage(ivHbStatus, ORANGE);
+        }
+
+        if (pregnancy.getArm_status()==0){
+            setImage(ivArmStatus, GREEN);
+            tvArmStatus.setText("Aman");
+        } else if (pregnancy.getArm_status()==1){
+            setImage(ivArmStatus, RED);
+            tvArmStatus.setText("Risiko Tinggi");
+        } else {
+            setImage(ivArmStatus, ORANGE);
+        }
+
+        if (pregnancy.getOther_risks_status()==0){
+            setImage(ivOtherRiskStatus, GREEN);
+            tvOtherRiskStatus.setText("Aman");
+        } else if (pregnancy.getOther_risks_status()==1){
+            setImage(ivOtherRiskStatus, RED);
+            tvOtherRiskStatus.setText("Risiko Tinggi");
+        } else {
+            setImage(ivOtherRiskStatus, ORANGE);
+        }
+
+        if (pregnancy.getBlood_pressure_status()==0){
+            setImage(ivBloodPressureStatus, GREEN);
+            tvBloodPressureStatus.setText("Aman");
+        } else if (pregnancy.getBlood_pressure_status()==1){
+            setImage(ivBloodPressureStatus, RED);
+            tvBloodPressureStatus.setText("Risiko Tinggi");
+        } else {
+            setImage(ivBloodPressureStatus, ORANGE);
+        }
+
+        if (pregnancy.getLast_pregancy_status()==0){
+            setImage(ivLastPregnancyStatus, GREEN);
+            tvLastPregnancyStatus.setText("Aman");
+        } else if (pregnancy.getLast_pregancy_status()==1){
+            setImage(ivLastPregnancyStatus, RED);
+            tvLastPregnancyStatus.setText("Risiko Tinggi");
+        } else {
+            setImage(ivLastPregnancyStatus, ORANGE);
         }
 
         mApiService.getPregnancyHistories(appSession.getData(AppSession.TOKEN), pregnancy.getId())
